@@ -12,6 +12,7 @@ const el = {
   kapittelvalg: document.getElementById("kapittelvalg"),
   start: document.getElementById("start"),
   okt: document.getElementById("okt"),
+  fremdrift: document.getElementById("fremdrift"),
   teller: document.getElementById("teller"),
   sporsmal: document.getElementById("sporsmal"),
   handling: document.getElementById("handling"),
@@ -19,8 +20,11 @@ const el = {
   fasittekst: document.getElementById("fasittekst"),
   detaljer: document.getElementById("detaljer"),
   panytt: document.getElementById("panytt"),
+  byttfag: document.getElementById("byttfag"),
   feil: document.getElementById("feil"),
 };
+
+const LEDETEKST = "Velg innhold, så trekkes spørsmålene i tilfeldig rekkefølge.";
 
 let data = null;
 let okt = null;
@@ -63,21 +67,22 @@ function byggOppsett() {
 
   el.modusvalg.replaceChildren(
     lagLegend("Hva vil du øve på?"),
-    lagRadio("modus", "flervalg", `Flervalg (${flervalg.length})`, flervalg.length === 0, true),
-    lagRadio("modus", "langsvar", `Langsvar (${langsvar.length})`, langsvar.length === 0, flervalg.length === 0)
+    lagValgliste("fliser", [
+      lagFlis("modus", "flervalg", "Flervalg", antallTekst(flervalg.length), flervalg.length === 0, true),
+      lagFlis("modus", "langsvar", "Langsvar", antallTekst(langsvar.length), langsvar.length === 0, flervalg.length === 0),
+    ])
   );
 
   byggKapittelvalg(flervalg);
 
-  el.modusvalg.addEventListener("change", () => {
-    el.kapittelvalg.hidden = valgtModus() !== "flervalg";
-  });
-  el.kapittelvalg.hidden = valgtModus() !== "flervalg";
+  el.modusvalg.addEventListener("change", vekslKapittelvalg);
+  vekslKapittelvalg();
 
   el.start.addEventListener("click", startOkt);
   el.panytt.addEventListener("click", tilbakeTilOppsett);
+  el.byttfag.addEventListener("click", () => (location.href = "index.html"));
 
-  el.status.textContent = "Velg innhold, så trekkes spørsmålene i tilfeldig rekkefølge.";
+  el.status.textContent = LEDETEKST;
   el.oppsett.hidden = false;
 }
 
@@ -86,22 +91,32 @@ function byggKapittelvalg(flervalg) {
     .filter((k) => k !== undefined)
     .sort((a, b) => a - b);
 
-  const valg = [
-    lagLegend("Kapittel"),
-    lagRadio("kapittel", "alle", `Alle kapitler, blandet (${flervalg.length})`, false, true),
+  const rader = [
+    lagRad("kapittel", "alle", "Alle kapitler, blandet", antallTekst(flervalg.length), true),
   ];
 
   for (const nr of kapitler) {
     const antall = flervalg.filter((s) => s.kapittel === nr).length;
-    valg.push(lagRadio("kapittel", String(nr), `${kapittelnavn(nr)} (${antall})`, false, false));
+    rader.push(lagRad("kapittel", String(nr), kapittelnavn(nr), antallTekst(antall), false));
   }
 
-  el.kapittelvalg.replaceChildren(...valg);
+  el.kapittelvalg.replaceChildren(
+    lagLegend("Kapittel"),
+    lagValgliste("rader", rader)
+  );
+}
+
+function vekslKapittelvalg() {
+  el.kapittelvalg.hidden = valgtModus() !== "flervalg";
 }
 
 function kapittelnavn(nr) {
   const navn = data.kapitler?.[nr];
   return navn ? `${nr}. ${navn}` : `Kapittel ${nr}`;
+}
+
+function antallTekst(n) {
+  return `${n} spørsmål`;
 }
 
 /* ---------- Skjerm 2: økta ---------- */
@@ -131,6 +146,7 @@ function startOkt() {
   el.resultat.hidden = true;
   el.okt.hidden = false;
   el.status.textContent = "";
+  el.fremdrift.max = okt.sporsmal.length;
 
   visSporsmal();
 }
@@ -139,6 +155,7 @@ function visSporsmal() {
   const s = okt.sporsmal[okt.indeks];
   okt.besvart = false;
 
+  el.fremdrift.value = okt.indeks + 1;
   el.teller.textContent =
     `Spørsmål ${okt.indeks + 1} av ${okt.sporsmal.length}` +
     (s.kapittel !== undefined ? ` — ${kapittelnavn(s.kapittel)}` : "");
@@ -165,7 +182,10 @@ function lagFlervalg(s) {
     knapp.name = "svar";
     knapp.value = String(i);
 
-    etikett.append(knapp, document.createTextNode(" " + tekst));
+    const merkelapp = document.createElement("span");
+    merkelapp.textContent = tekst;
+
+    etikett.append(knapp, merkelapp);
     gruppe.append(etikett);
   });
 
@@ -230,10 +250,15 @@ function rettLangsvar(s) {
 
   (s.momenter ?? []).forEach((tekst, i) => {
     const etikett = document.createElement("label");
+
     const boks = document.createElement("input");
     boks.type = "checkbox";
     boks.value = String(i);
-    etikett.append(boks, document.createTextNode(" " + tekst));
+
+    const merkelapp = document.createElement("span");
+    merkelapp.textContent = tekst;
+
+    etikett.append(boks, merkelapp);
     momenter.append(etikett);
   });
 
@@ -273,8 +298,7 @@ function visResultat() {
     el.fasittekst.textContent = `${okt.riktige} av ${okt.sporsmal.length} riktige`;
     el.detaljer.textContent = lagKommentar(okt.riktige / okt.sporsmal.length);
   } else {
-    el.fasittekst.textContent =
-      `${okt.momenterTruffet} av ${okt.momenterTotalt} momenter`;
+    el.fasittekst.textContent = `${okt.momenterTruffet} av ${okt.momenterTotalt} momenter`;
     el.detaljer.textContent =
       `Fordelt på ${okt.sporsmal.length} ${okt.sporsmal.length === 1 ? "oppgave" : "oppgaver"}. ` +
       "Momentene du lot stå igjen er de som er verdt å lese opp igjen.";
@@ -290,10 +314,10 @@ function lagKommentar(andel) {
 function tilbakeTilOppsett() {
   el.resultat.hidden = true;
   el.oppsett.hidden = false;
-  el.status.textContent = "Velg innhold, så trekkes spørsmålene i tilfeldig rekkefølge.";
+  el.status.textContent = LEDETEKST;
 }
 
-/* ---------- Småting ---------- */
+/* ---------- Byggeklosser ---------- */
 
 function hentType(type) {
   return (data.sporsmal ?? []).filter((s) => s.type === type);
@@ -314,18 +338,58 @@ function lagLegend(tekst, klasse) {
   return legend;
 }
 
-function lagRadio(gruppe, verdi, tekst, deaktivert, valgt) {
+function lagValgliste(klasse, valg) {
+  const liste = document.createElement("ul");
+  liste.className = klasse;
+
+  for (const v of valg) {
+    const rad = document.createElement("li");
+    rad.append(v);
+    liste.append(rad);
+  }
+
+  return liste;
+}
+
+function lagFlis(gruppe, verdi, navn, undertekst, deaktivert, valgt) {
   const etikett = document.createElement("label");
+  etikett.className = "flis";
+
+  const tittel = document.createElement("span");
+  tittel.className = "flis-navn";
+  tittel.textContent = navn;
+
+  const antall = document.createElement("span");
+  antall.className = "flis-antall";
+  antall.textContent = undertekst;
+
+  etikett.append(lagKnapp(gruppe, verdi, deaktivert, valgt), tittel, antall);
+  return etikett;
+}
+
+function lagRad(gruppe, verdi, navn, undertekst, valgt) {
+  const etikett = document.createElement("label");
+  etikett.className = "rad";
+
+  const tittel = document.createElement("span");
+  tittel.textContent = navn;
+
+  const antall = document.createElement("span");
+  antall.className = "rad-antall";
+  antall.textContent = undertekst;
+
+  etikett.append(lagKnapp(gruppe, verdi, false, valgt), tittel, antall);
+  return etikett;
+}
+
+function lagKnapp(gruppe, verdi, deaktivert, valgt) {
   const knapp = document.createElement("input");
   knapp.type = "radio";
   knapp.name = gruppe;
   knapp.value = verdi;
   knapp.disabled = deaktivert;
   knapp.checked = valgt && !deaktivert;
-
-  if (deaktivert) etikett.className = "deaktivert";
-  etikett.append(knapp, document.createTextNode(" " + tekst));
-  return etikett;
+  return knapp;
 }
 
 /* Fisher-Yates */

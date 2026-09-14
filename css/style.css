@@ -10,6 +10,7 @@
   --linje:    #c9cfcb;
   --merke:    #1f5c4b;
   --varsel:   #8a3d2a;
+  --knapptekst: #f7f8f7;
 
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --sans:  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
@@ -24,6 +25,7 @@
     --linje:  #333b38;
     --merke:  #7fc0ab;
     --varsel: #d99175;
+    --knapptekst: #161a19;
   }
 }
 
@@ -32,7 +34,7 @@
 body {
   margin: 0 auto;
   max-width: 44rem;
-  padding: 3.5rem 1.25rem 5rem;
+  padding: 2.75rem 1.25rem 5rem;
   background: var(--papir);
   color: var(--blekk);
   font-family: var(--sans);
@@ -44,7 +46,7 @@ body {
 /* --- Topp --------------------------------------------------- */
 
 header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.25rem;
 }
 
 h1 {
@@ -184,7 +186,7 @@ a:focus-visible {
    --------------------------------------------------------------- */
 
 .tilbake {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
   font-size: 0.9rem;
 }
 
@@ -200,62 +202,152 @@ a:focus-visible {
 }
 
 fieldset {
-  margin: 0 0 2rem;
+  margin: 0 0 2.25rem;
   padding: 0;
   border: 0;
 }
 
 legend {
   padding: 0;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
   color: var(--dempet);
   font-size: 0.9rem;
 }
 
 legend.sporsmalstekst,
 h2.sporsmalstekst {
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.25rem;
   color: var(--blekk);
   font-family: var(--serif);
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.35;
 }
 
-/* --- Valg og avkryssing ------------------------------------- */
-
-#modusvalg label,
-#kapittelvalg label,
-.momenter label {
-  display: block;
-  padding: 0.45rem 0;
-  cursor: pointer;
-}
-
-#modusvalg input,
-#kapittelvalg input,
-.momenter input,
+/* Radioknappene skjules visuelt, men beholder tastaturfokus.
+   Tilstanden vises på sjølve flata i stedet. */
+.flis input,
+.rad input,
 .alternativ input {
-  margin-right: 0.5rem;
-  accent-color: var(--merke);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
-label.deaktivert {
-  color: var(--dempet);
+/* --- Modusvalg: to flater ----------------------------------- */
+
+.fliser {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flis {
+  position: relative;
+  display: grid;
+  gap: 0.15rem;
+  padding: 1.05rem 1.15rem;
+  border: 1px solid var(--linje);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.flis:hover {
+  background: var(--flate);
+}
+
+.flis:has(input:checked) {
+  border-color: var(--merke);
+  box-shadow: inset 0 0 0 1px var(--merke);
+  background: var(--flate);
+}
+
+.flis:has(input:focus-visible) {
+  outline: 2px solid var(--merke);
+  outline-offset: 3px;
+}
+
+.flis:has(input:disabled) {
+  opacity: 0.45;
   cursor: not-allowed;
 }
 
-/* --- Flervalg ----------------------------------------------- */
+.flis-navn {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.flis-antall {
+  color: var(--dempet);
+  font-size: 0.85rem;
+}
+
+/* --- Kapittelrader ------------------------------------------ */
+
+.rader {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--linje);
+}
+
+.rader li {
+  border-bottom: 1px solid var(--linje);
+}
+
+.rad {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.7rem 0.85rem;
+  box-shadow: inset 3px 0 0 transparent;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.rad:hover {
+  background: var(--flate);
+}
+
+.rad:has(input:checked) {
+  background: var(--flate);
+  box-shadow: inset 3px 0 0 var(--merke);
+}
+
+.rad:has(input:focus-visible) {
+  outline: 2px solid var(--merke);
+  outline-offset: -2px;
+}
+
+.rad-antall {
+  color: var(--dempet);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* --- Flervalg ------------------------------------------------ */
 
 .alternativer {
   margin-bottom: 1.5rem;
 }
 
 .alternativ {
+  position: relative;
   display: block;
-  padding: 0.7rem 0.75rem;
+  padding: 0.8rem 0.9rem;
   border-bottom: 1px solid var(--linje);
+  box-shadow: inset 3px 0 0 transparent;
   cursor: pointer;
+  transition: background-color 120ms ease;
 }
 
 .alternativer .alternativ:first-of-type {
@@ -264,6 +356,16 @@ label.deaktivert {
 
 .alternativ:hover {
   background: var(--flate);
+}
+
+.alternativ:has(input:checked) {
+  background: var(--flate);
+  box-shadow: inset 3px 0 0 var(--dempet);
+}
+
+.alternativ:has(input:focus-visible) {
+  outline: 2px solid var(--merke);
+  outline-offset: -2px;
 }
 
 .alternativ.rett {
@@ -285,14 +387,14 @@ label.deaktivert {
   font-size: 0.95rem;
 }
 
-/* --- Langsvar ----------------------------------------------- */
+/* --- Langsvar ------------------------------------------------ */
 
 textarea {
   display: block;
   width: 100%;
   padding: 0.9rem 1rem;
   border: 1px solid var(--linje);
-  border-radius: 2px;
+  border-radius: 3px;
   background: var(--flate);
   color: var(--blekk);
   font-family: var(--sans);
@@ -312,8 +414,21 @@ textarea:focus-visible {
   border-top: 1px solid var(--linje);
 }
 
+.momenter label {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.momenter input {
+  margin: 0.35rem 0 0;
+  accent-color: var(--merke);
+  flex: none;
+}
+
 details {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   font-size: 0.95rem;
 }
 
@@ -329,24 +444,40 @@ details p {
   color: var(--dempet);
 }
 
-/* --- Teller, knapper, resultat ------------------------------- */
+/* --- Framdrift, teller, knapper ------------------------------ */
+
+progress {
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-bottom: 1rem;
+  border: 0;
+  appearance: none;
+  background: var(--linje);
+}
+
+progress::-webkit-progress-bar { background: var(--linje); }
+progress::-webkit-progress-value { background: var(--merke); }
+progress::-moz-progress-bar { background: var(--merke); }
 
 #teller {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.5rem;
   color: var(--dempet);
   font-size: 0.875rem;
 }
 
 .knapperad {
-  margin: 2rem 0 0;
+  display: flex;
+  gap: 0.75rem;
+  margin: 2.25rem 0 0;
 }
 
 button {
-  padding: 0.65rem 1.3rem;
+  padding: 0.7rem 1.4rem;
   border: 0;
-  border-radius: 2px;
+  border-radius: 3px;
   background: var(--merke);
-  color: var(--papir);
+  color: var(--knapptekst);
   font-family: var(--sans);
   font-size: 0.95rem;
   cursor: pointer;
@@ -362,21 +493,37 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+button.sekundaer {
+  background: none;
+  border: 1px solid var(--linje);
+  color: var(--blekk);
+}
+
+button.sekundaer:hover {
+  background: var(--flate);
+  opacity: 1;
+}
+
+/* --- Resultat ------------------------------------------------ */
+
 #resultat h2 {
-  margin: 0 0 0.75rem;
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  font-weight: 500;
+  margin: 0 0 1rem;
+  color: var(--dempet);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .tall {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-size: clamp(1.9rem, 6vw, 2.7rem);
+  font-weight: 500;
   line-height: 1.1;
 }
 
 #detaljer {
-  margin: 0.5rem 0 0;
+  margin: 0.6rem 0 0;
   color: var(--dempet);
+  max-width: 34rem;
 }

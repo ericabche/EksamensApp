@@ -1,0 +1,953 @@
+{
+  "fag": "Web Programming",
+  "kapitler": {
+    "1": "HTML5 og skjema",
+    "2": "CSS3",
+    "3": "JavaScript og DOM",
+    "4": "jQuery, AJAX og JSON",
+    "5": "PHP",
+    "6": "Sesjoner og cookies",
+    "7": "MySQL og databaser",
+    "8": "Websikkerhet",
+    "9": "HTTP og SEO"
+  },
+  "sporsmal": [
+    {
+      "id": "web-001",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken display-verdi har <img> som standard i CSS3?",
+      "alternativer": ["block", "flex", "inline-block", "inline"],
+      "fasit": 3,
+      "forklaring": "<img> er et erstattet element på inline-nivå. Det oppfører seg som inline-block på flere måter (du kan sette bredde og høyde), men den beregnede display-verdien er inline."
+    },
+    {
+      "id": "web-002",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken enctype må <form> ha for å kunne laste opp en fil?",
+      "alternativer": ["text/file", "multimedia/form-data", "text", "multipart/form-data"],
+      "fasit": 3,
+      "forklaring": "multipart/form-data deler forsendelsen i deler med egne hoder, slik at binære data kan sendes uten å bli tegnkodet. Standardverdien application/x-www-form-urlencoded takler ikke filer."
+    },
+    {
+      "id": "web-003",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken HTML5-erklæring lager riktig lenke til en e-postadresse?",
+      "alternativer": [
+        "<mail>example@email.com</mail>",
+        "<a href=\"example@email.com\">example@email.com</a>",
+        "<href=\"mailto:example@email.com\">",
+        "<a href=\"mailto:example@email.com\">example@email.com</a>"
+      ],
+      "fasit": 3,
+      "forklaring": "Det er mailto:-skjemaet i href som gjør lenka til en e-postlenke. Uten skjemaet tolkes verdien som en relativ filsti."
+    },
+    {
+      "id": "web-004",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilke HTML-elementer brukes for å lage en nedtrekksliste?",
+      "alternativer": [
+        "<input type=\"select\">",
+        "<select> og <option>",
+        "<datalist> og <option>",
+        "<list> og <option>"
+      ],
+      "fasit": 1,
+      "forklaring": "<select> er kontrollen og hvert <option> er et valg. <datalist> finnes også, men gir forslag til et fritekstfelt, ikke en lukket nedtrekksliste."
+    },
+    {
+      "id": "web-005",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket attributt brukes for å definere inline CSS på et HTML5-element?",
+      "alternativer": ["type", "define", "link", "style"],
+      "fasit": 3,
+      "forklaring": "style-attributtet tar CSS-erklæringer direkte på elementet og har høyere prioritet enn regler fra stilsett."
+    },
+    {
+      "id": "web-006",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvor mange feil er det i HTML5-dokumentet under?",
+      "kode": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Khoa KH&amp;KT May Tinh</title>\n    <link href=\"style.css\" type=\"stylesheet\" title=\"center\" />\n  </head>\n  <body style=\"margin: 50px\">\n  <section>\n    <h2>He thong &amp; Mang may Tinh</h2>\n    <p>Bo mon He thong va Mang may tinh ra doi khi Khoa moi thanh lap</p>\n    <h3 class=\"center\">Lien he</h3>\n    <p class=\"center\">Nha A3, Khoa KH va KT May tinh</p>\n    <p class=\"center\" style=\"font-weight:bold\">Dien thoai: (+84 028) 865-8689</p>\n  </section>\n  </body>\n</html>",
+      "alternativer": ["1 feil", "3 feil", "Ingen feil", "2 feil"],
+      "fasit": 0,
+      "forklaring": "<link> mangler rel=\"stylesheet\". type=\"stylesheet\" er ikke en gyldig verdi – type skal eventuelt være text/css, og rel er det som forteller nettleseren hva relasjonen er. Resten av dokumentet er velformet."
+    },
+    {
+      "id": "web-007",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken tekstfarge har besøkte lenker som standard i HTML?",
+      "alternativer": ["Svart (#000000)", "Blå (#0000FF)", "Rød (#FF0000)", "Lilla (#660099)"],
+      "fasit": 3,
+      "forklaring": "Ubesøkte lenker er blå (#0000FF), besøkte lilla. Fargene kommer fra nettleserens innebygde stilsett og kan overstyres med :visited."
+    },
+    {
+      "id": "web-008",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Når vises teksten i alt-attributtet til <img>?",
+      "alternativer": [
+        "Når bildet ikke deles",
+        "Når bildet ikke kan vises",
+        "Når bildet deles",
+        "Når bildet vises"
+      ],
+      "fasit": 1,
+      "forklaring": "alt er alternativ tekst: den vises når bildet ikke lastes, og leses opp av skjermlesere. Den er også grunnen til at alt er et tilgjengelighetskrav, ikke bare en reserveløsning."
+    },
+    {
+      "id": "web-009",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket Web Storage-objekt i HTML5 lagrer data uten utløpstid?",
+      "alternativer": [
+        "window.webStorage",
+        "window.localStorage",
+        "window.sessionStorage",
+        "window.localsessionStorage"
+      ],
+      "fasit": 1,
+      "forklaring": "localStorage lever til den slettes eksplisitt. sessionStorage tømmes når fanen lukkes, og de to andre navnene finnes ikke."
+    },
+    {
+      "id": "web-010",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken display-verdi har <em> som standard i HTML5?",
+      "alternativer": ["inline-block", "flex", "block", "inline"],
+      "fasit": 3,
+      "forklaring": "<em> er et tekstnivå-element og flyter med i teksten. Sammenlign med <p> og <div>, som er block."
+    },
+    {
+      "id": "web-011",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken HTML-tagg lager en avkryssingsboks?",
+      "alternativer": [
+        "<checkbox>",
+        "<input type=\"check\">",
+        "<check>",
+        "<input type=\"checkbox\">"
+      ],
+      "fasit": 3,
+      "forklaring": "Alle skjemakontroller utenom <select> og <textarea> er varianter av <input>, styrt av type-attributtet."
+    },
+    {
+      "id": "web-012",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva skjer når brukeren klikker på lenka under?",
+      "kode": "<a href=\"index.html\" target=\"_blank\" id=\"target\">Lenke</a>",
+      "alternativer": [
+        "Dokumentet åpnes i foreldrevinduet",
+        "Dokumentet åpnes i en ny fane",
+        "Dokumentet åpnes i gjeldende fane",
+        "Dokumentet åpnes i en iframe med id target"
+      ],
+      "fasit": 1,
+      "forklaring": "target=\"_blank\" åpner i ny fane eller nytt vindu. id-en har ingenting med målet å gjøre – for å treffe en iframe måtte target matche iframe-ens name-attributt."
+    },
+    {
+      "id": "web-013",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken metode i et HTML-skjema legger brukerdata inn i selve adressen, skilt fra adressen med spørsmålstegn?",
+      "alternativer": ["GET", "PUT", "POST", "GET og PUT"],
+      "fasit": 0,
+      "forklaring": "GET legger dataene i spørrestrengen, som dermed blir synlig i adressefeltet, havner i historikken og i serverloggene. POST sender dem i meldingskroppen."
+    },
+    {
+      "id": "web-014",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken CSS-egenskap gir halvfet skrift?",
+      "alternativer": ["font-variant", "font-family", "font-weight", "font-style"],
+      "fasit": 2,
+      "forklaring": "font-weight styrer tykkelsen, font-style kursiv, font-variant blant annet kapiteler."
+    },
+    {
+      "id": "web-015",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken CSS-egenskap bestemmer rekkefølgen på block-elementer som legges oppå hverandre i lag?",
+      "alternativer": ["x-index", "s-index", "d-index", "z-index"],
+      "fasit": 3,
+      "forklaring": "z-index virker bare på elementer som er posisjonert, altså der position ikke er static."
+    },
+    {
+      "id": "web-016",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "En nettside bruker CSS-koden under. Hvilket utsagn er riktigst?",
+      "kode": "body {\n  background-color: red;\n}\n@media screen and (max-width: 992px) {\n  body {\n    background-color: blue;\n  }\n}",
+      "alternativer": [
+        "Bakgrunnen er blå på alle skjermstørrelser",
+        "Bakgrunnen er rød på alle skjermstørrelser",
+        "Bakgrunnen er blå når skjermbredden er 640px",
+        "Bakgrunnen er blå når skjermbredden er 1024px"
+      ],
+      "fasit": 2,
+      "forklaring": "Mediespørringen gjelder opptil 992px og står sist, så den vinner ved lik spesifisitet. 640px er innenfor grensa, 1024px er utenfor."
+    },
+    {
+      "id": "web-017",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "En nettside bruker CSS-koden under. Hvilket utsagn er riktigst?",
+      "kode": "@media screen and (max-width: 992px) {\n  body {\n    background-color: blue;\n  }\n}\nbody {\n  background-color: red;\n}",
+      "alternativer": [
+        "Bakgrunnen er blå på alle skjermstørrelser",
+        "Bakgrunnen er blå når skjermbredden er 1024px",
+        "Bakgrunnen er rød på alle skjermstørrelser",
+        "Bakgrunnen er blå når skjermbredden er 640px"
+      ],
+      "fasit": 2,
+      "forklaring": "Her står den ubetingede regelen sist. En mediespørring gir ingen ekstra spesifisitet, så ved likt vekt- og spesifisitetsnivå avgjør rekkefølgen, og rød vinner uansett skjermbredde. Sammenlign med forrige oppgave."
+    },
+    {
+      "id": "web-018",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken farge får teksten «Môn học Lập trình web» på skjermen?",
+      "kode": ".text span { color: red }\nh1 span { color: black }\np span { color: yellow !important; }\ndiv.text { color: blue !important; }\nspan.text { color: green }\nh1 > span { color: orange }\n\n<h1>\n  <div>\n    <p>\n      <span class=\"text\">Môn học Lập trình web</span>\n    </p>\n  </div>\n</h1>",
+      "alternativer": ["Grønn", "Gul", "Rød", "Oransje"],
+      "fasit": 1,
+      "forklaring": "p span har !important og slår alle vanlige regler uansett spesifisitet. div.text treffer ikke, fordi div-en ikke har klassen text, og h1 > span krever at span er direkte barn av h1."
+    },
+    {
+      "id": "web-019",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken farge får teksten «Môn học Lập trình web» på skjermen?",
+      "kode": ".text span { color: red }\nspan { color: blue }\nh1 { color: green }\nh1 span { color: black }\np span { color: yellow }\nspan.text { color: green }\nh1 > span { color: orange }\n\n<h1>\n  <div>\n    <p>\n      <span class=\"text\">Môn học Lập trình web</span>\n    </p>\n  </div>\n</h1>",
+      "alternativer": ["Grønn", "Rød", "Oransje", "Blå"],
+      "fasit": 0,
+      "forklaring": "Uten !important avgjør spesifisiteten. span.text har én klasse og ett element (0,1,1) og slår h1 span og p span, som begge bare har to elementer (0,0,2)."
+    },
+    {
+      "id": "web-020",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken CSS3-enhet er relativ til skriftstørrelsen på rotelementet i dokumentet?",
+      "alternativer": ["ch", "rem", "em", "px"],
+      "fasit": 1,
+      "forklaring": "rem står for root em og ser alltid på <html>. em er relativ til elementets egen skriftstørrelse og kan derfor hope seg opp gjennom nivåer."
+    },
+    {
+      "id": "web-021",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken CSS-velger treffer <a>-elementer der href begynner med https?",
+      "alternativer": [
+        "a > [href^=value]",
+        "a[href$=value]",
+        "a[href*=value]",
+        "a[href^=https]"
+      ],
+      "fasit": 3,
+      "forklaring": "^= betyr begynner med, $= slutter med og *= inneholder. Huskeregelen er den samme som i regulære uttrykk."
+    },
+    {
+      "id": "web-022",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken CSS-velger treffer div-elementer der attributtet attr slutter med strengen value?",
+      "alternativer": [
+        "div[attr$=value]",
+        "div[attr^=value]",
+        "div > [attr*=value]",
+        "div[attr*=value]"
+      ],
+      "fasit": 0,
+      "forklaring": "$= krever at verdien avsluttes med strengen. Nyttig til for eksempel a[href$=\".pdf\"]."
+    },
+    {
+      "id": "web-023",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken CSS-egenskap gir kursiv skrift?",
+      "alternativer": ["font-style", "font-weight", "font-variant", "font-family"],
+      "fasit": 0,
+      "forklaring": "font-style: italic. Merk at italic bruker skriftsnittets egen kursiv, mens oblique bare skråstiller den vanlige."
+    },
+    {
+      "id": "web-024",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken av disse CSS-erklæringene er ikke gyldig?",
+      "alternativer": [
+        "p { line-height: 250%; }",
+        "* { margin: 5px; }",
+        "h1, h2, h3 { color: black; }",
+        "# { padding: 10px; }"
+      ],
+      "fasit": 3,
+      "forklaring": "Et firkantsymbol må følges av et id-navn, som #meny. Alene er det ingen velger. De tre andre er gyldige: prosent, universalvelger og gruppert velger."
+    },
+    {
+      "id": "web-025",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket variabelnavn er ugyldig i JavaScript?",
+      "alternativer": ["var21", "VAR21", "_temp", "21var"],
+      "fasit": 3,
+      "forklaring": "Et navn kan ikke begynne med et siffer. Understrek og dollartegn er derimot lovlige startetegn."
+    },
+    {
+      "id": "web-026",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skriver koden under ut i konsollen?",
+      "kode": "var event = {};\nevent.Month = \"May\";\nthis = event;\nthis.day = 11;\nconsole.log(event.Month + \" --- \" + event.day);",
+      "alternativer": ["May --- 11", "undefined --- 11", "Syntaksfeil", "May --- undefined"],
+      "fasit": 2,
+      "forklaring": "this kan ikke stå på venstre side av en tilordning. Det er en tidlig feil, så skriptet blir avvist før noe av det kjører – ikke en feil som oppstår underveis."
+    },
+    {
+      "id": "web-027",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skriver koden under ut i konsollen?",
+      "kode": "var a = '20';\nvar b = a = 30;\nconsole.log(a + b);",
+      "alternativer": ["50", "2030", "60", "'20'30"],
+      "fasit": 2,
+      "forklaring": "Tilordning er høyreassosiativ: a settes først til tallet 30, og uttrykket gir 30 videre til b. Strengen '20' er overskrevet, så det blir tallsummen 60."
+    },
+    {
+      "id": "web-028",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skriver koden under ut i konsollen?",
+      "kode": "var a = 0;\nvar b = 0;\nwhile (a < 3) {\n  a++;\n  b += a;\n  console.log(b);\n}",
+      "alternativer": ["123", "136", "01", "013"],
+      "fasit": 1,
+      "forklaring": "b akkumulerer: 0+1=1, 1+2=3, 3+3=6. Det er b som skrives ut, ikke a."
+    },
+    {
+      "id": "web-029",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skriver koden under ut i konsollen?",
+      "kode": "var intArr = [1, 2,,, , 3]\nconsole.log(intArr.length)",
+      "alternativer": ["Syntaksfeil", "6", "5", "3"],
+      "fasit": 1,
+      "forklaring": "Kommaene lager tre tomme plasser mellom 2 og 3. Plassene teller med i length selv om de ikke har verdi, og et enkelt etterfølgende komma ville ikke telt."
+    },
+    {
+      "id": "web-030",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken egenskap finnes ikke på location-objektet i DOM?",
+      "alternativer": ["host", "path", "hostname", "protocol"],
+      "fasit": 1,
+      "forklaring": "Egenskapen heter pathname. host er vertsnavn med portnummer, hostname uten."
+    },
+    {
+      "id": "web-031",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket utsagn om JavaScript er galt?",
+      "alternativer": [
+        "Et skript på en nettside kan ikke lese eller overskrive filer på brukerens maskin",
+        "Et skript på en nettside kan endre innholdet i alle dokumenter som er lagt inn i iframe-elementer",
+        "JavaScript er et objektbasert skriptspråk",
+        "JavaScript skiller mellom store og små bokstaver"
+      ],
+      "fasit": 1,
+      "forklaring": "Samme opphav-prinsippet stopper dette: du kan bare nå innholdet i en iframe som kommer fra samme protokoll, vert og port som sida selv."
+    },
+    {
+      "id": "web-032",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva kan JavaScript brukes til?",
+      "alternativer": [
+        "Bytte hvilket bilde som vises på sida",
+        "Lese data som er lagret i nettsidens sesjon",
+        "Koble seg til databaseserveren MySQL",
+        "Alle alternativene er riktige"
+      ],
+      "fasit": 0,
+      "forklaring": "JavaScript i nettleseren kjører hos klienten. Sesjonsdata og databasen ligger på serveren og er utilgjengelige derfra – det må gå gjennom et kall til serveren."
+    },
+    {
+      "id": "web-033",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva vises på skjermen når sida under kjøres?",
+      "kode": "<head id=\"myHead\">\n  <title>My title</title>\n</head>\n<body>\n  <p name=\"head\" id=\"demo\"></p>\n  <script>\n    function myFunction() {\n      var x = document.head.id;\n      document.getElementById(\"demo\").innerHTML = x;\n    }\n    myFunction()\n  </script>\n</body>",
+      "alternativer": ["demo", "myHead", "undefined", "Feilmelding"],
+      "fasit": 1,
+      "forklaring": "document.head peker på <head>-elementet, og id-en der er myHead. Verdien skrives inn i avsnittet med id demo."
+    },
+    {
+      "id": "web-034",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken JavaScript-funksjon sjekker om en verdi ikke er et tall?",
+      "alternativer": ["nonNaN()", "NaN()", "isNonNaN()", "isNaN()"],
+      "fasit": 3,
+      "forklaring": "isNaN() konverterer argumentet til tall først, så isNaN(\"12\") er false. Number.isNaN() gjør ingen konvertering og er derfor tryggere."
+    },
+    {
+      "id": "web-035",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skriver koden under ut i konsollen?",
+      "kode": "var intArr = [1, 2, 3]\nconsole.log(typeof intArr)",
+      "alternativer": ["object", "NaN", "array", "int"],
+      "fasit": 0,
+      "forklaring": "typeof kjenner ikke arrayer som egen type – de er objekter. Bruk Array.isArray() hvis du faktisk må skille dem ut."
+    },
+    {
+      "id": "web-036",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken jQuery-setning endrer bakgrunnsfargen på alle span-elementer til blå?",
+      "alternativer": [
+        "$(\"span\").attr(\"background-color\",\"blue\");",
+        "$(\"span\").layout(\"background-color\",\"blue\");",
+        "$(\"span\").style(\"background-color\",\"blue\");",
+        "$(\"span\").css(\"background-color\",\"blue\");"
+      ],
+      "fasit": 3,
+      "forklaring": "css() setter stil. attr() setter HTML-attributter, og de to andre metodene finnes ikke i jQuery."
+    },
+    {
+      "id": "web-037",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken parameter må oppgis når du bruker jQuery-metodene $.ajax(), $.get() og $.post()?",
+      "alternativer": ["url", "method", "data", "headers"],
+      "fasit": 0,
+      "forklaring": "Uten adresse vet ikke kallet hvor forespørselen skal. $.get() og $.post() har metoden innebakt i navnet, og data og headers er valgfrie."
+    },
+    {
+      "id": "web-038",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken jQuery-setning fjerner alle barneelementer av elementet med id notif, men beholder elementet selv?",
+      "alternativer": [
+        "$(\".notif\").empty();",
+        "$(\".notif\").remove();",
+        "$(\"#notif\").remove();",
+        "$(\"#notif\").empty();"
+      ],
+      "fasit": 3,
+      "forklaring": "Firkantsymbol velger på id, punktum på klasse. empty() tømmer innholdet, remove() sletter elementet selv også."
+    },
+    {
+      "id": "web-039",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilke elementer returnerer $(\"div#myDiv > .para\")?",
+      "alternativer": [
+        "Elementer med class=\"para\" som er direkte barn av div-elementet med id=\"myDiv\"",
+        "Elementer som har class=\"para\" eller id=\"myDiv\"",
+        "Elementer med id=\"myDiv\" som ligger inni elementer med class=\"para\"",
+        "Elementer som har både class=\"para\" og id=\"myDiv\""
+      ],
+      "fasit": 0,
+      "forklaring": "Større enn-tegnet betyr direkte barn. Et .para-element som ligger to nivåer ned blir ikke med."
+    },
+    {
+      "id": "web-040",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilke elementer returnerer $(\"div#myDiv .para\")?",
+      "alternativer": [
+        "Elementer med class=\"para\" som ligger inni div-elementet med id=\"myDiv\"",
+        "Elementer som har class=\"para\" eller id=\"myDiv\"",
+        "Elementer som har både class=\"para\" og id=\"myDiv\"",
+        "Elementer med id=\"myDiv\" som ligger inni elementer med class=\"para\""
+      ],
+      "fasit": 0,
+      "forklaring": "Mellomrom betyr etterkommer på et hvilket som helst nivå. Forskjellen fra forrige oppgave er bare tegnet mellom de to delene av velgeren."
+    },
+    {
+      "id": "web-041",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken av strengene er skrevet med korrekt JSON-syntaks?",
+      "alternativer": [
+        "{ students:[\"Alex\", \"Alvin\", \"Bobby\"] }",
+        "{ \"students\":[\"Alex\", \"Alvin\", \"Bobby\"] }",
+        "{ students=[\"Alex\", \"Alvin\", \"Bobby\"] }",
+        "{ \"students\":[{\"Alex\", \"Alvin\", \"Bobby\"]} }"
+      ],
+      "fasit": 1,
+      "forklaring": "JSON krever doble anførselstegn rundt nøkkelen og kolon mellom nøkkel og verdi. Dette er strengere enn objektnotasjon i JavaScript."
+    },
+    {
+      "id": "web-042",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken av strengene er skrevet med korrekt JSON-syntaks?",
+      "alternativer": [
+        "{ \"record\":{\"name\":Alex, \"age\":21, \"city\":London} }",
+        "{ \"record\"={\"name\":\"Alex\", \"age\":21, \"city\":\"London\"} }",
+        "{ record :{\"name\":\"Alex\", \"age\":21, \"city\":\"London\"} }",
+        "{ \"record\":{\"name\":\"Alex\", \"age\":21, \"city\":\"London\"} }"
+      ],
+      "fasit": 3,
+      "forklaring": "Tekstverdier må ha anførselstegn, tall ikke. Legg merke til at 21 står uten, og at det er riktig."
+    },
+    {
+      "id": "web-043",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket utsagn om AJAX er riktig?",
+      "alternativer": [
+        "AJAX virker ikke i nettlesere der JavaScript er slått av",
+        "XMLHttpRequest-objektet kan slås av i nettleserens innstillingsvindu",
+        "AJAX er et programmeringsspråk",
+        "XMLHttpRequest-objektet har en metode som heter «quit»"
+      ],
+      "fasit": 0,
+      "forklaring": "AJAX er ikke et språk, men en teknikk bygget på JavaScript og XMLHttpRequest. Uten JavaScript faller hele grunnlaget bort."
+    },
+    {
+      "id": "web-044",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken JavaScript-funksjon gjør en JSON-formatert streng om til et objekt?",
+      "alternativer": ["JSON.object()", "JSON.parse()", "JSON.toObject()", "JSON.stringify()"],
+      "fasit": 1,
+      "forklaring": "parse() går fra tekst til objekt, stringify() motsatt vei. De to andre finnes ikke."
+    },
+    {
+      "id": "web-045",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken teknologi brukes ikke når man realiserer AJAX?",
+      "alternativer": ["CSS", "DOM", "DHTML", "Flash"],
+      "fasit": 3,
+      "forklaring": "Flash var en egen plugin-teknologi med sin egen kjøretid, og er nå helt utfaset. AJAX bygger på det nettleseren allerede har."
+    },
+    {
+      "id": "web-046",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver PHP-koden under ut?",
+      "kode": "$a = 1;\n$b = 2;\necho ($a !== $b);",
+      "alternativer": ["Error", "False", "1", "1 !== 2"],
+      "fasit": 2,
+      "forklaring": "Uttrykket er sant, og echo skriver true som 1. En usann verdi ville gitt tom streng, ikke ordet false."
+    },
+    {
+      "id": "web-047",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver PHP-koden under ut?",
+      "kode": "<?php\n  $i = 0;\n  for (++$i; ++$i; ++$i)\n  {\n    echo $i;\n    if ($i >= 4) break;\n  }\n?>",
+      "alternativer": ["22", "34", "24", "14"],
+      "fasit": 2,
+      "forklaring": "Betingelsen ++$i øker i seg selv. Start gir 1, testen gir 2 som skrives ut, oppdateringen gir 3, testen gir 4 som skrives ut, og så brytes løkka."
+    },
+    {
+      "id": "web-048",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver PHP-koden under ut?",
+      "kode": "$str = \"chess was played\";\necho strlen(substr($str,3,2))",
+      "alternativer": ["1", "3", "2", "Array"],
+      "fasit": 2,
+      "forklaring": "substr henter to tegn fra posisjon 3, altså «ss». Lengden av dem er 2 – tallet 2 i kallet bestemmer svaret uansett hvilken streng du starter med."
+    },
+    {
+      "id": "web-049",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilken erklæring lager en array i PHP?",
+      "alternativer": [
+        "$season = \"summer\", \"winter\", \"spring\", \"autumn\";",
+        "$season = new array(\"summer\", \"winter\", \"spring\", \"autumn\");",
+        "$season = array[\"summer\", \"winter\", \"spring\", \"autumn\"];",
+        "$season = array(\"summer\", \"winter\", \"spring\", \"autumn\");"
+      ],
+      "fasit": 3,
+      "forklaring": "array() er et språkkonstrukt, ikke en klasse, så new hører ikke hjemme. Kortformen [\"summer\", ...] virker også, men uten ordet array foran."
+    },
+    {
+      "id": "web-050",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilken PHP-funksjon brukes for å videresende (redirect) til en annen side?",
+      "alternativer": ["forward()", "header()", "location()", "redirect()"],
+      "fasit": 1,
+      "forklaring": "header(\"Location: ...\") setter svarhodet som ber nettleseren gå videre. Den må kalles før noe innhold er sendt ut."
+    },
+    {
+      "id": "web-051",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver PHP-koden under ut?",
+      "kode": "<?php\n  $x = 1;\n  if ($x == 2)\n    echo \"BK\";\n  else if($x = 2)\n    echo $x;\n  else\n    echo \"HCM\";\n?>",
+      "alternativer": ["2", "2HCM", "BK", "HCM"],
+      "fasit": 0,
+      "forklaring": "Den andre testen bruker ett likhetstegn og er en tilordning, ikke en sammenligning. $x settes til 2, uttrykket blir sant, og 2 skrives ut."
+    },
+    {
+      "id": "web-052",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver PHP-koden under ut?",
+      "kode": "<?php\n  $op2 = \"BK\";\n  function foo($op1)\n  {\n    global $Op2;\n    echo $Op2 . $op1;\n  }\n  $var1 = \"foo\";\n  foo(\"HCM\");\n?>",
+      "alternativer": ["HCM", "HCMBK", "BKHCM", "Feil"],
+      "fasit": 0,
+      "forklaring": "PHP skiller mellom store og små bokstaver i variabelnavn, så $Op2 er ikke den samme som $op2. Den er udefinert og blir tom streng, og bare argumentet skrives ut."
+    },
+    {
+      "id": "web-053",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver PHP-koden under ut?",
+      "kode": "<?php\n  $x = 5;\n  echo $x;\n  echo \" \";\n  echo $x+++$x++.$x---$x--;\n?>",
+      "alternativer": ["5 121", "5 131", "5 101", "5 111"],
+      "fasit": 3,
+      "forklaring": "Etterstilt operator gir verdien først og endrer etterpå. Rekkefølgen blir (5+6) sammenføyd med 7, altså «117», minus 6 – som tolkes som tall og gir 111."
+    },
+    {
+      "id": "web-054",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken av disse PHP-funksjonene kan lage en cookie i brukerens nettleser?",
+      "alternativer": ["set_cookie()", "cookie()", "header()", "session_id()"],
+      "fasit": 2,
+      "forklaring": "setcookie() er den vanlige veien, men den står ikke blant alternativene. header(\"Set-Cookie: ...\") gjør akkurat det samme manuelt, siden en cookie bare er et svarhode."
+    },
+    {
+      "id": "web-055",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken PHP-funksjon setter en cookie i brukerens nettleser?",
+      "alternativer": ["setcookie()", "cookie()", "set_cookie()", "set()"],
+      "fasit": 0,
+      "forklaring": "Navnet skrives i ett ord uten understrek, og kallet må komme før noe utdata er sendt."
+    },
+    {
+      "id": "web-056",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken type cookie finnes fortsatt etter at brukeren lukker nettleseren?",
+      "alternativer": ["Session", "Permanent", "Second-party", "Third-party"],
+      "fasit": 1,
+      "forklaring": "En permanent cookie har en utløpsdato og lagres på disk. Sesjonscookier har ingen dato og lever bare i minnet."
+    },
+    {
+      "id": "web-057",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken informasjon bør ikke lagres i en cookie?",
+      "alternativer": [
+        "Brukernavn og passord",
+        "Sesjons-ID",
+        "Innholdet i handlekurven",
+        "Alle alternativene er riktige"
+      ],
+      "fasit": 0,
+      "forklaring": "Cookier ligger i klartekst hos brukeren og sendes med hver forespørsel. Sesjons-ID er nettopp det cookien er laget for å bære, mens innloggingsdetaljer aldri skal dit."
+    },
+    {
+      "id": "web-058",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilket utsagn om PHP-sesjoner er riktig?",
+      "alternativer": [
+        "session_destroy() sletter all informasjon i supervariabelen $_SESSION",
+        "En PHP-sesjon startes med funksjonen sessions_start()",
+        "Sesjoner brukes til å lagre informasjon om brukeren i en webapplikasjon",
+        "Nettleseren gir feilmelding hvis applikasjonen ikke bruker sesjoner"
+      ],
+      "fasit": 2,
+      "forklaring": "session_destroy() fjerner selve sesjonsdataene på serveren, men $_SESSION-arrayen står uendret ut resten av forespørselen. Funksjonsnavnet er session_start, i entall."
+    },
+    {
+      "id": "web-059",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken PHP-funksjon starter en sesjon?",
+      "alternativer": ["begin_session()", "session_begin()", "start_session()", "session_start()"],
+      "fasit": 3,
+      "forklaring": "Den må kalles øverst på hver side som skal bruke $_SESSION, og før utdata sendes, fordi den setter en cookie."
+    },
+    {
+      "id": "web-060",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken PHP-funksjon fjerner alle variabler i en sesjon?",
+      "alternativer": ["session_destroy()", "session_unset()", "set()", "Alle alternativene er riktige"],
+      "fasit": 1,
+      "forklaring": "session_unset() tømmer $_SESSION med én gang. session_destroy() avslutter sesjonen på serveren, men lar arrayen stå i gjeldende forespørsel."
+    },
+    {
+      "id": "web-061",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilket utsagn om cookies er riktig?",
+      "alternativer": [
+        "Hver domene kan lagre ubegrenset med cookies",
+        "Cookies kan ikke slettes før utløpstiden er nådd",
+        "Cookies er tekstfiler lagret på brukerens maskin, med informasjon som blant annet brukes til sporing",
+        "Cookies er tekstfiler lagret på webserveren, med informasjon som blant annet brukes til sporing"
+      ],
+      "fasit": 2,
+      "forklaring": "Cookier ligger hos klienten, ikke på serveren. Både bruker og skript kan slette dem, og både antall og størrelse er begrenset."
+    },
+    {
+      "id": "web-062",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken oppgave utføres først på serveren når en side bruker sesjoner?",
+      "alternativer": [
+        "Sjekke om det finnes en gyldig sesjon fra før",
+        "Behandle brukerinformasjonen som ligger i sesjonen",
+        "Starte en ny sesjon",
+        "Slette tidligere sesjonsinformasjon"
+      ],
+      "fasit": 0,
+      "forklaring": "Serveren ser først etter en sesjons-ID i forespørselen. Bare hvis den mangler eller er ugyldig, opprettes en ny sesjon."
+    },
+    {
+      "id": "web-063",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken mysqli-funksjon returnerer antall rader som ble påvirket av INSERT, UPDATE eller DELETE?",
+      "alternativer": [
+        "mysqli_changed_rows()",
+        "mysqli_affected_rows()",
+        "mysqli_new_rows()",
+        "mysqli_num_rows()"
+      ],
+      "fasit": 1,
+      "forklaring": "mysqli_num_rows() gjelder rader i et resultatsett fra SELECT. De to andre navnene finnes ikke."
+    },
+    {
+      "id": "web-064",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken setning velger databasen dbname i et PHP-program som bruker mysqli?",
+      "alternativer": [
+        "mysqli=select_db('dbname');",
+        "mysqli->select_db('dbname');",
+        "$mysqli=select_db('dbname');",
+        "$mysqli->select_db('dbname');"
+      ],
+      "fasit": 3,
+      "forklaring": "Objektet ligger i en variabel, så navnet må ha dollartegn, og metodekall bruker pilnotasjon."
+    },
+    {
+      "id": "web-065",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken spørring henter alle rader i students der lname er «Hoa» eller «Lan», og age er minst 20?",
+      "alternativer": [
+        "SELECT * FROM students WHERE lname = 'Hoa' AND lname = 'Lan' OR age >= 20",
+        "SELECT * FROM students WHERE lname = 'Lan' AND lname = 'Hoa' AND age >= 20",
+        "SELECT * FROM students WHERE lname = 'Hoa' OR lname = 'Lan' OR age >= 20",
+        "SELECT * FROM students WHERE lname = 'Lan' OR lname = 'Hoa' AND age >= 20"
+      ],
+      "fasit": 3,
+      "forklaring": "De tre første er klart gale: en kolonne kan ikke ha to verdier samtidig, og siste alternativ med bare OR slipper gjennom alle over 20. Merk likevel at det tiltenkte svaret strengt tatt trenger parenteser, siden AND binder sterkere enn OR."
+    },
+    {
+      "id": "web-066",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken spørring henter alle rader i students der name begynner med bokstaven p?",
+      "alternativer": [
+        "SELECT * FROM students WHERE name LIKE '%p%'",
+        "SELECT * FROM students WHERE name LIKE '_p%'",
+        "SELECT * FROM students WHERE name LIKE 'p%'",
+        "SELECT * FROM students WHERE name LIKE '%p'"
+      ],
+      "fasit": 2,
+      "forklaring": "Prosenttegnet står for null eller flere tegn, understrek for nøyaktig ett. Jokertegn foran p ville tillatt noe før bokstaven."
+    },
+    {
+      "id": "web-067",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilket verktøy kan brukes til å administrere kontoer i MySQL?",
+      "alternativer": ["FileZilla", "Windows", "PHPMyAdmin", "DB2"],
+      "fasit": 2,
+      "forklaring": "PHPMyAdmin er et webgrensesnitt mot MySQL. FileZilla er en FTP-klient og DB2 et helt annet databasesystem."
+    },
+    {
+      "id": "web-068",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken MySQL-spørring oppretter en tabell?",
+      "alternativer": [
+        "CREATE TABLE table_name (column_name column_type);",
+        "CREATE table_name (column_type column_name);",
+        "CREATE TABLE table_name (column_type column_name);",
+        "CREATE table_name (column_name column_type);"
+      ],
+      "fasit": 0,
+      "forklaring": "Nøkkelordet TABLE må være med, og kolonnenavnet kommer før datatypen."
+    },
+    {
+      "id": "web-069",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilket nøkkelord finnes ikke i MySQL-spørringer?",
+      "alternativer": ["FETCH", "REVOKE", "LIKE", "JOIN"],
+      "fasit": 0,
+      "forklaring": "REVOKE trekker tilbake rettigheter, LIKE gjør mønstersøk og JOIN kobler tabeller. FETCH hører hjemme i markører i andre databasesystemer."
+    },
+    {
+      "id": "web-070",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken MySQL-spørring endrer alle rader i university der name er «BK» til «BKHCM»?",
+      "alternativer": [
+        "MODIFY university SET name = 'BKHCM' INTO name = 'BK'",
+        "UPDATE university SET name = 'BK' INTO name = 'BKHCM'",
+        "MODIFY university SET name = 'BKHCM' WHERE name = 'BK'",
+        "UPDATE university SET name = 'BKHCM' WHERE name = 'BK'"
+      ],
+      "fasit": 3,
+      "forklaring": "UPDATE ... SET ... WHERE er formen. MODIFY finnes bare inne i ALTER TABLE, og INTO hører til INSERT."
+    },
+    {
+      "id": "web-071",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvilken angrepstype går ut på at angriperen får inn ondsinnet JavaScript i en nettside, slik at det kjører i offerets nettleser?",
+      "alternativer": [
+        "Command injection",
+        "Cross-Site Scripting",
+        "Buffer overflow",
+        "Path traversal"
+      ],
+      "fasit": 1,
+      "forklaring": "XSS utnytter at nettleseren stoler på alt som kommer fra domenet. Motmidlet er å kode ut brukerdata før de skrives til HTML."
+    },
+    {
+      "id": "web-072",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hva kan gjøres for å hindre SQL-injeksjon i en webapplikasjon?",
+      "alternativer": [
+        "Sette sterkt passord på databasebrukeren",
+        "Kryptere brukernes passord",
+        "Kontrollere inndataene fra brukeren",
+        "Kryptere informasjonen som lagres i cookies"
+      ],
+      "fasit": 2,
+      "forklaring": "Angrepet oppstår fordi inndata blir tolket som en del av spørringen. Validering hjelper, men forberedte setninger med parametre er det som faktisk fjerner problemet."
+    },
+    {
+      "id": "web-073",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hva er den vanligste årsaken til angrep som buffer overflow, cross-site scripting og SQL-injeksjon?",
+      "alternativer": [
+        "Applikasjonen håndterer feil på en mangelfull måte",
+        "Webserveren er feil konfigurert",
+        "Applikasjonen bruker ikke autentisering",
+        "Inndata fra brukeren kontrolleres ikke"
+      ],
+      "fasit": 3,
+      "forklaring": "Alle tre er innsprøytningsangrep: data fra utsiden ender opp som kode eller kommandoer fordi ingen sjekket dem først."
+    },
+    {
+      "id": "web-074",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvilke serverspråk kan en webapplikasjon være skrevet i og fortsatt være sårbar for cross-site scripting?",
+      "alternativer": ["PHP", "Java", "Python", "Alle alternativene er riktige"],
+      "fasit": 3,
+      "forklaring": "XSS utføres i nettleseren, ikke på serveren. Sårbarheten ligger i at utdata ikke kodes, og det kan skje uansett hvilket språk som genererer sida."
+    },
+    {
+      "id": "web-075",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hva kalles programmene som søkemotorer bruker til å samle inn informasjon fra nettsider?",
+      "alternativer": [
+        "crawler, robot, inspector",
+        "crawler, spider, inspector",
+        "spider, robot, inspector",
+        "crawler, spider, robot"
+      ],
+      "fasit": 3,
+      "forklaring": "De tre ordene betyr det samme. «Inspector» er ikke et begrep i denne sammenhengen."
+    },
+    {
+      "id": "web-076",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilken av disse er ikke en søkemotor?",
+      "alternativer": ["Altavista", "Yahoo", "Google", "Gmail"],
+      "fasit": 3,
+      "forklaring": "Gmail er e-post. Altavista var en av de store søkemotorene på 1990-tallet før den ble lagt ned."
+    },
+    {
+      "id": "web-077",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilket utsagn om meta-elementet description er riktigst?",
+      "alternativer": [
+        "Det inneholder en kort beskrivelse av nettsida",
+        "Beskrivelsen vises over URL-en til sida i Googles søkeresultater",
+        "Innholdet vises aldri i Googles søkeresultater",
+        "Det inneholder en liste over nøkkelord for sida"
+      ],
+      "fasit": 0,
+      "forklaring": "I søkeresultatet står utdraget under tittelen og adressen, ikke over. Nøkkelord hører til meta keywords, som Google forlengst har sluttet å bruke."
+    },
+    {
+      "id": "web-078",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilket format har en sitemap-fil?",
+      "alternativer": ["json", "txt", "rss", "xml"],
+      "fasit": 3,
+      "forklaring": "Sitemap-protokollen bygger på XML med faste elementer som <url> og <loc>. En ren tekstfil med adresser aksepteres også, men er ikke standardformatet."
+    },
+    {
+      "id": "web-079",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hva betyr HTTP-statuskoden 301?",
+      "alternativer": [
+        "At ressursen ikke trenger å overføres på nytt",
+        "At sida eller adressen er flyttet permanent til en ny adresse",
+        "At ressursen bare kan nås gjennom en proxy",
+        "At sida eller adressen er flyttet midlertidig til en ny adresse"
+      ],
+      "fasit": 1,
+      "forklaring": "301 er permanent og lar søkemotorer overføre rangeringen til den nye adressen. 302 er midlertidig, og 304 sier at den mellomlagrede versjonen fortsatt gjelder."
+    },
+    {
+      "id": "web-080",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilken av disse er ikke en gyldig HTTP-metode?",
+      "alternativer": ["POST", "OPTION", "CREATE", "PUT"],
+      "fasit": 2,
+      "forklaring": "Det finnes ingen CREATE – oppretting gjøres med POST eller PUT. Metoden for å spørre om tillatte operasjoner heter forresten OPTIONS, med s."
+    },
+    {
+      "id": "web-081",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hva står SERP for i søkemotoroptimalisering?",
+      "alternativer": [
+        "Search Engine Result Page",
+        "Standard Enlisting Rank Protocol",
+        "Search Engine Rating Procedure",
+        "Search Entry Rating Procedure"
+      ],
+      "fasit": 0,
+      "forklaring": "Det er resultatsida du får etter et søk. Å «rangere på SERP-en» betyr å komme høyt opp der."
+    }
+  ]
+}
