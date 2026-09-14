@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Øving</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <p class="tilbake"><a href="index.html">Alle fag</a></p>
+    <h1 id="fagnavn">&nbsp;</h1>
+    <p id="status"></p>
+  </header>
+
+  <main>
+
+    <!-- Skjerm 1: velg hva økta skal inneholde -->
+    <section id="oppsett" hidden>
+
+      <fieldset id="modusvalg">
+        <legend>Hva vil du øve på?</legend>
+      </fieldset>
+
+      <fieldset id="kapittelvalg">
+        <legend>Kapittel</legend>
+      </fieldset>
+
+      <p class="knapperad">
+        <button type="button" id="start">Start økt</button>
+      </p>
+
+    </section>
+
+    <!-- Skjerm 2: selve økta -->
+    <section id="okt" hidden>
+      <p id="teller" aria-live="polite"></p>
+      <article id="sporsmal"></article>
+      <p class="knapperad">
+        <button type="button" id="handling"></button>
+      </p>
+    </section>
+
+    <!-- Skjerm 3: oppsummering -->
+    <section id="resultat" hidden>
+      <h2>Økt fullført</h2>
+      <p id="fasittekst" class="tall"></p>
+      <p id="detaljer"></p>
+      <p class="knapperad">
+        <button type="button" id="panytt">Ny økt</button>
+      </p>
+    </section>
+
+    <p id="feil" class="feil" hidden></p>
+
+  </main>
+
+  <script src="js/ove.js"></script>
+
+</body>
+</html>

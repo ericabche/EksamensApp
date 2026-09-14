@@ -1,0 +1,27 @@
+[
+  {
+    "id": "co3049",
+    "kode": "CO3049",
+    "navn": "Web Programming"
+  },
+  {
+    "id": "co3069",
+    "kode": "CO3069",
+    "navn": "Cryptography and Network Security"
+  },
+  {
+    "id": "co3071",
+    "kode": "CO3071",
+    "navn": "Distributed Systems"
+  },
+  {
+    "id": "co3093",
+    "kode": "CO3093",
+    "navn": "Computer Networks"
+  },
+  {
+    "id": "co4033",
+    "kode": "CO4033",
+    "navn": "Big Data Analytics and Business Intelligence"
+  }
+]

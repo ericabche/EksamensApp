@@ -178,3 +178,205 @@ a:focus-visible {
     margin-bottom: 0.15rem;
   }
 }
+
+/* ---------------------------------------------------------------
+   Øvingssiden (ove.html)
+   --------------------------------------------------------------- */
+
+.tilbake {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+}
+
+.tilbake a {
+  color: var(--dempet);
+  text-decoration: none;
+}
+
+.tilbake a:hover {
+  color: var(--merke);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+fieldset {
+  margin: 0 0 2rem;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+  margin-bottom: 0.6rem;
+  color: var(--dempet);
+  font-size: 0.9rem;
+}
+
+legend.sporsmalstekst,
+h2.sporsmalstekst {
+  margin: 0 0 1.1rem;
+  color: var(--blekk);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* --- Valg og avkryssing ------------------------------------- */
+
+#modusvalg label,
+#kapittelvalg label,
+.momenter label {
+  display: block;
+  padding: 0.45rem 0;
+  cursor: pointer;
+}
+
+#modusvalg input,
+#kapittelvalg input,
+.momenter input,
+.alternativ input {
+  margin-right: 0.5rem;
+  accent-color: var(--merke);
+}
+
+label.deaktivert {
+  color: var(--dempet);
+  cursor: not-allowed;
+}
+
+/* --- Flervalg ----------------------------------------------- */
+
+.alternativer {
+  margin-bottom: 1.5rem;
+}
+
+.alternativ {
+  display: block;
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--linje);
+  cursor: pointer;
+}
+
+.alternativer .alternativ:first-of-type {
+  border-top: 1px solid var(--linje);
+}
+
+.alternativ:hover {
+  background: var(--flate);
+}
+
+.alternativ.rett {
+  background: var(--flate);
+  box-shadow: inset 3px 0 0 var(--merke);
+}
+
+.alternativ.feil {
+  box-shadow: inset 3px 0 0 var(--varsel);
+  text-decoration: line-through;
+  text-decoration-color: var(--varsel);
+}
+
+.forklaring {
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid var(--merke);
+  background: var(--flate);
+  font-size: 0.95rem;
+}
+
+/* --- Langsvar ----------------------------------------------- */
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--linje);
+  border-radius: 2px;
+  background: var(--flate);
+  color: var(--blekk);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+textarea:focus-visible {
+  outline: 2px solid var(--merke);
+  outline-offset: 2px;
+}
+
+.momenter {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linje);
+}
+
+details {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+}
+
+summary {
+  color: var(--merke);
+  cursor: pointer;
+}
+
+details p {
+  margin: 0.75rem 0 0;
+  padding-left: 1rem;
+  border-left: 1px solid var(--linje);
+  color: var(--dempet);
+}
+
+/* --- Teller, knapper, resultat ------------------------------- */
+
+#teller {
+  margin: 0 0 1.25rem;
+  color: var(--dempet);
+  font-size: 0.875rem;
+}
+
+.knapperad {
+  margin: 2rem 0 0;
+}
+
+button {
+  padding: 0.65rem 1.3rem;
+  border: 0;
+  border-radius: 2px;
+  background: var(--merke);
+  color: var(--papir);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 120ms ease;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--merke);
+  outline-offset: 3px;
+}
+
+#resultat h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.tall {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  line-height: 1.1;
+}
+
+#detaljer {
+  margin: 0.5rem 0 0;
+  color: var(--dempet);
+}

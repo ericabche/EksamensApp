@@ -1,0 +1,138 @@
+{
+  "fag": "Computer Networks",
+  "kapitler": {
+    "1": "Nettets kant og kjerne",
+    "3": "Transportlaget",
+    "4": "Nettverkslaget"
+  },
+  "sporsmal": [
+    {
+      "id": "cn-01",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva er den viktigste forskjellen på pakkesvitsjing og kretssvitsjing?",
+      "alternativer": [
+        "Pakkesvitsjing reserverer kapasitet på forhånd for hver samtale",
+        "Pakkesvitsjing deler lenkekapasiteten etter behov, uten reservasjon",
+        "Kretssvitsjing kan bare brukes i trådløse nett",
+        "Kretssvitsjing krever alltid pakker av lik størrelse"
+      ],
+      "fasit": 1,
+      "forklaring": "Kretssvitsjing setter av en fast andel av lenka til forbindelsen så lenge den varer. Pakkesvitsjing lar pakkene konkurrere om kapasiteten, noe som utnytter lenka bedre, men gir kø og variabel forsinkelse."
+    },
+    {
+      "id": "cn-02",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken forsinkelseskomponent er den eneste som varierer med hvor mye trafikk det er i nettet?",
+      "alternativer": [
+        "Propageringsforsinkelse",
+        "Prosesseringsforsinkelse",
+        "Køforsinkelse",
+        "Transmisjonsforsinkelse"
+      ],
+      "fasit": 2,
+      "forklaring": "Propagering avhenger av avstand og medium, transmisjon av pakkestørrelse og lenkefart. Køforsinkelsen er den som vokser når flere pakker kjemper om samme utgangslenke."
+    },
+    {
+      "id": "cn-03",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken mekanisme hindrer at senderen oversvømmer mottakerens buffer?",
+      "alternativer": [
+        "Metningskontroll",
+        "Flytkontroll",
+        "Sjekksum",
+        "Tre-veis håndtrykk"
+      ],
+      "fasit": 1,
+      "forklaring": "Flytkontroll styres av mottakerens annonserte vindu og beskytter mottakeren. Metningskontroll handler derimot om kapasiteten i nettet mellom partene."
+    },
+    {
+      "id": "cn-04",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva gjør TCP når det mottar tre dupliserte ACK-er for samme sekvensnummer?",
+      "alternativer": [
+        "Venter til timeout før pakken sendes på nytt",
+        "Sender pakken på nytt med én gang, uten å vente på timeout",
+        "Bryter forbindelsen og starter nytt håndtrykk",
+        "Halverer vinduet og slutter å sende til nettet er ledig"
+      ],
+      "fasit": 1,
+      "forklaring": "Dette er fast retransmit. Tre dupliserte ACK-er tolkes som at én pakke er borte mens de etterfølgende kom fram, og da er det ingen grunn til å vente ut timeren."
+    },
+    {
+      "id": "cn-05",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvorfor bruker NAT portnumre når den oversetter adresser?",
+      "alternativer": [
+        "For å kryptere trafikken ut mot internett",
+        "For å kunne skille mellom flere interne verter bak én offentlig IP-adresse",
+        "For å velge hvilken rute pakken skal ta",
+        "For å komprimere IP-hodet"
+      ],
+      "fasit": 1,
+      "forklaring": "Den offentlige adressen er delt, så ruteren trenger noe mer enn IP-adressen for å vite hvem svaret hører til. Kombinasjonen av portnummer og adresse gir en unik nøkkel per forbindelse i oversettelsestabellen."
+    },
+    {
+      "id": "cn-06",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva skjer med en IP-pakke når TTL-feltet når null?",
+      "alternativer": [
+        "Pakken sendes tilbake til avsenderen uendret",
+        "Ruteren fragmenterer pakken og prøver på nytt",
+        "Pakken forkastes, og ruteren kan sende en ICMP-melding tilbake",
+        "TTL settes tilbake til startverdien"
+      ],
+      "fasit": 2,
+      "forklaring": "TTL hindrer at pakker sirkulerer evig ved rutesløyfer. ICMP-meldingen om overskredet tid er nettopp det traceroute utnytter for å kartlegge stien."
+    },
+    {
+      "id": "cn-07",
+      "type": "langsvar",
+      "kapittel": 3,
+      "sporsmal": "Forklar hvordan TCP oppdager og reagerer på metning i nettet, og hvorfor mekanismen er nødvendig.",
+      "momenter": [
+        "TCP har ingen direkte signal fra nettet, og tolker pakketap som tegn på metning",
+        "Tap oppdages enten ved timeout eller ved tre dupliserte ACK-er",
+        "Metningsvinduet vokser eksponentielt i slow start, deretter lineært",
+        "Ved tap reduseres vinduet kraftig, og senderfarten er minimum av metningsvindu og mottakervindu",
+        "Uten mekanismen ville rutere fått overfylte køer og nettet kollapset under last"
+      ],
+      "modellsvar": "TCP får ingen beskjed fra ruterne om at de er overbelastet, så protokollen slutter seg til metning ut fra egne observasjoner: pakker som ikke blir bekreftet. Tap oppdages enten ved at retransmisjonstimeren går ut, eller ved tre dupliserte ACK-er, som regnes som et mildere signal. Senderen holder et metningsvindu som vokser eksponentielt i slow start til en terskel, og deretter lineært. Ved tap kuttes vinduet, kraftigst ved timeout. Faktisk senderate er minimum av metningsvindu og mottakerens annonserte vindu. Mekanismen er nødvendig fordi alle sendere deler de samme ruterkøene: uten tilbaketrekking ville køene fylles, tapene øke, og retransmisjonene forsterke problemet til nyttetrafikken nærmet seg null."
+    },
+    {
+      "id": "cn-08",
+      "type": "langsvar",
+      "kapittel": 4,
+      "sporsmal": "Forklar forskjellen på link-state- og distance-vector-ruting, og nevn én praktisk konsekvens av hver.",
+      "momenter": [
+        "Link-state: hver node kjenner hele topologien",
+        "Link-state kjører Dijkstra lokalt, for eksempel OSPF",
+        "Distance-vector: hver node kjenner bare naboene og deres avstander",
+        "Distance-vector bygger på Bellman-Ford, for eksempel RIP",
+        "Konsekvens link-state: mer flooding og minnebruk, men rask konvergens",
+        "Konsekvens distance-vector: count-to-infinity ved lenkebrudd"
+      ],
+      "modellsvar": "I link-state-ruting kringkaster hver node tilstanden på sine egne lenker til alle andre, slik at samtlige noder bygger et identisk kart over topologien og regner ut korteste vei selv med Dijkstra. I distance-vector-ruting kjenner en node bare naboene sine, og utveksler hele avstandstabellen med dem til verdiene stabiliserer seg etter Bellman-Ford. Link-state gir raskere konvergens, men koster mer minne og mer trafikk ved flooding. Distance-vector er enklere og lettere, men kan få count-to-infinity når en lenke faller ut, noe RIP demper med split horizon og en maksavstand på 16."
+    },
+    {
+      "id": "cn-09",
+      "type": "langsvar",
+      "kapittel": 1,
+      "sporsmal": "Hva er poenget med å dele nettverk inn i lag, og hva koster det?",
+      "momenter": [
+        "Hvert lag tilbyr en tjeneste til laget over og skjuler hvordan den er løst",
+        "Lagene kan byttes ut uavhengig, slik at nye lenketeknologier ikke krever endringer i applikasjonene",
+        "Gir et felles vokabular og klare grensesnitt mellom leverandører",
+        "Koster overhead: hvert lag legger på sitt eget hode",
+        "Kan gi duplisert funksjonalitet, for eksempel feilkontroll i flere lag",
+        "Informasjon skjules, så et lag kan ta dårlige valg fordi det mangler kontekst fra laget under"
+      ],
+      "modellsvar": "Lagdeling gjør at hvert nivå tilbyr en veldefinert tjeneste oppover og skjuler hvordan den realiseres. Det gjør systemet mulig å endre stykkevis: et nytt trådløst lenkelag kan tas i bruk uten at applikasjoner skrives om, fordi grensesnittet er uendret. Prisen er overhead, siden hvert lag legger på sitt eget hode, og at samme funksjon kan bli implementert flere ganger, som feilkontroll både i lenkelaget og i TCP. I tillegg skjuler abstraksjonen informasjon: TCP tolker tap som metning, noe som gir feil reaksjon over trådløse lenker der tap ofte skyldes støy."
+    }
+  ]
+}
