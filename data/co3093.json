@@ -1,9 +1,14 @@
 {
   "fag": "Computer Networks",
   "kapitler": {
-    "1": "Nettets kant og kjerne",
+    "1": "Datanett og Internett",
+    "2": "Applikasjonslaget",
     "3": "Transportlaget",
-    "4": "Nettverkslaget"
+    "4": "Nettverkslaget: dataplanet",
+    "5": "Nettverkslaget: kontrollplanet",
+    "6": "Lenkelaget og LAN",
+    "7": "Trådløse og mobile nettverk",
+    "8": "Nettverkssikkerhet"
   },
   "sporsmal": [
     {
@@ -107,7 +112,7 @@
     {
       "id": "cn-08",
       "type": "langsvar",
-      "kapittel": 4,
+      "kapittel": 5,
       "sporsmal": "Forklar forskjellen på link-state- og distance-vector-ruting, og nevn én praktisk konsekvens av hver.",
       "momenter": [
         "Link-state: hver node kjenner hele topologien",
@@ -133,6 +138,2087 @@
         "Informasjon skjules, så et lag kan ta dårlige valg fordi det mangler kontekst fra laget under"
       ],
       "modellsvar": "Lagdeling gjør at hvert nivå tilbyr en veldefinert tjeneste oppover og skjuler hvordan den realiseres. Det gjør systemet mulig å endre stykkevis: et nytt trådløst lenkelag kan tas i bruk uten at applikasjoner skrives om, fordi grensesnittet er uendret. Prisen er overhead, siden hvert lag legger på sitt eget hode, og at samme funksjon kan bli implementert flere ganger, som feilkontroll både i lenkelaget og i TCP. I tillegg skjuler abstraksjonen informasjon: TCP tolker tap som metning, noe som gir feil reaksjon over trådløse lenker der tap ofte skyldes støy."
+    },
+    {
+      "id": "co3093-ny-010",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva brukes DNS hovedsakelig til?",
+      "alternativer": [
+        "Å kryptere alle IP-pakker",
+        "Å bestemme TCP-vinduet",
+        "Å slå opp informasjon om domenenavn, blant annet IP-adresser",
+        "Å tildele MAC-adresser"
+      ],
+      "fasit": 2,
+      "forklaring": "DNS knytter domenenavn til ressursoppføringer, for eksempel A og AAAA for IP-adresser."
+    },
+    {
+      "id": "co3093-ny-011",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er en sentral forskjell mellom TCP og UDP?",
+      "alternativer": [
+        "UDP retransmitterer alltid tap automatisk",
+        "TCP bevarer alltid applikasjonens meldingsgrenser",
+        "UDP krever treveis håndtrykk",
+        "TCP tilbyr en pålitelig, ordnet bytestrøm; UDP tilbyr datagrammer uten slike garantier"
+      ],
+      "fasit": 3,
+      "forklaring": "TCP håndterer blant annet rekkefølge og retransmisjon. Med UDP må applikasjonen selv håndtere eventuelle krav til pålitelighet."
+    },
+    {
+      "id": "co3093-ny-012",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvor mange adresser inneholder et IPv4-subnett med prefiks /26 totalt?",
+      "alternativer": [
+        "64",
+        "26",
+        "62",
+        "256"
+      ],
+      "fasit": 0,
+      "forklaring": "IPv4 har 32 bit. /26 gir 6 bit til adresser innen subnettet, altså 2^6 = 64. I et vanlig subnett er 62 tilgjengelige som vertsadresser."
+    },
+    {
+      "id": "co3093-ny-013",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hva brukes ARP til i et lokalt IPv4-nettverk?",
+      "alternativer": [
+        "Å finne domenenavnet til en nettside",
+        "Å finne MAC-adressen som hører til en lokal IPv4-adresse",
+        "Å beregne korteste vei gjennom Internett",
+        "Å kryptere Ethernet-rammer"
+      ],
+      "fasit": 1,
+      "forklaring": "ARP brukes for å finne lenkelagsadressen til neste hopp på det lokale nettet. For eksterne mål finner verten vanligvis gatewayens MAC-adresse."
+    },
+    {
+      "id": "co3093-ny-014",
+      "type": "langsvar",
+      "kapittel": 4,
+      "sporsmal": "En vert skal sende en pakke til et annet subnett. Hvilken IP-adresse og MAC-adresse brukes som destinasjon i første hopp?",
+      "momenter": [
+        "IP-destinasjonen er den endelige mottakeren",
+        "MAC-destinasjonen er gatewayens lokale grensesnitt",
+        "ARP kan finne gatewayens MAC-adresse",
+        "Lenkelagsinnpakningen erstattes ved ruting"
+      ],
+      "modellsvar": "IP-pakken adresseres til den endelige mottakeren. På det første Ethernet-hoppet pakkes den inn i en ramme adressert til standardgatewayens MAC-adresse. Verten kan bruke ARP til å finne denne adressen. Ruteren fjerner rammen og sender pakken videre i en ny lenkelagsramme. Uten adresseoversetting beholdes destinasjonens IP-adresse."
+    },
+    {
+      "id": "co3093-pensum-001",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket utsagn om host og end system stemmer med lærebokens begreper?",
+      "alternativer": [
+        "En host er alltid en ruter",
+        "Et endesystem kan bare motta data",
+        "Begrepene brukes om hverandre, og en webserver er et endesystem",
+        "En webserver er en del av det fysiske overføringsmediet"
+      ],
+      "fasit": 2,
+      "forklaring": "Host og end system betegner enheter ved nettets kant som kjører applikasjoner. Både klientmaskiner og servere er endesystemer.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.1–1.2. Bygger på Chapter 1 Review Questions.docx, R1.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.1–1.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R1"
+      }
+    },
+    {
+      "id": "co3093-pensum-002",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvorfor er felles protokollstandarder viktige?",
+      "alternativer": [
+        "De gjør at uavhengige implementasjoner kan tolke meldinger og samhandle",
+        "De gjør at alle leverandører må bruke samme maskinvare",
+        "De garanterer null pakketap",
+        "De erstatter behovet for adressering"
+      ],
+      "fasit": 0,
+      "forklaring": "En protokoll definerer blant annet meldingsformat, rekkefølge og handlinger ved mottak. Felles regler muliggjør interoperabilitet.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.1.3. Bygger på Chapter 1 Review Questions.docx, R3.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.1.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R3"
+      }
+    },
+    {
+      "id": "co3093-pensum-003",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvordan deles nedstrømskapasiteten i et klassisk HFC-tilgangsnett?",
+      "alternativer": [
+        "Kapasiteten bestemmes bare av datamaskinens minne",
+        "Hver husstand får alltid hele kapasiteten eksklusivt",
+        "Husstander på samme segment deler kanalens kapasitet",
+        "Alle data sendes via telefonlinjens talekanal"
+      ],
+      "fasit": 2,
+      "forklaring": "HFC bruker en kombinasjon av fiber og koaksialkabel. Nedstrømmen på et segment er en delt ressurs, så oppgitt kanalhastighet er ikke en dedikert garanti til hver bruker.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.2.1. Bygger på Chapter 1 Review Questions.docx, R5.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.2.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R5"
+      }
+    },
+    {
+      "id": "co3093-pensum-004",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilke av disse er fysiske medier som Ethernet kan bruke?",
+      "alternativer": [
+        "TCP og UDP",
+        "IP og DNS",
+        "HTTP og SMTP",
+        "Tvunnet kobberpar og optisk fiber"
+      ],
+      "fasit": 3,
+      "forklaring": "Ethernet finnes i varianter for blant annet kobber og fiber. De andre alternativene er protokoller eller tjenester, ikke fysiske medier.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.2.2. Bygger på Chapter 1 Review Questions.docx, R8.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.2.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R8"
+      }
+    },
+    {
+      "id": "co3093-pensum-005",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "En pakke på 1000 byte passerer én store-and-forward-svitsj. Første lenke er 2 Mbit/s, den andre 1 Mbit/s. Se bort fra andre forsinkelser. Når er hele pakken mottatt?",
+      "alternativer": [
+        "Etter 4 ms",
+        "Etter 12 ms",
+        "Etter 8 ms",
+        "Etter 1,5 ms"
+      ],
+      "fasit": 1,
+      "forklaring": "Pakken er 8000 bit. Svitsjen må motta hele pakken før videre sending: 8000/2000000 + 8000/1000000 = 0,012 s.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.3.1. Bygger på Chapter 1 Review Questions.docx, R11.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.3.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R11"
+      }
+    },
+    {
+      "id": "co3093-pensum-006",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Tre uavhengige brukere er hver aktive med sannsynlighet 0,2. Hva er sannsynligheten for at alle tre er aktive samtidig?",
+      "alternativer": [
+        "0,6, altså 60 %",
+        "0,04, altså 4 %",
+        "0,008, altså 0,8 %",
+        "0,2, altså 20 %"
+      ],
+      "fasit": 2,
+      "forklaring": "Med uavhengig aktivitet multipliseres sannsynlighetene: 0,2³ = 0,008. Uavhengighetsantakelsen er nødvendig.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.3.2. Bygger på Chapter 1 Review Questions.docx, R13.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R13"
+      }
+    },
+    {
+      "id": "co3093-pensum-007",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "En lenke er 2500 km lang, og signalhastigheten er 2,5 × 10⁸ m/s. Hva er propageringsforsinkelsen?",
+      "alternativer": [
+        "4 ms",
+        "100 ms",
+        "1 ms",
+        "10 ms"
+      ],
+      "fasit": 3,
+      "forklaring": "Avstanden er 2 500 000 meter. Propageringstid = avstand / signalhastighet = 0,01 s. Pakkestørrelsen inngår ikke i dette regnestykket.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.4.1. Bygger på Chapter 1 Review Questions.docx, R18.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R18"
+      }
+    },
+    {
+      "id": "co3093-pensum-008",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvor lang tid tar det å sende alle bitene i en pakke på 1500 byte ut på en lenke med 10 Mbit/s?",
+      "alternativer": [
+        "0,15 ms",
+        "1,2 ms",
+        "12 ms",
+        "1,2 sekunder"
+      ],
+      "fasit": 1,
+      "forklaring": "Transmisjonstid er L/R. 1500 × 8 / 10 000 000 = 0,0012 s. Dette er tiden for å sende bitene ut, ikke tiden de bruker på å forplante seg over lenken.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.4.1. Bygger på Chapter 1 Review Questions.docx, R18.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R18"
+      }
+    },
+    {
+      "id": "co3093-pensum-009",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "En stor fil går over tre ledige lenker på 500 kbit/s, 2 Mbit/s og 1 Mbit/s. Hva begrenser gjennomstrømningen i stabil drift?",
+      "alternativer": [
+        "2 Mbit/s",
+        "3,5 Mbit/s",
+        "500 kbit/s",
+        "1 Mbit/s"
+      ],
+      "fasit": 2,
+      "forklaring": "Flaskehalsen er den tregeste lenken. De raskere lenkene kan ikke gjøre ende-til-ende-gjennomstrømningen høyere enn 500 kbit/s under disse antakelsene.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.4.4. Bygger på Chapter 1 Review Questions.docx, R19.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.4.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R19"
+      }
+    },
+    {
+      "id": "co3093-pensum-010",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "En fil på 4 000 000 byte overføres med 500 000 bit/s. Se bort fra oppstart og protokolloverhead. Omtrent hvor lang tid tar overføringen?",
+      "alternativer": [
+        "64 sekunder",
+        "8 sekunder",
+        "32 sekunder",
+        "640 sekunder"
+      ],
+      "fasit": 0,
+      "forklaring": "Filstørrelsen er 32 000 000 bit. Tid = 32 000 000 / 500 000 = 64 s. Byte må omregnes til bit før divisjon.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.4.4. Bygger på Chapter 1 Review Questions.docx, R19.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.4.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R19"
+      }
+    },
+    {
+      "id": "co3093-pensum-011",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva er riktig rekkefølge i Internetts femlagsmodell fra øverst til nederst?",
+      "alternativer": [
+        "Transport, applikasjon, lenke, nettverk, fysisk",
+        "Applikasjon, transport, nettverk, lenke, fysisk",
+        "Applikasjon, nettverk, transport, fysisk, lenke",
+        "Fysisk, applikasjon, transport, lenke, nettverk"
+      ],
+      "fasit": 1,
+      "forklaring": "Applikasjonen bruker transporttjenesten, som bygger på nettverkslaget. Lenkelaget flytter rammer over en lenke, mens det fysiske laget overfører signalene.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.5.1. Bygger på Chapter 1 Review Questions.docx, R23.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.5.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R23"
+      }
+    },
+    {
+      "id": "co3093-pensum-012",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva kalles lenkelagets dataenhet, som kan kapsle inn et IP-datagram?",
+      "alternativer": [
+        "En applikasjonssesjon",
+        "Et TCP-segment",
+        "En DNS-post",
+        "En ramme"
+      ],
+      "fasit": 3,
+      "forklaring": "Lenkelaget bruker rammer. Nettverkslaget bruker datagrammer, og transportlaget bruker blant annet TCP-segmenter.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 1.5.2. Bygger på Chapter 1 Review Questions.docx, R24.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "1.5.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 1 Review Questions.docx",
+        "oppgave": "R24"
+      }
+    },
+    {
+      "id": "co3093-pensum-013",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan identifiseres klientrollen i en kommunikasjon mellom to prosesser?",
+      "alternativer": [
+        "Klienten er alltid prosessen med lavest portnummer",
+        "Klienten er prosessen som initierer kontakten",
+        "Klienten er alltid den fysisk minste maskinen",
+        "Klienten kan aldri sende data"
+      ],
+      "fasit": 1,
+      "forklaring": "Klient og server beskriver roller i kommunikasjonen. En maskin kan opptre som klient i én forbindelse og server i en annen.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.1.2. Bygger på Chapter 2 Review Questions.docx, R3.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.1.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R3"
+      }
+    },
+    {
+      "id": "co3093-pensum-014",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva trenger man normalt for å adressere et bestemt serverendepunkt over TCP/IP?",
+      "alternativer": [
+        "Bare navnet på brukeren",
+        "Bare serverens MAC-adresse",
+        "Bare klientens operativsystem",
+        "Serverens IP-adresse og TCP-portnummer"
+      ],
+      "fasit": 3,
+      "forklaring": "IP-adressen peker til vertens nettverksgrensesnitt, og porten til transportendepunktet. Protokollen må også være kjent, her TCP.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.1.2. Bygger på Chapter 2 Review Questions.docx, R5.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.1.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R5"
+      }
+    },
+    {
+      "id": "co3093-pensum-015",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan kan cookies hjelpe en HTTP-tjeneste å kjenne igjen en handlekurv?",
+      "alternativer": [
+        "Cookien kopierer automatisk hele databasen til nettleseren",
+        "IP-adressen alene identifiserer alltid én person",
+        "Nettleseren sender en identifikator som serveren knytter til lagret tilstand",
+        "HTTP må holde én TCP-forbindelse åpen for alltid"
+      ],
+      "fasit": 2,
+      "forklaring": "HTTP-forespørsler er i utgangspunktet uavhengige. En cookie kan bære en identifikator som lar serveren slå opp handlekurven mellom forespørsler.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.2.4. Bygger på Chapter 2 Review Questions.docx, R12.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.2.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R12"
+      }
+    },
+    {
+      "id": "co3093-pensum-016",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Når kan en webcache vanligvis redusere svartiden for et objekt?",
+      "alternativer": [
+        "Når en brukbar kopi finnes nærmere klienten enn opprinnelsesserveren",
+        "Når alle forespørsler må gå en ekstra tur til samme server",
+        "Bare når objektet aldri har blitt hentet før",
+        "Bare når HTTP bruker UDP"
+      ],
+      "fasit": 0,
+      "forklaring": "En cache-hit kan spare overføring fra opprinnelsesserveren og redusere belastningen på tilgangslenken. Cache-miss eller validering gir andre forsinkelser.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.2.5. Bygger på Chapter 2 Review Questions.docx, R13.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.2.5",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R13"
+      }
+    },
+    {
+      "id": "co3093-pensum-017",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva betyr svaret 304 Not Modified på en betinget HTTP GET?",
+      "alternativer": [
+        "Serveren sender alltid hele objektet på nytt",
+        "Klienten må slette alle cookies",
+        "Den lagrede representasjonen kan brukes fordi den ikke er endret etter betingelsen",
+        "Objektet finnes ikke"
+      ],
+      "fasit": 2,
+      "forklaring": "Serveren bekrefter at den aktuelle cachekopien fortsatt kan brukes. Svaret inneholder normalt ikke objektets meldingskropp.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.2.5. Bygger på Chapter 2 Review Questions.docx, R14.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.2.5",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R14"
+      }
+    },
+    {
+      "id": "co3093-pensum-018",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan reduserer HTTP/2 blokkering mellom store og små HTTP-svar på samme forbindelse?",
+      "alternativer": [
+        "Ved å fjerne alle HTTP-headere",
+        "Ved å kreve én ny TCP-forbindelse per byte",
+        "Ved å dele svar i rammer som kan flettes mellom flere strømmer",
+        "Ved å la TCP levere manglende byte i vilkårlig rekkefølge"
+      ],
+      "fasit": 2,
+      "forklaring": "Innramming og multipleksing lar små svar gjøre fremdrift uten å vente på at hele et stort HTTP-svar sendes. TCPs egen rekkefølgegaranti kan fortsatt gi blokkering ved pakketap.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.2.6. Bygger på Chapter 2 Review Questions.docx, R18.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.2.6",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R18"
+      }
+    },
+    {
+      "id": "co3093-pensum-019",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken protokoll brukes normalt til å overføre e-post fra avsenders e-postserver til mottakers e-postserver?",
+      "alternativer": [
+        "ARP",
+        "IMAP",
+        "SMTP",
+        "DHCP"
+      ],
+      "fasit": 2,
+      "forklaring": "SMTP brukes til e-postoverføring mellom servere. IMAP brukes av en klient for å få tilgang til og håndtere e-post på serveren.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.3.1–2.3.3. Bygger på Chapter 2 Review Questions.docx, R16.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.3.1–2.3.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R16"
+      }
+    },
+    {
+      "id": "co3093-pensum-020",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er IMAP sin hovedrolle?",
+      "alternativer": [
+        "Å sende all e-post mellom e-postservere",
+        "Å rute IP-pakker mellom autonome systemer",
+        "Å finne MAC-adressen til mottakeren",
+        "Å gi klienten tilgang til og administrasjon av e-post på serveren"
+      ],
+      "fasit": 3,
+      "forklaring": "IMAP gir tilgang til postkasser og meldinger som er lagret på en server, mens SMTP håndterer selve overføringen av e-post.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.3.3. Bygger på Chapter 2 Review Questions.docx, R16.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.3.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R16"
+      }
+    },
+    {
+      "id": "co3093-pensum-021",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken DNS-posttype angir e-postserveren for et domene?",
+      "alternativer": [
+        "NS",
+        "CNAME",
+        "A",
+        "MX"
+      ],
+      "fasit": 3,
+      "forklaring": "MX peker til vertsnavnet til en e-posttjener og har en prioritetsverdi. Vertsnavnets adresse slås deretter opp separat.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.4.3. Bygger på Chapter 2 Review Questions.docx, R19.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.4.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R19"
+      }
+    },
+    {
+      "id": "co3093-pensum-022",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan kan en ny BitTorrent-peer uten chunks få sine første chunks i modellen i læreboken?",
+      "alternativer": [
+        "Gjennom optimistic unchoking fra andre peers",
+        "Ved å be DNS om filinnholdet",
+        "Ved å endre alle andre peers sine portnumre",
+        "Bare ved å være blant de beste opplasterne fra første sekund"
+      ],
+      "fasit": 0,
+      "forklaring": "Optimistic unchoking gir også andre enn de foretrukne opplasterne en mulighet. En ny peer kan dermed få data før den har noe å dele tilbake.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.5. Bygger på Chapter 2 Review Questions.docx, R22.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.5",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R22"
+      }
+    },
+    {
+      "id": "co3093-pensum-023",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva betyr CDN-strategien enter deep?",
+      "alternativer": [
+        "Å unngå alle kopier av innhold",
+        "Å plassere alle servere i ett fjernt datasenter",
+        "Å plassere servere langt inne i tilgangsnett, nær brukerne",
+        "Å la DNS overføre videofilene"
+      ],
+      "fasit": 2,
+      "forklaring": "Enter deep bruker mange serverplasseringer nær sluttbrukerne. Bring home samler typisk større klynger på færre sentrale steder nær flere nett.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.6.3. Bygger på Chapter 2 Review Questions.docx, R24.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.6.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R24"
+      }
+    },
+    {
+      "id": "co3093-pensum-024",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "En TCP-server bruker én lyttesocket og har fem etablerte klientforbindelser. Hvor mange sockets brukes i denne modellen?",
+      "alternativer": [
+        "6",
+        "5",
+        "1",
+        "10"
+      ],
+      "fasit": 0,
+      "forklaring": "Serveren beholder lyttesocketen og får én forbindelsessocket per aksepterte forbindelse: 1 + 5 = 6.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 2.7.2. Bygger på Chapter 2 Review Questions.docx, R26.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "2.7.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 2 Review Questions.docx",
+        "oppgave": "R26"
+      }
+    },
+    {
+      "id": "co3093-pensum-025",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Et TCP-segment fra A til B har kildeport 51000 og destinasjonsport 443. Hvilke porter har et svarsegment i samme forbindelse?",
+      "alternativer": [
+        "Kildeport 51000 og destinasjonsport 443",
+        "Kildeport 443 og destinasjonsport 51000",
+        "Begge porter er 443",
+        "Begge porter er 51000"
+      ],
+      "fasit": 1,
+      "forklaring": "Portrollene byttes når kommunikasjonsretningen snus. TCP-forbindelsen har to endepunkter med hver sin adresse og port.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.2. Bygger på Chapter 3 Review Questions.docx, R3.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R3"
+      }
+    },
+    {
+      "id": "co3093-pensum-026",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvordan kan en TCP-server skille to samtidige forbindelser som begge bruker lokal port 80?",
+      "alternativer": [
+        "Med MAC-adressen til den fjerneste ruteren",
+        "Med kombinasjonen av kilde-IP, kildeport, destinasjons-IP og destinasjonsport",
+        "Bare med pakkens lengde",
+        "Bare med den lokale porten 80"
+      ],
+      "fasit": 1,
+      "forklaring": "TCP demultiplekser forbindelser etter firetuplet. Ulike klientendepunkter kan derfor bruke samme serverport uten at forbindelsene blir én socket.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.2. Bygger på Chapter 3 Review Questions.docx, R8.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R8"
+      }
+    },
+    {
+      "id": "co3093-pensum-027",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Kan en applikasjon som bruker UDP likevel tilby pålitelig dataoverføring?",
+      "alternativer": [
+        "Ja, fordi UDP allerede garanterer levering",
+        "Nei, pålitelighet er prinsipielt umulig over IP",
+        "Bare hvis alle pakker sendes uten adresser",
+        "Ja, ved å implementere nødvendig bekreftelse, sekvensering og retransmisjon over UDP"
+      ],
+      "fasit": 3,
+      "forklaring": "UDP tilbyr ikke disse garantiene selv. En applikasjonsprotokoll kan bygge dem på toppen, under en passende feilmodell.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.3–3.4. Bygger på Chapter 3 Review Questions.docx, R6.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.3–3.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R6"
+      }
+    },
+    {
+      "id": "co3093-pensum-028",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor trenger en pålitelig overføringsprotokoll sekvensnumre?",
+      "alternativer": [
+        "For å skille nye data fra duplikater og identifisere rekkefølge",
+        "For å øke den fysiske signalhastigheten",
+        "For å kryptere innholdet",
+        "For å velge korteste rute"
+      ],
+      "fasit": 0,
+      "forklaring": "Når ACK-er går tapt, kan samme data sendes igjen. Sekvensnumre gjør det mulig å kjenne igjen retransmisjonen.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.4.1. Bygger på Chapter 3 Review Questions.docx, R9.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R9"
+      }
+    },
+    {
+      "id": "co3093-pensum-029",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor brukes en retransmisjonstimer når både datapakker og ACK-er kan gå tapt?",
+      "alternativer": [
+        "For å prøve igjen når en forventet bekreftelse uteblir",
+        "For å bevise at mottakeren har krasjet",
+        "For å garantere null duplikater",
+        "For å erstatte alle sekvensnumre"
+      ],
+      "fasit": 0,
+      "forklaring": "Manglende ACK kan skyldes tap eller forsinkelse. Timeout gjør fremdrift mulig, men gir ikke sikker kunnskap om hva mottakeren har mottatt.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.4.1. Bygger på Chapter 3 Review Questions.docx, R10.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R10"
+      }
+    },
+    {
+      "id": "co3093-pensum-030",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "En Go-Back-N-sender har sendt pakke 0–3. Pakke 0 går tapt, og ingen er bekreftet når timeren utløper. Hva sender den på nytt i lærebokens GBN-protokoll?",
+      "alternativer": [
+        "Bare pakke 3",
+        "Bare pakke 0",
+        "Pakke 0, 1, 2 og 3",
+        "Ingen pakker før mottakeren sender en ny forespørsel"
+      ],
+      "fasit": 2,
+      "forklaring": "Go-Back-N retransmitterer alle sendte, ubekreftede pakker fra vinduets base. Standardmottakeren i modellen forkaster pakker utenfor rekkefølge.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.4.3. Bygger på Chapter 3 Review Questions.docx, R12.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.4.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R12"
+      }
+    },
+    {
+      "id": "co3093-pensum-031",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skiller Selective Repeat fra standard Go-Back-N ved en tapt pakke?",
+      "alternativer": [
+        "Go-Back-N garanterer at pakker aldri går tapt",
+        "Selective Repeat kan buffre senere pakker og retransmittere bare de som mangler",
+        "Selective Repeat bruker ingen ACK-er",
+        "Selective Repeat tillater bare én pakke underveis"
+      ],
+      "fasit": 1,
+      "forklaring": "Individuelle bekreftelser og buffring av pakker utenfor rekkefølge reduserer unødvendig retransmisjon, men krever mer tilstand.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.4.4. Bygger på Chapter 3 Review Questions.docx, R13.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.4.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R13"
+      }
+    },
+    {
+      "id": "co3093-pensum-032",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "To påfølgende TCP-datasegmenter uten SYN eller FIN har sekvensnummer 90 og 110. Hvor mange databyte er i det første?",
+      "alternativer": [
+        "110",
+        "20",
+        "90",
+        "1"
+      ],
+      "fasit": 1,
+      "forklaring": "TCP-sekvensnummeret teller byte. Forskjellen 110 − 90 = 20 er datamengden i første segment.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.5.2. Bygger på Chapter 3 Review Questions.docx, R15.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.5.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R15"
+      }
+    },
+    {
+      "id": "co3093-pensum-033",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "TCP-mottakeren venter på byte 90. Segmentet som begynner på 90 går tapt, men segmentet som begynner på 110 ankommer. Hvilket kumulativt ACK-nummer forventes?",
+      "alternativer": [
+        "200",
+        "111",
+        "110",
+        "90"
+      ],
+      "fasit": 3,
+      "forklaring": "ACK-nummeret angir neste byte mottakeren mangler i den sammenhengende bytestrømmen. Senere mottatte byte flytter ikke dette tallet forbi hullet.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.5.4. Bygger på Chapter 3 Review Questions.docx, R15.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.5.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R15"
+      }
+    },
+    {
+      "id": "co3093-pensum-034",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Et TCP-segment har sekvensnummer 38 og inneholder fire databyte. Kan du da alene fastslå segmentets ACK-nummer?",
+      "alternativer": [
+        "Ja, det må være 42",
+        "Ja, det må være 38",
+        "Ja, det må være 4",
+        "Nei, ACK-nummeret gjelder data mottatt i motsatt retning"
+      ],
+      "fasit": 3,
+      "forklaring": "TCP har en egen bytestrøm i hver retning. Sekvensnummeret beskriver utsendte data, mens ACK-nummeret beskriver mottatte data fra den andre parten.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.5.2. Bygger på Chapter 3 Review Questions.docx, R14.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.5.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R14"
+      }
+    },
+    {
+      "id": "co3093-pensum-035",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "To langvarige TCP-forbindelser deler ideelt én flaskehals på 10 Mbit/s likt. Hva er målfordelingen i den forenklede rettferdighetsmodellen?",
+      "alternativer": [
+        "Hele kapasiteten til forbindelsen med lavest portnummer",
+        "1 Mbit/s per forbindelse",
+        "10 Mbit/s per forbindelse",
+        "5 Mbit/s per forbindelse"
+      ],
+      "fasit": 3,
+      "forklaring": "Lærebokens idealiserte modell deler kapasiteten omtrent likt mellom konkurrerende forbindelser. Virkelige resultater påvirkes blant annet av RTT og algoritme.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.7.3. Bygger på Chapter 3 Review Questions.docx, R17.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.7.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R17"
+      }
+    },
+    {
+      "id": "co3093-pensum-036",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "I den klassiske TCP-modellen, hva brukes som utgangspunkt når ssthresh settes etter et tap?",
+      "alternativer": [
+        "Alltid hele mottakerens minne",
+        "Alltid halvparten av gammel ssthresh",
+        "Alltid null",
+        "Omtrent halvparten av datamengden som var underveis, med algoritmens minimumsgrense"
+      ],
+      "fasit": 3,
+      "forklaring": "Terskelen knyttes til belastningen ved tapsindikasjonen, ikke automatisk til forrige terskel. Detaljene avhenger av TCP-varianten og tapsindikasjonen.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 3.7.1. Bygger på Chapter 3 Review Questions.docx, R18.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "3.7.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 3 Review Questions.docx",
+        "oppgave": "R18"
+      }
+    },
+    {
+      "id": "co3093-pensum-037",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er forskjellen mellom forwarding og routing?",
+      "alternativer": [
+        "Forwarding gjelder bare applikasjoner; routing bare kabler",
+        "De er alltid nøyaktig samme operasjon",
+        "Routing endrer meldingsinnhold; forwarding krypterer det",
+        "Forwarding velger lokal utgang for en pakke; routing bestemmer ruter gjennom nettet"
+      ],
+      "fasit": 3,
+      "forklaring": "Forwarding er en lokal dataplanoperasjon i ruteren. Routing er kontrollplanets arbeid med å beregne eller etablere rutene.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.1.1. Bygger på Chapter 4 Review Questions.docx, R3.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.1.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R3"
+      }
+    },
+    {
+      "id": "co3093-pensum-038",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva betyr at IP tilbyr best-effort-levering?",
+      "alternativer": [
+        "Alle datagrammer kommer frem innen én RTT",
+        "Alle datagrammer kommer alltid frem",
+        "IP gir ikke i seg selv garantier for levering, rekkefølge eller maksimal forsinkelse",
+        "IP reserverer alltid båndbredde før sending"
+      ],
+      "fasit": 2,
+      "forklaring": "Best effort betyr at nettet forsøker å levere datagrammene. Eventuelle sterkere garantier må tilbys av andre mekanismer.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.1.2. Bygger på Chapter 4 Review Questions.docx, R5.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.1.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R5"
+      }
+    },
+    {
+      "id": "co3093-pensum-039",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "En forwarding-tabell har 10.0.0.0/8 til A, 10.1.0.0/16 til B og 10.1.2.0/24 til C. Hvor sendes en pakke til 10.1.2.9?",
+      "alternativer": [
+        "Til alle tre",
+        "Til A",
+        "Til B",
+        "Til C"
+      ],
+      "fasit": 3,
+      "forklaring": "Longest-prefix match velger den mest spesifikke matchen. /24 passer og er lengre enn /16 og /8.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.2.1. Bygger på Chapter 4 Review Questions.docx, R9.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.2.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R9"
+      }
+    },
+    {
+      "id": "co3093-pensum-040",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er head-of-line blocking ved en ruters inputkø?",
+      "alternativer": [
+        "Alle outputkøer er tomme",
+        "Ruteren mangler en DNS-post",
+        "Første pakke venter på en opptatt utgang og hindrer senere pakker som kunne gått til ledige utganger",
+        "En TCP-klient har glemt passordet"
+      ],
+      "fasit": 2,
+      "forklaring": "En FIFO-inputkø kan blokkere nyttig arbeid fordi bare pakken fremst vurderes, selv når senere pakker har andre, ledige utganger.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.2.4. Bygger på Chapter 4 Review Questions.docx, R13.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.2.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R13"
+      }
+    },
+    {
+      "id": "co3093-pensum-041",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvorfor kan det oppstå pakketap ved en outputport selv med svært rask switching fabric?",
+      "alternativer": [
+        "Pakketap oppstår bare hos mottakeren",
+        "Outputporter kan ikke ha buffere",
+        "Rask switching fabric gjør alltid pakkene større",
+        "Tilførselen til utgangen kan overstige utgangslenkens kapasitet og fylle en endelig buffer"
+      ],
+      "fasit": 3,
+      "forklaring": "Hvis pakker ankommer raskere enn utgangen kan sende dem, vokser køen. Rask intern switching fjerner ikke flaskehalsen på utgangslenken.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.2.3–4.2.4. Bygger på Chapter 4 Review Questions.docx, R12.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.2.3–4.2.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R12"
+      }
+    },
+    {
+      "id": "co3093-pensum-042",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken kødisiplin sender pakkene i samme rekkefølge som de ankommer én kø?",
+      "alternativer": [
+        "Round robin mellom klasser",
+        "Streng prioritet mellom klasser",
+        "Weighted fair queueing med ulike vekter",
+        "FIFO"
+      ],
+      "fasit": 3,
+      "forklaring": "FIFO betyr first in, first out. Prioritets- og klassebaserte ordninger kan velge en senere ankommet pakke fra en annen klasse.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.2.5. Bygger på Chapter 4 Review Questions.docx, R14.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.2.5",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R14"
+      }
+    },
+    {
+      "id": "co3093-pensum-043",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket IPv4-headerfelt forteller mottakeren at nyttelasten skal leveres til TCP eller UDP?",
+      "alternativer": [
+        "Protocol",
+        "TTL",
+        "Header checksum",
+        "Fragment offset"
+      ],
+      "fasit": 0,
+      "forklaring": "Protocol-feltet identifiserer protokollen over IP, for eksempel TCP eller UDP. Portnumrene ligger i transporthodet.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.3.1. Bygger på Chapter 4 Review Questions.docx, R17.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.3.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R17"
+      }
+    },
+    {
+      "id": "co3093-pensum-044",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvor settes IPv4-fragmenter normalt sammen igjen til det opprinnelige datagrammet?",
+      "alternativer": [
+        "Bare hos avsenderen",
+        "Hos nærmeste DNS-server",
+        "Ved hver mellomliggende ruter",
+        "Hos sluttdestinasjonen"
+      ],
+      "fasit": 3,
+      "forklaring": "Fragmentene kan følge ulike ruter. Reassemblering skjer ved destinasjonen, ikke i hver ruter på veien.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.3.1. Bygger på Chapter 4 Review Questions.docx, R20.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.3.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R20"
+      }
+    },
+    {
+      "id": "co3093-pensum-045",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er siste oktett i IP-adressen 223.1.3.27 skrevet med åtte binære bit?",
+      "alternativer": [
+        "00011100",
+        "11011000",
+        "00011011",
+        "00100111"
+      ],
+      "fasit": 2,
+      "forklaring": "27 = 16 + 8 + 2 + 1. Det gir 00011011 når oktetten skrives med åtte bit.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.3.2. Bygger på Chapter 4 Review Questions.docx, R22.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R22"
+      }
+    },
+    {
+      "id": "co3093-pensum-046",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Et datagram inneholder 40 byte applikasjonsdata, 20 byte TCP-header og 20 byte IPv4-header, uten opsjoner. Hvor stor andel er protokolloverhead?",
+      "alternativer": [
+        "50 %",
+        "100 %",
+        "33,3 %",
+        "25 %"
+      ],
+      "fasit": 0,
+      "forklaring": "Total størrelse er 80 byte, og headerne utgjør 40 byte. Overheadandelen er 40/80 = 50 %. Lenkelagets header er ikke med i dette datagrammet.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.3.1. Bygger på Chapter 4 Review Questions.docx, R25.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.3.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R25"
+      }
+    },
+    {
+      "id": "co3093-pensum-047",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket samlet CIDR-prefiks dekker nøyaktig 192.0.2.0/24 og 192.0.3.0/24?",
+      "alternativer": [
+        "192.0.2.0/25",
+        "192.0.0.0/16",
+        "192.0.2.0/23",
+        "192.0.3.0/24"
+      ],
+      "fasit": 2,
+      "forklaring": "De to tilstøtende /24-nettene deler 23 prefiksbit. /23 gir 512 adresser og dekker akkurat begge nettområdene.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.3.2. Bygger på Chapter 4 Review Questions.docx, R27.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R27"
+      }
+    },
+    {
+      "id": "co3093-pensum-048",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva beskriver generalized forwarding som match plus action?",
+      "alternativer": [
+        "Enheten må alltid bare se på destinasjonens IP-adresse",
+        "Enheten må sende alle pakker til alle porter",
+        "Enheten åpner en nettleser for hver pakke",
+        "Enheten matcher utvalgte headerfelt og utfører en handling som videresending, dropping eller feltendring"
+      ],
+      "fasit": 3,
+      "forklaring": "Generalisert forwarding kan bruke flere headerfelt enn tradisjonell destinasjonsbasert forwarding og tillater flere typer handlinger.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 4.4. Bygger på Chapter 4 Review Questions.docx, R34.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "4.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 4 Review Questions.docx",
+        "oppgave": "R34"
+      }
+    },
+    {
+      "id": "co3093-pensum-049",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva betyr logisk sentralisert kontroll i SDN?",
+      "alternativer": [
+        "Alle rutere må stå i samme rom",
+        "Kontrollbeslutninger samordnes med et logisk samlet nettverksbilde",
+        "Alle pakker må gå gjennom én fysisk kontroller",
+        "Det finnes ingen forwarding-tabeller"
+      ],
+      "fasit": 1,
+      "forklaring": "Kontrollplanet kan være fysisk distribuert selv om det opptrer logisk samlet. Dataplanet videresender fortsatt pakker i nettverksenhetene.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.1. Bygger på Chapter 5 Review Questions.docx, R2.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R2"
+      }
+    },
+    {
+      "id": "co3093-pensum-050",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilken informasjon bruker en link-state-algoritme som Dijkstra?",
+      "alternativer": [
+        "En oversikt over topologien og lenkekostnadene i området som beregnes",
+        "Kun applikasjonens portnummer",
+        "Bare destinasjonens MAC-adresse",
+        "Bare kostnaden til den nærmeste naboen"
+      ],
+      "fasit": 0,
+      "forklaring": "Link-state-informasjon gir et kart som hver ruter kan bruke til å beregne korteste veier.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.2.1. Bygger på Chapter 5 Review Questions.docx, R4.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.2.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R4"
+      }
+    },
+    {
+      "id": "co3093-pensum-051",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "X kan nå Y via A med lenkekostnad 2 og annonsert restkostnad 5, eller via B med lenkekostnad 4 og restkostnad 1. Hva velger Bellman–Ford?",
+      "alternativer": [
+        "Via B med total kostnad 5",
+        "Via B med total kostnad 1",
+        "Via A med total kostnad 7",
+        "Via A med total kostnad 2"
+      ],
+      "fasit": 0,
+      "forklaring": "Kandidaten via A koster 2 + 5 = 7. Via B koster 4 + 1 = 5. Laveste totale kostnad velges.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.2.2. Bygger på Chapter 5 Review Questions.docx, R4.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.2.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R4"
+      }
+    },
+    {
+      "id": "co3093-pensum-052",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva beskriver count-to-infinity i distance-vector-ruting?",
+      "alternativer": [
+        "En ruter teller alle pakker uten stopp",
+        "Alle lenker får umiddelbart kostnad null",
+        "Rutere kan bygge på hverandres utdaterte avstander og øke kostnaden gradvis etter en feil",
+        "DNS-navn blir stadig lengre"
+      ],
+      "fasit": 2,
+      "forklaring": "En rutesløyfe kan gjøre at naboer feilaktig tror den andre har en vei til målet. Dårlige nyheter kan dermed spre seg langsomt.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.2.2. Bygger på Chapter 5 Review Questions.docx, R5.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.2.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R5"
+      }
+    },
+    {
+      "id": "co3093-pensum-053",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Må alle autonome systemer bruke samme interne rutingsprotokoll?",
+      "alternativer": [
+        "Nei, hvert AS kan velge intern protokoll og bruke BGP mellom AS-er",
+        "Ja, alle må bruke RIP",
+        "Nei, fordi ruting ikke brukes mellom nettverk",
+        "Ja, alle må bruke OSPF"
+      ],
+      "fasit": 0,
+      "forklaring": "Autonome systemer har egen administrasjon. Inter-AS-ruting gir samhandling uten at alle interne valg må være like.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.3. Bygger på Chapter 5 Review Questions.docx, R6.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R6"
+      }
+    },
+    {
+      "id": "co3093-pensum-054",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvor langt spres link-state-informasjon i et OSPF-område?",
+      "alternativer": [
+        "Den sendes som e-post til alle AS-er",
+        "Den blir alltid værende hos avsenderen",
+        "Den sendes bare til én sluttbruker",
+        "Den floodes gjennom området, ikke bare til de direkte naboene"
+      ],
+      "fasit": 3,
+      "forklaring": "Naboene videresender relevante oppdateringer slik at rutere i området kan bygge en felles topologidatabase.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.3. Bygger på Chapter 5 Review Questions.docx, R8.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R8"
+      }
+    },
+    {
+      "id": "co3093-pensum-055",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvorfor deles et større OSPF-nett i områder?",
+      "alternativer": [
+        "For å erstatte IP med MAC-adresser",
+        "For å begrense detaljert topologiinformasjon og redusere rutingsarbeid",
+        "For å fjerne behovet for backbone",
+        "For å gi alle grensesnitt samme IP-adresse"
+      ],
+      "fasit": 1,
+      "forklaring": "Hierarkiet lar rutere kjenne detaljene i eget område og bruke oppsummert informasjon om andre områder.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.3. Bygger på Chapter 5 Review Questions.docx, R9.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R9"
+      }
+    },
+    {
+      "id": "co3093-pensum-056",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvordan brukes AS-PATH til å oppdage BGP-sløyfer?",
+      "alternativer": [
+        "Den teller antall TCP-byte",
+        "En ruter kan avvise en annonsert sti som allerede inneholder eget AS-nummer",
+        "Den krever at alle stier inneholder eget AS to ganger",
+        "Den sjekker om alle MAC-adresser er like"
+      ],
+      "fasit": 1,
+      "forklaring": "AS-PATH beskriver AS-ene langs den annonserte stien. Eget AS i stien indikerer at annonsen har gått i ring.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.4.3. Bygger på Chapter 5 Review Questions.docx, R11.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.4.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R11"
+      }
+    },
+    {
+      "id": "co3093-pensum-057",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvorfor velger BGP ikke nødvendigvis stien med lavest fysisk forsinkelse?",
+      "alternativer": [
+        "Valget påvirkes av administrativ og økonomisk rutingspolicy",
+        "BGP må alltid velge lengste sti",
+        "Forsinkelse er identisk i alle nett",
+        "BGP bruker bare tilfeldig trekking"
+      ],
+      "fasit": 0,
+      "forklaring": "BGP tar hensyn til policy og attributter. En tillatt eller foretrukket forretningsrelasjon kan veie tyngre enn en kortere fysisk rute.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.4.5. Bygger på Chapter 5 Review Questions.docx, R12.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.4.5",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R12"
+      }
+    },
+    {
+      "id": "co3093-pensum-058",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva kobler kontrollerens southbound-grensesnitt typisk sammen?",
+      "alternativer": [
+        "Bare brukere og applikasjoner",
+        "Kontrolleren og de styrte nettverksenhetene",
+        "Bare maskiner i samme TCP-forbindelse",
+        "To nettleserfaner"
+      ],
+      "fasit": 1,
+      "forklaring": "Southbound brukes mot dataplanenhetene, mens northbound gir nettverksapplikasjoner tilgang til kontrollerens tjenester.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.5.1. Bygger på Chapter 5 Review Questions.docx, R16.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.5.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R16"
+      }
+    },
+    {
+      "id": "co3093-pensum-059",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "En UDP-basert traceroute-probe får TTL lik null i en mellomliggende ruter. Hvilken ICMP-respons kan dette utløse?",
+      "alternativer": [
+        "En DNS MX-post",
+        "Echo Reply som eneste mulige respons",
+        "Et TCP SYN-segment",
+        "Time Exceeded"
+      ],
+      "fasit": 3,
+      "forklaring": "Ruteren kan returnere ICMP Time Exceeded. Ved sluttdestinasjonen kan en UDP-probe til en ubrukt port gi Destination Unreachable: Port Unreachable.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.6. Bygger på Chapter 5 Review Questions.docx, R20.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.6",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R20"
+      }
+    },
+    {
+      "id": "co3093-pensum-060",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er en SNMP trap?",
+      "alternativer": [
+        "Et uoppfordret varsel fra en agent til nettverksadministrasjonen",
+        "Et obligatorisk svar på hver Ethernet-ramme",
+        "En kryptert datapakke som bare rutere kan lese",
+        "En forespørsel om å hente en nettside"
+      ],
+      "fasit": 0,
+      "forklaring": "En trap kan varsle om en hendelse, for eksempel at et grensesnitt går ned, uten at administrasjonssystemet først spør.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 5.7.2. Bygger på Chapter 5 Review Questions.docx, R23.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "5.7.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 5 Review Questions.docx",
+        "oppgave": "R23"
+      }
+    },
+    {
+      "id": "co3093-pensum-061",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken tjeneste kan et lenkelag tilby på én lenke?",
+      "alternativer": [
+        "Oppslag av domenenavn",
+        "Global BGP-ruting",
+        "Ende-til-ende HTTP-sesjoner",
+        "Feildeteksjon i rammer"
+      ],
+      "fasit": 3,
+      "forklaring": "Lenkelaget kan blant annet ramme inn data, regulere medietilgang og oppdage feil. Tjenestene varierer mellom lenkeprotokoller.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.1.1. Bygger på Chapter 6 Review Questions.docx, R3.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.1.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R3"
+      }
+    },
+    {
+      "id": "co3093-pensum-062",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Ville pålitelig overføring på hver lenke alene gjøre TCPs ende-til-ende-pålitelighet overflødig?",
+      "alternativer": [
+        "Nei, fordi lenkelaget aldri kan oppdage feil",
+        "Ja, IP ville automatisk levere alt i rekkefølge",
+        "Nei, pakker kan fortsatt gå tapt eller feile mellom lenkeoverføringene, for eksempel i rutere",
+        "Ja, alle mulige feil ville være fjernet"
+      ],
+      "fasit": 2,
+      "forklaring": "Lokale garantier dekker ikke automatisk hele banen og alle komponenter. Ende-til-ende-kontroll bekrefter leveringen til mottakeren.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.1.1. Bygger på Chapter 6 Review Questions.docx, R2.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.1.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R2"
+      }
+    },
+    {
+      "id": "co3093-pensum-063",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvorfor kan CSMA gi kollisjon selv om en sender lytter før sending?",
+      "alternativer": [
+        "Alle noder sender alltid på forskjellige kanaler",
+        "Lytting krypterer signalet",
+        "CSMA fjerner propageringsforsinkelse",
+        "Et annet signal kan fortsatt være underveis og ennå ikke høres lokalt"
+      ],
+      "fasit": 3,
+      "forklaring": "To noder kan begge oppfatte kanalen som ledig før den andres signal rekker frem. Carrier sensing eliminerer derfor ikke alle kollisjoner.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.3.2. Bygger på Chapter 6 Review Questions.docx, R4.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R4"
+      }
+    },
+    {
+      "id": "co3093-pensum-064",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Etter femte kollisjon velger klassisk Ethernet K uniformt fra 0 til 31. Hva er sannsynligheten for K = 4?",
+      "alternativer": [
+        "1/5",
+        "1/32",
+        "4/32",
+        "1/4"
+      ],
+      "fasit": 1,
+      "forklaring": "Det er 32 like sannsynlige heltall i intervallet. Ett bestemt valg har derfor sannsynlighet 1/32.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.3.2. Bygger på Chapter 6 Review Questions.docx, R6.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R6"
+      }
+    },
+    {
+      "id": "co3093-pensum-065",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "I klassisk 10 Mbit/s Ethernet er én backoff-slot 512 bittider. Hvor lang ventetid gir K = 4?",
+      "alternativer": [
+        "51,2 mikrosekunder",
+        "204,8 mikrosekunder",
+        "4 mikrosekunder",
+        "2048 millisekunder"
+      ],
+      "fasit": 1,
+      "forklaring": "Ventetiden er 4 × 512 / 10 000 000 sekund = 0,0002048 sekund. Dette gjelder den historiske CSMA/CD-modellen.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.3.2. Bygger på Chapter 6 Review Questions.docx, R6.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R6"
+      }
+    },
+    {
+      "id": "co3093-pensum-066",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hva er en viktig forskjell mellom polling og token passing?",
+      "alternativer": [
+        "Polling bruker en koordinator som spør noder; token passing gir turen via et sirkulerende token",
+        "Polling bruker aldri kontrollmeldinger",
+        "Begge krever at alle sender samtidig",
+        "Token passing tillater alle noder å sende uten token"
+      ],
+      "fasit": 0,
+      "forklaring": "Begge fordeler tilgang etter tur. De har ulike feilpunkter og ulike kostnader til kontrolltrafikk.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.3.3. Bygger på Chapter 6 Review Questions.docx, R7.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.3.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R7"
+      }
+    },
+    {
+      "id": "co3093-pensum-067",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvor mange bit har en vanlig Ethernet MAC-adresse?",
+      "alternativer": [
+        "48",
+        "32",
+        "64",
+        "128"
+      ],
+      "fasit": 0,
+      "forklaring": "Vanlige Ethernet-adresser har 48 bit. IPv4-adresser har 32 bit, og IPv6-adresser har 128 bit.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.4.1. Bygger på Chapter 6 Review Questions.docx, R9.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R9"
+      }
+    },
+    {
+      "id": "co3093-pensum-068",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvorfor sendes en vanlig ARP-forespørsel som broadcast på det lokale nettet?",
+      "alternativer": [
+        "DNS-serveren må godkjenne hver ramme",
+        "ARP krever at rutere erstatter alle adresser",
+        "Avsenderen kjenner ikke MAC-adressen til IP-adressen den spør etter",
+        "Alle ARP-svar må sendes til hele Internett"
+      ],
+      "fasit": 2,
+      "forklaring": "Broadcast gjør at den aktuelle eieren kan høre forespørselen. Svaret sendes normalt direkte til spørsmålsstillerens MAC-adresse.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.4.1. Bygger på Chapter 6 Review Questions.docx, R11.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R11"
+      }
+    },
+    {
+      "id": "co3093-pensum-069",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "En Ethernet-adapter mottar en ramme til en annen verts unicast-MAC. Adapteren er ikke i promiscuous mode. Hva skjer normalt?",
+      "alternativer": [
+        "Rammen filtreres bort og IP-datagrammet leveres ikke til vertens nettverkslag",
+        "Mottakeren erstatter sin egen MAC-adresse med målets",
+        "Alle rammer leveres alltid til IP",
+        "Rammen gjøres automatisk om til broadcast"
+      ],
+      "fasit": 0,
+      "forklaring": "MAC-filtrering hindrer at vanlige unicast-rammer til andre verter leveres oppover. Broadcast og særskilte mottaksmodi må behandles separat.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.4.1. Bygger på Chapter 6 Review Questions.docx, R10.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R10"
+      }
+    },
+    {
+      "id": "co3093-pensum-070",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvordan lærer en Ethernet-svitsj hvor en MAC-adresse befinner seg?",
+      "alternativer": [
+        "Den leser bare destinasjonens TCP-port",
+        "Den krever manuell registrering av hver eneste vert",
+        "Den registrerer kilde-MAC og innkommende port på mottatte rammer",
+        "Den spør alltid en DNS-server"
+      ],
+      "fasit": 2,
+      "forklaring": "Selvlæring bygger svitsjetabellen fra avsenderadressene den observerer. Oppføringer har vanligvis en levetid.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.4.3.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.4.3",
+        "opphav": "Ny øvingsoppgave basert på pensum"
+      }
+    },
+    {
+      "id": "co3093-pensum-071",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hva gjør en lærende svitsj normalt med en unicast-ramme når destinasjonens MAC-adresse er ukjent?",
+      "alternativer": [
+        "Endrer den til en IP-broadcast",
+        "Flooder til relevante porter i samme VLAN, unntatt inngangsporten",
+        "Dropper alltid rammen permanent",
+        "Sender den til alle VLAN på Internett"
+      ],
+      "fasit": 1,
+      "forklaring": "Unknown-unicast flooding forsøker å nå mottakeren innen det aktuelle lag-2-nettet. Etter at adressen er lært, kan senere rammer sendes mer målrettet.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.4.3.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.4.3",
+        "opphav": "Ny øvingsoppgave basert på pensum"
+      }
+    },
+    {
+      "id": "co3093-pensum-072",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "802.1Q har et 12-bits VLAN-ID-felt. Når 0 og 4095 er reserverte, hvor mange vanlige VLAN-ID-er gjenstår?",
+      "alternativer": [
+        "4096",
+        "4094",
+        "4095",
+        "2048"
+      ],
+      "fasit": 1,
+      "forklaring": "Tolv bit gir 4096 kombinasjoner. To reserverte verdier gir 4094 tilgjengelige ID-er; faktisk svitsjekapasitet kan være lavere.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 6.4.4. Bygger på Chapter 6 Review Questions.docx, R15.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "6.4.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 6 Review Questions.docx",
+        "oppgave": "R15"
+      }
+    },
+    {
+      "id": "co3093-pensum-073",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva kjennetegner infrastructure mode i et Wi-Fi-nett?",
+      "alternativer": [
+        "Nettet kan ikke ha forbindelse til kabelnett",
+        "Alle stasjoner må være rutere uten aksesspunkt",
+        "Trådløse stasjoner kommuniserer gjennom et aksesspunkt",
+        "Alle noder deler samme IP-adresse"
+      ],
+      "fasit": 2,
+      "forklaring": "Et aksesspunkt knytter stasjonene til infrastrukturen. Ad hoc-modus organiseres uten et slikt aksesspunkt.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.1. Bygger på Chapter 7 Review Questions.docx, R1.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R1"
+      }
+    },
+    {
+      "id": "co3093-pensum-074",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva betyr multipath propagation?",
+      "alternativer": [
+        "En sender bruker bare én perfekt refleksjonsfri vei",
+        "Alle pakker velger flere BGP-ruter",
+        "Alle trådløse signaler er kryptert to ganger",
+        "Signalet når mottakeren via flere veier med ulike forsinkelser"
+      ],
+      "fasit": 3,
+      "forklaring": "Refleksjoner kan skape flere kopier av signalet som ankommer til ulike tider og påvirker mottaket.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.2. Bygger på Chapter 7 Review Questions.docx, R3.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R3"
+      }
+    },
+    {
+      "id": "co3093-pensum-075",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva kan en trådløs forbindelse gjøre når signalforholdene blir dårligere for å redusere bitfeilraten?",
+      "alternativer": [
+        "Redusere signalstyrken til null",
+        "Fjerne all feilkontroll",
+        "Alltid øke modulasjonsordenen",
+        "Velge en mer robust modulasjon og koding, ofte med lavere datarate"
+      ],
+      "fasit": 3,
+      "forklaring": "Mer robust overføring kan tåle mer støy, men koster kapasitet. Valget avhenger av signalforhold og utstyrets muligheter.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.2. Bygger på Chapter 7 Review Questions.docx, R4.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R4"
+      }
+    },
+    {
+      "id": "co3093-pensum-076",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva er rollen til beacon-rammer fra et Wi-Fi-aksesspunkt?",
+      "alternativer": [
+        "Å annonsere nettverket og informasjon som stasjoner trenger for å finne og bruke det",
+        "Å erstatte alle datarammer",
+        "Å tildele globale BGP-ruter",
+        "Å kryptere brukerens harddisk"
+      ],
+      "fasit": 0,
+      "forklaring": "Beacons annonserer blant annet nettverksidentitet og parametere. Stasjoner kan bruke dem ved oppdagelse og tilknytning.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.3.1. Bygger på Chapter 7 Review Questions.docx, R5.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.3.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R5"
+      }
+    },
+    {
+      "id": "co3093-pensum-077",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Må en 802.11-stasjon alltid bruke RTS/CTS før hver dataramme?",
+      "alternativer": [
+        "Ja, uten unntak",
+        "Ja, men bare når rammen er én byte",
+        "Nei, RTS/CTS er en valgfri mekanisme som kan styres av blant annet en terskel",
+        "Nei, fordi RTS/CTS ikke finnes i 802.11"
+      ],
+      "fasit": 2,
+      "forklaring": "RTS/CTS har kontrolloverhead. Det brukes ikke nødvendigvis for alle rammer.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.3.2. Bygger på Chapter 7 Review Questions.docx, R6.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R6"
+      }
+    },
+    {
+      "id": "co3093-pensum-078",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvorfor bruker vanlig 802.11-unicast ACK på lenkelaget?",
+      "alternativer": [
+        "Trådløse rammer kan skades eller kollidere, og avsenderen trenger bekreftelse på mottak",
+        "Alle Wi-Fi-mottakere har samme MAC-adresse",
+        "ACK gjør propageringsforsinkelsen null",
+        "ACK garanterer at applikasjonen har lagret data på disk"
+      ],
+      "fasit": 0,
+      "forklaring": "Et lenkelags-ACK bekrefter lokalt rammemottak. Det er ikke en bekreftelse på ende-til-ende behandling hos applikasjonen.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.3.2. Bygger på Chapter 7 Review Questions.docx, R7.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R7"
+      }
+    },
+    {
+      "id": "co3093-pensum-079",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva er hensikten med en RTS-terskel?",
+      "alternativer": [
+        "Å hindre alle korte rammer i å bli sendt",
+        "Å fastsette antall IP-adresser i subnettet",
+        "Å bruke RTS/CTS for utvalgte større rammer der en kollisjon kan koste mer",
+        "Å bestemme nettleserens cache-størrelse"
+      ],
+      "fasit": 2,
+      "forklaring": "RTS/CTS bruker ekstra rammer, men kan spare kostnaden ved kollisjon på lange dataoverføringer. Terskelen balanserer disse hensynene.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.3.2. Bygger på Chapter 7 Review Questions.docx, R9.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R9"
+      }
+    },
+    {
+      "id": "co3093-pensum-080",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvorfor er korte RTS- og CTS-rammer nyttige ved skjulte terminaler?",
+      "alternativer": [
+        "De har alltid større nyttelast enn DATA",
+        "De gjør at alle stasjoner kan sende samtidig",
+        "De reserverer kanalen med mindre kollisjonskostnad enn en lang dataramme",
+        "De fjerner behovet for mottaker"
+      ],
+      "fasit": 2,
+      "forklaring": "En skjult sender som hører CTS fra mottakeren, kan vente selv om den ikke hører den opprinnelige avsenderen. Korte kontrollrammer begrenser bortkastet sendetid.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.3.2. Bygger på Chapter 7 Review Questions.docx, R10.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.3.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R10"
+      }
+    },
+    {
+      "id": "co3093-pensum-081",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva identifiserer IMSI i den beskrevne mobilnettarkitekturen?",
+      "alternativer": [
+        "En Wi-Fi-kanal",
+        "Et mobilabonnement globalt",
+        "Et bestemt IP-datagram",
+        "Én TCP-forbindelse"
+      ],
+      "fasit": 1,
+      "forklaring": "IMSI er International Mobile Subscriber Identity. Det er ikke det samme som telefonens aktuelle IP-adresse.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.4.1. Bygger på Chapter 7 Review Questions.docx, R14.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R14"
+      }
+    },
+    {
+      "id": "co3093-pensum-082",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva er en hovedrolle for HSS i 4G LTE?",
+      "alternativer": [
+        "Å erstatte alle basestasjoner",
+        "Å videresende alle brukerpakker på dataplanet",
+        "Å velge TCP-sekvensnumre",
+        "Å lagre abonnent- og autentiseringsrelatert informasjon"
+      ],
+      "fasit": 3,
+      "forklaring": "HSS er en del av kontrollarkitekturen og brukes sammen med andre elementer ved blant annet autentisering. Oppgaven gjelder 4G-begrepene i pensum.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.4.1. Bygger på Chapter 7 Review Questions.docx, R15.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.4.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R15"
+      }
+    },
+    {
+      "id": "co3093-pensum-083",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Når sies en mobil enhet å roame i et visited network?",
+      "alternativer": [
+        "Når den bytter mellom to nettleserfaner",
+        "Når den har samme basestasjon hele livet",
+        "Når den sender en UDP-pakke",
+        "Når den bruker et annet operatørnett enn hjemmenettet"
+      ],
+      "fasit": 3,
+      "forklaring": "Roaming innebærer samhandling mellom hjemmenettet og det besøkte nettet. Det er ikke synonymt med enhver lokal forflytning.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.5.2. Bygger på Chapter 7 Review Questions.docx, R23.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.5.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R23"
+      }
+    },
+    {
+      "id": "co3093-pensum-084",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva er handover i et mobilnett?",
+      "alternativer": [
+        "Bytte fra TCP til HTML",
+        "Kopiering av alle brukerdata til et SIM-kort",
+        "Sletting av abonnementet ved bevegelse",
+        "Overføring av enhetens tilknytning fra én basestasjon til en annen"
+      ],
+      "fasit": 3,
+      "forklaring": "Handover endrer radio- og videresendingsforbindelser slik at tjenesten kan fortsette når enheten flytter seg mellom dekningsområder.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 7.6.1. Bygger på Chapter 7 Review Questions.docx, R24.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "7.6.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 7 Review Questions.docx",
+        "oppgave": "R24"
+      }
+    },
+    {
+      "id": "co3093-pensum-085",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "En melding kan leses av alle, men en signatur gjør uautoriserte endringer oppdagbare. Hvilken egenskap kan dette gi uten konfidensialitet?",
+      "alternativer": [
+        "Garantert tilgjengelighet",
+        "Hemmelig innhold",
+        "Garantert anonymitet",
+        "Integritet"
+      ],
+      "fasit": 3,
+      "forklaring": "Integritet handler om endringer, mens konfidensialitet handler om innsyn. De er forskjellige sikkerhetsmål.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.1. Bygger på Chapter 8 Review Questions.docx, R1.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R1"
+      }
+    },
+    {
+      "id": "co3093-pensum-086",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "En angriper kjenner både en klartekst og den tilhørende chifferteksten. Hva slags tilgang beskriver dette?",
+      "alternativer": [
+        "Bare ciphertext-only-angrep",
+        "Known-plaintext-angrep",
+        "Alltid chosen-plaintext-angrep",
+        "Bare tjenestenekt"
+      ],
+      "fasit": 1,
+      "forklaring": "Known plaintext betyr kjennskap til et korresponderende tekstpar. Chosen plaintext krever at angriperen selv kan få valgte klartekster kryptert.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.2. Bygger på Chapter 8 Review Questions.docx, R4.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R4"
+      }
+    },
+    {
+      "id": "co3093-pensum-087",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvor mange ulike inputblokker finnes for et blokkchiffer med blokkstørrelse 8 bit?",
+      "alternativer": [
+        "64",
+        "256",
+        "16",
+        "8"
+      ],
+      "fasit": 1,
+      "forklaring": "En 8-bits blokk har 2⁸ = 256 mulige bitmønstre. Dette er antall inputblokker, ikke antall mulige krypteringspermutasjoner.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.2.1. Bygger på Chapter 8 Review Questions.docx, R5.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.2.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R5"
+      }
+    },
+    {
+      "id": "co3093-pensum-088",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Fem personer skal ha én egen symmetrisk nøkkel for hvert par. Hvor mange delte nøkler trengs totalt?",
+      "alternativer": [
+        "20",
+        "10",
+        "5",
+        "25"
+      ],
+      "fasit": 1,
+      "forklaring": "Antall uordnede par er N(N − 1)/2. For fem personer blir det 5 × 4 / 2 = 10.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.2.1. Bygger på Chapter 8 Review Questions.docx, R6.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.2.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R6"
+      }
+    },
+    {
+      "id": "co3093-pensum-089",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hva er (10023 × 10004) mod 10000?",
+      "alternativer": [
+        "40092",
+        "27",
+        "23",
+        "92"
+      ],
+      "fasit": 3,
+      "forklaring": "Reduser først faktorene modulo 10000: 23 × 4 = 92. Dette gir samme rest som å multiplisere de opprinnelige tallene.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.2.2. Bygger på Chapter 8 Review Questions.docx, R7.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.2.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R7"
+      }
+    },
+    {
+      "id": "co3093-pensum-090",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hva er bitmønsteret 10101111 som et usignert desimaltall?",
+      "alternativer": [
+        "191",
+        "174",
+        "175",
+        "143"
+      ],
+      "fasit": 2,
+      "forklaring": "Tallet er 128 + 32 + 8 + 4 + 2 + 1 = 175.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.2.2. Bygger på Chapter 8 Review Questions.docx, R8.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.2.2",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R8"
+      }
+    },
+    {
+      "id": "co3093-pensum-091",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvorfor er en vanlig Internet checksum ikke tilstrekkelig mot en angriper som kan endre både melding og sjekksum?",
+      "alternativer": [
+        "Sjekksummen garanterer konfidensialitet",
+        "Sjekksummen bruker en privat signaturnøkkel",
+        "Angriperen kan enkelt beregne en ny gyldig sjekksum for en endret melding",
+        "Sjekksummen er alltid hemmelig"
+      ],
+      "fasit": 2,
+      "forklaring": "Sjekksummer er laget for å oppdage utilsiktede feil. Autentisert integritet krever for eksempel en MAC eller signatur, ikke bare en ubeskyttet kontrollverdi.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.3.1. Bygger på Chapter 8 Review Questions.docx, R9.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.3.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R9"
+      }
+    },
+    {
+      "id": "co3093-pensum-092",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvilken nøkkel bruker en sertifikatutsteder til å signere et sertifikat?",
+      "alternativer": [
+        "Utstederens private signaturnøkkel",
+        "Mottakerens private nøkkel",
+        "Utstederens offentlige nøkkel",
+        "En tilfeldig nøkkel publisert i DNS uten autentisering"
+      ],
+      "fasit": 0,
+      "forklaring": "Signaturen verifiseres med utstederens offentlige nøkkel. Sertifikatet blir normalt ikke hemmeligholdt ved å kryptere hele dokumentet.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.3.3. Bygger på Chapter 8 Review Questions.docx, R14.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.3.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R14"
+      }
+    },
+    {
+      "id": "co3093-pensum-093",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "En avsender vil publisere en melding som tusenvis kan verifisere uten å få signeringshemmeligheten. Hva passer best?",
+      "alternativer": [
+        "Bare Base64-koding",
+        "En ubeskyttet sjekksum",
+        "En delt MAC-nøkkel gitt til alle mottakerne",
+        "En digital signatur"
+      ],
+      "fasit": 3,
+      "forklaring": "Mottakerne kan verifisere med offentlig nøkkel. Med én felles MAC-hemmelighet ville hver mottaker også kunne lage nye gyldige MAC-er.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.3.3. Bygger på Chapter 8 Review Questions.docx, R15.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.3.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R15"
+      }
+    },
+    {
+      "id": "co3093-pensum-094",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvorfor stopper ikke en gyldig HMAC alene replay av en tidligere melding?",
+      "alternativer": [
+        "HMAC dekrypterer automatisk meldingene",
+        "En gammel melding har fortsatt en gyldig HMAC dersom ferskhet ikke kontrolleres",
+        "HMAC kan bare brukes én gang totalt",
+        "HMAC forbyr bruk av sekvensnumre"
+      ],
+      "fasit": 1,
+      "forklaring": "Mottakeren trenger også en ferskhetsmekanisme, for eksempel en kontrollert nonce eller et sekvensnummer som inngår i autentiseringen.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.4. Bygger på Chapter 8 Review Questions.docx, R18.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.4",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R18"
+      }
+    },
+    {
+      "id": "co3093-pensum-095",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hva er en Security Association (SA) i IPsec?",
+      "alternativer": [
+        "Et navn på en Ethernet-kollisjon",
+        "En ny TCP-forbindelse for hver pakke",
+        "En enveis sikkerhetskontekst med blant annet nøkler og algoritmeparametere",
+        "En offentlig katalog over alle passord"
+      ],
+      "fasit": 2,
+      "forklaring": "En SA kan beskytte mange pakker i samme retning. Toveiskommunikasjon trenger sikkerhetskontekster for begge retninger.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.7.3. Bygger på Chapter 8 Review Questions.docx, R24.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.7.3",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R24"
+      }
+    },
+    {
+      "id": "co3093-pensum-096",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hva tilfører et stateful pakkefilter sammenlignet med et rent stateless filter?",
+      "alternativer": [
+        "Det bruker registrert forbindelsestilstand i tillegg til pakkens headerfelt",
+        "Det dekrypterer automatisk all TLS-trafikk",
+        "Det garanterer at all tillatt trafikk er ufarlig",
+        "Det trenger ingen regler"
+      ],
+      "fasit": 0,
+      "forklaring": "Forbindelsestabellen kan brukes til å kontrollere at en pakke passer med en kjent forbindelse. Tillatt trafikk må fortsatt vurderes ut fra øvrig sikkerhet.\n\nKilde: Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross), avsnitt 8.9.1. Bygger på Chapter 8 Review Questions.docx, R28.",
+      "kilde": {
+        "pensum": "Computer Networking: A Top-Down Approach, 8. utgave (Kurose og Ross)",
+        "avsnitt": "8.9.1",
+        "opphav": "Ny øvingsoppgave basert på pensum",
+        "dokument": "Chapter 8 Review Questions.docx",
+        "oppgave": "R28"
+      }
     }
   ]
 }

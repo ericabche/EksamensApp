@@ -17,7 +17,12 @@
       "type": "flervalg",
       "kapittel": 1,
       "sporsmal": "Hvilken display-verdi har <img> som standard i CSS3?",
-      "alternativer": ["block", "flex", "inline-block", "inline"],
+      "alternativer": [
+        "block",
+        "flex",
+        "inline-block",
+        "inline"
+      ],
       "fasit": 3,
       "forklaring": "<img> er et erstattet element på inline-nivå. Det oppfører seg som inline-block på flere måter (du kan sette bredde og høyde), men den beregnede display-verdien er inline."
     },
@@ -26,7 +31,12 @@
       "type": "flervalg",
       "kapittel": 1,
       "sporsmal": "Hvilken enctype må <form> ha for å kunne laste opp en fil?",
-      "alternativer": ["text/file", "multimedia/form-data", "text", "multipart/form-data"],
+      "alternativer": [
+        "text/file",
+        "multimedia/form-data",
+        "text",
+        "multipart/form-data"
+      ],
       "fasit": 3,
       "forklaring": "multipart/form-data deler forsendelsen i deler med egne hoder, slik at binære data kan sendes uten å bli tegnkodet. Standardverdien application/x-www-form-urlencoded takler ikke filer."
     },
@@ -63,7 +73,12 @@
       "type": "flervalg",
       "kapittel": 1,
       "sporsmal": "Hvilket attributt brukes for å definere inline CSS på et HTML5-element?",
-      "alternativer": ["type", "define", "link", "style"],
+      "alternativer": [
+        "type",
+        "define",
+        "link",
+        "style"
+      ],
       "fasit": 3,
       "forklaring": "style-attributtet tar CSS-erklæringer direkte på elementet og har høyere prioritet enn regler fra stilsett."
     },
@@ -73,7 +88,12 @@
       "kapittel": 1,
       "sporsmal": "Hvor mange feil er det i HTML5-dokumentet under?",
       "kode": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Khoa KH&amp;KT May Tinh</title>\n    <link href=\"style.css\" type=\"stylesheet\" title=\"center\" />\n  </head>\n  <body style=\"margin: 50px\">\n  <section>\n    <h2>He thong &amp; Mang may Tinh</h2>\n    <p>Bo mon He thong va Mang may tinh ra doi khi Khoa moi thanh lap</p>\n    <h3 class=\"center\">Lien he</h3>\n    <p class=\"center\">Nha A3, Khoa KH va KT May tinh</p>\n    <p class=\"center\" style=\"font-weight:bold\">Dien thoai: (+84 028) 865-8689</p>\n  </section>\n  </body>\n</html>",
-      "alternativer": ["1 feil", "3 feil", "Ingen feil", "2 feil"],
+      "alternativer": [
+        "1 feil",
+        "3 feil",
+        "Ingen feil",
+        "2 feil"
+      ],
       "fasit": 0,
       "forklaring": "<link> mangler rel=\"stylesheet\". type=\"stylesheet\" er ikke en gyldig verdi – type skal eventuelt være text/css, og rel er det som forteller nettleseren hva relasjonen er. Resten av dokumentet er velformet."
     },
@@ -82,7 +102,12 @@
       "type": "flervalg",
       "kapittel": 1,
       "sporsmal": "Hvilken tekstfarge har besøkte lenker som standard i HTML?",
-      "alternativer": ["Svart (#000000)", "Blå (#0000FF)", "Rød (#FF0000)", "Lilla (#660099)"],
+      "alternativer": [
+        "Svart (#000000)",
+        "Blå (#0000FF)",
+        "Rød (#FF0000)",
+        "Lilla (#660099)"
+      ],
       "fasit": 3,
       "forklaring": "Ubesøkte lenker er blå (#0000FF), besøkte lilla. Fargene kommer fra nettleserens innebygde stilsett og kan overstyres med :visited."
     },
@@ -119,7 +144,12 @@
       "type": "flervalg",
       "kapittel": 1,
       "sporsmal": "Hvilken display-verdi har <em> som standard i HTML5?",
-      "alternativer": ["inline-block", "flex", "block", "inline"],
+      "alternativer": [
+        "inline-block",
+        "flex",
+        "block",
+        "inline"
+      ],
       "fasit": 3,
       "forklaring": "<em> er et tekstnivå-element og flyter med i teksten. Sammenlign med <p> og <div>, som er block."
     },
@@ -157,7 +187,12 @@
       "type": "flervalg",
       "kapittel": 1,
       "sporsmal": "Hvilken metode i et HTML-skjema legger brukerdata inn i selve adressen, skilt fra adressen med spørsmålstegn?",
-      "alternativer": ["GET", "PUT", "POST", "GET og PUT"],
+      "alternativer": [
+        "GET",
+        "PUT",
+        "POST",
+        "GET og PUT"
+      ],
       "fasit": 0,
       "forklaring": "GET legger dataene i spørrestrengen, som dermed blir synlig i adressefeltet, havner i historikken og i serverloggene. POST sender dem i meldingskroppen."
     },
@@ -166,7 +201,12 @@
       "type": "flervalg",
       "kapittel": 2,
       "sporsmal": "Hvilken CSS-egenskap gir halvfet skrift?",
-      "alternativer": ["font-variant", "font-family", "font-weight", "font-style"],
+      "alternativer": [
+        "font-variant",
+        "font-family",
+        "font-weight",
+        "font-style"
+      ],
       "fasit": 2,
       "forklaring": "font-weight styrer tykkelsen, font-style kursiv, font-variant blant annet kapiteler."
     },
@@ -175,7 +215,12 @@
       "type": "flervalg",
       "kapittel": 2,
       "sporsmal": "Hvilken CSS-egenskap bestemmer rekkefølgen på block-elementer som legges oppå hverandre i lag?",
-      "alternativer": ["x-index", "s-index", "d-index", "z-index"],
+      "alternativer": [
+        "x-index",
+        "s-index",
+        "d-index",
+        "z-index"
+      ],
       "fasit": 3,
       "forklaring": "z-index virker bare på elementer som er posisjonert, altså der position ikke er static."
     },
@@ -215,7 +260,12 @@
       "kapittel": 2,
       "sporsmal": "Hvilken farge får teksten «Môn học Lập trình web» på skjermen?",
       "kode": ".text span { color: red }\nh1 span { color: black }\np span { color: yellow !important; }\ndiv.text { color: blue !important; }\nspan.text { color: green }\nh1 > span { color: orange }\n\n<h1>\n  <div>\n    <p>\n      <span class=\"text\">Môn học Lập trình web</span>\n    </p>\n  </div>\n</h1>",
-      "alternativer": ["Grønn", "Gul", "Rød", "Oransje"],
+      "alternativer": [
+        "Grønn",
+        "Gul",
+        "Rød",
+        "Oransje"
+      ],
       "fasit": 1,
       "forklaring": "p span har !important og slår alle vanlige regler uansett spesifisitet. div.text treffer ikke, fordi div-en ikke har klassen text, og h1 > span krever at span er direkte barn av h1."
     },
@@ -225,7 +275,12 @@
       "kapittel": 2,
       "sporsmal": "Hvilken farge får teksten «Môn học Lập trình web» på skjermen?",
       "kode": ".text span { color: red }\nspan { color: blue }\nh1 { color: green }\nh1 span { color: black }\np span { color: yellow }\nspan.text { color: green }\nh1 > span { color: orange }\n\n<h1>\n  <div>\n    <p>\n      <span class=\"text\">Môn học Lập trình web</span>\n    </p>\n  </div>\n</h1>",
-      "alternativer": ["Grønn", "Rød", "Oransje", "Blå"],
+      "alternativer": [
+        "Grønn",
+        "Rød",
+        "Oransje",
+        "Blå"
+      ],
       "fasit": 0,
       "forklaring": "Uten !important avgjør spesifisiteten. span.text har én klasse og ett element (0,1,1) og slår h1 span og p span, som begge bare har to elementer (0,0,2)."
     },
@@ -234,7 +289,12 @@
       "type": "flervalg",
       "kapittel": 2,
       "sporsmal": "Hvilken CSS3-enhet er relativ til skriftstørrelsen på rotelementet i dokumentet?",
-      "alternativer": ["ch", "rem", "em", "px"],
+      "alternativer": [
+        "ch",
+        "rem",
+        "em",
+        "px"
+      ],
       "fasit": 1,
       "forklaring": "rem står for root em og ser alltid på <html>. em er relativ til elementets egen skriftstørrelse og kan derfor hope seg opp gjennom nivåer."
     },
@@ -271,7 +331,12 @@
       "type": "flervalg",
       "kapittel": 2,
       "sporsmal": "Hvilken CSS-egenskap gir kursiv skrift?",
-      "alternativer": ["font-style", "font-weight", "font-variant", "font-family"],
+      "alternativer": [
+        "font-style",
+        "font-weight",
+        "font-variant",
+        "font-family"
+      ],
       "fasit": 0,
       "forklaring": "font-style: italic. Merk at italic bruker skriftsnittets egen kursiv, mens oblique bare skråstiller den vanlige."
     },
@@ -294,7 +359,12 @@
       "type": "flervalg",
       "kapittel": 3,
       "sporsmal": "Hvilket variabelnavn er ugyldig i JavaScript?",
-      "alternativer": ["var21", "VAR21", "_temp", "21var"],
+      "alternativer": [
+        "var21",
+        "VAR21",
+        "_temp",
+        "21var"
+      ],
       "fasit": 3,
       "forklaring": "Et navn kan ikke begynne med et siffer. Understrek og dollartegn er derimot lovlige startetegn."
     },
@@ -304,7 +374,12 @@
       "kapittel": 3,
       "sporsmal": "Hva skriver koden under ut i konsollen?",
       "kode": "var event = {};\nevent.Month = \"May\";\nthis = event;\nthis.day = 11;\nconsole.log(event.Month + \" --- \" + event.day);",
-      "alternativer": ["May --- 11", "undefined --- 11", "Syntaksfeil", "May --- undefined"],
+      "alternativer": [
+        "May --- 11",
+        "undefined --- 11",
+        "Syntaksfeil",
+        "May --- undefined"
+      ],
       "fasit": 2,
       "forklaring": "this kan ikke stå på venstre side av en tilordning. Det er en tidlig feil, så skriptet blir avvist før noe av det kjører – ikke en feil som oppstår underveis."
     },
@@ -314,7 +389,12 @@
       "kapittel": 3,
       "sporsmal": "Hva skriver koden under ut i konsollen?",
       "kode": "var a = '20';\nvar b = a = 30;\nconsole.log(a + b);",
-      "alternativer": ["50", "2030", "60", "'20'30"],
+      "alternativer": [
+        "50",
+        "2030",
+        "60",
+        "'20'30"
+      ],
       "fasit": 2,
       "forklaring": "Tilordning er høyreassosiativ: a settes først til tallet 30, og uttrykket gir 30 videre til b. Strengen '20' er overskrevet, så det blir tallsummen 60."
     },
@@ -324,7 +404,12 @@
       "kapittel": 3,
       "sporsmal": "Hva skriver koden under ut i konsollen?",
       "kode": "var a = 0;\nvar b = 0;\nwhile (a < 3) {\n  a++;\n  b += a;\n  console.log(b);\n}",
-      "alternativer": ["123", "136", "01", "013"],
+      "alternativer": [
+        "123",
+        "136",
+        "01",
+        "013"
+      ],
       "fasit": 1,
       "forklaring": "b akkumulerer: 0+1=1, 1+2=3, 3+3=6. Det er b som skrives ut, ikke a."
     },
@@ -334,7 +419,12 @@
       "kapittel": 3,
       "sporsmal": "Hva skriver koden under ut i konsollen?",
       "kode": "var intArr = [1, 2,,, , 3]\nconsole.log(intArr.length)",
-      "alternativer": ["Syntaksfeil", "6", "5", "3"],
+      "alternativer": [
+        "Syntaksfeil",
+        "6",
+        "5",
+        "3"
+      ],
       "fasit": 1,
       "forklaring": "Kommaene lager tre tomme plasser mellom 2 og 3. Plassene teller med i length selv om de ikke har verdi, og et enkelt etterfølgende komma ville ikke telt."
     },
@@ -343,7 +433,12 @@
       "type": "flervalg",
       "kapittel": 3,
       "sporsmal": "Hvilken egenskap finnes ikke på location-objektet i DOM?",
-      "alternativer": ["host", "path", "hostname", "protocol"],
+      "alternativer": [
+        "host",
+        "path",
+        "hostname",
+        "protocol"
+      ],
       "fasit": 1,
       "forklaring": "Egenskapen heter pathname. host er vertsnavn med portnummer, hostname uten."
     },
@@ -381,7 +476,12 @@
       "kapittel": 3,
       "sporsmal": "Hva vises på skjermen når sida under kjøres?",
       "kode": "<head id=\"myHead\">\n  <title>My title</title>\n</head>\n<body>\n  <p name=\"head\" id=\"demo\"></p>\n  <script>\n    function myFunction() {\n      var x = document.head.id;\n      document.getElementById(\"demo\").innerHTML = x;\n    }\n    myFunction()\n  </script>\n</body>",
-      "alternativer": ["demo", "myHead", "undefined", "Feilmelding"],
+      "alternativer": [
+        "demo",
+        "myHead",
+        "undefined",
+        "Feilmelding"
+      ],
       "fasit": 1,
       "forklaring": "document.head peker på <head>-elementet, og id-en der er myHead. Verdien skrives inn i avsnittet med id demo."
     },
@@ -390,7 +490,12 @@
       "type": "flervalg",
       "kapittel": 3,
       "sporsmal": "Hvilken JavaScript-funksjon sjekker om en verdi ikke er et tall?",
-      "alternativer": ["nonNaN()", "NaN()", "isNonNaN()", "isNaN()"],
+      "alternativer": [
+        "nonNaN()",
+        "NaN()",
+        "isNonNaN()",
+        "isNaN()"
+      ],
       "fasit": 3,
       "forklaring": "isNaN() konverterer argumentet til tall først, så isNaN(\"12\") er false. Number.isNaN() gjør ingen konvertering og er derfor tryggere."
     },
@@ -400,7 +505,12 @@
       "kapittel": 3,
       "sporsmal": "Hva skriver koden under ut i konsollen?",
       "kode": "var intArr = [1, 2, 3]\nconsole.log(typeof intArr)",
-      "alternativer": ["object", "NaN", "array", "int"],
+      "alternativer": [
+        "object",
+        "NaN",
+        "array",
+        "int"
+      ],
       "fasit": 0,
       "forklaring": "typeof kjenner ikke arrayer som egen type – de er objekter. Bruk Array.isArray() hvis du faktisk må skille dem ut."
     },
@@ -423,7 +533,12 @@
       "type": "flervalg",
       "kapittel": 4,
       "sporsmal": "Hvilken parameter må oppgis når du bruker jQuery-metodene $.ajax(), $.get() og $.post()?",
-      "alternativer": ["url", "method", "data", "headers"],
+      "alternativer": [
+        "url",
+        "method",
+        "data",
+        "headers"
+      ],
       "fasit": 0,
       "forklaring": "Uten adresse vet ikke kallet hvor forespørselen skal. $.get() og $.post() har metoden innebakt i navnet, og data og headers er valgfrie."
     },
@@ -516,7 +631,12 @@
       "type": "flervalg",
       "kapittel": 4,
       "sporsmal": "Hvilken JavaScript-funksjon gjør en JSON-formatert streng om til et objekt?",
-      "alternativer": ["JSON.object()", "JSON.parse()", "JSON.toObject()", "JSON.stringify()"],
+      "alternativer": [
+        "JSON.object()",
+        "JSON.parse()",
+        "JSON.toObject()",
+        "JSON.stringify()"
+      ],
       "fasit": 1,
       "forklaring": "parse() går fra tekst til objekt, stringify() motsatt vei. De to andre finnes ikke."
     },
@@ -525,7 +645,12 @@
       "type": "flervalg",
       "kapittel": 4,
       "sporsmal": "Hvilken teknologi brukes ikke når man realiserer AJAX?",
-      "alternativer": ["CSS", "DOM", "DHTML", "Flash"],
+      "alternativer": [
+        "CSS",
+        "DOM",
+        "DHTML",
+        "Flash"
+      ],
       "fasit": 3,
       "forklaring": "Flash var en egen plugin-teknologi med sin egen kjøretid, og er nå helt utfaset. AJAX bygger på det nettleseren allerede har."
     },
@@ -535,7 +660,12 @@
       "kapittel": 5,
       "sporsmal": "Hva skriver PHP-koden under ut?",
       "kode": "$a = 1;\n$b = 2;\necho ($a !== $b);",
-      "alternativer": ["Error", "False", "1", "1 !== 2"],
+      "alternativer": [
+        "Error",
+        "False",
+        "1",
+        "1 !== 2"
+      ],
       "fasit": 2,
       "forklaring": "Uttrykket er sant, og echo skriver true som 1. En usann verdi ville gitt tom streng, ikke ordet false."
     },
@@ -545,7 +675,12 @@
       "kapittel": 5,
       "sporsmal": "Hva skriver PHP-koden under ut?",
       "kode": "<?php\n  $i = 0;\n  for (++$i; ++$i; ++$i)\n  {\n    echo $i;\n    if ($i >= 4) break;\n  }\n?>",
-      "alternativer": ["22", "34", "24", "14"],
+      "alternativer": [
+        "22",
+        "34",
+        "24",
+        "14"
+      ],
       "fasit": 2,
       "forklaring": "Betingelsen ++$i øker i seg selv. Start gir 1, testen gir 2 som skrives ut, oppdateringen gir 3, testen gir 4 som skrives ut, og så brytes løkka."
     },
@@ -555,7 +690,12 @@
       "kapittel": 5,
       "sporsmal": "Hva skriver PHP-koden under ut?",
       "kode": "$str = \"chess was played\";\necho strlen(substr($str,3,2))",
-      "alternativer": ["1", "3", "2", "Array"],
+      "alternativer": [
+        "1",
+        "3",
+        "2",
+        "Array"
+      ],
       "fasit": 2,
       "forklaring": "substr henter to tegn fra posisjon 3, altså «ss». Lengden av dem er 2 – tallet 2 i kallet bestemmer svaret uansett hvilken streng du starter med."
     },
@@ -578,7 +718,12 @@
       "type": "flervalg",
       "kapittel": 5,
       "sporsmal": "Hvilken PHP-funksjon brukes for å videresende (redirect) til en annen side?",
-      "alternativer": ["forward()", "header()", "location()", "redirect()"],
+      "alternativer": [
+        "forward()",
+        "header()",
+        "location()",
+        "redirect()"
+      ],
       "fasit": 1,
       "forklaring": "header(\"Location: ...\") setter svarhodet som ber nettleseren gå videre. Den må kalles før noe innhold er sendt ut."
     },
@@ -588,7 +733,12 @@
       "kapittel": 5,
       "sporsmal": "Hva skriver PHP-koden under ut?",
       "kode": "<?php\n  $x = 1;\n  if ($x == 2)\n    echo \"BK\";\n  else if($x = 2)\n    echo $x;\n  else\n    echo \"HCM\";\n?>",
-      "alternativer": ["2", "2HCM", "BK", "HCM"],
+      "alternativer": [
+        "2",
+        "2HCM",
+        "BK",
+        "HCM"
+      ],
       "fasit": 0,
       "forklaring": "Den andre testen bruker ett likhetstegn og er en tilordning, ikke en sammenligning. $x settes til 2, uttrykket blir sant, og 2 skrives ut."
     },
@@ -598,7 +748,12 @@
       "kapittel": 5,
       "sporsmal": "Hva skriver PHP-koden under ut?",
       "kode": "<?php\n  $op2 = \"BK\";\n  function foo($op1)\n  {\n    global $Op2;\n    echo $Op2 . $op1;\n  }\n  $var1 = \"foo\";\n  foo(\"HCM\");\n?>",
-      "alternativer": ["HCM", "HCMBK", "BKHCM", "Feil"],
+      "alternativer": [
+        "HCM",
+        "HCMBK",
+        "BKHCM",
+        "Feil"
+      ],
       "fasit": 0,
       "forklaring": "PHP skiller mellom store og små bokstaver i variabelnavn, så $Op2 er ikke den samme som $op2. Den er udefinert og blir tom streng, og bare argumentet skrives ut."
     },
@@ -608,7 +763,12 @@
       "kapittel": 5,
       "sporsmal": "Hva skriver PHP-koden under ut?",
       "kode": "<?php\n  $x = 5;\n  echo $x;\n  echo \" \";\n  echo $x+++$x++.$x---$x--;\n?>",
-      "alternativer": ["5 121", "5 131", "5 101", "5 111"],
+      "alternativer": [
+        "5 121",
+        "5 131",
+        "5 101",
+        "5 111"
+      ],
       "fasit": 3,
       "forklaring": "Etterstilt operator gir verdien først og endrer etterpå. Rekkefølgen blir (5+6) sammenføyd med 7, altså «117», minus 6 – som tolkes som tall og gir 111."
     },
@@ -617,7 +777,12 @@
       "type": "flervalg",
       "kapittel": 6,
       "sporsmal": "Hvilken av disse PHP-funksjonene kan lage en cookie i brukerens nettleser?",
-      "alternativer": ["set_cookie()", "cookie()", "header()", "session_id()"],
+      "alternativer": [
+        "set_cookie()",
+        "cookie()",
+        "header()",
+        "session_id()"
+      ],
       "fasit": 2,
       "forklaring": "setcookie() er den vanlige veien, men den står ikke blant alternativene. header(\"Set-Cookie: ...\") gjør akkurat det samme manuelt, siden en cookie bare er et svarhode."
     },
@@ -626,7 +791,12 @@
       "type": "flervalg",
       "kapittel": 6,
       "sporsmal": "Hvilken PHP-funksjon setter en cookie i brukerens nettleser?",
-      "alternativer": ["setcookie()", "cookie()", "set_cookie()", "set()"],
+      "alternativer": [
+        "setcookie()",
+        "cookie()",
+        "set_cookie()",
+        "set()"
+      ],
       "fasit": 0,
       "forklaring": "Navnet skrives i ett ord uten understrek, og kallet må komme før noe utdata er sendt."
     },
@@ -635,7 +805,12 @@
       "type": "flervalg",
       "kapittel": 6,
       "sporsmal": "Hvilken type cookie finnes fortsatt etter at brukeren lukker nettleseren?",
-      "alternativer": ["Session", "Permanent", "Second-party", "Third-party"],
+      "alternativer": [
+        "Session",
+        "Permanent",
+        "Second-party",
+        "Third-party"
+      ],
       "fasit": 1,
       "forklaring": "En permanent cookie har en utløpsdato og lagres på disk. Sesjonscookier har ingen dato og lever bare i minnet."
     },
@@ -672,7 +847,12 @@
       "type": "flervalg",
       "kapittel": 6,
       "sporsmal": "Hvilken PHP-funksjon starter en sesjon?",
-      "alternativer": ["begin_session()", "session_begin()", "start_session()", "session_start()"],
+      "alternativer": [
+        "begin_session()",
+        "session_begin()",
+        "start_session()",
+        "session_start()"
+      ],
       "fasit": 3,
       "forklaring": "Den må kalles øverst på hver side som skal bruke $_SESSION, og før utdata sendes, fordi den setter en cookie."
     },
@@ -681,7 +861,12 @@
       "type": "flervalg",
       "kapittel": 6,
       "sporsmal": "Hvilken PHP-funksjon fjerner alle variabler i en sesjon?",
-      "alternativer": ["session_destroy()", "session_unset()", "set()", "Alle alternativene er riktige"],
+      "alternativer": [
+        "session_destroy()",
+        "session_unset()",
+        "set()",
+        "Alle alternativene er riktige"
+      ],
       "fasit": 1,
       "forklaring": "session_unset() tømmer $_SESSION med én gang. session_destroy() avslutter sesjonen på serveren, men lar arrayen stå i gjeldende forespørsel."
     },
@@ -774,7 +959,12 @@
       "type": "flervalg",
       "kapittel": 7,
       "sporsmal": "Hvilket verktøy kan brukes til å administrere kontoer i MySQL?",
-      "alternativer": ["FileZilla", "Windows", "PHPMyAdmin", "DB2"],
+      "alternativer": [
+        "FileZilla",
+        "Windows",
+        "PHPMyAdmin",
+        "DB2"
+      ],
       "fasit": 2,
       "forklaring": "PHPMyAdmin er et webgrensesnitt mot MySQL. FileZilla er en FTP-klient og DB2 et helt annet databasesystem."
     },
@@ -797,7 +987,12 @@
       "type": "flervalg",
       "kapittel": 7,
       "sporsmal": "Hvilket nøkkelord finnes ikke i MySQL-spørringer?",
-      "alternativer": ["FETCH", "REVOKE", "LIKE", "JOIN"],
+      "alternativer": [
+        "FETCH",
+        "REVOKE",
+        "LIKE",
+        "JOIN"
+      ],
       "fasit": 0,
       "forklaring": "REVOKE trekker tilbake rettigheter, LIKE gjør mønstersøk og JOIN kobler tabeller. FETCH hører hjemme i markører i andre databasesystemer."
     },
@@ -862,7 +1057,12 @@
       "type": "flervalg",
       "kapittel": 8,
       "sporsmal": "Hvilke serverspråk kan en webapplikasjon være skrevet i og fortsatt være sårbar for cross-site scripting?",
-      "alternativer": ["PHP", "Java", "Python", "Alle alternativene er riktige"],
+      "alternativer": [
+        "PHP",
+        "Java",
+        "Python",
+        "Alle alternativene er riktige"
+      ],
       "fasit": 3,
       "forklaring": "XSS utføres i nettleseren, ikke på serveren. Sårbarheten ligger i at utdata ikke kodes, og det kan skje uansett hvilket språk som genererer sida."
     },
@@ -885,7 +1085,12 @@
       "type": "flervalg",
       "kapittel": 9,
       "sporsmal": "Hvilken av disse er ikke en søkemotor?",
-      "alternativer": ["Altavista", "Yahoo", "Google", "Gmail"],
+      "alternativer": [
+        "Altavista",
+        "Yahoo",
+        "Google",
+        "Gmail"
+      ],
       "fasit": 3,
       "forklaring": "Gmail er e-post. Altavista var en av de store søkemotorene på 1990-tallet før den ble lagt ned."
     },
@@ -908,7 +1113,12 @@
       "type": "flervalg",
       "kapittel": 9,
       "sporsmal": "Hvilket format har en sitemap-fil?",
-      "alternativer": ["json", "txt", "rss", "xml"],
+      "alternativer": [
+        "json",
+        "txt",
+        "rss",
+        "xml"
+      ],
       "fasit": 3,
       "forklaring": "Sitemap-protokollen bygger på XML med faste elementer som <url> og <loc>. En ren tekstfil med adresser aksepteres også, men er ikke standardformatet."
     },
@@ -931,7 +1141,12 @@
       "type": "flervalg",
       "kapittel": 9,
       "sporsmal": "Hvilken av disse er ikke en gyldig HTTP-metode?",
-      "alternativer": ["POST", "OPTION", "CREATE", "PUT"],
+      "alternativer": [
+        "POST",
+        "OPTION",
+        "CREATE",
+        "PUT"
+      ],
       "fasit": 2,
       "forklaring": "Det finnes ingen CREATE – oppretting gjøres med POST eller PUT. Metoden for å spørre om tillatte operasjoner heter forresten OPTIONS, med s."
     },
@@ -948,6 +1163,75 @@
       ],
       "fasit": 0,
       "forklaring": "Det er resultatsida du får etter et søk. Å «rangere på SERP-en» betyr å komme høyt opp der."
+    },
+    {
+      "id": "co3049-ny-082",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Et element har width: 200px, padding: 20px og border: 2px solid. Hvor bred blir boksen med box-sizing: border-box?",
+      "alternativer": [
+        "240px",
+        "244px",
+        "200px",
+        "196px"
+      ],
+      "fasit": 2,
+      "forklaring": "Med border-box er padding og border inkludert i oppgitt bredde. Innholdsbredden blir 200 − 40 − 4 = 156px."
+    },
+    {
+      "id": "co3049-ny-083",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er forskjellen på event.target og event.currentTarget i en hendelseslytter?",
+      "alternativer": [
+        "De er alltid identiske",
+        "currentTarget er alltid document",
+        "target er alltid foreldreelementet",
+        "target er hendelsens mål; currentTarget er elementet som lytteren kjører på"
+      ],
+      "fasit": 3,
+      "forklaring": "Ved bubbling kan et klikk på et barn håndteres av en lytter på forelderen. Da er target barnet og currentTarget forelderen."
+    },
+    {
+      "id": "co3049-ny-084",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvorfor brukes en databasetransaksjon ved overføring mellom to kontoer?",
+      "alternativer": [
+        "Trekk og innskudd kan behandles som én atomisk enhet",
+        "Alle SQL-spørringer blir automatisk raskere",
+        "Databasen trenger ikke lenger validering",
+        "Alle tabeller blir skrivebeskyttet permanent"
+      ],
+      "fasit": 0,
+      "forklaring": "Atomisitet gjør at begge endringer fullføres eller ingen beholdes. Dermed unngår man at bare halvparten av overføringen lagres."
+    },
+    {
+      "id": "co3049-ny-085",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hva betyr det at en HTTP-metode er idempotent?",
+      "alternativer": [
+        "Svaret har alltid samme innhold",
+        "Flere identiske forespørsler har samme tilsiktede effekt som én",
+        "Forespørselen kan ikke endre data",
+        "Serveren trenger ikke autentisering"
+      ],
+      "fasit": 1,
+      "forklaring": "Idempotens gjelder den tilsiktede effekten på serveren. Statuskode og svarinnhold kan endres mellom gjentatte forespørsler."
+    },
+    {
+      "id": "co3049-ny-086",
+      "type": "langsvar",
+      "kapittel": 1,
+      "sporsmal": "Hvorfor bør et skjemafelt ha en tilknyttet label, og hvordan kobles de sammen?",
+      "momenter": [
+        "Label gir feltet et forståelig navn",
+        "for på label kan samsvare med id på input",
+        "Klikk på label aktiverer eller fokuserer feltet",
+        "Placeholder erstatter ikke en label"
+      ],
+      "modellsvar": "En label gjør formålet med skjemafeltet tydelig både visuelt og for hjelpemidler. Den kan kobles til et input-felt ved at label sitt for-attributt samsvarer med feltets id. Da kan brukeren også klikke på etiketten for å fokusere eller aktivere feltet. Placeholder er et hint som forsvinner ved inntasting og bør ikke erstatte etiketten."
     }
   ]
 }

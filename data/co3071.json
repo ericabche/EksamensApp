@@ -1,0 +1,2005 @@
+{
+  "fag": "Distributed Systems",
+  "kapitler": {
+    "1": "Grunnbegreper og systemmodeller",
+    "2": "Kommunikasjon og feil",
+    "3": "Tid og koordinering",
+    "4": "Replikering og skalering",
+    "5": "Datastrømmer og Kafka",
+    "6": "Edge, fog og strømmealgoritmer",
+    "7": "Distribuerte filsystemer",
+    "8": "Transaksjoner, 2PL og WAL",
+    "9": "Distribuerte transaksjoner og 2PC",
+    "10": "Gjensidig utelukkelse og ledervalg",
+    "11": "Konsensus og Raft",
+    "12": "Synkron og asynkron beregning",
+    "13": "Distribuert dyplæring",
+    "14": "Federated og Swarm Learning",
+    "15": "Spark og RDD-programmering"
+  },
+  "sporsmal": [
+    {
+      "id": "co3071-ny-001",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva kjennetegner et distribuert system?",
+      "alternativer": [
+        "Alle deler samme fysiske minne",
+        "Selvstendige datamaskiner samarbeider gjennom meldingsutveksling",
+        "Alle prosesser må kjøre på én maskin",
+        "Kommunikasjon er alltid uten forsinkelse"
+      ],
+      "fasit": 1,
+      "forklaring": "Komponentene kjører på ulike maskiner og koordinerer handlingene sine ved å sende meldinger over et nettverk."
+    },
+    {
+      "id": "co3071-ny-002",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva betyr lokasjonstransparens?",
+      "alternativer": [
+        "Alle servere har samme adresse",
+        "Data må lagres hos klienten",
+        "En ressurs kan brukes uten at klienten kjenner dens fysiske plassering",
+        "Brukeren må velge disk før hvert kall"
+      ],
+      "fasit": 2,
+      "forklaring": "Navn og grensesnitt kan skjule hvor ressursen faktisk ligger, slik at klienten ikke bindes til en fysisk plassering."
+    },
+    {
+      "id": "co3071-ny-003",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva menes med heterogenitet?",
+      "alternativer": [
+        "Alle noder er identiske",
+        "Alle meldinger har samme lengde",
+        "Systemet har bare én bruker",
+        "Systemet består av ulike typer maskinvare, operativsystemer eller språk"
+      ],
+      "fasit": 3,
+      "forklaring": "Felles protokoller og standardiserte dataformater gjør at ulike plattformer kan samarbeide."
+    },
+    {
+      "id": "co3071-ny-004",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva kan en klient sikkert konkludere med når et fjernkall får timeout?",
+      "alternativer": [
+        "Svaret kom ikke innen tidsfristen",
+        "Serveren utførte ikke operasjonen",
+        "Serveren har krasjet",
+        "Nettverket er permanent ødelagt"
+      ],
+      "fasit": 0,
+      "forklaring": "Operasjonen kan ha blitt utført selv om svaret er forsinket eller har gått tapt. Timeout sier ikke sikkert hva serveren gjorde."
+    },
+    {
+      "id": "co3071-ny-005",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvorfor er idempotente operasjoner nyttige ved gjentatte forespørsler?",
+      "alternativer": [
+        "De krever ikke nettverk",
+        "Gjentakelse gir samme tilsiktede effekt som én utførelse",
+        "De blir alltid raskere",
+        "De kan aldri feile"
+      ],
+      "fasit": 1,
+      "forklaring": "Ved usikkert svar kan klienten prøve igjen uten at den tilsiktede effekten gjentas, for eksempel ved å sette en verdi til 5 i stedet for å øke den med 5."
+    },
+    {
+      "id": "co3071-ny-006",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva betyr en delvis feil i et distribuert system?",
+      "alternativer": [
+        "Alle maskiner stopper samtidig",
+        "Ingen meldinger kan sendes",
+        "Noen komponenter feiler mens andre fortsatt kjører",
+        "Programmet inneholder ingen feil"
+      ],
+      "fasit": 2,
+      "forklaring": "En server eller lenke kan feile mens resten virker. Andre noder må håndtere usikkerhet om den berørte komponentens tilstand."
+    },
+    {
+      "id": "co3071-ny-007",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva garanterer Lamports logiske klokker dersom hendelse a skjedde før b i happens-before-relasjonen?",
+      "alternativer": [
+        "L(a) = L(b)",
+        "L(a) > L(b)",
+        "a og b skjedde på samme maskin",
+        "L(a) < L(b)"
+      ],
+      "fasit": 3,
+      "forklaring": "Logiske klokker respekterer kausal rekkefølge. Det motsatte gjelder ikke: L(a) < L(b) beviser ikke at a forårsaket eller skjedde kausalt før b."
+    },
+    {
+      "id": "co3071-ny-008",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor er fysiske klokker vanskelige å holde helt synkronisert mellom maskiner?",
+      "alternativer": [
+        "Klokkene driver, og meldingsforsinkelsene varierer",
+        "Alle klokker stopper når nettet er opptatt",
+        "Klokker kan ikke sende tall",
+        "Alle maskiner har identisk oscillator"
+      ],
+      "fasit": 0,
+      "forklaring": "Klokkedrift og usikker overføringstid gjør det vanskelig å beregne et helt nøyaktig felles tidspunkt."
+    },
+    {
+      "id": "co3071-ny-009",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er horisontal skalering?",
+      "alternativer": [
+        "Å gi én maskin mer RAM",
+        "Å legge til flere maskiner eller instanser",
+        "Å erstatte én CPU med en raskere CPU",
+        "Å redusere antallet noder til én"
+      ],
+      "fasit": 1,
+      "forklaring": "Horisontal skalering fordeler arbeid på flere noder. Vertikal skalering øker ressursene i én node."
+    },
+    {
+      "id": "co3071-ny-010",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er hovedforskjellen på replikering og partisjonering av data?",
+      "alternativer": [
+        "Begge betyr å slette gamle data",
+        "Replikering krever at alle data er ulike",
+        "Replikering lager kopier; partisjonering fordeler ulike deler av dataene",
+        "Partisjonering betyr alltid full kopi på hver node"
+      ],
+      "fasit": 2,
+      "forklaring": "Kopier kan bedre tilgjengelighet og lesekapasitet. Partisjonering fordeler datamengde og arbeidslast. Metodene kan kombineres."
+    },
+    {
+      "id": "co3071-ny-011",
+      "type": "langsvar",
+      "kapittel": 2,
+      "sporsmal": "Hvorfor kan et nytt forsøk etter timeout føre til dobbelt utført arbeid, og hvordan kan dette håndteres?",
+      "momenter": [
+        "Serveren kan ha utført første forespørsel",
+        "Svaret kan være forsinket eller tapt",
+        "Bruk en stabil forespørsels-ID",
+        "Lagre resultat eller bruk idempotente operasjoner"
+      ],
+      "modellsvar": "Hvis serveren utfører en bestilling, men svaret går tapt, kan klientens nye forsøk opprette en ny bestilling. Klienten kan sende samme forespørsels-ID ved gjentakelser. Serveren må registrere denne sammen med effekten på en pålitelig måte og returnere det tidligere resultatet ved duplikater. Idempotente operasjoner kan også gjøre gjentakelser trygge."
+    },
+    {
+      "id": "co3071-ny-012",
+      "type": "langsvar",
+      "kapittel": 4,
+      "sporsmal": "Forklar to fordeler og to utfordringer ved replikering.",
+      "momenter": [
+        "Bedre tilgjengelighet ved nodefeil",
+        "Leselast kan fordeles",
+        "Kopier må holdes konsistente",
+        "Oppdateringer koster kommunikasjon og lagring"
+      ],
+      "modellsvar": "Flere kopier gjør at en annen node kan betjene lesinger når én node feiler, og kan fordele leselasten. Samtidig må oppdateringer spres og konflikter håndteres. Dette krever nettverkstrafikk og ekstra lagring, og klienter kan få gamle data dersom kopiene ikke er oppdatert."
+    },
+    {
+      "id": "co3071-pensum-001",
+      "kapittel": 1,
+      "sporsmal": "En applikasjon bruker samme operasjoner for lokale og eksterne filer. Hvilken transparens illustrerer dette?",
+      "kilde": {
+        "dokument": "Ch1_Introduction to DS.pdf",
+        "sider": [
+          9
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Migrasjonstransparens",
+        "Feiltransparens",
+        "Replikeringstransparens",
+        "Tilgangstransparens"
+      ],
+      "fasit": 3,
+      "forklaring": "Tilgangstransparens skjuler forskjeller i hvordan lokale og eksterne ressurser aksesseres. Lokasjonstransparens handler om hvor ressursen ligger.\n\nKilde: Ch1_Introduction to DS.pdf, lysbilde 9."
+    },
+    {
+      "id": "co3071-pensum-002",
+      "kapittel": 1,
+      "sporsmal": "Hva er den typiske rollen til mellomlaget i en trelagsarkitektur?",
+      "kilde": {
+        "dokument": "Ch1_Introduction to DS.pdf",
+        "sider": [
+          15
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Å sørge for at klienten gjør all behandling",
+        "Å utføre applikasjonslogikk mellom klient og datalager",
+        "Å erstatte alle klienter med databaser",
+        "Å lagre alle nettverkspakker permanent"
+      ],
+      "fasit": 1,
+      "forklaring": "Tre lag skiller presentasjon, applikasjonslogikk og datalagring. Mellomlaget behandler forespørsler og bruker datalaget ved behov.\n\nKilde: Ch1_Introduction to DS.pdf, lysbilde 15."
+    },
+    {
+      "id": "co3071-pensum-003",
+      "kapittel": 1,
+      "sporsmal": "Hva skiller en peer-to-peer-arkitektur fra en rent sentralisert klient–server-arkitektur?",
+      "kilde": {
+        "dokument": "Ch1_Introduction to DS.pdf",
+        "sider": [
+          17
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "All behandling må skje hos én sentral server",
+        "Noder kommuniserer uten et nettverk",
+        "Noder kan både tilby og bruke tjenester",
+        "Alle noder må ha identisk maskinvare"
+      ],
+      "fasit": 2,
+      "forklaring": "I peer-to-peer fordeles ansvar mellom noder som kan ha både klient- og serverroller. Dette fjerner ikke behovet for koordinering.\n\nKilde: Ch1_Introduction to DS.pdf, lysbilde 17."
+    },
+    {
+      "id": "co3071-pensum-004",
+      "kapittel": 1,
+      "sporsmal": "Hvilket designvalg kan bli en flaskehals når antall brukere øker?",
+      "kilde": {
+        "dokument": "Ch1_Introduction to DS.pdf",
+        "sider": [
+          10
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Uavhengige forespørsler fordeles på flere servere",
+        "Data deles mellom flere lagringsnoder",
+        "Alle forespørsler må behandles av én server med fast kapasitet",
+        "Ofte leste data mellomlagres nær klientene"
+      ],
+      "fasit": 2,
+      "forklaring": "En sentral tjeneste med begrenset kapasitet setter et tak på gjennomstrømningen, selv om man legger til flere klienter.\n\nKilde: Ch1_Introduction to DS.pdf, lysbilde 10."
+    },
+    {
+      "id": "co3071-pensum-005",
+      "kapittel": 1,
+      "sporsmal": "En nettbutikk får ti ganger flere brukere. Beskriv hvordan distribuering kan hjelpe, og hvilke nye problemer løsningen må håndtere.",
+      "kilde": {
+        "dokument": "Ch1_Introduction to DS.pdf",
+        "sider": [
+          5,
+          6,
+          8,
+          21
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Fordel forespørsler mellom flere servere",
+        "Bruk caching eller replikering for hyppige lesinger",
+        "Håndter delvise feil og usikkert nettverk",
+        "Koordiner samtidige endringer og kopier",
+        "Vurder responstid og gjennomstrømning hver for seg"
+      ],
+      "modellsvar": "Flere applikasjonsservere bak en lastfordeler kan behandle uavhengige forespørsler samtidig. Caching og lesekopier kan redusere belastningen på datalageret. Resultatet avhenger av hvor flaskehalsen ligger: én sentral database kan fortsatt begrense kapasiteten. Fordelingen introduserer nettverksforsinkelser og delvise feil. Løsningen må dessuten håndtere samtidige bestillinger og holde nødvendige data konsistente. Man bør måle både hvor raskt én forespørsel besvares og hvor mange forespørsler systemet håndterer per sekund.\n\nKilde: Ch1_Introduction to DS.pdf, lysbilde 5, 6, 8, 21."
+    },
+    {
+      "id": "co3071-pensum-006",
+      "kapittel": 1,
+      "sporsmal": "To databasereplikaer mister forbindelsen til hverandre. Forklar avveiningen mellom konsistens og tilgjengelighet i CAP under denne partisjonen.",
+      "kilde": {
+        "dokument": "Ch0_Intro_Distributed Systems_26-27-HK1.pdf",
+        "sider": [
+          5
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Partisjon hindrer koordinering mellom replikaene",
+        "Konsistens i CAP er en sterk garanti om én oppdatert logisk kopi",
+        "Å avvise eller vente på enkelte operasjoner reduserer tilgjengeligheten",
+        "Å svare fra begge sider kan gi motstridende eller gamle verdier"
+      ],
+      "modellsvar": "Under en nettverkspartisjon kan replikaene ikke koordinere alle operasjoner. Hvis begge sider godtar motstridende oppdateringer og besvarer lesinger, kan de ikke samtidig garantere at alle operasjoner oppfører seg som på én oppdatert logisk kopi. Et system som prioriterer denne konsistensen, må la enkelte forespørsler vente eller feile. Et system som prioriterer tilgjengelighet på begge sider, må kunne håndtere inkonsistens. CAP er en avveining under partisjon, ikke en regel om fritt å velge to egenskaper i alle situasjoner.\n\nKilde: Ch0_Intro_Distributed Systems_26-27-HK1.pdf, lysbilde 5."
+    },
+    {
+      "id": "co3071-pensum-007",
+      "kapittel": 2,
+      "sporsmal": "Hva betyr marshalling i et RPC-kall?",
+      "kilde": {
+        "dokument": "Ch2_Communication.pdf",
+        "sider": [
+          19,
+          22
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Å gjøre argumenter eller resultater om til en overførbar bytefølge",
+        "Å kryptere alle argumenter med samme nøkkel",
+        "Å velge en ny leder",
+        "Å vente på at alle prosesser når en barriere"
+      ],
+      "fasit": 0,
+      "forklaring": "Marshalling koder data i et format mottakeren kan tolke. Det kan håndtere forskjeller i datarepresentasjon, men gir ikke automatisk kryptering.\n\nKilde: Ch2_Communication.pdf, lysbilde 19, 22."
+    },
+    {
+      "id": "co3071-pensum-008",
+      "kapittel": 2,
+      "sporsmal": "Hvorfor kan en rå minneadresse fra klienten normalt ikke brukes direkte av RPC-serveren?",
+      "kilde": {
+        "dokument": "Ch2_Communication.pdf",
+        "sider": [
+          22
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Serveren har alltid samme minne som klienten",
+        "RPC kan ikke sende strukturer",
+        "Pekere kan bare representeres med ett bit",
+        "Adressen viser til klientens adresserom, ikke nødvendigvis gyldige data hos serveren"
+      ],
+      "fasit": 3,
+      "forklaring": "Serveren kjører i et annet adresserom. Man må for eksempel serialisere dataene eller bruke en eksplisitt fjernreferanse, ikke anta at pekertallet peker på samme objekt.\n\nKilde: Ch2_Communication.pdf, lysbilde 22."
+    },
+    {
+      "id": "co3071-pensum-009",
+      "kapittel": 2,
+      "sporsmal": "Hva gjør en binder eller navnetjeneste når en klient skal bruke RPC?",
+      "kilde": {
+        "dokument": "Ch2_Communication.pdf",
+        "sider": [
+          23
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Hjelper klienten å finne endepunktet til riktig tjeneste",
+        "Garanterer at serveren aldri feiler",
+        "Utfører automatisk alle fjernkall",
+        "Lagrer alle klientens lokale variabler"
+      ],
+      "fasit": 0,
+      "forklaring": "Serveren registrerer tjenesten, og klienten slår opp kontaktinformasjon. Oppslag og utførelse er forskjellige operasjoner.\n\nKilde: Ch2_Communication.pdf, lysbilde 23."
+    },
+    {
+      "id": "co3071-pensum-010",
+      "kapittel": 2,
+      "sporsmal": "Prosess P sender m1 og deretter m2. Hva krever FIFO-ordnet multicast hos mottakere som leverer begge?",
+      "kilde": {
+        "dokument": "References_Multicast.pdf",
+        "sider": [
+          3,
+          4
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Alle meldinger fra alle avsendere får én felles rekkefølge",
+        "m1 leveres før m2",
+        "m2 må leveres før m1",
+        "Alle mottakere må levere dem på samme klokkeslett"
+      ],
+      "fasit": 1,
+      "forklaring": "FIFO bevarer rekkefølgen per avsender. Det sier ikke alene hvordan meldinger fra forskjellige avsendere skal ordnes.\n\nKilde: References_Multicast.pdf, lysbilde 3, 4."
+    },
+    {
+      "id": "co3071-pensum-011",
+      "kapittel": 2,
+      "sporsmal": "Beskriv veien fra et RPC-kall hos klienten til et returnert resultat. Forklar rollen til stubber, marshalling og binding.",
+      "kilde": {
+        "dokument": "Ch2_Communication.pdf",
+        "sider": [
+          19,
+          20,
+          22,
+          23
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Binding finner serverens endepunkt",
+        "Klienten kaller en lokal stub",
+        "Stubben serialiserer argumentene",
+        "Serverstubben dekoder og kaller tjenesten",
+        "Resultatet kodes og returneres motsatt vei",
+        "Nettverksfeil gjør kallsemantikken annerledes enn lokale kall"
+      ],
+      "modellsvar": "Klienten finner serverens endepunkt gjennom binding og kaller en lokal stub som ligner en vanlig funksjon. Stubben serialiserer argumentene og sender en melding. Serverstubben dekoder argumentene, kaller implementasjonen og pakker resultatet i en svarmelding. Klientstubben dekoder svaret og returnerer til programmet. Felles dataformat gjør det mulig å kommunisere mellom ulike maskiner. Selv med et lokalt utseende kan kallet feile på grunn av nettverket, og et manglende svar forteller ikke sikkert om operasjonen ble utført.\n\nKilde: Ch2_Communication.pdf, lysbilde 19, 20, 22, 23."
+    },
+    {
+      "id": "co3071-pensum-012",
+      "kapittel": 3,
+      "sporsmal": "En prosess har Lamport-klokke 7 og mottar en melding stemplet 11. Regelen er C := max(C, mottatt verdi) + 1. Hva blir mottakshendelsens klokke?",
+      "kilde": {
+        "dokument": "Ch4_Virtual time  Global states.pdf",
+        "sider": [
+          14
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "8",
+        "19",
+        "11",
+        "12"
+      ],
+      "fasit": 3,
+      "forklaring": "Mottakshendelsen må få en verdi høyere enn både den lokale klokken og sendetidsstempelet: max(7, 11) + 1 = 12.\n\nKilde: Ch4_Virtual time  Global states.pdf, lysbilde 14."
+    },
+    {
+      "id": "co3071-pensum-013",
+      "kapittel": 3,
+      "sporsmal": "To hendelser har vektorklokker (2, 1, 0) og (1, 2, 0). Hva viser sammenligningen?",
+      "kilde": {
+        "dokument": "Ch4_Virtual time  Global states.pdf",
+        "sider": [
+          17,
+          19
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Hendelsene er kausalt samtidige",
+        "Den første skjedde kausalt før den andre",
+        "Den andre skjedde kausalt før den første",
+        "Hendelsene må ha skjedd på samme prosess"
+      ],
+      "fasit": 0,
+      "forklaring": "Ingen vektor er komponentvis mindre enn eller lik den andre. De er derfor usammenlignbare og kausalt samtidige, uten at det betyr samme fysiske tidspunkt.\n\nKilde: Ch4_Virtual time  Global states.pdf, lysbilde 17, 19."
+    },
+    {
+      "id": "co3071-pensum-014",
+      "kapittel": 3,
+      "sporsmal": "Hvilket snitt er inkonsistent som global tilstand?",
+      "kilde": {
+        "dokument": "Ch4_Virtual time  Global states.pdf",
+        "sider": [
+          23,
+          24
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Snittet ligger før både sending og mottak av m",
+        "Snittet inneholder både sending og mottak av m",
+        "Snittet inneholder mottaket av m, men ikke sendingen av m",
+        "Snittet inneholder sendingen av m, men ikke mottaket"
+      ],
+      "fasit": 2,
+      "forklaring": "En mottakshendelse krever at sendingen har skjedd. En sendt, men ikke mottatt melding er derimot en lovlig melding underveis i kanaltilstanden.\n\nKilde: Ch4_Virtual time  Global states.pdf, lysbilde 23, 24."
+    },
+    {
+      "id": "co3071-pensum-015",
+      "kapittel": 3,
+      "sporsmal": "Hver av to klokker har maksimal relativ drift 10⁻⁵. Hvor lenge kan de gå fra perfekt synkronisering før verste relative avvik blir 0,1 sekund?",
+      "kilde": {
+        "dokument": "Ch4_Virtual time  Global states.pdf",
+        "sider": [
+          5
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "10000 sekunder",
+        "0,000002 sekunder",
+        "500 sekunder",
+        "5000 sekunder"
+      ],
+      "fasit": 3,
+      "forklaring": "Klokkene kan drive i motsatt retning, med samlet rate 2 × 10⁻⁵. Tiden blir 0,1 / (2 × 10⁻⁵) = 5000 sekunder.\n\nKilde: Ch4_Virtual time  Global states.pdf, lysbilde 5."
+    },
+    {
+      "id": "co3071-pensum-016",
+      "kapittel": 3,
+      "sporsmal": "Forklar hvordan Chandy–Lamport-snapshot registrerer en global tilstand uten å stoppe hele systemet. Anta pålitelige FIFO-kanaler.",
+      "kilde": {
+        "dokument": "Ch4_Virtual time  Global states.pdf",
+        "sider": [
+          23,
+          25,
+          26
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Global tilstand omfatter prosesser og meldinger underveis",
+        "Initiatoren lagrer lokal tilstand og sender markører",
+        "Første markør utløser registrering hos en annen prosess",
+        "Markører sendes før nye applikasjonsmeldinger på utgående kanaler",
+        "Meldinger registreres på øvrige inngående kanaler frem til markør",
+        "FIFO gjør at markøren avgrenser kanaltilstanden"
+      ],
+      "modellsvar": "Initiatoren lagrer sin lokale tilstand og sender en markør på hver utgående kanal før den sender flere applikasjonsmeldinger der. Ved første markør lagrer en annen prosess sin lokale tilstand og sender egne markører. Kanalen som ga første markør registreres som tom. På andre inngående kanaler lagres meldinger som ankommer etter lokal registrering og før kanalens markør. Disse meldingene var underveis i snapshotet. Når alle inngående markører er mottatt, er prosessens bidrag komplett. FIFO-rekkefølgen gjør markørene til pålitelige skiller, mens vanlig behandling kan fortsette.\n\nKilde: Ch4_Virtual time  Global states.pdf, lysbilde 23, 25, 26."
+    },
+    {
+      "id": "co3071-pensum-017",
+      "kapittel": 3,
+      "sporsmal": "Sammenlign uavhengig og koordinert checkpointing. Forklar dominoeffekten og hva meldingslogging kan bidra med.",
+      "kilde": {
+        "dokument": "Ch4_Virtual time  Global states.pdf",
+        "sider": [
+          29,
+          30,
+          31,
+          32
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Uavhengige checkpoints trenger ikke danne et konsistent snitt",
+        "Tilbakerulling kan tvinge andre prosesser lenger tilbake",
+        "Koordinering etablerer et konsistent gjenopprettingspunkt",
+        "Meldingslogging kan muliggjøre replay etter et checkpoint",
+        "Lagring og koordinering har en kostnad"
+      ],
+      "modellsvar": "Ved uavhengig checkpointing velger hver prosess tidspunkt selv. Etter en feil kan et valgt checkpoint inneholde mottak av en melding som den gjenopprettede avsenderen ennå ikke har sendt. Da må mottakeren rulles lenger tilbake, noe som kan tvinge flere prosesser bakover: dominoeffekten. Koordinerte checkpoints gir et konsistent globalt gjenopprettingspunkt. Meldingslogging kan bevare informasjon som trengs for å gjenskape deler av utførelsen etter et checkpoint, gitt passende antakelser om replay. Begge tiltak koster lagring og arbeid, og koordinering medfører kommunikasjon.\n\nKilde: Ch4_Virtual time  Global states.pdf, lysbilde 29, 30, 31, 32."
+    },
+    {
+      "id": "co3071-pensum-018",
+      "kapittel": 4,
+      "sporsmal": "Et quorum-system har N = 5 replikaer. Hvilket valg oppfyller både R + W > N og W > N/2?",
+      "kilde": {
+        "dokument": "Ch10_Replication.pdf",
+        "sider": [
+          24
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "R = 4, W = 2",
+        "R = 3, W = 3",
+        "R = 2, W = 3",
+        "R = 1, W = 4"
+      ],
+      "fasit": 1,
+      "forklaring": "3 + 3 > 5 og 3 > 2,5. Da overlapper hvert lesequorum hvert skrivequorum, og to skrivequorum overlapper. De øvrige alternativene bryter minst ett krav.\n\nKilde: Ch10_Replication.pdf, lysbilde 24."
+    },
+    {
+      "id": "co3071-pensum-019",
+      "kapittel": 4,
+      "sporsmal": "Tre replikaer har hver sannsynlighet 0,01 for å være utilgjengelige. Anta uavhengige feil. Hva er sannsynligheten for at alle tre er utilgjengelige samtidig?",
+      "kilde": {
+        "dokument": "Ch10_Replication.pdf",
+        "sider": [
+          20
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "0,0001",
+        "0,000001",
+        "0,99",
+        "0,03"
+      ],
+      "fasit": 1,
+      "forklaring": "Ved uavhengige feil multipliseres sannsynlighetene: 0,01³ = 0,000001. Felles strømbrudd eller nettverksfeil kan gjøre uavhengighetsantakelsen feil.\n\nKilde: Ch10_Replication.pdf, lysbilde 20."
+    },
+    {
+      "id": "co3071-pensum-020",
+      "kapittel": 4,
+      "sporsmal": "Hva gjør read repair?",
+      "kilde": {
+        "dokument": "Ch10_Replication.pdf",
+        "sider": [
+          27
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Hindrer enhver fremtidig nettverkspartisjon",
+        "Sletter alle replikaer etter en lesing",
+        "Bruker en lesing til å oppdatere replikaer som har en eldre verdi",
+        "Tvinger alle klienter til å skrive før de leser"
+      ],
+      "fasit": 2,
+      "forklaring": "Klienten eller systemet oppdager ulike versjoner under lesing og sprer den nyere versjonen til gamle kopier. Dette erstatter ikke øvrige konsistensregler.\n\nKilde: Ch10_Replication.pdf, lysbilde 27."
+    },
+    {
+      "id": "co3071-pensum-021",
+      "kapittel": 4,
+      "sporsmal": "En CRAQ-node mottar en lesing, men siste lokale objektversjon er dirty. Hva gjør den for en sterkt konsistent lesing?",
+      "kilde": {
+        "dokument": "Ch10.1_Object Storage on CRAQ.pdf",
+        "sider": [
+          8
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Ber klienten velge et tilfeldig versjonsnummer",
+        "Spør tail om siste committede versjonsnummer og returnerer den versjonen",
+        "Sletter objektet og svarer med feil",
+        "Returnerer alltid den nyeste lokale versjonen"
+      ],
+      "fasit": 1,
+      "forklaring": "En dirty versjon er ikke bekreftet committet lokalt. Tail gir versjonsnummeret som er committet, og noden returnerer den tilsvarende lagrede verdien.\n\nKilde: Ch10.1_Object Storage on CRAQ.pdf, lysbilde 8."
+    },
+    {
+      "id": "co3071-pensum-022",
+      "kapittel": 4,
+      "sporsmal": "Sammenlign vanlig chain replication og CRAQ. Forklar hvordan CRAQ kan fordele leselasten uten å returnere ubekreftede writes.",
+      "kilde": {
+        "dokument": "Ch10.1_Object Storage on CRAQ.pdf",
+        "sider": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Writes går fra head mot tail",
+        "Tail markerer commit når writen har nådd hele kjeden",
+        "Vanlig chain replication leser fra tail",
+        "CRAQ kan lese clean versjoner lokalt",
+        "Dirty versjoner krever versjonsspørsmål til tail",
+        "Flere versjoner lagres inntil de kan ryddes"
+      ],
+      "modellsvar": "I vanlig chain replication tar head imot writes og sender dem gjennom kjeden. Når tail mottar en write, har den passert alle replikaene og kan committes. Lesinger går til tail. CRAQ lar andre noder betjene lesinger. En node som kjenner siste versjon som clean, svarer lokalt. Hvis siste versjon er dirty, spør den tail om siste committede versjon og returnerer den. Noden beholder nødvendige versjoner mens writes er underveis. Dette kan avlaste tail ved mange lesinger, men krever versjonshåndtering og ekstra spørsmål under writes.\n\nKilde: Ch10.1_Object Storage on CRAQ.pdf, lysbilde 5, 6, 7, 8."
+    },
+    {
+      "id": "co3071-pensum-023",
+      "kapittel": 5,
+      "sporsmal": "Hva identifiserer et offset i Kafka?",
+      "kilde": {
+        "dokument": "Ch2_Data Streaming.pdf",
+        "sider": [
+          26,
+          27,
+          32
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "En global posisjon på tvers av alle topics",
+        "En forbrukers IP-adresse",
+        "En posisjon i én bestemt partisjon",
+        "Antall replikaer av hele klyngen"
+      ],
+      "fasit": 2,
+      "forklaring": "Offsets er ordnet per partisjon. To like offsetverdier i forskjellige partisjoner angir ikke samme melding eller en global tidsrekkefølge.\n\nKilde: Ch2_Data Streaming.pdf, lysbilde 26, 27, 32."
+    },
+    {
+      "id": "co3071-pensum-024",
+      "kapittel": 5,
+      "sporsmal": "Et topic har fire partisjoner og seks forbrukere i én klassisk consumer group. Hver partisjon tildeles én forbruker om gangen. Hvor mange forbrukere kan maksimalt lese aktivt fra dette topicet samtidig?",
+      "kilde": {
+        "dokument": "Ch2_Data Streaming.pdf",
+        "sider": [
+          31,
+          42,
+          46
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "4",
+        "1",
+        "6",
+        "24"
+      ],
+      "fasit": 0,
+      "forklaring": "Parallelliteten i denne gruppemodellen begrenses av antall partisjoner. To forbrukere får ingen partisjon fra dette topicet, selv om de fortsatt er medlemmer av gruppen.\n\nKilde: Ch2_Data Streaming.pdf, lysbilde 31, 42, 46."
+    },
+    {
+      "id": "co3071-pensum-025",
+      "kapittel": 5,
+      "sporsmal": "En forbruker skriver et resultat til en ekstern database og krasjer før offset er committet. Hva kan skje ved omstart?",
+      "kilde": {
+        "dokument": "Ch2_Data Streaming.pdf",
+        "sider": [
+          14,
+          47,
+          48
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Alle partisjoner i topicet slettes",
+        "Meldingen kan aldri leses igjen",
+        "Meldingen leses på nytt og databaseeffekten kan bli gjentatt",
+        "Kafka angrer automatisk databaseskrivingen"
+      ],
+      "fasit": 2,
+      "forklaring": "Uten atomisk koordinering eller deduplisering kan behandlingen skje flere ganger. En idempotent databaseoperasjon eller stabil hendelses-ID kan hindre dobbel effekt.\n\nKilde: Ch2_Data Streaming.pdf, lysbilde 14, 47, 48."
+    },
+    {
+      "id": "co3071-pensum-026",
+      "kapittel": 5,
+      "sporsmal": "Produsenter sender vedvarende mer data enn forbrukerne klarer å behandle. Hva er en sannsynlig konsekvens?",
+      "kilde": {
+        "dokument": "Ch2_Data Streaming.pdf",
+        "sider": [
+          13
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Produsentenes hastighet endres automatisk til null",
+        "Hver melding blir automatisk behandlet raskere",
+        "Køen garanterer ubegrenset kapasitet",
+        "Kø og ventetid vokser til kapasitet eller en grense nås"
+      ],
+      "fasit": 3,
+      "forklaring": "En kø absorberer midlertidige topper, men løser ikke vedvarende underkapasitet. Man må håndtere backpressure, kapasitet eller en eksplisitt policy for data.\n\nKilde: Ch2_Data Streaming.pdf, lysbilde 13."
+    },
+    {
+      "id": "co3071-pensum-027",
+      "kapittel": 5,
+      "sporsmal": "Sammenlign at-most-once, at-least-once og exactly-once behandling. Hvorfor må en ekstern database tas med i vurderingen?",
+      "kilde": {
+        "dokument": "Ch2_Data Streaming.pdf",
+        "sider": [
+          11,
+          14,
+          15,
+          47,
+          48
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "At-most-once kan miste meldinger, men unngår gjentatt levering innen modellen",
+        "At-least-once kan gi gjentatt behandling",
+        "Exactly-once handler om én synlig effekt innen et definert omfang",
+        "Offset og resultat må koordineres atomisk eller dedupliseres",
+        "En garanti inne i Kafka omfatter ikke automatisk eksterne systemer"
+      ],
+      "modellsvar": "At-most-once kan oppnås ved å registrere fremdrift før behandling, men et krasj mellom disse stegene kan miste arbeid. At-least-once registrerer fremdrift etter behandling, slik at et krasj kan gi gjentakelse. Exactly-once krever at resultat og fremdrift henger sammen slik at omkjøring ikke gir flere synlige effekter. Kafka kan støtte dette innen bestemte transaksjonelle arbeidsflyter, men en ekstern database må også koordineres eller bruke deduplisering. Lysbilde 15 sin generelle påstand om manglende Kafka-støtte er historisk og brukes ikke som dagens fasit. Faglig kontroll: https://kafka.apache.org/41/design/design/.\n\nKilde: Ch2_Data Streaming.pdf, lysbilde 11, 14, 15, 47, 48."
+    },
+    {
+      "id": "co3071-pensum-028",
+      "kapittel": 6,
+      "sporsmal": "Hva er hovedideen med å flytte en tidskritisk sensoranalyse til edge?",
+      "kilde": {
+        "dokument": "Ch3_Edge  Fog computing.pdf",
+        "sider": [
+          6,
+          7,
+          11
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Sende alle rådata via et fjernere datasenter først",
+        "Fjerne behovet for all lokal beregning",
+        "Behandle data nær kilden for å redusere kommunikasjon og responstid",
+        "Garantere ubegrenset minne på sensoren"
+      ],
+      "fasit": 2,
+      "forklaring": "Kortere avstand til kilden kan redusere nettverksforsinkelse og datatrafikk. Lokal kapasitet og drift må fortsatt tas hensyn til.\n\nKilde: Ch3_Edge  Fog computing.pdf, lysbilde 6, 7, 11."
+    },
+    {
+      "id": "co3071-pensum-029",
+      "kapittel": 6,
+      "sporsmal": "En sensor måler klokken 10:00, men meldingen kommer inn i strømmesystemet 10:03. Hva er event time?",
+      "kilde": {
+        "dokument": "Ch3_Edge  Fog computing.pdf",
+        "sider": [
+          31,
+          32
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Tidspunktet analysen blir ferdig",
+        "Gjennomsnittet 10:01:30",
+        "10:03",
+        "10:00"
+      ],
+      "fasit": 3,
+      "forklaring": "Event time er når hendelsen faktisk skjedde. Inngangstid og behandlingstid kan være senere på grunn av nettverk eller kø.\n\nKilde: Ch3_Edge  Fog computing.pdf, lysbilde 31, 32."
+    },
+    {
+      "id": "co3071-pensum-030",
+      "kapittel": 6,
+      "sporsmal": "Et tidsvindu har lengde 10 minutter og starter hvert 5. minutt. Hvilken type vindu er dette?",
+      "kilde": {
+        "dokument": "Ch3_Edge  Fog computing.pdf",
+        "sider": [
+          33,
+          35
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Et ikke-overlappende tumbling window",
+        "Et overlappende sliding window",
+        "Et vindu uten tidsgrenser",
+        "Et vindu med nøyaktig ett element"
+      ],
+      "fasit": 1,
+      "forklaring": "Fordi et nytt vindu starter før det forrige er slutt, overlapper de. Et vanlig tumbling window har sprang lik vinduslengden.\n\nKilde: Ch3_Edge  Fog computing.pdf, lysbilde 33, 35."
+    },
+    {
+      "id": "co3071-pensum-031",
+      "kapittel": 6,
+      "sporsmal": "Et vanlig Bloom-filter uten slettinger sier at et element ikke finnes. Hva kan du konkludere med, gitt korrekt bruk og uendrede hashfunksjoner?",
+      "kilde": {
+        "dokument": "Ch3_Edge  Fog computing.pdf",
+        "sider": [
+          39,
+          40,
+          41
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Elementet finnes helt sikkert",
+        "Elementet kan være satt inn, men filteret glemmer tilfeldig",
+        "Elementet er ikke satt inn i filteret",
+        "Filteret har beregnet elementets eksakte frekvens"
+      ],
+      "fasit": 2,
+      "forklaring": "Et slikt Bloom-filter har ikke falske negative. Et positivt svar kan derimot være falskt på grunn av kollisjoner, og gir ikke eksakt medlemskap.\n\nKilde: Ch3_Edge  Fog computing.pdf, lysbilde 39, 40, 41."
+    },
+    {
+      "id": "co3071-pensum-032",
+      "kapittel": 6,
+      "sporsmal": "Design en strømmebehandling for jordfuktighet som skal styre vanning raskt og samtidig lage historiske rapporter. Begrunn plassering og tidsvinduer.",
+      "kilde": {
+        "dokument": "Ch3_Edge  Fog computing.pdf",
+        "sider": [
+          6,
+          7,
+          15,
+          31,
+          33,
+          35
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Lokal edge-behandling for raske beslutninger",
+        "Fog kan samle og filtrere data fra flere sensorer",
+        "Sky eller sentralt lager kan brukes til historikk",
+        "Skill event time fra ankomsttid",
+        "Velg vindu ut fra formålet",
+        "Håndter forsinkede data og manglende forbindelse"
+      ],
+      "modellsvar": "En lokal edge-enhet kan bruke ferske fuktmålinger til å styre pumpen uten å vente på et fjernt datasenter. Et fog-lag kan samle målinger fra flere enheter og sende aggregerte data videre. Historikk kan lagres sentralt for rapporter. Et glidende vindu passer til en løpende vurdering av utviklingen, mens adskilte timevinduer passer til rapportering. Historiske grupperinger bør ta hensyn til måletidspunkt, siden meldinger kan komme sent. Systemet må definere hvordan forsinkede og manglende data håndteres, og ha en forsvarlig lokal driftsregel ved nettverksbrudd.\n\nKilde: Ch3_Edge  Fog computing.pdf, lysbilde 6, 7, 15, 31, 33, 35."
+    },
+    {
+      "id": "co3071-pensum-033",
+      "kapittel": 7,
+      "sporsmal": "Hva er rollen til directory service i modellarkitekturen for en filtjeneste?",
+      "kilde": {
+        "dokument": "Ch5_Distributed File Systems_v2.pdf",
+        "sider": [
+          10
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Å kjøre alle klientens prosesser",
+        "Å knytte filnavn til filidentifikatorer",
+        "Å kryptere alt filinnhold",
+        "Å erstatte nettverkslaget"
+      ],
+      "fasit": 1,
+      "forklaring": "Directory service håndterer navneoppslag, mens flat file service utfører operasjoner på filinnhold og attributter via identifikatorer.\n\nKilde: Ch5_Distributed File Systems_v2.pdf, lysbilde 10."
+    },
+    {
+      "id": "co3071-pensum-034",
+      "kapittel": 7,
+      "sporsmal": "To hardlenker i samme filsystem peker på samme vanlige fil. Hva skjer normalt med filinnholdet når den ene lenken slettes og den andre beholdes?",
+      "kilde": {
+        "dokument": "Ch5_Distributed File Systems_v2.pdf",
+        "sider": [
+          6,
+          7,
+          8
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Den andre hardlenken blir automatisk en symlink",
+        "Begge navn slettes automatisk",
+        "Innholdet blir straks utilgjengelig via begge navn",
+        "Innholdet er fortsatt tilgjengelig via den andre lenken"
+      ],
+      "fasit": 3,
+      "forklaring": "Hardlenkene viser til samme inode. Sletting av ett navn fjerner én referanse, ikke den andre lenken eller innholdet som fortsatt er referert.\n\nKilde: Ch5_Distributed File Systems_v2.pdf, lysbilde 6, 7, 8."
+    },
+    {
+      "id": "co3071-pensum-035",
+      "kapittel": 7,
+      "sporsmal": "Hvilken rolle har NameNode i HDFS?",
+      "kilde": {
+        "dokument": "Ch5_Distributed File Systems_v2.pdf",
+        "sider": [
+          24
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Utfører alle Spark-transformasjoner",
+        "Forvalter filsystemets metadata og informasjon om blokker",
+        "Lagrer alle filblokker som eneste datanode",
+        "Er en klient som bare leser logger"
+      ],
+      "fasit": 1,
+      "forklaring": "DataNode lagrer selve blokkene. NameNode håndterer blant annet navnerommet og metadata klienten trenger for å finne blokkene.\n\nKilde: Ch5_Distributed File Systems_v2.pdf, lysbilde 24."
+    },
+    {
+      "id": "co3071-pensum-036",
+      "kapittel": 7,
+      "sporsmal": "En HDFS-klient har fått vite hvilke DataNodes som har blokkene i en fil. Hvor leser klienten normalt selve blokkdataene fra?",
+      "kilde": {
+        "dokument": "Ch5_Distributed File Systems_v2.pdf",
+        "sider": [
+          27,
+          28
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Fra alle klientenes RAM samtidig",
+        "Alltid gjennom NameNode som dataproxy",
+        "Fra en DNS-server",
+        "Direkte fra DataNodes"
+      ],
+      "fasit": 3,
+      "forklaring": "NameNode gir metadata om blokkplassering. Selve datastrømmen går mellom klienten og aktuelle DataNodes.\n\nKilde: Ch5_Distributed File Systems_v2.pdf, lysbilde 27, 28."
+    },
+    {
+      "id": "co3071-pensum-037",
+      "kapittel": 7,
+      "sporsmal": "Forklar hvordan blokkdeling og replikering gjør HDFS egnet for store filer. Skill mellom NameNode og DataNode, og nevn en begrensning.",
+      "kilde": {
+        "dokument": "Ch5_Distributed File Systems_v2.pdf",
+        "sider": [
+          23,
+          24,
+          27,
+          28,
+          29
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Store filer deles i blokker",
+        "DataNodes lagrer blokkene og kopiene",
+        "NameNode håndterer metadata",
+        "Klienter leser data fra DataNodes",
+        "Kopier kan brukes ved feil",
+        "Mange små filer gir metadataarbeid"
+      ],
+      "modellsvar": "HDFS deler store filer i blokker som fordeles over DataNodes og kan replikeres på flere maskiner. Hvis en DataNode blir utilgjengelig, kan andre kopier brukes så lenge nok data fortsatt er tilgjengelige. NameNode forvalter navnerommet og blokkmetadata, og hjelper klienter å finne DataNodes. Datalesingen går deretter direkte til disse nodene. Store sekvensielle operasjoner passer godt til denne modellen. Mange små filer kan gi mye metadata i forhold til datamengden, og replikering koster ekstra lagringsplass.\n\nKilde: Ch5_Distributed File Systems_v2.pdf, lysbilde 23, 24, 27, 28, 29."
+    },
+    {
+      "id": "co3071-pensum-038",
+      "kapittel": 8,
+      "sporsmal": "Hvilken ACID-egenskap betyr at en bekreftet commit skal overleve en senere prosesskrasj, innen lagringssystemets feilmodell?",
+      "kilde": {
+        "dokument": "Ch6_Transactions.pdf",
+        "sider": [
+          7
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Durability",
+        "Atomicity",
+        "Isolation",
+        "Consistency"
+      ],
+      "fasit": 0,
+      "forklaring": "Durability betyr varighet av committede resultater. Garantien forutsetter at den underliggende lagringen overlever feilene modellen skal tåle.\n\nKilde: Ch6_Transactions.pdf, lysbilde 7."
+    },
+    {
+      "id": "co3071-pensum-039",
+      "kapittel": 8,
+      "sporsmal": "Hva er hovedregelen i grunnleggende two-phase locking (2PL)?",
+      "kilde": {
+        "dokument": "Ch6_Transactions.pdf",
+        "sider": [
+          18
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Hver transaksjon må låse nøyaktig to rader",
+        "Låser er bare tillatt ved commit",
+        "Ingen nye låser tas etter at den første låsen er frigitt",
+        "Alle låser frigjøres før første lesing"
+      ],
+      "fasit": 2,
+      "forklaring": "En voksende fase samler låser, og en krympende fase frigjør dem. Dette er noe annet enn two-phase commit.\n\nKilde: Ch6_Transactions.pdf, lysbilde 18."
+    },
+    {
+      "id": "co3071-pensum-040",
+      "kapittel": 8,
+      "sporsmal": "T1 holder lås på X og venter på Y. T2 holder lås på Y og venter på X. Hva beskriver dette?",
+      "kilde": {
+        "dokument": "Ch6_Transactions.pdf",
+        "sider": [
+          19,
+          21
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "En ferdig commit",
+        "Read repair",
+        "Deadlock",
+        "En vanlig cache-hit"
+      ],
+      "fasit": 2,
+      "forklaring": "Ventegrafen har en syklus: T1 venter på T2 og T2 på T1. Systemet kan bryte syklusen ved å avbryte og rulle tilbake en transaksjon.\n\nKilde: Ch6_Transactions.pdf, lysbilde 19, 21."
+    },
+    {
+      "id": "co3071-pensum-041",
+      "kapittel": 8,
+      "sporsmal": "Hva er grunnideen i write-ahead logging (WAL)?",
+      "kilde": {
+        "dokument": "Ch6_Transactions.pdf",
+        "sider": [
+          24,
+          26
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Loggen skrives bare etter en krasj",
+        "Alle data må slettes før logging",
+        "Relevant logginformasjon lagres varig før den tilhørende datasiden skrives ut",
+        "Bare vellykkede lesinger logges"
+      ],
+      "fasit": 2,
+      "forklaring": "En varig logg gjør det mulig å gjenopprette tilstanden selv om datasider bare delvis er skrevet. Oppdateringsinformasjon kan brukes til undo eller redo i den aktuelle gjenopprettingsmodellen.\n\nKilde: Ch6_Transactions.pdf, lysbilde 24, 26."
+    },
+    {
+      "id": "co3071-pensum-042",
+      "kapittel": 8,
+      "sporsmal": "A har 100 kroner og B har 200 kroner. En transaksjon flytter 50 fra A til B, mens en annen leser summen. Forklar hvordan feil og samtidighet kan gi feil resultat uten transaksjoner, og hva ACID bidrar med.",
+      "kilde": {
+        "dokument": "Ch6_Transactions.pdf",
+        "sider": [
+          7,
+          8,
+          17,
+          18,
+          24
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "En delvis overføring kan gi saldo 50 og 200",
+        "En samtidig lesing kan se blandet tilstand",
+        "Riktig total er 300 både før og etter",
+        "Atomisitet hindrer at bare halve overføringen beholdes",
+        "Isolasjon styrer hva samtidige operasjoner kan observere",
+        "Varighet beskytter bekreftet resultat"
+      ],
+      "modellsvar": "Uten en samlet transaksjon kan prosessen krasje etter at A er redusert til 50, men før B er økt til 250. En annen prosess kan også lese disse mellomverdiene og rapportere 250 i stedet for 300. Atomisitet gjør at en ufullført overføring ikke blir stående halvveis. Ved serialiserbar isolasjon oppfører sumlesingen seg som om den skjer før eller etter overføringen. Konsistens bevarer de definerte reglene, gitt korrekt transaksjonskode, og varighet gjør en bekreftet overføring bestående etter en krasj innen feilmodellen.\n\nKilde: Ch6_Transactions.pdf, lysbilde 7, 8, 17, 18, 24."
+    },
+    {
+      "id": "co3071-pensum-043",
+      "kapittel": 9,
+      "sporsmal": "Hva må koordinatoren ha mottatt før den kan velge COMMIT i vanlig two-phase commit?",
+      "kilde": {
+        "dokument": "Ch7_Distributed Transactions.pdf",
+        "sider": [
+          17,
+          18,
+          19,
+          20
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "PREPARE-FAIL fra minst én deltaker",
+        "Et flertall av klientene må være enige",
+        "PREPARE-OK fra bare én deltaker",
+        "PREPARE-OK fra alle deltakere"
+      ],
+      "fasit": 3,
+      "forklaring": "Atomic commit krever at alle involverte deltakere er klare. En nei-stemme betyr at transaksjonen ikke kan committes på vanlig måte.\n\nKilde: Ch7_Distributed Transactions.pdf, lysbilde 17, 18, 19, 20."
+    },
+    {
+      "id": "co3071-pensum-044",
+      "kapittel": 9,
+      "sporsmal": "En 2PC-deltaker har logget og sendt PREPARE-OK, men får timeout mens den venter på beslutningen. Hva er riktig?",
+      "kilde": {
+        "dokument": "Ch7_Distributed Transactions.pdf",
+        "sider": [
+          28,
+          29,
+          32
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Den kan måtte vente eller undersøke beslutningen hos andre",
+        "Den kan alltid committe på egen hånd",
+        "Den kan glemme transaksjonen uten logging",
+        "Den kan alltid abortere på egen hånd"
+      ],
+      "fasit": 0,
+      "forklaring": "Deltakeren er i usikkerhetsperioden. Koordinatoren kan allerede ha valgt commit eller abort, så en lokal gjetning kan bryte enigheten.\n\nKilde: Ch7_Distributed Transactions.pdf, lysbilde 28, 29, 32."
+    },
+    {
+      "id": "co3071-pensum-045",
+      "kapittel": 9,
+      "sporsmal": "Hvorfor lagrer en deltaker PREPARE-OK varig før den sender ja-stemmen i 2PC?",
+      "kilde": {
+        "dokument": "Ch7_Distributed Transactions.pdf",
+        "sider": [
+          18
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "For å slippe å lagre transaksjonsdata",
+        "For å hindre koordinatoren i å abortere",
+        "For å huske forpliktelsen og kunne fullføre etter gjenoppretting",
+        "For å erstatte alle låser med DNS"
+      ],
+      "fasit": 2,
+      "forklaring": "Et ja er et løfte om å kunne følge den endelige beslutningen. Etter krasj må deltakeren kunne gjenkjenne en forberedt, uavklart transaksjon.\n\nKilde: Ch7_Distributed Transactions.pdf, lysbilde 18."
+    },
+    {
+      "id": "co3071-pensum-046",
+      "kapittel": 9,
+      "sporsmal": "Hvorfor er lokale ACID-transaksjoner alene utilstrekkelige for en overføring mellom to shards?",
+      "kilde": {
+        "dokument": "Ch7_Distributed Transactions.pdf",
+        "sider": [
+          8,
+          9,
+          10
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Den ene sharden kan committe mens den andre aborterer",
+        "Sharding gjør alle data skrivebeskyttet",
+        "ACID forbyr all kommunikasjon",
+        "Lokale transaksjoner krever en global klokke"
+      ],
+      "fasit": 0,
+      "forklaring": "Hver shard kan være korrekt lokalt uten at den samlede operasjonen er atomisk. Et distribuert commit-opplegg samordner utfallet.\n\nKilde: Ch7_Distributed Transactions.pdf, lysbilde 8, 9, 10."
+    },
+    {
+      "id": "co3071-pensum-047",
+      "kapittel": 9,
+      "sporsmal": "Beskriv begge fasene i 2PC og forklar hvorfor protokollen kan blokkere når koordinatoren feiler.",
+      "kilde": {
+        "dokument": "Ch7_Distributed Transactions.pdf",
+        "sider": [
+          16,
+          18,
+          27,
+          28,
+          29,
+          32
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Koordinatoren ber deltakerne forberede seg",
+        "Deltakerne logger og svarer ja eller nei",
+        "Alle ja tillater commit, ellers abort",
+        "Beslutningen lagres og sendes til deltakerne",
+        "En ja-stemme kan etterlate en deltaker i usikkerhet",
+        "Ventingen kan holde låser og blokkere annet arbeid"
+      ],
+      "modellsvar": "I forberedelsesfasen spør koordinatoren om alle deltakere kan committe. Deltakerne sikrer nødvendig tilstand, logger svaret og sender ja eller nei. Koordinatoren velger commit bare hvis alle svarer ja, ellers abort, og lagrer beslutningen varig før den formidles. En deltaker som har stemt ja, må kunne følge beslutningen. Hvis koordinatoren feiler før svaret kommer frem, vet ikke deltakeren hvilket utfall som er valgt. Den kan spørre andre, men hvis ingen kjenner beslutningen, kan den bli stående og vente med låser beholdt.\n\nKilde: Ch7_Distributed Transactions.pdf, lysbilde 16, 18, 27, 28, 29, 32."
+    },
+    {
+      "id": "co3071-pensum-048",
+      "kapittel": 10,
+      "sporsmal": "Hvor mange meldinger trengs normalt per fullført kritisk seksjon i den sentraliserte algoritmen med request, grant og release, uten feil?",
+      "kilde": {
+        "dokument": "Ch8_Coordination.pdf",
+        "sider": [
+          5,
+          6
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "2 × (N − 1)",
+        "3",
+        "2",
+        "1"
+      ],
+      "fasit": 1,
+      "forklaring": "Prosessen sender request, koordinatoren sender grant, og prosessen sender release etter bruk. Dette er enkelt, men koordinatoren er en flaskehals og et feilpunkt.\n\nKilde: Ch8_Coordination.pdf, lysbilde 5, 6."
+    },
+    {
+      "id": "co3071-pensum-049",
+      "kapittel": 10,
+      "sporsmal": "Ricart–Agrawala brukes med fem prosesser, uten feil. Hvor mange request- og reply-meldinger trengs samlet for én tilgang til kritisk seksjon?",
+      "kilde": {
+        "dokument": "Ch8_Coordination.pdf",
+        "sider": [
+          9,
+          10,
+          14
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "5",
+        "3",
+        "10",
+        "8"
+      ],
+      "fasit": 3,
+      "forklaring": "Prosessen sender én request til hver av de fire andre og mottar fire replies: 2 × (5 − 1) = 8.\n\nKilde: Ch8_Coordination.pdf, lysbilde 9, 10, 14."
+    },
+    {
+      "id": "co3071-pensum-050",
+      "kapittel": 10,
+      "sporsmal": "Hva gir en prosess tillatelse til kritisk seksjon i token-ring-algoritmen?",
+      "kilde": {
+        "dokument": "Ch8_Coordination.pdf",
+        "sider": [
+          18,
+          19
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "At den holder det unike tokenet",
+        "At den har høyest lokalt klokkeslett",
+        "At den har lavest nettverksforsinkelse",
+        "At den har sendt flest forespørsler"
+      ],
+      "fasit": 0,
+      "forklaring": "Bare tokenholderen får tilgang. Systemet må håndtere tap av tokenet og unngå at gjenoppretting skaper flere gyldige token.\n\nKilde: Ch8_Coordination.pdf, lysbilde 18, 19."
+    },
+    {
+      "id": "co3071-pensum-051",
+      "kapittel": 10,
+      "sporsmal": "I bully-algoritmen har prosessene ID 1–5. Prosess 5 har feilet, og 1–4 kan kommunisere pålitelig. Hvem blir leder når valget er fullført?",
+      "kilde": {
+        "dokument": "Ch8_Coordination.pdf",
+        "sider": [
+          26,
+          27,
+          29
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Prosess 4",
+        "Prosess 1",
+        "Prosess 5 selv om den er nede",
+        "Prosessen som først oppdaget feilen, uansett ID"
+      ],
+      "fasit": 0,
+      "forklaring": "Bully-algoritmen velger den operative prosessen med høyest ID, under algoritmens antakelser om kommunikasjon og feildeteksjon.\n\nKilde: Ch8_Coordination.pdf, lysbilde 26, 27, 29."
+    },
+    {
+      "id": "co3071-pensum-052",
+      "kapittel": 10,
+      "sporsmal": "Sammenlign sentralisert gjensidig utelukkelse, Ricart–Agrawala og token ring med hensyn til meldinger, venting og feil.",
+      "kilde": {
+        "dokument": "Ch8_Coordination.pdf",
+        "sider": [
+          5,
+          6,
+          9,
+          14,
+          18,
+          19
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Sentral koordinator gir enkel styring og tre meldinger",
+        "Koordinatoren kan bli flaskehals eller feilpunkt",
+        "Ricart–Agrawala trenger svar fra alle andre",
+        "Manglende svar kan stoppe fremdrift",
+        "Token ring gir tilgang ved sirkulerende token",
+        "Tap og duplisering av token må håndteres"
+      ],
+      "modellsvar": "En koordinator kan køe forespørsler og gi én tillatelse om gangen med request, grant og release. Det er enkelt, men tjenesten avhenger av koordinatoren. Ricart–Agrawala bruker tidsstemplede forespørsler og svar fra de N − 1 andre prosessene, normalt 2(N − 1) meldinger per tilgang. Uten feilhåndtering kan én utilgjengelig prosess stoppe ventingen. I token ring venter prosessen til tokenet kommer, og meldinger kan sirkulere også når få trenger ressursen. Feil kan stoppe ringen eller miste tokenet, og gjenoppretting må bevare at bare ett gyldig token finnes.\n\nKilde: Ch8_Coordination.pdf, lysbilde 5, 6, 9, 14, 18, 19."
+    },
+    {
+      "id": "co3071-pensum-053",
+      "kapittel": 11,
+      "sporsmal": "Hva betyr agreement i konsensusproblemet?",
+      "kilde": {
+        "dokument": "Ch9_Consensus.pdf",
+        "sider": [
+          7
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Alle meldinger ankommer samtidig",
+        "Ingen to korrekte prosesser beslutter forskjellige verdier",
+        "Alle prosesser starter med samme forslag",
+        "Alle prosesser må være ledere"
+      ],
+      "fasit": 1,
+      "forklaring": "Agreement er et sikkerhetskrav om at beslutninger ikke spriker. Termination handler om at korrekte prosesser til slutt faktisk beslutter.\n\nKilde: Ch9_Consensus.pdf, lysbilde 7."
+    },
+    {
+      "id": "co3071-pensum-054",
+      "kapittel": 11,
+      "sporsmal": "En Raft-klynge har fem stemmeberettigede servere. Hvor mange servere må støtte et flertall, inkludert lederen selv?",
+      "kilde": {
+        "dokument": "Ch9_Consensus.pdf",
+        "sider": [
+          12,
+          16,
+          18
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "5",
+        "3",
+        "4",
+        "2"
+      ],
+      "fasit": 1,
+      "forklaring": "Et flertall er floor(5/2) + 1 = 3. Når lederen teller med, er støtte fra to andre nok til dette antallskravet. Loggreglene må også være oppfylt. Presisering av forelesningens formulering om flertall av followers. Kontroll: https://raft.github.io/raft.pdf.\n\nKilde: Ch9_Consensus.pdf, lysbilde 12, 16, 18."
+    },
+    {
+      "id": "co3071-pensum-055",
+      "kapittel": 11,
+      "sporsmal": "Hva gjør en Raft-follower normalt når valg-timeouten utløper uten gyldig kontakt fra en leder?",
+      "kilde": {
+        "dokument": "Ch9_Consensus.pdf",
+        "sider": [
+          15,
+          16,
+          17
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Sletter permanent alle andre servere",
+        "Committer alle lokale oppføringer umiddelbart",
+        "Blir leder uten avstemning",
+        "Blir kandidat, øker term og ber om stemmer"
+      ],
+      "fasit": 3,
+      "forklaring": "En timeout utløser et valgforsøk, ikke bevis på lederens død. Kandidaten trenger et flertall av stemmene for å vinne.\n\nKilde: Ch9_Consensus.pdf, lysbilde 15, 16, 17."
+    },
+    {
+      "id": "co3071-pensum-056",
+      "kapittel": 11,
+      "sporsmal": "Hva sier FLP-resultatet om deterministisk konsensus i et fullstendig asynkront system med mulig prosesskrasj?",
+      "kilde": {
+        "dokument": "Ch9_Consensus.pdf",
+        "sider": [
+          9,
+          39
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Konsensus kan aldri lykkes i noen kjøring",
+        "Alle nettverk må ha minst fire servere",
+        "Resultatet gjelder bare bysantinske feil",
+        "Terminering kan ikke garanteres i alle tillatte kjøringer, selv med én mulig krasj"
+      ],
+      "fasit": 3,
+      "forklaring": "FLP utelukker en generell termineringsgaranti under disse antakelsene. Det betyr ikke at praktiske protokoller aldri oppnår enighet.\n\nKilde: Ch9_Consensus.pdf, lysbilde 9, 39."
+    },
+    {
+      "id": "co3071-pensum-057",
+      "kapittel": 11,
+      "sporsmal": "Forklar hvordan Raft støtter state machine replication. Ta med ledervalg, loggrekkefølge, flertall og forskjellen mellom sikkerhet og fremdrift.",
+      "kilde": {
+        "dokument": "Ch9_Consensus.pdf",
+        "sider": [
+          4,
+          7,
+          9,
+          12,
+          15,
+          18
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Replikaer utfører deterministiske operasjoner i samme rekkefølge",
+        "Lederen foreslår loggoppføringer",
+        "Valg krever et flertall og følger regler om loggens aktualitet",
+        "Commit av oppføring fra gjeldende term krever flertallsreplikering",
+        "Committed oppføringer anvendes i loggrekkefølge",
+        "En minoritet kan miste fremdrift uten at sikkerheten brytes"
+      ],
+      "modellsvar": "State machine replication gir like tilstander når replikaene starter likt og utfører de samme deterministiske operasjonene i samme rekkefølge. I Raft velges en leder med flertall, og stemmereglene beskytter loggoppføringer som må bevares. Lederen replikerer nye oppføringer. En oppføring fra lederens gjeldende term kan committes når den er lagret på et flertall, inkludert lederen, etter Rafts loggregler. Replikaene anvender committede oppføringer i loggrekkefølge. Sikkerhet hindrer motstridende committede historier, mens fremdrift trenger en fungerende majoritet og tilstrekkelig stabile kommunikasjonsforhold. En isolert minoritet kan derfor bli stående uten å kunne committe. Kontroll: https://raft.github.io/raft.pdf.\n\nKilde: Ch9_Consensus.pdf, lysbilde 4, 7, 9, 12, 15, 18."
+    },
+    {
+      "id": "co3071-pensum-058",
+      "kapittel": 11,
+      "sporsmal": "Skill mellom crash-feil og bysantinske feil. Hvorfor må du angi systemmodell før du sier hvor mange feil en konsensusalgoritme tåler?",
+      "kilde": {
+        "dokument": "Ch9_Consensus.pdf",
+        "sider": [
+          9,
+          29,
+          33,
+          37,
+          39
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Crash betyr at en prosess stopper eller blir utilgjengelig",
+        "Bysantinsk feil kan gi vilkårlig og motstridende oppførsel",
+        "Synkronitet gir andre muligheter enn full asynkronitet",
+        "Autentisering og meldingsmodell påvirker grensene",
+        "Vanlig Raft håndterer ikke vilkårlige bysantinske deltakere"
+      ],
+      "modellsvar": "En crash-feil innebærer at en prosess slutter å følge protokollen ved å stoppe, mens en bysantinsk prosess kan sende forskjellige løgner til forskjellige mottakere. En algoritme for crash-feil, som vanlig Raft, er ikke automatisk sikker mot dette. Antakelser om tidsgrenser og autentisering påvirker også hva som er mulig. Forelesningens klassiske bysantinske modell uten uforfalskelige signaturer trenger mer enn 3f prosesser for å tåle f bysantinske feil under de aktuelle synkrone antakelsene. I full asynkronitet gjelder dessuten FLPs begrensning for deterministisk terminering. En grense for antall feil gir derfor lite mening uten modellen den bygger på.\n\nKilde: Ch9_Consensus.pdf, lysbilde 9, 29, 33, 37, 39."
+    },
+    {
+      "id": "co3071-pensum-059",
+      "kapittel": 12,
+      "sporsmal": "Hva gjør en barriere i en synkron parallellberegning?",
+      "kilde": {
+        "dokument": "Ch11_SyncAsync Computation.pdf",
+        "sider": [
+          3,
+          4,
+          6
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Sorterer alle data automatisk",
+        "Forhindrer alle maskinvarefeil",
+        "Fjerner behovet for kommunikasjon",
+        "Holder prosesser tilbake til alle deltakerne har nådd samme synkroniseringspunkt"
+      ],
+      "fasit": 3,
+      "forklaring": "Prosesser som kommer tidlig til barrieren, må vente. Dette avgrenser beregningssteg, men kan gi ventetid på langsomme deltakere.\n\nKilde: Ch11_SyncAsync Computation.pdf, lysbilde 3, 4, 6."
+    },
+    {
+      "id": "co3071-pensum-060",
+      "kapittel": 12,
+      "sporsmal": "Hvilken arbeidslast passer best til embarrassingly parallel computation?",
+      "kilde": {
+        "dokument": "Ch11_SyncAsync Computation.pdf",
+        "sider": [
+          2
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "En oppgave der alle prosesser må skrive samme variabel hvert mikrosekund",
+        "En beregning der hvert steg trenger svaret fra forrige steg på en annen node",
+        "Mange uavhengige simuleringer med ulike parameterverdier",
+        "En global sortering uten deloppgaver"
+      ],
+      "fasit": 2,
+      "forklaring": "Uavhengige kjøringer trenger lite eller ingen kommunikasjon seg imellom og kan fordeles direkte mellom arbeidere.\n\nKilde: Ch11_SyncAsync Computation.pdf, lysbilde 2."
+    },
+    {
+      "id": "co3071-pensum-061",
+      "kapittel": 12,
+      "sporsmal": "Hva er den inklusive prefix-summen av [2, 1, 3, 4]?",
+      "kilde": {
+        "dokument": "Ch11_SyncAsync Computation.pdf",
+        "sider": [
+          12
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "[0, 2, 3, 6]",
+        "[2, 1, 3, 4]",
+        "[10, 10, 10, 10]",
+        "[2, 3, 6, 10]"
+      ],
+      "fasit": 3,
+      "forklaring": "Hver posisjon inneholder summen fra starten til og med posisjonen: 2, 2+1, 2+1+3 og 2+1+3+4. Alternativet som begynner med 0 er en eksklusiv prefix-sum.\n\nKilde: Ch11_SyncAsync Computation.pdf, lysbilde 12."
+    },
+    {
+      "id": "co3071-pensum-062",
+      "kapittel": 12,
+      "sporsmal": "Hva er en viktig utfordring ved asynkrone iterative beregninger?",
+      "kilde": {
+        "dokument": "Ch11_SyncAsync Computation.pdf",
+        "sider": [
+          22,
+          26,
+          27
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Alle prosesser må nødvendigvis vente på en global barriere hvert steg",
+        "Asynkronitet garanterer færre iterasjoner",
+        "Prosesser kan bruke utdaterte naboverdier, og konvergens må begrunnes",
+        "Prosesser kan ikke sende meldinger"
+      ],
+      "fasit": 2,
+      "forklaring": "Mindre venting kan øke utnyttelsen, men gammel informasjon påvirker algoritmens utvikling. Betingelser for konvergens og eventuelle grenser for staleness er viktige.\n\nKilde: Ch11_SyncAsync Computation.pdf, lysbilde 22, 26, 27."
+    },
+    {
+      "id": "co3071-pensum-063",
+      "kapittel": 12,
+      "sporsmal": "Sammenlign synkron og asynkron løsning av varmefordelingsproblemet. Forklar hvilke verdier en prosess bruker og avveiningen mellom venting og konvergens.",
+      "kilde": {
+        "dokument": "Ch11_SyncAsync Computation.pdf",
+        "sider": [
+          15,
+          16,
+          18,
+          22,
+          26,
+          27
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Området deles mellom prosesser",
+        "Oppdateringer trenger naboverdier",
+        "Synkron iterasjon bruker avtalte verdier fra forrige steg",
+        "Asynkron iterasjon kan bruke sist tilgjengelige verdier",
+        "Asynkronitet reduserer venting, men gir ujevn fremdrift",
+        "Konvergens og stoppkriterium må vurderes"
+      ],
+      "modellsvar": "Hver prosess beregner temperaturer for sitt område ut fra naboverdier. I en synkron iterasjon brukes verdier fra det foregående steget, og prosessene venter på nødvendig utveksling før neste steg. Dette gir en tydelig stegstruktur, men langsomme prosesser kan forsinke andre. En asynkron variant bruker tilgjengelige naboverdier og lar prosessene gå i forskjellig takt. Da kan verdiene være gamle. Mindre venting kan spare kjøretid, men gir ikke automatisk færre iterasjoner eller korrekt konvergens. Algoritmen trenger passende konvergensbetingelser og et stoppkriterium som tar hensyn til systemets samlede tilstand.\n\nKilde: Ch11_SyncAsync Computation.pdf, lysbilde 15, 16, 18, 22, 26, 27."
+    },
+    {
+      "id": "co3071-pensum-064",
+      "kapittel": 13,
+      "sporsmal": "Hva deles vanligvis mellom arbeidere i dataparallell trening?",
+      "kilde": {
+        "dokument": "Ch12_Distributed Deep Learning.pdf",
+        "sider": [
+          12,
+          14
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Hver arbeider trener uten noen modell",
+        "Hver arbeider får bare ett lag av modellen og alle data",
+        "Bare navnene på datafilene fordeles",
+        "Treningsdataene deles, mens hver arbeider har en kopi av modellen"
+      ],
+      "fasit": 3,
+      "forklaring": "Arbeiderne beregner oppdateringer på ulike deler av dataene med modellkopier. Oppdateringene må kombineres eller synkroniseres.\n\nKilde: Ch12_Distributed Deep Learning.pdf, lysbilde 12, 14."
+    },
+    {
+      "id": "co3071-pensum-065",
+      "kapittel": 13,
+      "sporsmal": "Når er modellparallellisme særlig relevant?",
+      "kilde": {
+        "dokument": "Ch12_Distributed Deep Learning.pdf",
+        "sider": [
+          13
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Når hele modellen ikke får plass i minnet på én enhet",
+        "Når hver arbeider skal trene en helt uavhengig modell uten samarbeid",
+        "Når ingen nettverkskommunikasjon er mulig",
+        "Når dataene består av ett enkelt tall"
+      ],
+      "fasit": 0,
+      "forklaring": "Modellen deles mellom enheter, for eksempel langs laggrenser eller inne i lag. Mellomresultater må overføres mellom delene.\n\nKilde: Ch12_Distributed Deep Learning.pdf, lysbilde 13."
+    },
+    {
+      "id": "co3071-pensum-066",
+      "kapittel": 13,
+      "sporsmal": "Hva gjør en parameter server i den sentraliserte treningsmodellen?",
+      "kilde": {
+        "dokument": "Ch12_Distributed Deep Learning.pdf",
+        "sider": [
+          16,
+          21
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Garanterer at gradientene alltid er helt ferske",
+        "Er bare en navnetjeneste for filsystemet",
+        "Erstatter all gradientberegning hos arbeiderne",
+        "Samler oppdateringer fra arbeidere og oppdaterer modellparametere"
+      ],
+      "fasit": 3,
+      "forklaring": "Arbeiderne beregner gradienter, mens parameter serveren utfører eller koordinerer parameteroppdateringen. Ferskhet avhenger blant annet av synkroniseringsmodellen.\n\nKilde: Ch12_Distributed Deep Learning.pdf, lysbilde 16, 21."
+    },
+    {
+      "id": "co3071-pensum-067",
+      "kapittel": 13,
+      "sporsmal": "Fire arbeidere bruker henholdsvis 2, 3, 4 og 10 sekunder på hvert synkrone steg. Se bort fra kommunikasjon og aggregering. Hva begrenser stegtiden?",
+      "kilde": {
+        "dokument": "Ch12_Distributed Deep Learning.pdf",
+        "sider": [
+          22
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Summen av tidene: 19 sekunder",
+        "Gjennomsnittet: 4,75 sekunder",
+        "Den langsomste arbeideren: 10 sekunder",
+        "Den raskeste arbeideren: 2 sekunder"
+      ],
+      "fasit": 2,
+      "forklaring": "Neste felles steg må vente på alle fire. Dette er straggler-problemet i fullt synkron trening.\n\nKilde: Ch12_Distributed Deep Learning.pdf, lysbilde 22."
+    },
+    {
+      "id": "co3071-pensum-068",
+      "kapittel": 13,
+      "sporsmal": "Forklar data- og modellparallellisme. Hvordan påvirker valget minnebruk og kommunikasjon?",
+      "kilde": {
+        "dokument": "Ch12_Distributed Deep Learning.pdf",
+        "sider": [
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Dataparallellisme replikerer modellen og fordeler eksempler",
+        "Modellparallellisme fordeler modellens deler",
+        "Dataparallellisme krever utveksling av gradienter eller parametere",
+        "Modellparallellisme utveksler aktiveringer og tilhørende gradienter mellom deler",
+        "Valget avhenger av modellstørrelse og nettverkskostnad"
+      ],
+      "modellsvar": "Dataparallellisme lar hver arbeider beholde en modellkopi og behandle egne treningseksempler. Det øker kapasiteten til å behandle data, men hver kopi krever minne, og modelloppdateringer må samordnes. Modellparallellisme fordeler modellens deler mellom enheter, slik at en modell som er for stor for én enhet kan behandles. Beregningen må da sende mellomresultater og gradienter mellom delene, og avhengigheter kan gi venting. Valget avhenger derfor av hva som begrenser systemet: modellminne, beregningsmengde, båndbredde eller forsinkelse.\n\nKilde: Ch12_Distributed Deep Learning.pdf, lysbilde 12, 13, 14, 15, 16."
+    },
+    {
+      "id": "co3071-pensum-069",
+      "kapittel": 13,
+      "sporsmal": "Sammenlign synkron, asynkron og bounded-asynchronous trening når arbeiderne har ulik hastighet.",
+      "kilde": {
+        "dokument": "Ch12_Distributed Deep Learning.pdf",
+        "sider": [
+          19,
+          20,
+          21,
+          22
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Synkron trening venter ved felles grenser",
+        "Asynkron trening lar arbeidere bidra i egen takt",
+        "Utdaterte gradienter kan påvirke optimaliseringen",
+        "Bounded-asynchronous begrenser hvor langt arbeidere får gå fra hverandre",
+        "Bedre maskinutnyttelse er ikke det samme som kortere tid til ønsket modellkvalitet"
+      ],
+      "modellsvar": "Synkron trening kombinerer bidrag ved felles steg og gir en tydelig parameterutveksling, men raske arbeidere venter på stragglers. I asynkron trening sender arbeidere bidrag når de er klare og henter nye parametere i egen takt. Da kan en gradient være beregnet fra eldre parametere enn dem serveren nå bruker. Bounded-asynchronous tillater forskjellig tempo innen en grense og lar svært raske arbeidere vente hvis forspranget blir for stort. Valget må vurderes både ut fra maskinutnyttelse og hvor raskt modellen når ønsket kvalitet.\n\nKilde: Ch12_Distributed Deep Learning.pdf, lysbilde 19, 20, 21, 22."
+    },
+    {
+      "id": "co3071-pensum-070",
+      "kapittel": 14,
+      "sporsmal": "Hva er hovedideen i federated learning?",
+      "kilde": {
+        "dokument": "Ch13_Federated  Swarm Learning.pdf",
+        "sider": [
+          12,
+          13,
+          14
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Flytte alle rådata til én sentral database før trening",
+        "Dele bare skjermbilder av treningen",
+        "La hver deltaker bruke en modell uten å lære fra andre",
+        "Samarbeide om modelltrening mens treningsdataene forblir hos deltakerne"
+      ],
+      "fasit": 3,
+      "forklaring": "Deltakere trener lokalt og deler modellinformasjon til samarbeid. Det reduserer behovet for å sentralisere rådata, men gir ikke alene en full personverngaranti.\n\nKilde: Ch13_Federated  Swarm Learning.pdf, lysbilde 12, 13, 14."
+    },
+    {
+      "id": "co3071-pensum-071",
+      "kapittel": 14,
+      "sporsmal": "Hvorfor er non-IID-data en utfordring i federated learning?",
+      "kilde": {
+        "dokument": "Ch13_Federated  Swarm Learning.pdf",
+        "sider": [
+          15
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Nettverkspakker mister automatisk etikettene",
+        "Deltakerne kan ha ulike datadistribusjoner og trekke modellen i ulike retninger",
+        "Alle deltakerne har identiske eksempler",
+        "Modellen kan ikke representeres med tall"
+      ],
+      "fasit": 1,
+      "forklaring": "Lokale data kan være skjevt fordelt og ha ulik størrelse. En oppdatering som er god lokalt, er ikke nødvendigvis best for hele målpopulasjonen.\n\nKilde: Ch13_Federated  Swarm Learning.pdf, lysbilde 15."
+    },
+    {
+      "id": "co3071-pensum-072",
+      "kapittel": 14,
+      "sporsmal": "To klienter har henholdsvis 20 og 80 eksempler. Etter lokal trening er én modellparameter 2 hos den første og 4 hos den andre. Hva gir et datamengdevektet gjennomsnitt over disse to?",
+      "kilde": {
+        "dokument": "Ch13_Federated  Swarm Learning.pdf",
+        "sider": [
+          20,
+          22
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "3,6",
+        "6,0",
+        "3,0",
+        "2,4"
+      ],
+      "fasit": 0,
+      "forklaring": "Vektene er 20/100 og 80/100. Aggregatet blir 0,2 × 2 + 0,8 × 4 = 3,6.\n\nKilde: Ch13_Federated  Swarm Learning.pdf, lysbilde 20, 22."
+    },
+    {
+      "id": "co3071-pensum-073",
+      "kapittel": 14,
+      "sporsmal": "Hva beskriver Swarm Learning-opplegget i forelesningen?",
+      "kilde": {
+        "dokument": "Ch13_Federated  Swarm Learning.pdf",
+        "sider": [
+          28,
+          29
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Lokale noder trener på private data og deler modellparametere gjennom et koordinert swarm-nettverk",
+        "Blockchain erstatter selve modelltreningen",
+        "Hver node trener uten noen parameterutveksling",
+        "Alle rådata flyttes til en felles offentlig blockchain"
+      ],
+      "fasit": 0,
+      "forklaring": "Opplegget bruker et nettverk for koordinering av deltakere og parameterutveksling. Treningsdataene blir lokale. Blockchain i koordineringen betyr ikke at rådata lagres offentlig.\n\nKilde: Ch13_Federated  Swarm Learning.pdf, lysbilde 28, 29."
+    },
+    {
+      "id": "co3071-pensum-074",
+      "kapittel": 14,
+      "sporsmal": "Flere sykehus vil trene en felles modell uten å samle pasientdata på ett sted. Forklar hvordan federated learning kan brukes, og hvilke utfordringer som fortsatt finnes.",
+      "kilde": {
+        "dokument": "Ch13_Federated  Swarm Learning.pdf",
+        "sider": [
+          10,
+          11,
+          12,
+          15,
+          16,
+          17
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Hvert sykehus trener lokalt",
+        "Modelloppdateringer kombineres",
+        "Data kan være ulike og ubalanserte mellom sykehus",
+        "Tilgjengelighet og kapasitet varierer",
+        "Oppdateringer må beskyttes og kan lekke informasjon",
+        "Modellkvalitet må vurderes på tvers av deltakerne"
+      ],
+      "modellsvar": "En koordinator kan sende en startmodell til sykehusene, som trener på lokale data og returnerer modelloppdateringer. Oppdateringene kombineres og en ny modell sendes ut. Sykehusenes data kan variere i størrelse, pasientgrunnlag og målepraksis, slik at lokale oppdateringer ikke er direkte sammenlignbare. Noen deltakere kan også være trege eller utilgjengelige. At rådata forblir lokale, er ikke alene bevis for personvern: oppdateringer kan inneholde sensitiv informasjon og må håndteres etter en passende trusselmodell. Man bør evaluere både samlet kvalitet og kvalitet for ulike sykehus og grupper.\n\nKilde: Ch13_Federated  Swarm Learning.pdf, lysbilde 10, 11, 12, 15, 16, 17."
+    },
+    {
+      "id": "co3071-pensum-075",
+      "kapittel": 14,
+      "sporsmal": "Forklar forskjellen mellom én lokal gradientoppdatering per kommunikasjonsrunde og flere lokale treningssteg før aggregering. Knytt dette til FedSGD, FedAvg og kommunikasjonskostnad.",
+      "kilde": {
+        "dokument": "Ch13_Federated  Swarm Learning.pdf",
+        "sider": [
+          21,
+          22,
+          23,
+          28,
+          29
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "FedSGD samler gradientbidrag per runde",
+        "FedAvg kan bruke flere lokale steg før modellaggregering",
+        "Mer lokalt arbeid kan redusere behovet for kommunikasjonsrunder",
+        "Lokale modeller kan drive fra hverandre med non-IID-data",
+        "Vekting og antall lokale steg må velges med omtanke"
+      ],
+      "modellsvar": "Med FedSGD beregner deltakerne gradientbidrag fra den delte modellen, og bidragene aggregeres for en oppdatering. FedAvg lar deltakerne gjøre flere lokale treningssteg før modellparametere kombineres, ofte vektet etter datamengde. Dermed kan hver kommunikasjonsrunde inneholde mer nyttig lokalt arbeid. Samtidig kan modellene bli mer forskjellige, særlig når datadistribusjonene varierer. Færre overføringer er derfor en avveining mot lokal drift og mulig tap av konvergens eller kvalitet. Antall lokale steg og deltakernes vekter er sentrale valg.\n\nKilde: Ch13_Federated  Swarm Learning.pdf, lysbilde 21, 22, 23, 28, 29."
+    },
+    {
+      "id": "co3071-pensum-076",
+      "kapittel": 15,
+      "sporsmal": "Hva kjennetegner en Spark RDD?",
+      "kilde": {
+        "dokument": "DSLab2 - Apache Spark with RDD programming (ref).pdf",
+        "sider": [
+          15
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "En kø som sletter alle elementer etter første lesing",
+        "En tabell som bare finnes på driveren",
+        "En variabel som alle arbeidere endrer direkte i samme minne",
+        "En uforanderlig, distribuert samling delt i partisjoner"
+      ],
+      "fasit": 3,
+      "forklaring": "En RDD er immutable. Transformasjoner beskriver nye RDD-er, og partisjonene gjør at behandling kan fordeles.\n\nKilde: DSLab2 - Apache Spark with RDD programming (ref).pdf, lysbilde 15."
+    },
+    {
+      "id": "co3071-pensum-077",
+      "kapittel": 15,
+      "sporsmal": "Du definerer en RDD med map og filter og kaller deretter count. Når utløses normalt beregningen av transformasjonene?",
+      "kilde": {
+        "dokument": "DSLab2 - Apache Spark with RDD programming (ref).pdf",
+        "sider": [
+          22,
+          23,
+          27
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Aldri, fordi RDD-er er uforanderlige",
+        "Når count-handlingen trenger resultatet",
+        "Bare når alle arbeidere avslutter",
+        "Alltid når hver map-linje blir definert"
+      ],
+      "fasit": 1,
+      "forklaring": "RDD-transformasjoner er lazy. En action som count utløser beregning av de avhengighetene resultatet trenger.\n\nKilde: DSLab2 - Apache Spark with RDD programming (ref).pdf, lysbilde 22, 23, 27."
+    },
+    {
+      "id": "co3071-pensum-078",
+      "kapittel": 15,
+      "sporsmal": "Hva brukes lineage-grafen til i Spark?",
+      "kilde": {
+        "dokument": "DSLab2 - Apache Spark with RDD programming (ref).pdf",
+        "sider": [
+          24
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "Å gjøre mutasjoner direkte på originale RDD-er",
+        "Å beskrive avhengigheter som kan brukes til å beregne eller gjenskape RDD-partisjoner",
+        "Å erstatte filsystemets navnerom",
+        "Å lagre alle maskinenes passord"
+      ],
+      "fasit": 1,
+      "forklaring": "Grafen beskriver hvordan RDD-er ble avledet. Gitte tilgjengelige kildedata og passende operasjoner kan tapte partisjoner beregnes på nytt.\n\nKilde: DSLab2 - Apache Spark with RDD programming (ref).pdf, lysbilde 24."
+    },
+    {
+      "id": "co3071-pensum-079",
+      "kapittel": 15,
+      "sporsmal": "En PairRDD inneholder (A, 2), (B, 4) og (A, 3). Hva gir reduceByKey med addisjon, uten krav til resultatets rekkefølge?",
+      "kilde": {
+        "dokument": "DSLab2 - Apache Spark with RDD programming (ref).pdf",
+        "sider": [
+          60
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "flervalg",
+      "alternativer": [
+        "(A, 5) og (B, 4)",
+        "(A, 2), (B, 4) og (A, 3)",
+        "Bare (A, 3)",
+        "(A, 9) og (B, 9)"
+      ],
+      "fasit": 0,
+      "forklaring": "Verdier med samme nøkkel summeres. A får 2 + 3 = 5, mens B beholder 4. Rekkefølgen mellom nøklene er ikke en del av garantien.\n\nKilde: DSLab2 - Apache Spark with RDD programming (ref).pdf, lysbilde 60."
+    },
+    {
+      "id": "co3071-pensum-080",
+      "kapittel": 15,
+      "sporsmal": "Beskriv en Spark RDD-pipeline som leser en logg, fjerner ugyldige linjer og teller hendelser per IP-adresse. Forklar lazy evaluation og hvorfor collect kan være risikabelt.",
+      "kilde": {
+        "dokument": "DSLab2 - Apache Spark with RDD programming (ref).pdf",
+        "sider": [
+          22,
+          23,
+          24,
+          60,
+          70
+        ],
+        "opphav": "Ny øvingsoppgave basert på undervisningsmaterialet"
+      },
+      "type": "langsvar",
+      "momenter": [
+        "Les loggen som en RDD",
+        "Valider og filtrer linjer før felt brukes",
+        "Map gyldige linjer til (IP, 1)",
+        "Aggreger med reduceByKey og addisjon",
+        "En action utløser nødvendige beregninger",
+        "Store resultater bør ikke samles ukritisk på driveren"
+      ],
+      "modellsvar": "Les loggen til en RDD av linjer. Valider format og påkrevde felt, og filtrer bort ugyldige linjer. Gjør hver gyldig linje om til et par (IP, 1), og bruk reduceByKey med addisjon til å telle hendelser per IP. Transformasjonene beskriver avhengigheter og beregnes først når en action trenger resultatet. For et stort resultat kan man skrive til distribuert lagring. collect flytter alle resultatene til driverens minne og kan overbelaste det, så det bør bare brukes når resultatmengden er håndterbar.\n\nKilde: DSLab2 - Apache Spark with RDD programming (ref).pdf, lysbilde 22, 23, 24, 60, 70."
+    }
+  ]
+}

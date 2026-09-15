@@ -1,1 +1,2465 @@
-
+{
+  "fag": "Cryptography and Network Security",
+  "kapitler": {
+    "1": "Sikkerhetsmål og angrep",
+    "2": "Klassisk og symmetrisk kryptografi",
+    "3": "Offentlig nøkkel og nøkkelutveksling",
+    "4": "Hash, autentisering og signaturer",
+    "5": "Tallteori og modulær regning",
+    "6": "Skadevare og angrep",
+    "7": "Kerberos og X.509",
+    "8": "PGP og e-postsikkerhet",
+    "9": "SSL og SET (historisk pensum)",
+    "10": "Brannmurer, DMZ og IDS",
+    "11": "VPN og tunnelering",
+    "12": "Trådløs sikkerhet"
+  },
+  "sporsmal": [
+    {
+      "id": "co3069-ny-001",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket sikkerhetsmål handler om at uvedkommende ikke skal kunne lese informasjon?",
+      "alternativer": [
+        "Tilgjengelighet",
+        "Konfidensialitet",
+        "Integritet",
+        "Lastbalansering"
+      ],
+      "fasit": 1,
+      "forklaring": "Konfidensialitet beskytter mot uautorisert innsyn. Integritet handler om uautoriserte endringer, mens tilgjengelighet handler om tilgang ved behov."
+    },
+    {
+      "id": "co3069-ny-002",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "En angriper lytter til nettverkstrafikk uten å endre den. Hva slags angrep er dette?",
+      "alternativer": [
+        "Et aktivt endringsangrep",
+        "Et tjenestenektangrep",
+        "Et passivt angrep",
+        "Et fysisk ødeleggelsesangrep"
+      ],
+      "fasit": 2,
+      "forklaring": "Passiv avlytting observerer kommunikasjon. Aktive angrep endrer data eller påvirker driften."
+    },
+    {
+      "id": "co3069-ny-003",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Caesar-chifferet bruker y = (x + 3) mod 26, med A = 0. Hva blir x = 24 kryptert til?",
+      "alternativer": [
+        "21",
+        "24",
+        "27",
+        "1"
+      ],
+      "fasit": 3,
+      "forklaring": "24 + 3 = 27, og 27 mod 26 = 1. Modulo gjør at alfabetet går rundt."
+    },
+    {
+      "id": "co3069-ny-004",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva kjennetegner symmetrisk kryptering?",
+      "alternativer": [
+        "Partene deler en hemmelig nøkkel",
+        "Alle nøkler er offentlige",
+        "Den bruker ingen nøkkel",
+        "Bare mottakeren trenger å kjenne algoritmen"
+      ],
+      "fasit": 0,
+      "forklaring": "Den delte hemmelige nøkkelen brukes til kryptering og dekryptering. Algoritmen trenger ikke være hemmelig."
+    },
+    {
+      "id": "co3069-ny-005",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvorfor kan ECB-modus avsløre mønstre i en melding?",
+      "alternativer": [
+        "Nøkkelen sendes alltid i klartekst",
+        "Like klartekstblokker gir like chiffertekstblokker med samme nøkkel",
+        "ECB komprimerer ikke data",
+        "ECB bruker bare én bit lange blokker"
+      ],
+      "fasit": 1,
+      "forklaring": "ECB krypterer hver blokk uavhengig. Gjentatte blokker blir derfor synlige som gjentakelser i chifferteksten."
+    },
+    {
+      "id": "co3069-ny-006",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken nøkkel bruker avsenderen ved offentlig-nøkkel-kryptering til en bestemt mottaker?",
+      "alternativer": [
+        "Avsenderens offentlige nøkkel",
+        "Mottakerens private nøkkel",
+        "Mottakerens offentlige nøkkel",
+        "En offentlig nøkkel valgt tilfeldig"
+      ],
+      "fasit": 2,
+      "forklaring": "Mottakerens tilhørende private nøkkel brukes til dekryptering og skal holdes hemmelig."
+    },
+    {
+      "id": "co3069-ny-007",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er formålet med Diffie–Hellman-nøkkelutveksling?",
+      "alternativer": [
+        "Å komprimere meldinger",
+        "Å lagre passord uten hash",
+        "Å automatisk bekrefte partenes identitet",
+        "Å etablere en delt hemmelighet over en usikker kanal"
+      ],
+      "fasit": 3,
+      "forklaring": "Diffie–Hellman lar partene beregne en felles hemmelighet. Uten autentisering beskytter utvekslingen ikke mot en mellommann."
+    },
+    {
+      "id": "co3069-ny-008",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva betyr kollisjonsresistens for en kryptografisk hashfunksjon?",
+      "alternativer": [
+        "Det skal være beregningsmessig vanskelig å finne to ulike meldinger med samme hash",
+        "Kollisjoner finnes ikke",
+        "Hashverdien er alltid hemmelig",
+        "Hashen kan dekrypteres med en privat nøkkel"
+      ],
+      "fasit": 0,
+      "forklaring": "Kollisjoner finnes fordi utdata har begrenset lengde, men det skal være vanskelig å finne dem."
+    },
+    {
+      "id": "co3069-ny-009",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken nøkkel brukes normalt til å verifisere en digital signatur?",
+      "alternativer": [
+        "Signatarens private nøkkel",
+        "Signatarens offentlige nøkkel",
+        "Mottakerens private nøkkel",
+        "En tilfeldig sesjonsnøkkel"
+      ],
+      "fasit": 1,
+      "forklaring": "Signaturen lages med den private nøkkelen og verifiseres med den tilhørende offentlige nøkkelen."
+    },
+    {
+      "id": "co3069-ny-010",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva tilfører en MAC sammenlignet med en vanlig, unøkklet hash?",
+      "alternativer": [
+        "Automatisk kryptering av hele meldingen",
+        "Kortere originalmelding",
+        "Autentisering basert på en delt hemmelig nøkkel",
+        "Offentlig verifisering uten hemmelig nøkkel"
+      ],
+      "fasit": 2,
+      "forklaring": "En angriper kan beregne en ny vanlig hash etter å ha endret meldingen. En gyldig MAC krever den hemmelige nøkkelen."
+    },
+    {
+      "id": "co3069-ny-011",
+      "type": "langsvar",
+      "kapittel": 1,
+      "sporsmal": "Forklar konfidensialitet, integritet og tilgjengelighet med ett eksempel på hvert mål.",
+      "momenter": [
+        "Konfidensialitet: hindre uautorisert innsyn",
+        "Integritet: beskytte mot uautoriserte endringer",
+        "Tilgjengelighet: tjenesten kan brukes ved behov"
+      ],
+      "modellsvar": "Konfidensialitet betyr for eksempel at bare autoriserte personer kan lese en melding. Integritet betyr at en endret melding kan oppdages, for eksempel med en MAC. Tilgjengelighet betyr at brukerne får tilgang til tjenesten ved behov; redundans og beskyttelse mot overbelastning kan bidra."
+    },
+    {
+      "id": "co3069-ny-012",
+      "type": "langsvar",
+      "kapittel": 4,
+      "sporsmal": "Sammenlign kryptering og digital signatur. Hvilke mål ivaretar de?",
+      "momenter": [
+        "Kryptering beskytter konfidensialitet",
+        "Signatur gir kontroll av integritet og opphav",
+        "Signaturen verifiseres med offentlig nøkkel",
+        "Signatur alene skjuler ikke innholdet"
+      ],
+      "modellsvar": "Kryptering skjuler innholdet for dem som ikke har nødvendig dekrypteringsnøkkel. En digital signatur binder meldingen til en privat nøkkel og gjør endringer oppdagbare. Den offentlige nøkkelen må være knyttet til riktig avsender på en pålitelig måte. Signering alene skjuler ikke meldingen, og kryptering alene gir ikke nødvendigvis autentisering."
+    },
+    {
+      "id": "co3069-pdf-a1",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Et stykke ondsinnet kode som festes til en annen fil for å reprodusere seg, kan være:",
+      "alternativer": [
+        "Worm",
+        "Virus",
+        "Logisk bombe",
+        "Trojaner"
+      ],
+      "fasit": 1,
+      "forklaring": "Definisjonen av virus: trenger en vertsfil. Worm sprer seg selvstendig, trojaner reproduserer seg ikke.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A1. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A1",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a2",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvorfor vil hackere skjule sporene sine?",
+      "alternativer": [
+        "Hindre andre i å bruke programmene de har installert",
+        "Hindre oppdagelse eller etterforskning",
+        "Hindre inntrengning",
+        "Hindre at andre hackere bruker verktøyene deres"
+      ],
+      "fasit": 1,
+      "forklaring": "Angriperen forsøker å unngå oppdagelse og gjøre etterforskning vanskeligere, for eksempel ved å manipulere spor.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A2. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A2",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a3",
+      "type": "flervalg",
+      "kapittel": 11,
+      "sporsmal": "En teknologi som kan brukes til å kryptere kommunikasjon fra punkt A til punkt B over et usikkert nett:",
+      "alternativer": [
+        "VPN",
+        "VLAN",
+        "NAP",
+        "NAT"
+      ],
+      "fasit": 0,
+      "forklaring": "Et VPN med en krypterende sikkerhetsprotokoll kan beskytte kommunikasjon over et usikkert nett. Tunnelering eller betegnelsen VPN alene garanterer ikke kryptering.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A3. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A3",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a4",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hackeren kan skaffe passord uten å bruke noe verktøy eller program, via teknikken:",
+      "alternativer": [
+        "Backdoors",
+        "Sniffere",
+        "Social engineering",
+        "Trojanske hester"
+      ],
+      "fasit": 2,
+      "forklaring": "Menneskelig manipulasjon, ikke teknisk angrep.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A4. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A4",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a5",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Skadelig kode er programmert til å aktiveres først når en bestemt betingelse er oppfylt. Hva kalles denne mekanismen?",
+      "alternativer": [
+        "Virus",
+        "Orm",
+        "ARP-forgiftning",
+        "Logisk bombe"
+      ],
+      "fasit": 3,
+      "forklaring": "En logisk bombe utløses av en betingelse. Originalens Excel-scenario er tvetydig; symptomer alene identifiserer ikke skadevaren.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A5. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A5",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a6",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Angrep der noen utnytter en svakhet for å gripe inn i databasen kalles:",
+      "alternativer": [
+        "SQL tearing",
+        "SQL manipulation",
+        "SQL cracking",
+        "SQL injection"
+      ],
+      "fasit": 3,
+      "forklaring": "De tre andre er oppdiktede begreper.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A6. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A6",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a7",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Ordbokangrep (dictionary attack) er en angrepsform som:",
+      "alternativer": [
+        "Bruker parallelle algoritmer",
+        "Bruker RSA",
+        "Bruker brute force",
+        "Prøver forhåndsdefinerte verdier etter tur"
+      ],
+      "fasit": 3,
+      "forklaring": "Ordbok = forhåndsdefinert liste. Brute force prøver derimot alle kombinasjoner.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A7. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A7",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a8",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilket utsagn er IKKE et formål med skanning i datanett?",
+      "alternativer": [
+        "Finne åpne porter",
+        "Finne tjenester på målserverne",
+        "Bestemme operativsystem",
+        "Samle inn telefonnumre til ansatte"
+      ],
+      "fasit": 3,
+      "forklaring": "Negativt spørsmål. Telefonnumre hentes via OSINT/social engineering, ikke portskanning.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A8. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A8",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a9",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "RSA skiller seg fra DES ved at:",
+      "alternativer": [
+        "Den kan ikke lage digital signatur",
+        "Den bruker offentlig nøkkel til kryptering",
+        "Den bygger på symmetrisk kryptering",
+        "Alle svarene er gale"
+      ],
+      "fasit": 1,
+      "forklaring": "RSA = asymmetrisk. A og C er direkte feil.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A9. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A9",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a10",
+      "type": "flervalg",
+      "kapittel": 11,
+      "sporsmal": "En teknologi som lar en forbindelse opprettes mellom to nett med en sikkerhetsprotokoll:",
+      "alternativer": [
+        "Tunneling",
+        "VLAN",
+        "Internett",
+        "Ekstranett"
+      ],
+      "fasit": 0,
+      "forklaring": "Tunnelering innkapsler pakker i en annen protokoll. Kryptering og autentisering krever en egnet sikkerhetsprotokoll i tillegg.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A10. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A10",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a11",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Meldingen \"I love you\" sendes, mottakeren får \"I don't love you\". Hvilken egenskap er brutt?",
+      "alternativer": [
+        "Konfidensialitet",
+        "Tilgjengelighet",
+        "Integritet",
+        "Konfidensialitet og tilgjengelighet"
+      ],
+      "fasit": 2,
+      "forklaring": "Innholdet er endret underveis - klassisk integritetsbrudd (aktivt angrep).\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A11. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A11",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a12",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Forkortelsen CIA i nettsikkerhet står for:",
+      "alternativer": [
+        "Certificate, Integrity, Authentication",
+        "Certificate, Integrity, Availability",
+        "Confidentiality, Inspection, Authentication",
+        "Confidentiality, Integrity, Availability"
+      ],
+      "fasit": 3,
+      "forklaring": "Kjernetriaden fra X.800/Stallings kapittel 1.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A12. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A12",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a13",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Begrensningen ved symmetrisk kryptering er:",
+      "alternativer": [
+        "Den brytes lett",
+        "Den er for treg for mobile enheter",
+        "Den krever at en felles nøkkel deles hemmelig",
+        "Den brukes bare på Unix"
+      ],
+      "fasit": 2,
+      "forklaring": "Nøkkeldistribusjonsproblemet - selve motivasjonen for offentlig-nøkkel-kryptografi.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A13. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A13",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a14",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken fordel har asymmetrisk kryptering over symmetrisk?",
+      "alternativer": [
+        "Sikrere",
+        "Algoritmen har ogsa en rolle i nøkkelhåndtering",
+        "Alle med offentlig nøkkel kan dekryptere",
+        "Den bruker hashfunksjon"
+      ],
+      "fasit": 1,
+      "forklaring": "Offentlig-nøkkel-kryptografi bidrar til nøkkelhåndtering. Offentlige nøkler må fortsatt autentiseres; sikkerheten avhenger av algoritme, parametere og implementasjon.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A14. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A14",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a15",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva kombinerer vanlige digitale signaturskjemaer?",
+      "alternativer": [
+        "Hashing og en asymmetrisk signaturalgoritme",
+        "Symmetrisk kryptering og kompresjon",
+        "Bare hashing uten nøkkel",
+        "Bare symmetrisk kryptering"
+      ],
+      "fasit": 0,
+      "forklaring": "Signering bruker en privat nøkkel, og verifisering bruker den offentlige. Å beskrive alle signaturer som «kryptering av en hash» er ikke generelt korrekt.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A15. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A15",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a16",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Formålet med en DMZ i et nett er:",
+      "alternativer": [
+        "Gi enkel Internett-tilgang uten å påvirke brannmuren",
+        "La serverfarmer deles i like funksjonelle enheter",
+        "Være en felle for å fange hackere",
+        "Fungere som buffersone mellom tiltrodde og ikke-tiltrodde nett"
+      ],
+      "fasit": 3,
+      "forklaring": "C beskriver en honeypot. DMZ = semi-tiltrodd sone for offentlige tjenester.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A16. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A16",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a17",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "SYN flood er et eksempel på hvilken angrepstype?",
+      "alternativer": [
+        "Ondsinnet kode",
+        "Tjenestenekt",
+        "Man-in-the-middle",
+        "Spoofing"
+      ],
+      "fasit": 1,
+      "forklaring": "Uttommer serverens køtabell for halvåpne TCP-forbindelser.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A17. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A17",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a18",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Angrepet der angriperen bare lytter på datastrommen i hap om å fange opp bruker-ID, kortnummer osv.:",
+      "alternativer": [
+        "Man-in-the-middle",
+        "Tjenestenekt",
+        "Sniffing",
+        "Backdoor"
+      ],
+      "fasit": 2,
+      "forklaring": "Passiv avlytting. MITM krever aktiv posisjonering.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A18. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A18",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a19",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Angriperen sender på nytt kommandoer og koder fra en finanstransaksjon for å utføre den flere ganger:",
+      "alternativer": [
+        "Spoofing",
+        "Man-in-the-middle",
+        "Replay",
+        "Backdoor"
+      ],
+      "fasit": 2,
+      "forklaring": "Replay-angrep - motvirkes med nonce, tidsstempel eller sekvensnummer.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A19. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A19",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a20",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "SSL kan brukes til å sikre:",
+      "alternativer": [
+        "POP3-trafikk",
+        "HTTP-trafikk",
+        "SMTP-trafikk",
+        "Alle svarene er riktige"
+      ],
+      "fasit": 3,
+      "forklaring": "SSL/TLS ligger under applikasjonslaget og kan sikre alle disse.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A20. Fasiten i PDF-en er utledet, ikke offisiell. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A20",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a21",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilken funksjon gir SSL IKKE?",
+      "alternativer": [
+        "Dataintegritet",
+        "Autentisering",
+        "Datakonfidensialitet",
+        "Tilgjengelighet"
+      ],
+      "fasit": 3,
+      "forklaring": "Negativt spørsmål. Samme poeng som i øvingssettet: SSL stopper ikke SYN flooding.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A21. Fasiten i PDF-en er utledet, ikke offisiell. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A21",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a22",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilken standardport brukes av HTTPS over TCP?",
+      "alternativer": [
+        "TCP 80",
+        "UDP 443",
+        "TCP 443",
+        "TCP 8080"
+      ],
+      "fasit": 2,
+      "forklaring": "HTTPS over TCP bruker port 443. Oppgaven gjelder TCP; HTTP/3 bruker QUIC over UDP.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A22. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A22",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a23",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "____ er prosessen med å verifisere gyldigheten av en påstått identitet.",
+      "alternativer": [
+        "Identification",
+        "Authentication",
+        "Authorization",
+        "Accountability"
+      ],
+      "fasit": 1,
+      "forklaring": "Rekkefølge: identifikasjon (påstand) - autentisering (bevis) - autorisasjon (rettigheter) - sporbarhet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A23. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A23",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a24",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er hovedfunksjonen til et inntrengingsdeteksjonssystem (IDS)?",
+      "alternativer": [
+        "Oppdage unormal aktivitet",
+        "Oppdage systemfeil",
+        "Måle systemytelse",
+        "Teste systemet for svakheter"
+      ],
+      "fasit": 0,
+      "forklaring": "D beskriver en sårbarhetsskanner.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A24. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A24",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a25",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "En angriper overtar en allerede autentisert brukers aktive sesjon. Hva kalles dette?",
+      "alternativer": [
+        "Man-in-the-middle",
+        "Portskanning",
+        "Session hijacking",
+        "Passordhashing"
+      ],
+      "fasit": 2,
+      "forklaring": "Session hijacking betyr overtakelse av en etablert sesjon. Originalens formulering blandet dette med mellommannsangrep.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A25. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A25",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a26",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva regnes IKKE som brudd på konfidensialitet?",
+      "alternativer": [
+        "Passordtyveri",
+        "Avlytting",
+        "Ødeleggelse av maskinvare",
+        "Man-in-the-middle"
+      ],
+      "fasit": 2,
+      "forklaring": "Negativt spørsmål. Ødelagt maskinvare rammer tilgjengelighet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A26. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A26",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a27",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken chiffertype endrer posisjonen til tegnene i meldingen?",
+      "alternativer": [
+        "Stromchiffer",
+        "Transposisjonschiffer",
+        "Blokkchiffer",
+        "Substitusjonschiffer"
+      ],
+      "fasit": 1,
+      "forklaring": "Transposisjon = permutasjon av posisjon. Substitusjon = bytte av tegn.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A27. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A27",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a28",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Fjern mellomrom fra «I MUST PASS THIS EXAM». Hva gir Rail Fence med to rader når første tegn plasseres på øverste rad og radene leses ovenfra?",
+      "alternativer": [
+        "IMUSTPASSTHISEXAM",
+        "IUTASHSXMMSPSTIEA",
+        "IUMSTAPSSHTISXEAM",
+        "MAXESIHTSSAPTSUMI"
+      ],
+      "fasit": 1,
+      "forklaring": "Rad 1 (oddetallsposisjoner): I U T A S H S X M. Rad 2: M S P S T I E A. Slått sammen: IUTASHSXM + MSPSTIEA.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A28. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A28",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a29",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Alice signerer digitalt og Bob er mottaker. For å lese signaturen må Bob bruke:",
+      "alternativer": [
+        "Alices offentlige nøkkel",
+        "Bobs offentlige nøkkel",
+        "Alices private nøkkel",
+        "Bobs private nøkkel"
+      ],
+      "fasit": 0,
+      "forklaring": "Verifisering av signatur = avsenders offentlige nøkkel.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A29. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A29",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a30",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Alice vil sende en hemmelig melding til Bob. Hun må bruke:",
+      "alternativer": [
+        "Alices offentlige nøkkel",
+        "Bobs offentlige nøkkel",
+        "Alices private nøkkel",
+        "Bobs private nøkkel"
+      ],
+      "fasit": 1,
+      "forklaring": "Konfidensialitet = mottakerens offentlige nøkkel. Sammenlign direkte med sp. 29 - dette paret går igjen i alle settene.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A30. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A30",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a31",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket av disse klassiske chiffrene er et substitusjonschiffer?",
+      "alternativer": [
+        "Caesar",
+        "Rail Fence",
+        "Ren kolonnepermutasjon",
+        "Omvendt tegnrekkefølge"
+      ],
+      "fasit": 0,
+      "forklaring": "Caesar erstatter tegn. Rail Fence og de andre alternativene flytter tegn. Originalen blander klassiske og moderne algoritmer; DES inneholder også substitusjon.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A31. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A31",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a32",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er målet med en brannmur?",
+      "alternativer": [
+        "Beskytte et nett mot sikkerhetstrusler utenfra",
+        "Hindre data i å forlate nettet",
+        "Blokkere SNA-trafikk",
+        "Overvåke nettverkstrafikk"
+      ],
+      "fasit": 0,
+      "forklaring": "Overvåking (D) er en bieffekt, ikke hovedmålet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A32. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A32",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a33",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Angrep basert på sannsynligheten for at to ulike meldinger får samme hashverdi kalles:",
+      "alternativer": [
+        "Birthday attack",
+        "Statistisk angrep",
+        "Differensiell kryptanalyse",
+        "Kjent-chiffertekst-angrep"
+      ],
+      "fasit": 0,
+      "forklaring": "Bursdagsparadokset: kollisjon i n-bits hash finnes etter ca. 2^(n/2) forsøk.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A33. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A33",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a34",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Caesar-kryptering av \"I will pass this exam\" gir:",
+      "alternativer": [
+        "L zloo sdvv wklv hadp",
+        "M ampp texx xlmw ibeq",
+        "N bnqq ufyy jcfr",
+        "Alle gale"
+      ],
+      "fasit": 0,
+      "forklaring": "Standard Caesar = skift 3: I->L, w->z, i->l, l->o.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A34. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A34",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a35",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "For å motvirke et passivt angrep gjør man vanligvis:",
+      "alternativer": [
+        "Oppdager det og håndterer det etterpa",
+        "Forebygger angrepet",
+        "Ingenting",
+        "Alle gale"
+      ],
+      "fasit": 1,
+      "forklaring": "Passiv avlytting kan være vanskelig å oppdage. Kryptering kan forebygge at avlytteren får tilgang til innholdet; den hindrer ikke nødvendigvis selve observasjonen av trafikken.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A35. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A35",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a36",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken protokoll bruker Windows for kommandoen tracert?",
+      "alternativer": [
+        "ICMP",
+        "ARP",
+        "UDP",
+        "FTP"
+      ],
+      "fasit": 0,
+      "forklaring": "Windows tracert bruker ICMP Echo. Unix traceroute bruker UDP - derav distraktor C.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A36. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A36",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a37",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Brute force-angrep utnytter svakheten i:",
+      "alternativer": [
+        "Nøkkelen",
+        "Algoritmen",
+        "Både A og B",
+        "Verken A eller B"
+      ],
+      "fasit": 0,
+      "forklaring": "Brute force søker gjennom nøkkelrommet; det sier ingenting om algoritmens design.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A37. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A37",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a38",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken av disse datakildene mister normalt innholdet når strømmen til en maskin slås av?",
+      "alternativer": [
+        "RAM",
+        "Et lagret diskbilde",
+        "En avsluttet loggfil på disk",
+        "En frakoblet sikkerhetskopi"
+      ],
+      "fasit": 0,
+      "forklaring": "RAM er flyktig. Originalens spørsmål om første tiltak ved innbrudd mangler nødvendig kontekst; rekkefølgen på isolering og bevissikring avhenger av situasjonen.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A38. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A38",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a39",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilket tiltak retter seg mest direkte mot kjente sårbarheter som skadevare kan utnytte?",
+      "alternativer": [
+        "Å endre skrivebordsbakgrunn",
+        "Å installere relevante sikkerhetsoppdateringer",
+        "Å øke skjermoppløsningen",
+        "Å gi alle administratorrettigheter"
+      ],
+      "fasit": 1,
+      "forklaring": "Sikkerhetsoppdateringer kan lukke kjente sårbarheter. Originalens påstand om at passord ikke hjelper mot skadevare er for kategorisk.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A39. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A39",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a40",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket eksempel påvirker organisasjonens konfidensialitet?",
+      "alternativer": [
+        "Forfalskning av data",
+        "Bruk av data til private formål",
+        "Tyveri av fortrolige opplysninger",
+        "Utilsiktet sletting"
+      ],
+      "fasit": 2,
+      "forklaring": "Uautorisert tilgang til fortrolige opplysninger bryter konfidensialitet. Forfalskning rammer integritet; sletting kan ramme integritet og tilgjengelighet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A40. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A40",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a41",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Avlytting er hvilken angrepstype?",
+      "alternativer": [
+        "Aktiv",
+        "Passiv",
+        "Aggressiv",
+        "Maskering"
+      ],
+      "fasit": 1,
+      "forklaring": "Samme klassifisering som øvingssettets sp. 1 om passive angrep.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A41. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A41",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a42",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Meldingsautentisering er en mekanisme som kontrollerer:",
+      "alternativer": [
+        "Meldingens integritet",
+        "Meldingens konfidensialitet",
+        "Meldingens tilgjengelighet",
+        "Alle gale"
+      ],
+      "fasit": 0,
+      "forklaring": "MAC/HMAC gir integritet + opprinnelse, ikke konfidensialitet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A42. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A42",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a43",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Steganografi er en teknikk for å:",
+      "alternativer": [
+        "Avdekke hvilken algoritme som er brukt",
+        "Skjule en melding inne i en annen melding (tekst, bilde, lyd, video)",
+        "Søke gjennom alle mulige nøkler",
+        "Alle gale"
+      ],
+      "fasit": 1,
+      "forklaring": "Steganografi skjuler at kommunikasjon finner sted; kryptering skjuler innholdet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A43. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A43",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a44",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva er målet med biometri i tilgangskontroll?",
+      "alternativer": [
+        "Autorisasjon",
+        "Tilgjengelighet",
+        "Autentisering",
+        "Sporbarhet"
+      ],
+      "fasit": 2,
+      "forklaring": "Biometri brukes som en autentiseringsfaktor basert på fysiske eller atferdsmessige egenskaper. En biometrisk kontroll kan ha både falske treff og falske avvisninger.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A44. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A44",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a45",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "En hashfunksjon oppfyller:",
+      "alternativer": [
+        "Ulik input, output like langt som input",
+        "Ulik input, ulik output",
+        "Lik input-lengde, ulik output",
+        "Ulik input-lengde, output med fast lengde"
+      ],
+      "fasit": 3,
+      "forklaring": "Vilkarlig lengde inn, fast lengde ut - grunnlaget for bursdagsangrepet i sp. 33.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A45. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A45",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a46",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Grunnleggende krav til digital signatur:",
+      "alternativer": [
+        "Verdien avhenger av meldingen",
+        "Bruker informasjon bare signereren kjenner",
+        "Beregningsmessig umulig å forfalske",
+        "Alle svarene er riktige"
+      ],
+      "fasit": 3,
+      "forklaring": "Stallings' kravliste - alle tre gjelder samtidig.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A46. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A46",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a47",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Begrepet zombie i nettsikkerhet viser til:",
+      "alternativer": [
+        "Hackerens egen maskin",
+        "Hovedmålet for DDoS",
+        "Kompromitterte verter som ogsa er hovedmålet",
+        "Et kompromittert system som ikke er målet, men brukes til å utføre DDoS"
+      ],
+      "fasit": 3,
+      "forklaring": "Zombie/bot = kapret maskin i et botnett, brukt som våpen mot et annet mål.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A47. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A47",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a48",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Alarm om at et program på serveren kjører og omgar autorisasjon. Hvilket angrep?",
+      "alternativer": [
+        "Deface",
+        "DDoS",
+        "Backdoor",
+        "Social engineering"
+      ],
+      "fasit": 2,
+      "forklaring": "Bakdor = skjult tilgang som hopper over normal autentisering.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A48. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A48",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a49",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Buffer overflow utføres ved å:",
+      "alternativer": [
+        "Overfylle bufferen i nettverksutstyr som rutere",
+        "Overfylle minnet til en variabel i programkoden",
+        "Tømme målets ressurser",
+        "Alle gale"
+      ],
+      "fasit": 1,
+      "forklaring": "Skriving forbi en variabels grense kan overskrive returadressen. C beskriver DoS.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A49. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A49",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a50",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken sikkerhetsegenskap gir digital signatur?",
+      "alternativer": [
+        "Kryptering av personlige hemmeligheter",
+        "Personvern",
+        "Angir datakilden og verifiserer integriteten",
+        "Rammeverk for lov og prosess"
+      ],
+      "fasit": 2,
+      "forklaring": "Autentisitet + integritet + ikke-benekting. Ikke konfidensialitet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A50. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A50",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a51",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "I datanett brukes en port til å identifisere:",
+      "alternativer": [
+        "Adressen til en applikasjon på Internett",
+        "Adressen til en maskin på Internett",
+        "Adressen til en applikasjon på en maskin",
+        "Alle gale"
+      ],
+      "fasit": 2,
+      "forklaring": "IP-adressen identifiserer verten, porten identifiserer prosessen på verten.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A51. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A51",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a52",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvilket verktøy passer best til å kryptere e-post?",
+      "alternativer": [
+        "SSH",
+        "IPsec",
+        "TLS",
+        "PGP"
+      ],
+      "fasit": 3,
+      "forklaring": "PGP er ende-til-ende for e-postinnhold; TLS sikrer bare transporten mellom servere.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A52. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A52",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a53",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilket eksempel er atferdsbiometri?",
+      "alternativer": [
+        "Et passord",
+        "Et adgangskort",
+        "Måling av rytme og bevegelse under signering",
+        "Et brukernavn"
+      ],
+      "fasit": 2,
+      "forklaring": "Dynamiske trekk ved signeringen kan brukes som atferdsbiometri. En håndskrevet signatur på papir alene er et tvetydig eksempel i originalen.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A53. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A53",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a54",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket utsagn er IKKE riktig?",
+      "alternativer": [
+        "1 xor 1 = 1",
+        "0 xor 0 = 0",
+        "1 xor 0 = 1",
+        "0 xor 1 = 1"
+      ],
+      "fasit": 0,
+      "forklaring": "XOR gir 1 bare når bitene er ulike, så 1 xor 1 = 0.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A54. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A54",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a55",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Ondsinnet kode gjemt i et nyttig program, uten evne til å reprodusere seg:",
+      "alternativer": [
+        "Worm",
+        "Virus",
+        "Trojaner",
+        "Alle gale"
+      ],
+      "fasit": 2,
+      "forklaring": "Motstykket til sp. 1 - samme taksonomi testet fra motsatt side.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A55. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A55",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a56",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Angrepet der noen utgir seg for å være en gyldig bruker og oppretter forbindelse til serveren:",
+      "alternativer": [
+        "Session hijacking",
+        "DDoS",
+        "Spoofing",
+        "Social engineering"
+      ],
+      "fasit": 2,
+      "forklaring": "Spoofing = forfalsket identitet ved oppkobling. Hijacking overtar en eksisterende sesjon.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A56. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A56",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a57",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket verktøy kan brukes til å lese en vanlig tekstbasert loggfil manuelt?",
+      "alternativer": [
+        "En tekstviser eller tekstredigerer",
+        "En passordknekker",
+        "Et krypteringssertifikat",
+        "En nettverkskabeltester"
+      ],
+      "fasit": 0,
+      "forklaring": "En tekstviser kan brukes til manuell lesing. For store datamengder er søke- og logganalyseverktøy ofte mer hensiktsmessige. IDS kan også analysere logger.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A57. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A57",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a58",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "I DES har inngangsblokken med klartekst lengden:",
+      "alternativer": [
+        "32 bit",
+        "56 bit",
+        "64 bit",
+        "128 bit"
+      ],
+      "fasit": 2,
+      "forklaring": "Blokk 64 bit, effektiv nøkkel 56 bit, 16 runder, delnøkler 48 bit. Lær alle fire tallene.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A58. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A58",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-a59",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilket utsagn om virus og minne er riktig?",
+      "alternativer": [
+        "Virus kan aldri finnes i RAM",
+        "Virus kan være aktive i minnet mens de kjører",
+        "DLL-filer kan aldri infiseres",
+        "Virus kan bare eksistere i tekstfiler"
+      ],
+      "fasit": 1,
+      "forklaring": "Virus kan være aktive i minnet og kan infisere blant annet programfiler. Originalens påstand om at minne ikke kan rammes er misvisende.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A59. Fasiten i PDF-en er utledet, ikke offisiell. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A59",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-a60",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "For å oppdage angrep på et enkeltstaende system kan man bruke:",
+      "alternativer": [
+        "Brannmur",
+        "Honeypot",
+        "NIPS",
+        "HIDS"
+      ],
+      "fasit": 3,
+      "forklaring": "Host-basert IDS overvåker en enkelt vert. NIPS/NIDS overvåker nettsegmentet. Del B - Øvingssett (tracnghiem), gruppert etter kapittel Originalen har fasit markert med rodt, og en rotete nummerering som starter på nytt flere ganger. Her er spørsmålene nummerert fortløpende B1-B60, med den opprinnelige nummereringen i seksjonsoverskriftene.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, A60. Fasiten i PDF-en er utledet, ikke offisiell.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "A60",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b1",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Passivt angrep bryter hvilket kjerneprinsipp i informasjonssikkerhet?",
+      "alternativer": [
+        "Konfidensialitet",
+        "Integritet",
+        "Tilgjengelighet",
+        "Autentisering"
+      ],
+      "fasit": 0,
+      "forklaring": "Passiv = bare avlytting, altså konfidensialitet. Går igjen som sp. 41 i eksamen 2018.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B1.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B1",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b2",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "DoS-angrep tilhører hvilken angrepskategori i OSI-sikkerhetsarkitekturen (X.800)?",
+      "alternativer": [
+        "Fjernangrep",
+        "Aktivt angrep",
+        "Passivt angrep",
+        "A og B"
+      ],
+      "fasit": 1,
+      "forklaring": "X.800 deler bare i aktiv/passiv. DoS endrer systemets tilstand = aktivt.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B2.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B2",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b3",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken mekanisme trengs IKKE for å motvirke tjenestenekt?",
+      "alternativer": [
+        "Kryptering (encipherment)",
+        "Rutingkontroll",
+        "Autentiseringsutveksling",
+        "Tilgangskontroll"
+      ],
+      "fasit": 0,
+      "forklaring": "Kryptering beskytter innhold, ikke tilgjengelighet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B3.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B3",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b4",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken mekanisme brukes IKKE til autentiseringstjenesten?",
+      "alternativer": [
+        "Kryptering",
+        "Digital signatur",
+        "Autentiseringsutveksling",
+        "Tilgangskontroll"
+      ],
+      "fasit": 3,
+      "forklaring": "Tilgangskontroll skjer etter autentisering. Lag X.800-tabellen tjeneste x mekanisme - den blir spurt om flere ganger.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B4.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B4",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b5",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvilken type skadevare er Code Red først og fremst kjent som?",
+      "alternativer": [
+        "Virus som krever en vertsfil",
+        "Trojaner uten selvspredning",
+        "Nettverksorm",
+        "Ufarlig reklameprogram"
+      ],
+      "fasit": 2,
+      "forklaring": "Code Red er kjent som en nettverksorm. PDF-ens hybridfasit beholdes ikke som eneste korrekte klassifisering. Kontrollkilde: https://www-old.caida.org/research/security/code-red/\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B5. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B5",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b6",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Caesar krypterer x i [0;25] som y = x + 3 mod 26. Klartekstverdi 10 gir chifferverdi:",
+      "alternativer": [
+        "5",
+        "7",
+        "13",
+        "15"
+      ],
+      "fasit": 2,
+      "forklaring": "10 + 3 = 13.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B6.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B6",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b7",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Affint chiffer y = 3x + 5 mod 26. Hvis chifferverdien er 10, hva er klarteksten?",
+      "alternativer": [
+        "9",
+        "14",
+        "19",
+        "23"
+      ],
+      "fasit": 2,
+      "forklaring": "FEIL I FASITEN. Med teksten slik den står: 3x + 5 = 10 -> 3x = 5 -> x = 5 * 9 = 45 mod 26 = 19. Fasitens 9 stemmer bare hvis 10 var klarteksten (3*10+5 = 35 mod 26 = 9). Ha begge regneretninger klare.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B7.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B7",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b8",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvor lang er den effektive nøkkelen i DES, uten paritetsbitene?",
+      "alternativer": [
+        "64 bit",
+        "56 bit",
+        "48 bit",
+        "128 bit"
+      ],
+      "fasit": 1,
+      "forklaring": "DES-nøkkelen representeres med 64 bit, der 8 er paritetsbiter. Effektiv nøkkellengde er 56 bit. Originalens skille mellom lagret og effektiv lengde var uklart.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B8. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B8",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b9",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvorfor er Double DES (2DES) usikkert?",
+      "alternativer": [
+        "Man-in-the-middle",
+        "Meet-in-the-middle",
+        "Brute force",
+        "DoS"
+      ],
+      "fasit": 1,
+      "forklaring": "Meet-in-the-middle utnytter mellomverdien mellom to DES-operasjoner. Med stor lagringsplass reduseres arbeidet kraftig fra et naivt søk over 112 nøkkelbit. Dette er et historisk kryptanalyseeksempel, ikke en anbefaling av DES eller 3DES.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B9. Formulering eller forklaring er faglig presisert. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B9",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b10",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken driftsmodus krypterer blokkene helt uavhengig av hverandre?",
+      "alternativer": [
+        "ECB",
+        "CBC",
+        "CFB",
+        "OFB"
+      ],
+      "fasit": 0,
+      "forklaring": "ECB = Electronic Codebook: like klartekstblokker gir like chifferblokker (pingvinbildet).\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B10.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B10",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b11",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er (7 opphøyd i 2010) mod 13?",
+      "alternativer": [
+        "1",
+        "12",
+        "7",
+        "Alle gale"
+      ],
+      "fasit": 1,
+      "forklaring": "Fermat: 7^12 = 1 mod 13. 2010 mod 12 = 6, og 7^6 = 12 mod 13.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B11.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B11",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b12",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Verdien av Eulers phi(440):",
+      "alternativer": [
+        "439",
+        "240",
+        "160",
+        "Alle gale"
+      ],
+      "fasit": 2,
+      "forklaring": "440 = 2^3 * 5 * 11, så phi = 440 * 1/2 * 4/5 * 10/11 = 160.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B12.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B12",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b13",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er (3 opphøyd i 2086) mod 440?",
+      "alternativer": [
+        "1",
+        "3",
+        "81",
+        "289"
+      ],
+      "fasit": 3,
+      "forklaring": "Euler: 2086 mod 160 = 6, og 3^6 = 729 mod 440 = 289.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B13.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B13",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b14",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Ved offentlig-nøkkel-kryptering: hvilken nøkkel lager signaturen på en melding?",
+      "alternativer": [
+        "Mottakers offentlige",
+        "Mottakers private",
+        "Avsenders offentlige",
+        "Avsenders private"
+      ],
+      "fasit": 3,
+      "forklaring": "Signering = avsenders private nøkkel. Samme par som sp. 29-30 i eksamen 2018.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B14.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B14",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b15",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Ved offentlig-nøkkel-kryptering for konfidensialitet: hvilken nøkkel brukes til å kryptere til mottakeren?",
+      "alternativer": [
+        "Mottakers offentlige",
+        "Mottakers private",
+        "Avsenders offentlige",
+        "Avsenders private"
+      ],
+      "fasit": 0,
+      "forklaring": "Konfidensialitet = mottakers offentlige nøkkel.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B15.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B15",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b16",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "RSA med p = 3, q = 11, e = 7, chiffertekst C = 5. Verdien av d er:",
+      "alternativer": [
+        "7",
+        "5",
+        "3",
+        "2"
+      ],
+      "fasit": 2,
+      "forklaring": "FEIL I FASITEN. n = 33, phi(n) = 20, d = 7^-1 mod 20 = 3 (7*3 = 21 = 1 mod 20). At neste spørsmål gir M = 26 bekrefter at d = 3.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B16.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B16",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b17",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "RSA med p = 3, q = 11 og privat eksponent d = 3: Hva er klarteksten M når chifferteksten C = 5?",
+      "alternativer": [
+        "26",
+        "24",
+        "5",
+        "1"
+      ],
+      "fasit": 0,
+      "forklaring": "M = 5^3 mod 33 = 125 mod 33 = 26.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B17.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B17",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b18",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Diffie-Hellman med q = 71, alfa = 7. A har privat nøkkel 5. Offentlig nøkkel Y(A)?",
+      "alternativer": [
+        "4",
+        "5",
+        "30",
+        "51"
+      ],
+      "fasit": 3,
+      "forklaring": "7^5 mod 71 = 51.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B18.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B18",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b19",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Diffie–Hellman med modulus q = 71 og generator alfa = 7: B har privat eksponent 12. Hva er offentlig verdi Y(B)?",
+      "alternativer": [
+        "4",
+        "5",
+        "30",
+        "51"
+      ],
+      "fasit": 0,
+      "forklaring": "7^12 mod 71 = 4.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B19.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B19",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b20",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Diffie–Hellman med modulus 71 og generator 7: A har privat eksponent 5 og B har privat eksponent 12. Hva er den felles hemmeligheten?",
+      "alternativer": [
+        "4",
+        "5",
+        "30",
+        "51"
+      ],
+      "fasit": 2,
+      "forklaring": "K = 4^5 mod 71 = 30 (= 51^12 mod 71). Øv på modulær eksponentiering med kvadrering - det er den eneste regneteknikken du trenger.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B20.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B20",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b21",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvor stor er DES-blokken som brukes i den historiske DAA/CBC-MAC-konstruksjonen før eventuell avkorting?",
+      "alternativer": [
+        "128 bit",
+        "64 bit",
+        "128 byte",
+        "64 byte"
+      ],
+      "fasit": 1,
+      "forklaring": "DES har blokkstørrelse 64 bit. En MAC kan avkortes, så den overførte koden trenger ikke alltid være 64 bit.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B21. Formulering eller forklaring er faglig presisert. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B21",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b22",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Omtrent hvor mange tilfeldige hashberegninger kreves for å finne en kollisjon i en ideell 128-bits hash, målt som størrelsesorden?",
+      "alternativer": [
+        "128",
+        "64",
+        "2^64",
+        "2^128"
+      ],
+      "fasit": 2,
+      "forklaring": "Bursdagsgrensen er av størrelsesorden 2^(n/2). For 128 bit blir dette 2^64; en sannsynlighet på nøyaktig 0,5 krever en konstantfaktor i tillegg.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B22. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B22",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b23",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvor lang er en full HMAC-MD5-kode uten avkorting (historisk algoritme)?",
+      "alternativer": [
+        "128 bit",
+        "64 bit",
+        "128 byte",
+        "64 byte"
+      ],
+      "fasit": 0,
+      "forklaring": "MD5 = 128 bit. Sammenlign: SHA-1 = 160 bit.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B23. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B23",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b24",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Digital signatur er en autentiseringsmekanisme som:",
+      "alternativer": [
+        "Bekrefter meldingens integritet",
+        "Bekrefter avsenders identitet",
+        "Hindrer benekting av opprinnelse",
+        "Alle tre"
+      ],
+      "fasit": 3,
+      "forklaring": "Integritet + autentisitet + ikke-benekting. Samme innhold som sp. 50 i eksamen 2018.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B24.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B24",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b25",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "I klassisk DSA med en 160-bits gruppeorden q består signaturen av r og s. Hva er samlet fast bredde for disse to verdiene, uten kodingsmetadata?",
+      "alternativer": [
+        "512 bit",
+        "320 bit",
+        "160 bit",
+        "1024 bit"
+      ],
+      "fasit": 1,
+      "forklaring": "To verdier på opptil 160 bit gir 320 bit ved fast bredde. Størrelsen er parameteravhengig, og kodet signatur kan bruke flere byte. Kontrollkilde: https://www.rfc-editor.org/rfc/rfc4880.html\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B25. Formulering eller forklaring er faglig presisert. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B25",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b26",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Et komplett Kerberos-miljo bestar av:",
+      "alternativer": [
+        "En Kerberos-server",
+        "Server + klienter",
+        "Server + applikasjonsservere",
+        "Kerberos-server, flere klienter og flere applikasjonsservere"
+      ],
+      "fasit": 3,
+      "forklaring": "Alle tre komponentene må være med.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B26.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B26",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b27",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "I Kerberos har hver bruker:",
+      "alternativer": [
+        "En TGT og en SGT for alle tjenester",
+        "En TGT, og en SGT per tjeneste",
+        "En SGT, og en TGT per tjeneste",
+        "Både SGT og TGT per tjeneste"
+      ],
+      "fasit": 1,
+      "forklaring": "En billett-innvilgende billett (TGT) per sesjon, en tjenestebillett per tjeneste.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B27.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B27",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b28",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "X.509-autentisering bruker hvilken krypteringstype?",
+      "alternativer": [
+        "Symmetrisk",
+        "Hemmelig nøkkel",
+        "Offentlig nøkkel",
+        "B og C"
+      ],
+      "fasit": 2,
+      "forklaring": "Sertifikater bygger på asymmetrisk kryptografi.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B28.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B28",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b29",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Signaturen i et X.509-sertifikat lages med hvilken nøkkel?",
+      "alternativer": [
+        "Eierens offentlige",
+        "Eierens private",
+        "Utstederens offentlige",
+        "Utstederens private (CA)"
+      ],
+      "fasit": 3,
+      "forklaring": "CA-en signerer sertifikatet med sin private nøkkel; alle verifiserer med CA-ens offentlige.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B29.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B29",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b30",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva betyr gjensidig autentisering i en protokoll?",
+      "alternativer": [
+        "Bare klienten autentiseres",
+        "Bare serveren autentiseres",
+        "Begge parter autentiserer den andre",
+        "Ingen part autentiseres"
+      ],
+      "fasit": 2,
+      "forklaring": "Gjensidig autentisering går begge veier. Interaktiv kommunikasjon krever ikke i seg selv gjensidig autentisering eller et bestemt antall meldinger.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B30. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B30",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b31",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hva gjør radix-64-koding brukt for e-postkompatibilitet i klassisk PGP?",
+      "alternativer": [
+        "Krypterer med mottakerens private nøkkel",
+        "Representerer tre byte som fire tegn før eventuell padding",
+        "Lager en digital signatur",
+        "Komprimerer alltid data til halv størrelse"
+      ],
+      "fasit": 1,
+      "forklaring": "Radix-64 representerer binærdata som tekst. Tre byte blir fire kodede tegn; koding gir ikke konfidensialitet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B31. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B31",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b32",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "I klassisk PGP med både signering og kryptering: hva beskyttes med den symmetriske sesjonsnøkkelen?",
+      "alternativer": [
+        "Meldingen",
+        "Meldingssammendraget",
+        "Signaturen",
+        "Meldingen og signaturen"
+      ],
+      "fasit": 3,
+      "forklaring": "PGP signerer først, deretter krypteres melding + signatur samlet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B32.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B32",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b33",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvilken nøkkel brukes til å kryptere selve sesjonsnøkkelen i PGP?",
+      "alternativer": [
+        "Avsenders offentlige",
+        "Avsenders private",
+        "Mottakers offentlige",
+        "Mottakers private"
+      ],
+      "fasit": 2,
+      "forklaring": "Hybrid kryptering: sesjonsnøkkelen sendes kryptert med mottakerens offentlige nøkkel.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B33.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B33",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b34",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvilken driftsmodus brukes i det klassiske OpenPGP-formatet beskrevet i RFC 4880?",
+      "alternativer": [
+        "CBC",
+        "ECB",
+        "CFB",
+        "OFB"
+      ],
+      "fasit": 2,
+      "forklaring": "PGP bruker CFB.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B34. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B34",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b35",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvilken av disse er en symmetrisk blokkchifferalgoritme som kan brukes i OpenPGP?",
+      "alternativer": [
+        "RSA",
+        "DSA",
+        "AES",
+        "Diffie–Hellman"
+      ],
+      "fasit": 2,
+      "forklaring": "AES er et symmetrisk blokkchiffer. RSA, DSA og Diffie–Hellman tilhører offentlig-nøkkel-kryptografi.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B35. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B35",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b36",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilket angrep kan SSL IKKE beskytte mot?",
+      "alternativer": [
+        "Password sniffing",
+        "Man-in-the-middle",
+        "Replay",
+        "SYN flooding"
+      ],
+      "fasit": 3,
+      "forklaring": "SSL gir ikke tilgjengelighet. Identisk poeng som sp. 21 i eksamen 2018.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B36. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B36",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b37",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilken protokoll finnes IKKE i SSL?",
+      "alternativer": [
+        "SSL Message Protocol",
+        "SSL Record Protocol",
+        "SSL Handshake Protocol",
+        "SSL Change Cipher Spec Protocol"
+      ],
+      "fasit": 0,
+      "forklaring": "SSL har Record, Handshake, Change Cipher Spec og Alert. Lær disse fire.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B37. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B37",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b38",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilket utsagn om sesjoner og forbindelser i historisk SSL 3.0 er riktig?",
+      "alternativer": [
+        "En SSL-sesjon kan deles av flere forbindelser",
+        "En forbindelse må inneholde flere samtidige sesjoner",
+        "Sesjon og TCP-pakke betyr det samme",
+        "Hver datapakke krever en ny full sesjonsforhandling"
+      ],
+      "fasit": 0,
+      "forklaring": "En sesjon lagrer sikkerhetsparametere som kan gjenbrukes på flere forbindelser. Originalen hadde flere gale utsagn, men en inkonsekvent fasit. Kontrollkilde: https://www.rfc-editor.org/rfc/rfc6101.html\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B38. Formulering eller forklaring er faglig presisert. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B38",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b39",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvilket utsagn om dobbel signatur (dual signature) er galt?",
+      "alternativer": [
+        "Den knytter to meldinger til to ulike mottakere",
+        "Den signerer betalingsinformasjon (PI) og bestillingsinformasjon (OI)",
+        "Den skal hindre at banken kan se hashen av bestillingsinformasjonen",
+        "Den signerer to sammenkoblede dokumenter som hver har egen hash"
+      ],
+      "fasit": 2,
+      "forklaring": "Banken får nettopp hashen av OI (men ikke innholdet) - det er slik koblingen kan verifiseres.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B39. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B39",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b40",
+      "type": "flervalg",
+      "kapittel": 9,
+      "sporsmal": "Hvem i SET (Secure Electronic Transaction) har ansvar for å betale kortholders kjop?",
+      "alternativer": [
+        "Cardholder",
+        "Issuer",
+        "Merchant",
+        "CA"
+      ],
+      "fasit": 1,
+      "forklaring": "Issuer = kortutstedende bank.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B40. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B40",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b41",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilke er designmål for en brannmur?",
+      "alternativer": [
+        "All trafikk inn og ut må passere brannmuren",
+        "All intern trafikk i LAN må passere brannmuren",
+        "Bare trafikk godkjent av lokal sikkerhetspolicy slipper gjennom",
+        "A og C",
+        "A, B og C"
+      ],
+      "fasit": 3,
+      "forklaring": "B er feil: intern LAN-trafikk går ikke gjennom perimeterbrannmuren.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B41.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B41",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b42",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er en viktig begrensning ved et enkelt, stateless pakkefilter?",
+      "alternativer": [
+        "Det inspiserer normalt ikke applikasjonsinnholdet",
+        "Det kan ikke lese IP-adresser",
+        "Det kan ikke filtrere på portnummer",
+        "Det krypterer automatisk alle pakker"
+      ],
+      "fasit": 0,
+      "forklaring": "Et enkelt pakkefilter vurderer headerfelt. Det kan bruke adressebaserte regler mot enkelte former for spoofing, men beviser ikke avsenderidentitet og undersøker normalt ikke applikasjonsinnhold.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B42. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B42",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b43",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket utsagn om brannmurtyper er galt?",
+      "alternativer": [
+        "Pakkefilter filtrerer på felt i IP- og TCP-header",
+        "Circuit-level gateway gir en ende-til-ende TCP-forbindelse",
+        "Application-level gateway kalles ogsa proxy",
+        "Application-level gateway er sikrere enn pakkefiltrerende ruter"
+      ],
+      "fasit": 1,
+      "forklaring": "Circuit-level gateway bryter forbindelsen i to: en TCP-forbindelse på hver side, ikke ende-til-ende.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B43.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B43",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b44",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken brannmurkonfigurasjon beskytter fortsatt hvis pakkefilteret på ytterruteren er kompromittert?",
+      "alternativer": [
+        "Single-homed bastion host",
+        "Dual-homed bastion host",
+        "Screened subnet",
+        "B og C"
+      ],
+      "fasit": 3,
+      "forklaring": "Begge har et ekstra lag som ikke faller sammen med ruteren.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B44.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B44",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b45",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvordan begrense SYN flooding i brannmuren?",
+      "alternativer": [
+        "Begrense antall SYN-pakker per sekund",
+        "Blokkere IP-er med mange mislykkede forsøk",
+        "Bare tillate SYN på bestemte porter",
+        "Alle er riktige"
+      ],
+      "fasit": 3,
+      "forklaring": "Alle tre er reelle rate-limiting/filtreringstiltak.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B45.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B45",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b46",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken deteksjonsretning samler normal brukeratferd over tid og analyserer avvik?",
+      "alternativer": [
+        "Statistisk deteksjon (anomalibasert)",
+        "Regelbasert deteksjon",
+        "Hybrid",
+        "Alle gale"
+      ],
+      "fasit": 0,
+      "forklaring": "Anomalibasert = baseline over tid. Regelbasert = kjente signaturer.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B46.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B46",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b47",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket par beskriver to vanlige tilnærminger til inntrengingsdeteksjon?",
+      "alternativer": [
+        "Anomalibasert og signatur-/regelbasert deteksjon",
+        "Kryptering og kompresjon",
+        "Ruting og adressering",
+        "Sikkerhetskopiering og utskrift"
+      ],
+      "fasit": 0,
+      "forklaring": "Anomalideteksjon ser etter avvik fra normal aktivitet. Signatur- eller regelbasert deteksjon ser etter definerte mønstre. «Behavior-based» er ikke i seg selv en faglig feil betegnelse.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B47. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B47",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b48",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvorfor må man velge hvilke systemer og datakilder et IDS skal overvåke?",
+      "alternativer": [
+        "For å bestemme hvor sensorer og innsamling trengs",
+        "For å slippe å definere mål",
+        "For å garantere null falske alarmer",
+        "For å deaktivere all logging"
+      ],
+      "fasit": 0,
+      "forklaring": "Overvåkingsomfanget styrer plassering av sensorer og hvilke hendelser som er synlige. Det finnes ikke én universell rekkefølge for alle IDS-prosjekter.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B48. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B48",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b49",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "En organisasjon vil beskytte en server mot at legitime brukere gjør skade. Hvilket IDS?",
+      "alternativer": [
+        "NIDS",
+        "HIDS",
+        "Hybrid",
+        "Alle gale"
+      ],
+      "fasit": 1,
+      "forklaring": "Innsideraktivitet på en enkelt vert = vertbasert. Samme logikk som sp. 60 i eksamen 2018.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B49.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B49",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b50",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken IDS-type analyserer nettverkstrafikk fra ett eller flere nettsegmenter?",
+      "alternativer": [
+        "NIDS",
+        "HIDS som bare leser lokale systemlogger",
+        "En passordbehandler",
+        "En sertifikatutsteder"
+      ],
+      "fasit": 0,
+      "forklaring": "NIDS overvåker nettverkstrafikk. Kostnad og dekning avhenger av nettets utforming, trafikkmengde, kryptering og plassering av sensorene.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B50. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B50",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b51",
+      "type": "flervalg",
+      "kapittel": 11,
+      "sporsmal": "VPN står for:",
+      "alternativer": [
+        "Virtual Public Network",
+        "Virtual Private Network",
+        "Virtual Protocol Network",
+        "Virtual Perimeter Network"
+      ],
+      "fasit": 1,
+      "forklaring": "VPN står for Virtual Private Network.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B51.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B51",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b52",
+      "type": "flervalg",
+      "kapittel": 11,
+      "sporsmal": "Hovedfordelen med VPN sammenlignet med frame relay, leide linjer eller dial-up:",
+      "alternativer": [
+        "Bedre ytelse",
+        "Faerre feil",
+        "Lavere kostnad",
+        "Bedre sikkerhet"
+      ],
+      "fasit": 2,
+      "forklaring": "Et VPN over delt infrastruktur kan redusere kostnaden sammenlignet med dedikerte forbindelser. Pris, ytelse og sikkerhet avhenger av løsningen; en leid linje garanterer ikke konfidensialitet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B52. Formulering eller forklaring er faglig presisert.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B52",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b53",
+      "type": "flervalg",
+      "kapittel": 11,
+      "sporsmal": "I VPN betyr begrepet tunnelering:",
+      "alternativer": [
+        "Valgfri funksjon som øker ytelsen",
+        "Innkapsling av pakker i en annen protokolls pakker for å lage og vedlikeholde en virtuell krets",
+        "Metode for å oppdage hackere",
+        "Markedsforingsstrategi"
+      ],
+      "fasit": 1,
+      "forklaring": "Samme definisjon som eksamen 2018 sp. 10.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B53.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B53",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b54",
+      "type": "flervalg",
+      "kapittel": 11,
+      "sporsmal": "Hvilke er VPN-tunnelprotokoller?",
+      "alternativer": [
+        "PPTP",
+        "L2TP",
+        "IPsec",
+        "Alle"
+      ],
+      "fasit": 3,
+      "forklaring": "VPN står for Virtual Private Network.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B54.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B54",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b55",
+      "type": "flervalg",
+      "kapittel": 11,
+      "sporsmal": "Forskjellen mellom brannmur og VPN:",
+      "alternativer": [
+        "Brannmur kan konfigureres, VPN kan ikke",
+        "Brannmur er en ny type VPN",
+        "Brannmur blokkerer meldinger, VPN åpner en vei for gyldige meldinger",
+        "Ingen forskjell"
+      ],
+      "fasit": 2,
+      "forklaring": "VPN står for Virtual Private Network.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B55.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B55",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b56",
+      "type": "flervalg",
+      "kapittel": 12,
+      "sporsmal": "WEP står for:",
+      "alternativer": [
+        "Wireless Encryption Protocol",
+        "Wireless Encryption Privacy",
+        "Wired Equivalent Privacy",
+        "Wired Equivalent Protocol"
+      ],
+      "fasit": 2,
+      "forklaring": "VPN står for Virtual Private Network.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B56. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B56",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b57",
+      "type": "flervalg",
+      "kapittel": 12,
+      "sporsmal": "Hvilken kombinasjon bidro til svakhetene i WEP?",
+      "alternativer": [
+        "Sterk autentisert kryptering og unike lange noncer",
+        "En kort IV som kunne gjentas, og svakheter ved bruken av RC4",
+        "For store Ethernet-rammer",
+        "Bruk av AES-GCM"
+      ],
+      "fasit": 1,
+      "forklaring": "WEP kombinerte en kort IV med RC4 på en måte som ga svake og gjentatte nøkkelstrømmer. Problemet kan ikke reduseres til bare lengden på den delte nøkkelen.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B57. Formulering eller forklaring er faglig presisert. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B57",
+        "bearbeidet": true
+      }
+    },
+    {
+      "id": "co3069-pdf-b58",
+      "type": "flervalg",
+      "kapittel": 12,
+      "sporsmal": "Hvilken sterkere standard utviklet IEEE for å lukke hullene i 802.11?",
+      "alternativer": [
+        "802.16.2",
+        "802.11e",
+        "802.11i",
+        "802.11n"
+      ],
+      "fasit": 2,
+      "forklaring": "802.11i = WPA2. 802.11e er QoS, 802.11n er hastighet.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B58. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B58",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b59",
+      "type": "flervalg",
+      "kapittel": 12,
+      "sporsmal": "Hva skiller klassisk WPA med TKIP fra WPA2 med CCMP?",
+      "alternativer": [
+        "WPA bruker RC4, WPA2 bruker AES",
+        "WPA bruker RC4 med TKIP/MIC, WPA2 bruker AES",
+        "WPA bruker PSK, WPA2 bruker 802.1x/EAP",
+        "WPA bruker ICV, WPA2 bruker 802.1x/EAP"
+      ],
+      "fasit": 1,
+      "forklaring": "B er mer presis enn A - TKIP/MIC må være med. Klassisk \"nesten riktig\"-distraktor.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B59. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B59",
+        "bearbeidet": false
+      }
+    },
+    {
+      "id": "co3069-pdf-b60",
+      "type": "flervalg",
+      "kapittel": 12,
+      "sporsmal": "Hvilket utsagn om trådløse sikkerhetsbegreper er riktig?",
+      "alternativer": [
+        "AES er asymmetrisk",
+        "WEP bruker AES-CCMP",
+        "802.1X beskriver portbasert tilgangskontroll og kan inngå i enterprise-WLAN",
+        "WPA2 krever alltid et felles passord"
+      ],
+      "fasit": 2,
+      "forklaring": "802.1X brukes til portbasert tilgangskontroll og inngår i enterprise-oppsett. At 802.11i benytter denne mekanismen er ikke en motsetning, slik originalens fasit kunne gi inntrykk av.\n\nKilde: CO3069_eksamensanalyse_gamle_eksamener.pdf, B60. Formulering eller forklaring er faglig presisert. Historisk pensum.",
+      "kilde": {
+        "dokument": "CO3069_eksamensanalyse_gamle_eksamener.pdf",
+        "oppgave": "B60",
+        "bearbeidet": true
+      }
+    }
+  ]
+}

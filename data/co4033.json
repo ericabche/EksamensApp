@@ -1,1 +1,177 @@
-
+{
+  "fag": "Big Data Analytics and Business Intelligence",
+  "kapitler": {
+    "1": "Big data og datakvalitet",
+    "2": "Datavarehus og BI",
+    "3": "Distribuert databehandling",
+    "4": "Analyse og evaluering"
+  },
+  "sporsmal": [
+    {
+      "id": "co4033-ny-001",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva beskriver velocity i de klassiske tre V-ene for big data?",
+      "alternativer": [
+        "Antallet datatyper",
+        "Hvor raskt data genereres og må behandles",
+        "Hvor pålitelige dataene er",
+        "Størrelsen på én skjerm"
+      ],
+      "fasit": 1,
+      "forklaring": "Volume gjelder mengde, velocity gjelder hastighet, og variety gjelder variasjon i data og formater."
+    },
+    {
+      "id": "co4033-ny-002",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket eksempel er semistrukturerte data?",
+      "alternativer": [
+        "En rå lydopptaksfil",
+        "Et bilde uten metadata",
+        "Et JSON-dokument med navngitte felt",
+        "En papirutskrift"
+      ],
+      "fasit": 2,
+      "forklaring": "JSON har struktur gjennom felt og nesting, men dokumenter trenger ikke følge det faste tabellskjemaet i en relasjonsdatabase."
+    },
+    {
+      "id": "co4033-ny-003",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvorfor bør du undersøke manglende verdier før du erstatter dem?",
+      "alternativer": [
+        "Alle manglende verdier betyr null",
+        "Manglende verdier er alltid tilfeldige",
+        "Erstatning forbedrer alltid nøyaktigheten",
+        "Mønsteret kan skape skjevhet i analysen"
+      ],
+      "fasit": 3,
+      "forklaring": "Fravær av data kan henge sammen med egenskapene du undersøker. En standard erstatning kan skjule dette og gi misvisende resultater."
+    },
+    {
+      "id": "co4033-ny-004",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er riktig rekkefølge i ETL?",
+      "alternativer": [
+        "Extract, Transform, Load",
+        "Evaluate, Train, Learn",
+        "Extract, Transfer, Label",
+        "Encode, Test, Launch"
+      ],
+      "fasit": 0,
+      "forklaring": "Data hentes fra kildene, omformes eller renses, og lastes så til målsystemet."
+    },
+    {
+      "id": "co4033-ny-005",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva inneholder en faktatabell vanligvis i et stjerneskjema?",
+      "alternativer": [
+        "Bare brukernes passord",
+        "Målverdier og nøkler til dimensjoner",
+        "Bare navn på dimensjonstabeller",
+        "Programkoden til rapportene"
+      ],
+      "fasit": 1,
+      "forklaring": "En salgsfaktatabell kan inneholde antall og omsetning samt nøkler til dato, produkt og butikk."
+    },
+    {
+      "id": "co4033-ny-006",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva gjør en OLAP-roll-up?",
+      "alternativer": [
+        "Viser mer detaljert nivå",
+        "Sletter alle dimensjoner",
+        "Aggregerer data til et grovere nivå",
+        "Krypterer faktatabellen"
+      ],
+      "fasit": 2,
+      "forklaring": "Et eksempel er å summere dagsomsetning til månedsomsetning. Drill-down går motsatt vei, til et mer detaljert nivå."
+    },
+    {
+      "id": "co4033-ny-007",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skjer typisk i shuffle-fasen i MapReduce?",
+      "alternativer": [
+        "Alle inputdata slettes",
+        "Resultater krypteres med samme nøkkel",
+        "Kun rapportens layout beregnes",
+        "Mellomresultater grupperes etter nøkkel og sendes til riktig reducer"
+      ],
+      "fasit": 3,
+      "forklaring": "Shuffle samler verdier som har samme nøkkel slik at reduceren kan aggregere dem. Overføring av data kan være en betydelig kostnad."
+    },
+    {
+      "id": "co4033-ny-008",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er hovedforskjellen på batch- og strømbehandling?",
+      "alternativer": [
+        "Batch behandler avgrensede datasett; strømbehandling håndterer løpende hendelser",
+        "Batch kan ikke behandle tall",
+        "Strømbehandling krever alltid at alle data er lagret først",
+        "De betyr nøyaktig det samme"
+      ],
+      "fasit": 0,
+      "forklaring": "Batch kjører på en avgrenset samling. Strømbehandling arbeider med data etter hvert som de kommer, ofte gjennom tidsvinduer."
+    },
+    {
+      "id": "co4033-ny-009",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva kjennetegner overvåket læring?",
+      "alternativer": [
+        "Data mangler alltid etiketter",
+        "Modellen trenes med eksempler som har kjente målverdier",
+        "Modellen trenger ingen treningsdata",
+        "Alle grupper bestemmes uten målvariabel"
+      ],
+      "fasit": 1,
+      "forklaring": "Ved klassifikasjon eller regresjon lærer modellen sammenhengen mellom input og en kjent klasse eller tallverdi."
+    },
+    {
+      "id": "co4033-ny-010",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "En modell markerer 40 transaksjoner som svindel, og 30 av dem er svindel. Hva er precision?",
+      "alternativer": [
+        "30 %",
+        "40 %",
+        "75 %",
+        "100 %"
+      ],
+      "fasit": 2,
+      "forklaring": "Precision = sanne positive / alle predikerte positive = 30 / 40 = 0,75. Recall krever at vi også kjenner totalt antall faktiske svindeltilfeller."
+    },
+    {
+      "id": "co4033-ny-011",
+      "type": "langsvar",
+      "kapittel": 2,
+      "sporsmal": "Sammenlign OLTP og OLAP med et eksempel på hver.",
+      "momenter": [
+        "OLTP støtter løpende transaksjoner",
+        "OLAP støtter analyse og aggregering",
+        "OLTP bruker ofte korte lesinger og oppdateringer",
+        "OLAP leser ofte mye historikk"
+      ],
+      "modellsvar": "OLTP støtter den daglige driften, for eksempel registrering av en ordre og oppdatering av lagerbeholdning. OLAP brukes til analyse, for eksempel omsetning per region gjennom flere år. OLTP er typisk optimalisert for mange korte transaksjoner, mens OLAP er optimalisert for omfattende lesinger og aggregeringer."
+    },
+    {
+      "id": "co4033-ny-012",
+      "type": "langsvar",
+      "kapittel": 4,
+      "sporsmal": "Hva er datalekkasje ved evaluering av en prediksjonsmodell, og hvordan unngår du det?",
+      "momenter": [
+        "Informasjon utenfra treningsgrunnlaget påvirker trening",
+        "Testdata skal holdes adskilt",
+        "Tilpass skalering og imputering kun på treningsdata",
+        "Ved tidsdata må delingen respektere tid"
+      ],
+      "modellsvar": "Datalekkasje oppstår når modellen får informasjon som ikke ville vært tilgjengelig ved reell prediksjon, for eksempel fra testsettet eller fremtiden. Del data før du tilpasser forbehandling, og lær skaleringsparametere og erstatningsverdier bare fra treningssettet. Bruk deretter de samme parameterne på testsettet. Ved tidsserier bør evalueringen bruke senere observasjoner enn treningen."
+    }
+  ]
+}
