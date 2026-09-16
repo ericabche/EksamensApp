@@ -19,7 +19,7 @@ async function start() {
     status.textContent = lagStatustekst(medAntall);
   } catch (e) {
     status.textContent = "";
-    visFeil();
+    visFeil(e);
   }
 }
 
@@ -71,7 +71,7 @@ function lagRad(fag) {
   const les = document.createElement("p");
   les.className = "les";
   const leselenke = document.createElement("a");
-  leselenke.href = `les.html?fag=${encodeURIComponent(f.id)}`;
+  leselenke.href = `les.html?fag=${encodeURIComponent(fag.id)}`;
   leselenke.textContent = "Sammendrag";
   les.append(leselenke);
 
@@ -90,10 +90,26 @@ function lagStatustekst(fag) {
   return `${totalt} spørsmål fordelt på ${fag.length} fag. Velg hvor du vil begynne.`;
 }
 
-function visFeil() {
-  feil.innerHTML =
-    "Fant ikke <code>data/fag.json</code>. Åpner du siden rett fra filsystemet, " +
-    "blokkerer nettleseren lesing av JSON-filer. Kjør <code>python3 -m http.server</code> " +
-    "i prosjektmappa og gå til <code>http://localhost:8000</code>.";
+/* Tre helt ulike årsaker gir hver sin melding, så feilsøkinga starter
+   på rett sted i stedet for å lete etter en fil som ligger der. */
+function visFeil(feilen) {
+  if (feilen instanceof TypeError) {
+    feil.innerHTML =
+      "Kom ikke til <code>data/fag.json</code>. Åpner du siden rett fra filsystemet, " +
+      "blokkerer nettleseren lesing av JSON-filer. Kjør <code>python3 -m http.server</code> " +
+      "i prosjektmappa, eller bruk Live Server.";
+  } else if (feilen instanceof SyntaxError) {
+    feil.innerHTML =
+      "<code>data/fag.json</code> ble hentet, men er ikke gyldig JSON: " +
+      feilen.message +
+      ". Et komma for mye etter siste element er den vanligste årsaken.";
+  } else {
+    feil.innerHTML =
+      "Noe feilet under oppbyggingen av faglista: " +
+      feilen.name + " – " + feilen.message +
+      ". Se konsollen for hele sporet.";
+  }
+
+  console.error(feilen);
   feil.hidden = false;
 }

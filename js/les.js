@@ -6,6 +6,7 @@ const fagId = params.get("fag");
 const valgtKap = params.get("kap");
 
 const el = {
+  toppnavigasjon: document.getElementById("toppnavigasjon"),
   fagnavn: document.getElementById("fagnavn"),
   status: document.getElementById("status"),
   kapitler: document.getElementById("kapitler"),
@@ -62,6 +63,8 @@ function visKapittelliste() {
   const liste = el.kapitler.querySelector(".rader");
   liste.replaceChildren(...numre.map(lagKapittelrad));
 
+  byggToppnavigasjon();
+
   const skrevet = numre.filter((nr) => tekster[nr]).length;
   el.status.textContent =
     skrevet === 0
@@ -96,6 +99,28 @@ function lagKapittelrad(nr) {
   return rad;
 }
 
+/* Toppnavigasjonen er kortreist: den viser veien ut av der du står nå,
+   slik at du slipper å scrolle til bunnen for å snu. */
+function byggToppnavigasjon(nr) {
+  const lenker = [lagToppenkel("Alle fag", "index.html")];
+
+  if (nr) {
+    lenker.push(lagToppenkel("Alle kapitler", `les.html?fag=${encodeURIComponent(fagId)}`));
+    lenker.push(lagToppenkel("Øv på kapittelet", `ove.html?fag=${encodeURIComponent(fagId)}&kap=${nr}`));
+  } else {
+    lenker.push(lagToppenkel("Øv på faget", `ove.html?fag=${encodeURIComponent(fagId)}`));
+  }
+
+  el.toppnavigasjon.replaceChildren(...lenker);
+}
+
+function lagToppenkel(tekst, adresse) {
+  const lenke = document.createElement("a");
+  lenke.href = adresse;
+  lenke.textContent = tekst;
+  return lenke;
+}
+
 /* ---------- Ett kapittel ---------- */
 
 function visKapittel(nr) {
@@ -105,6 +130,8 @@ function visKapittel(nr) {
 
   el.innhold.replaceChildren(tittel, ...tegnBlokker(tekster[nr]));
   el.innhold.hidden = false;
+
+  byggToppnavigasjon(nr);
 
   el.status.textContent = `${fag.fag} — sammendrag`;
   byggBunnavigasjon(nr);
@@ -176,7 +203,6 @@ function byggBunnavigasjon(nr) {
 
   const knapper = [
     lagLenkeknapp("Øv på kapittelet", `ove.html?fag=${encodeURIComponent(fagId)}&kap=${nr}`),
-    lagLenkeknapp("Alle kapitler", `les.html?fag=${encodeURIComponent(fagId)}`, true),
   ];
 
   if (plass > 0) {
@@ -185,6 +211,8 @@ function byggBunnavigasjon(nr) {
   if (plass < numre.length - 1) {
     knapper.push(lagLenkeknapp("Neste", lesLenke(numre[plass + 1]), true));
   }
+
+  knapper.push(lagLenkeknapp("Alle kapitler", `les.html?fag=${encodeURIComponent(fagId)}`, true));
 
   el.bunnavigasjon.replaceChildren(...knapper);
   el.bunnavigasjon.hidden = false;
