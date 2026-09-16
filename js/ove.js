@@ -10,6 +10,7 @@ const el = {
   oppsett: document.getElementById("oppsett"),
   modusvalg: document.getElementById("modusvalg"),
   kapittelvalg: document.getElementById("kapittelvalg"),
+  lengdevalg: document.getElementById("lengdevalg"),
   start: document.getElementById("start"),
   okt: document.getElementById("okt"),
   fremdrift: document.getElementById("fremdrift"),
@@ -74,9 +75,11 @@ function byggOppsett() {
   );
 
   byggKapittelvalg(flervalg);
+  byggLengdevalg();
 
-  el.modusvalg.addEventListener("change", vekslKapittelvalg);
-  vekslKapittelvalg();
+  el.modusvalg.addEventListener("change", oppdaterOppsett);
+  el.kapittelvalg.addEventListener("change", oppdaterLengder);
+  oppdaterOppsett();
 
   el.start.addEventListener("click", startOkt);
   el.panytt.addEventListener("click", tilbakeTilOppsett);
@@ -92,12 +95,12 @@ function byggKapittelvalg(flervalg) {
     .sort((a, b) => a - b);
 
   const rader = [
-    lagRad("kapittel", "alle", "Alle kapitler, blandet", antallTekst(flervalg.length), true),
+    lagRad("kapittel", "alle", "Alle kapitler, blandet", antallTekst(flervalg.length), false, true),
   ];
 
   for (const nr of kapitler) {
     const antall = flervalg.filter((s) => s.kapittel === nr).length;
-    rader.push(lagRad("kapittel", String(nr), kapittelnavn(nr), antallTekst(antall), false));
+    rader.push(lagRad("kapittel", String(nr), kapittelnavn(nr), antallTekst(antall), false, false));
   }
 
   el.kapittelvalg.replaceChildren(
@@ -106,8 +109,42 @@ function byggKapittelvalg(flervalg) {
   );
 }
 
-function vekslKapittelvalg() {
+function oppdaterOppsett() {
   el.kapittelvalg.hidden = valgtModus() !== "flervalg";
+  oppdaterLengder();
+}
+
+/* Lengdene som er større enn utvalget slås av, så du aldri kan be om
+   flere spørsmål enn det faktisk finnes. */
+function byggLengdevalg() {
+  el.lengdevalg.replaceChildren(
+    lagLegend("Lengde"),
+    lagValgliste("rader", [
+      lagRad("lengde", "10", "Kort økt", "10 spørsmål", false, false),
+      lagRad("lengde", "25", "Lang økt", "25 spørsmål", false, false),
+      lagRad("lengde", "alle", "Alt i utvalget", "", false, true),
+    ])
+  );
+}
+
+function oppdaterLengder() {
+  const tilgjengelig = hentUtvalg().length;
+  const rader = [...el.lengdevalg.querySelectorAll(".rad")];
+
+  for (const rad of rader) {
+    const knapp = rad.querySelector("input");
+
+    if (knapp.value === "alle") {
+      rad.querySelector(".rad-antall").textContent = antallTekst(tilgjengelig);
+      continue;
+    }
+
+    const forMange = Number(knapp.value) >= tilgjengelig;
+    knapp.disabled = forMange;
+    if (forMange && knapp.checked) {
+      rader[rader.length - 1].querySelector("input").checked = true;
+    }
+  }
 }
 
 function kapittelnavn(nr) {
@@ -121,7 +158,7 @@ function antallTekst(n) {
 
 /* ---------- Skjerm 2: økta ---------- */
 
-function startOkt() {
+function hentUtvalg() {
   const modus = valgtModus();
   let utvalg = hentType(modus);
 
@@ -132,9 +169,21 @@ function startOkt() {
     }
   }
 
+  return utvalg;
+}
+
+function startOkt() {
+  const modus = valgtModus();
+  const lengde = valgtLengde();
+
+  /* Stokk først, klipp etterpå: da blir de ti spørsmålene et tilfeldig
+     utvalg av hele kapittelet, ikke de ti første. */
+  let utvalg = stokk(hentUtvalg());
+  if (lengde !== "alle") utvalg = utvalg.slice(0, Number(lengde));
+
   okt = {
     modus,
-    sporsmal: stokk(utvalg),
+    sporsmal: utvalg,
     indeks: 0,
     riktige: 0,
     momenterTruffet: 0,
@@ -173,6 +222,8 @@ function lagFlervalg(s) {
   gruppe.className = "alternativer";
   gruppe.append(lagLegend(s.sporsmal, "sporsmalstekst"));
 
+  if (s.kode) gruppe.append(lagKode(s.kode));
+
   s.alternativer.forEach((tekst, i) => {
     const etikett = document.createElement("label");
     etikett.className = "alternativ";
@@ -205,7 +256,9 @@ function lagLangsvar(s) {
   felt.rows = 10;
   felt.placeholder = "Skriv svaret ditt her. Momentlista dukker opp når du er ferdig.";
 
-  boks.append(tittel, felt);
+  boks.append(tittel);
+  if (s.kode) boks.append(lagKode(s.kode));
+  boks.append(felt);
   return boks;
 }
 
@@ -331,11 +384,23 @@ function valgtKapittel() {
   return el.kapittelvalg.querySelector("input:checked")?.value ?? "alle";
 }
 
+function valgtLengde() {
+  return el.lengdevalg.querySelector("input:checked")?.value ?? "alle";
+}
+
 function lagLegend(tekst, klasse) {
   const legend = document.createElement("legend");
   if (klasse) legend.className = klasse;
   legend.textContent = tekst;
   return legend;
+}
+
+function lagKode(kode) {
+  const blokk = document.createElement("pre");
+  const innhold = document.createElement("code");
+  innhold.textContent = kode;
+  blokk.append(innhold);
+  return blokk;
 }
 
 function lagValgliste(klasse, valg) {
@@ -367,7 +432,7 @@ function lagFlis(gruppe, verdi, navn, undertekst, deaktivert, valgt) {
   return etikett;
 }
 
-function lagRad(gruppe, verdi, navn, undertekst, valgt) {
+function lagRad(gruppe, verdi, navn, undertekst, deaktivert, valgt) {
   const etikett = document.createElement("label");
   etikett.className = "rad";
 
@@ -378,7 +443,7 @@ function lagRad(gruppe, verdi, navn, undertekst, valgt) {
   antall.className = "rad-antall";
   antall.textContent = undertekst;
 
-  etikett.append(lagKnapp(gruppe, verdi, false, valgt), tittel, antall);
+  etikett.append(lagKnapp(gruppe, verdi, deaktivert, valgt), tittel, antall);
   return etikett;
 }
 

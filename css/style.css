@@ -527,3 +527,26 @@ button.sekundaer:hover {
   color: var(--dempet);
   max-width: 34rem;
 }
+
+/* --- Kodeutdrag i oppgaver ----------------------------------- */
+
+pre {
+  margin: 0 0 1.35rem;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  border: 1px solid var(--linje);
+  border-radius: 3px;
+  background: var(--flate);
+}
+
+pre code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+.rad:has(input:disabled) {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
