@@ -550,3 +550,128 @@ pre code {
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+/* ---------------------------------------------------------------
+   Sammendrag (les.html)
+   --------------------------------------------------------------- */
+
+.tilbake a + a {
+  margin-left: 1.25rem;
+}
+
+/* Lenka til sammendraget må ligge over dekklenka på fagraden. */
+.les {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0.2rem 0 0;
+  text-align: right;
+  font-size: 0.875rem;
+}
+
+.les a {
+  color: var(--dempet);
+  text-decoration: none;
+}
+
+.les a:hover {
+  color: var(--merke);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rad.tom {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.rad.tom:hover {
+  background: none;
+}
+
+a.rad {
+  color: inherit;
+  text-decoration: none;
+}
+
+.kapitteltittel {
+  margin: 0 0 1.5rem;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.lesetekst {
+  max-width: 36rem;
+}
+
+.lesetekst h3 {
+  margin: 2.25rem 0 0.75rem;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.lesetekst p {
+  margin: 0 0 1.1rem;
+  line-height: 1.7;
+}
+
+.lesetekst ul {
+  margin: 0 0 1.3rem;
+  padding-left: 1.1rem;
+}
+
+.lesetekst li {
+  margin-bottom: 0.45rem;
+  line-height: 1.65;
+  padding-left: 0.2rem;
+}
+
+.lesetekst code {
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+  background: var(--flate);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+}
+
+.lesetekst pre code {
+  padding: 0;
+  background: none;
+}
+
+/* Lenker som ser ut som knapper */
+.knapp {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 3px;
+  background: var(--merke);
+  color: var(--knapptekst);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.knapp:hover {
+  opacity: 0.85;
+}
+
+.knapp.sekundaer {
+  background: none;
+  border: 1px solid var(--linje);
+  color: var(--blekk);
+}
+
+.knapp.sekundaer:hover {
+  background: var(--flate);
+  opacity: 1;
+}
+
+#bunnavigasjon {
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--linje);
+}

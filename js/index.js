@@ -68,7 +68,14 @@ function lagRad(fag) {
     antall.textContent = `${fag.flervalg} flervalg, ${fag.langsvar} langsvar`;
   }
 
-  artikkel.append(tittel, kode, antall);
+  const les = document.createElement("p");
+  les.className = "les";
+  const leselenke = document.createElement("a");
+  leselenke.href = `les.html?fag=${encodeURIComponent(f.id)}`;
+  leselenke.textContent = "Sammendrag";
+  les.append(leselenke);
+
+  artikkel.append(tittel, kode, antall, les);
   rad.append(artikkel);
   return rad;
 }

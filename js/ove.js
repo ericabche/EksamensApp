@@ -2,7 +2,9 @@
    Flervalg kan begrenses til ett kapittel eller blandes på tvers.
    Langsvar er en egen modus med selvretting mot momentlista. */
 
-const fagId = new URLSearchParams(location.search).get("fag");
+const adresse = new URLSearchParams(location.search);
+const fagId = adresse.get("fag");
+const forhandsvalgtKapittel = adresse.get("kap");
 
 const el = {
   fagnavn: document.getElementById("fagnavn"),
@@ -22,6 +24,7 @@ const el = {
   detaljer: document.getElementById("detaljer"),
   panytt: document.getElementById("panytt"),
   byttfag: document.getElementById("byttfag"),
+  sammendrag: document.getElementById("sammendrag"),
   feil: document.getElementById("feil"),
 };
 
@@ -52,6 +55,8 @@ async function start() {
 
   document.title = `${data.fag} – øving`;
   el.fagnavn.textContent = data.fag;
+  el.sammendrag.href = `les.html?fag=${encodeURIComponent(fagId)}`;
+  el.sammendrag.hidden = false;
   byggOppsett();
 }
 
@@ -94,13 +99,18 @@ function byggKapittelvalg(flervalg) {
     .filter((k) => k !== undefined)
     .sort((a, b) => a - b);
 
+  /* Kommer du fra sammendraget, er kapittelet derfra valgt på forhånd. */
+  const onsket = kapitler.some((nr) => String(nr) === forhandsvalgtKapittel)
+    ? forhandsvalgtKapittel
+    : "alle";
+
   const rader = [
-    lagRad("kapittel", "alle", "Alle kapitler, blandet", antallTekst(flervalg.length), false, true),
+    lagRad("kapittel", "alle", "Alle kapitler, blandet", antallTekst(flervalg.length), false, onsket === "alle"),
   ];
 
   for (const nr of kapitler) {
     const antall = flervalg.filter((s) => s.kapittel === nr).length;
-    rader.push(lagRad("kapittel", String(nr), kapittelnavn(nr), antallTekst(antall), false, false));
+    rader.push(lagRad("kapittel", String(nr), kapittelnavn(nr), antallTekst(antall), false, String(nr) === onsket));
   }
 
   el.kapittelvalg.replaceChildren(

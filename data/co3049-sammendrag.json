@@ -1,0 +1,187 @@
+{
+  "fag": "Web Programming",
+  "kapitler": {
+    "1": [
+      "HTML beskriver hva innholdet er, ikke hvordan det ser ut. Et `<h2>` er en overskrift på andre nivå fordi det står for en underdel av dokumentet, ikke fordi teksten skal være stor og fet. Den skillelinja er hele poenget med semantisk markup: skjermlesere, søkemotorer og nettlesernes leservisning bygger alle på strukturen, og de ser bare taggene, ikke stilsettet.",
+      "Hvert element har en standard visningsmåte fra nettleserens innebygde stilsett. Elementer på blokknivå som `<p>`, `<section>` og `<h1>` starter på ny linje og fyller bredden. Elementer på tekstnivå som `<em>`, `<span>` og `<a>` flyter med i teksten. `<img>` er et erstattet element på inline-nivå: det flyter med i teksten, men du kan likevel sette bredde og høyde på det, i motsetning til vanlige inline-elementer.",
+      "## Skjema",
+      "Skjemaet er der siden tar imot data. `<form>` har to attributter som avgjør hvordan sendingen skjer:",
+      "- `method` velger mellom GET og POST. GET henger dataene bakpå adressen etter et spørsmålstegn, som `søk.php?q=nett&side=2`. Det gjør resultatet delbart og bokmerkbart, men dataene havner i historikk, serverlogger og skjermbilder. POST legger dem i meldingskroppen.",
+      "- `enctype` bestemmer hvordan kroppen kodes. Standarden `application/x-www-form-urlencoded` klarer bare tekst. Skal du laste opp filer, må du ha `multipart/form-data`, som deler forsendelsen i deler med egne hoder slik at binære data kommer uskadd fram.",
+      {
+        "kode": "<form action=\"last-opp.php\" method=\"post\" enctype=\"multipart/form-data\">\n  <label for=\"fil\">Velg fil</label>\n  <input type=\"file\" id=\"fil\" name=\"fil\">\n  <button type=\"submit\">Send</button>\n</form>"
+      },
+      "Nesten alle kontroller er `<input>` med ulik `type`: text, password, checkbox, radio, file, submit. Unntakene er `<textarea>` for flerlinjet tekst og `<select>` med `<option>` for nedtrekkslister. `<datalist>` ser ut som en nedtrekksliste, men gir bare forslag til et fritekstfelt der brukeren fortsatt kan skrive hva som helst.",
+      "## Lenker og bilder",
+      "En lenke får betydning fra skjemaet i `href`. `mailto:` gir e-postlenke, `tel:` telefonnummer, og uten skjema tolkes verdien som en filsti. `target=\"_blank\"` åpner i ny fane; for å treffe en `<iframe>` må `target` matche iframens `name`, ikke dens `id`.",
+      "`alt` på `<img>` er alternativ tekst som vises når bildet ikke lastes, og som leses opp av skjermlesere. Den er et tilgjengelighetskrav, ikke bare en reserveløsning. Dekorative bilder skal ha tom `alt=\"\"` slik at skjermleseren hopper over dem.",
+      "## Web Storage",
+      "HTML5 gir to lagre i nettleseren, begge nøkkel–verdi med strenger:",
+      "- `localStorage` lever til noe sletter den. Ingen utløpstid.",
+      "- `sessionStorage` tømmes når fanen lukkes, og deles ikke mellom faner.",
+      "Begge er per opphav, altså per protokoll, vert og port, og sendes aldri automatisk til serveren slik cookies gjør. Det gjør dem lettere enn cookies til rene klientbehov, men de er like synlige for brukeren."
+    ],
+    "2": [
+      "CSS avgjør utseende, og det meste av forvirringen rundt språket handler om én ting: hvilken regel vinner når flere treffer samme element. Svaret følger en fast rangering, og eksamensoppgavene tester nesten alltid akkurat den.",
+      "## Rangeringen",
+      "- Først vekt: erklæringer merket `!important` slår alle vanlige erklæringer, uansett hvor spesifikke de er.",
+      "- Så spesifisitet, talt som tre tall: antall id-er, antall klasser og attributt- og pseudoklassevelgere, og antall elementnavn og pseudoelementer. `span.text` er (0,1,1) og slår både `p span` og `h1 span`, som er (0,0,2).",
+      "- Til slutt rekkefølge: står to regler likt, vinner den som kommer sist i stilsettet.",
+      "En mediespørring gir ingen ekstra spesifisitet. Derfor avgjør rekkefølgen når en `@media`-blokk og en vanlig regel har samme velger. Står `body { background: red }` etter mediespørringen som setter blå, blir det rødt uansett skjermbredde – regelen inne i spørringen taper på rekkefølge selv når betingelsen er oppfylt.",
+      {
+        "kode": "body { background-color: red; }\n@media screen and (max-width: 992px) {\n  body { background-color: blue; }   /* vinner under 992px */\n}\n\n/* Snudd rekkefølge: rød vinner alltid */\n@media screen and (max-width: 992px) {\n  body { background-color: blue; }\n}\nbody { background-color: red; }"
+      },
+      "Vær også nøye med hvilke elementer en velger faktisk treffer. `div.text` krever at div-en selv har klassen text – ikke at den inneholder noe med den klassen. `h1 > span` krever at span er direkte barn av h1, mens `h1 span` godtar et span hvor som helst nedover i treet.",
+      "## Attributtvelgere",
+      "- `[attr^=verdi]` begynner med",
+      "- `[attr$=verdi]` slutter med",
+      "- `[attr*=verdi]` inneholder",
+      "Symbolene er de samme som i regulære uttrykk, der `^` er starten og `$` slutten. `a[href$=\".pdf\"]` er en klassisk bruk: merk alle lenker til PDF-filer.",
+      "## Enheter",
+      "`px` er absolutt. `em` er relativ til elementets egen skriftstørrelse og kan hope seg opp gjennom flere nivåer, slik at nøstede lister blir stadig mindre. `rem` står for root em og ser alltid på `<html>`, uansett hvor dypt elementet ligger. `ch` er bredden på tegnet null, nyttig til å begrense tekstlengde.",
+      "## Lagdeling",
+      "`z-index` styrer hvilke elementer som ligger øverst når de overlapper, men den virker bare på elementer der `position` er noe annet enn `static`. Glemmer du posisjoneringen, skjer ingenting, og det er en av de vanligste feilene i praksis.",
+      "Til slutt en syntaksdetalj: en velger må være komplett. `#` alene er ingen velger – firkantsymbolet må følges av et id-navn. `*` treffer derimot alt, og `h1, h2, h3` er tre velgere som deler samme erklæringer."
+    ],
+    "3": [
+      "JavaScript kjører i nettleseren, hos brukeren. Det er den viktigste setningen i kapittelet, fordi den forklarer hva språket kan og ikke kan. Det kan endre sida, reagere på klikk og be serveren om mer data. Det kan ikke lese sesjonsvariabler eller koble seg til MySQL – de ligger på serveren, og må nås gjennom en forespørsel.",
+      "Sikkerhetsmodellen begrenser også hva skript får røre. Samme opphav-prinsippet sier at kode fra ett opphav bare kan nå innhold fra samme protokoll, vert og port. Derfor kan et skript ikke lese innholdet i en `<iframe>` fra et annet domene, og heller ikke lese eller skrive filer på brukerens maskin.",
+      "## Typer og konvertering",
+      "Mye av rariteten i språket kommer fra automatisk typekonvertering. `+` betyr både addisjon og sammenføyning av strenger, og hvilken det blir, avhenger av operandene.",
+      {
+        "kode": "var a = '20';\nvar b = a = 30;   // tilordning er høyreassosiativ\nconsole.log(a + b);   // 60, ikke '2030' – a er nå tallet 30"
+      },
+      "`typeof` kjenner ikke arrayer som egen type: `typeof [1,2,3]` gir `\"object\"`. Skal du faktisk sjekke, bruk `Array.isArray()`. På samme måte konverterer `isNaN()` argumentet til tall først, så `isNaN(\"12\")` er false. `Number.isNaN()` gjør ingen konvertering og er tryggere.",
+      "Arrayer kan ha hull. `[1, 2,,, , 3]` har seks plasser, der tre av dem er tomme, og `length` teller dem med. Et enkelt komma på slutten teller derimot ikke.",
+      "## Variabler og navn",
+      "Navn kan ikke begynne med siffer, men kan starte med understrek eller dollartegn. Språket skiller mellom store og små bokstaver, så `var21` og `VAR21` er to ulike variabler. `this` er et nøkkelord, ikke en variabel, og kan ikke stå på venstre side av en tilordning – forsøket er en tidlig feil som gjør at hele skriptet avvises før noe av det kjører.",
+      "## DOM",
+      "Dokumentet er tilgjengelig som et tre av objekter. `document.head` og `document.body` peker rett på de to hoveddelene, `document.getElementById()` henter ett element, og `innerHTML` bytter ut innholdet i det.",
+      "`location`-objektet beskriver adressen: `protocol`, `host` med portnummer, `hostname` uten, `pathname` for stien og `search` for spørrestrengen. Legg merke til at egenskapen heter `pathname` – `path` finnes ikke.",
+      {
+        "kode": "var x = document.head.id;\ndocument.getElementById(\"demo\").innerHTML = x;"
+      },
+      "Når du leser kodeoppgaver på eksamen, les operatorene før du leser logikken. Etterstilt `i++` gir verdien først og øker etterpå, forstilt `++i` øker først. I løkker der betingelsen selv inneholder `++i`, endres telleren tre steder per runde, og da må du regne i rekkefølge for å få riktig svar."
+    ],
+    "4": [
+      "jQuery er et bibliotek som pakker inn DOM-arbeid i én funksjon, `$()`, som tar en CSS-velger og gir deg et sett av elementer å jobbe med. Mye av det biblioteket løste, finnes i dag innebygd som `querySelectorAll()` og `fetch()`, men pensum og eldre kodebaser bruker det fortsatt.",
+      "## Velgere og metoder",
+      "Velgerne er de samme som i CSS, og skillet mellom dem testes ofte:",
+      "- `$(\"div#myDiv > .para\")` gir elementer med klassen para som er direkte barn av div-en.",
+      "- `$(\"div#myDiv .para\")` gir alle etterkommere med klassen para, uansett hvor dypt.",
+      "Metodene er navngitt etter hva de gjør med elementene: `css()` setter stil, `attr()` setter HTML-attributter, `empty()` tømmer innholdet mens elementet blir stående, og `remove()` sletter elementet selv også. Det finnes ingen `style()` eller `layout()`.",
+      {
+        "kode": "$(\"span\").css(\"background-color\", \"blue\");\n$(\"#notif\").empty();     // barna forsvinner, #notif består\n$(\"#notif\").remove();    // #notif forsvinner også"
+      },
+      "## AJAX",
+      "AJAX er ikke et språk, men en teknikk: hent data fra serveren i bakgrunnen og oppdater deler av sida uten å laste den på nytt. Den bygger på JavaScript og `XMLHttpRequest`, og bruker DOM og CSS til å vise resultatet. Slår brukeren av JavaScript, faller hele grunnlaget bort. Flash har aldri vært en del av det.",
+      "I jQuery gjøres kallet med `$.ajax()`, `$.get()` eller `$.post()`. Den eneste parameteren du alltid må oppgi, er `url` – uten adresse vet ikke kallet hvor det skal. Metoden ligger i navnet på de to kortformene, og `data` og `headers` er valgfrie.",
+      "## JSON",
+      "JSON er formatet svaret vanligvis kommer i. Syntaksen er strengere enn objektnotasjon i JavaScript:",
+      "- Nøkler må stå i doble anførselstegn.",
+      "- Kolon mellom nøkkel og verdi, aldri likhetstegn.",
+      "- Tekstverdier i doble anførselstegn, tall uten.",
+      "- Bare firkantparenteser for lister og krøllparenteser for objekter.",
+      {
+        "kode": "{ \"record\": { \"name\": \"Alex\", \"age\": 21, \"city\": \"London\" } }"
+      },
+      "`JSON.parse()` går fra tekst til objekt, `JSON.stringify()` motsatt vei. Huskeregelen er at stringify lager en streng. Merk at parse kaster en feil på ugyldig JSON, så i praksis hører kallet hjemme i en try/catch – akkurat som i øvingssida du bygger."
+    ],
+    "5": [
+      "PHP kjører på serveren og produserer HTML som sendes til nettleseren. Brukeren ser aldri koden, bare resultatet. Det er derfor passordsjekk, databasespørringer og sesjonshåndtering hører hjemme her og ikke i JavaScript.",
+      "## Variabler og typer",
+      "Alle variabler begynner med dollartegn, og navnene skiller mellom store og små bokstaver. `$op2` og `$Op2` er to forskjellige variabler, og en udefinert variabel blir tom streng i en tekstsammenheng – med en varselmelding, men uten at kjøringen stopper. Det er akkurat den fella oppgaven med `global $Op2` bygger på.",
+      "`global` inne i en funksjon henter inn en variabel fra det globale området. Uten den er variabler utenfor funksjonen usynlige, i motsetning til i JavaScript.",
+      "## Sammenligning og tilordning",
+      "Ett likhetstegn tilordner, to sammenligner med typekonvertering, tre sammenligner også type. Den vanligste eksamensfella er en tilordning brukt som betingelse:",
+      {
+        "kode": "<?php\n$x = 1;\nif ($x == 2)      echo \"BK\";\nelse if ($x = 2)  echo $x;   // tilordner 2, uttrykket blir sant\nelse              echo \"HCM\";\n// skriver ut: 2"
+      },
+      "`echo` av en sann verdi gir `1`, av en usann verdi gir tom streng. Ordene true og false skrives aldri ut.",
+      "## Arrayer og strenger",
+      "En array lages med `array(...)` eller kortformen `[...]`. `array` er et språkkonstrukt, ikke en klasse, så `new array(...)` er feil. Assosiative arrayer bruker `=>` mellom nøkkel og verdi.",
+      "Strengfunksjonene du må kjenne: `strlen()` gir lengde, `substr($str, start, lengde)` klipper ut en del, og punktum føyer sammen strenger. Merk at `substr($str, 3, 2)` alltid gir to tegn, så lengden er bestemt av kallet, ikke av innholdet.",
+      "## Operatorrekkefølge",
+      "Etterstilt `$x++` gir verdien først og øker etterpå. Kombinert med punktum i samme uttrykk blir resultatet raskt uleselig – og det er nettopp derfor slike oppgaver dukker opp. Regn dem ut ledd for ledd, fra venstre.",
+      "## Videresending",
+      "Videresending gjøres med `header(\"Location: side.php\")`. Funksjonen setter et svarhode, og hoder må sendes før noe innhold. Har du skrevet ut så mye som et mellomrom før kallet, feiler det. Samme regel gjelder `setcookie()` og `session_start()`, av samme grunn: alle tre skriver til hodene i svaret."
+    ],
+    "6": [
+      "HTTP er tilstandsløs: serveren husker ingenting fra én forespørsel til den neste. Cookies og sesjoner finnes fordi webapplikasjoner likevel trenger å vite hvem som er hvem mellom klikkene.",
+      "## Cookies",
+      "En cookie er en liten tekstverdi som lagres hos brukeren og sendes automatisk med hver forespørsel til samme domene. Den settes med et svarhode fra serveren:",
+      {
+        "kode": "setcookie(\"tema\", \"mork\", time() + 60*60*24*30, \"/\");\n// tilsvarer å sende hodet selv:\nheader(\"Set-Cookie: tema=mork; Max-Age=2592000; Path=/\");"
+      },
+      "Har cookien en utløpstid, er den permanent og lagres på disk. Uten utløpstid er den en sesjonscookie som bare lever i minnet og forsvinner når nettleseren lukkes. Både bruker og skript kan slette cookies når som helst, og både antall per domene og størrelse er begrenset – vanligvis rundt fire kilobyte.",
+      "Fordi cookies ligger i klartekst hos brukeren og følger med hver eneste forespørsel, skal de aldri inneholde brukernavn og passord. En sesjons-ID er derimot nettopp det de er laget for å bære.",
+      "## Sesjoner",
+      "Sesjonen snur problemet: dataene blir liggende på serveren, og bare en tilfeldig generert ID sendes til brukeren, som regel i en cookie. Brukeren kan derfor ikke endre innholdet, bare vise fram nøkkelen sin.",
+      "- `session_start()` startes øverst på hver side som bruker sesjonen, før noe utdata sendes. Den leter først etter en gyldig ID i forespørselen, og lager en ny bare hvis den mangler.",
+      "- `$_SESSION` er en supervariabel du kan lese og skrive som en vanlig array.",
+      "- `session_unset()` tømmer `$_SESSION` med én gang.",
+      "- `session_destroy()` avslutter sesjonen på serveren, men lar `$_SESSION`-arrayen stå uendret ut resten av gjeldende forespørsel. Det er skillet mellom de to som testes.",
+      "Legg merke til rekkefølgen på serveren: først sjekkes det om det finnes en gyldig sesjon, deretter behandles innholdet. En ny sesjon opprettes bare når det ikke fantes en fra før.",
+      "Sammenlign til slutt med Web Storage fra kapittel 1. `localStorage` lagres også hos brukeren, men sendes aldri automatisk til serveren. Cookies er derfor riktig når serveren trenger verdien, Web Storage når bare klienten gjør det."
+    ],
+    "7": [
+      "Databasen er der dataene overlever mellom forespørslene. MySQL styres med SQL, og PHP snakker med den gjennom mysqli eller PDO.",
+      "## Spørringene",
+      "- `SELECT * FROM students WHERE age >= 20` henter rader.",
+      "- `INSERT INTO students (name, age) VALUES ('Lan', 21)` legger til.",
+      "- `UPDATE university SET name = 'BKHCM' WHERE name = 'BK'` endrer. Glemmer du `WHERE`, endres hele tabellen.",
+      "- `DELETE FROM students WHERE id = 5` sletter.",
+      "- `CREATE TABLE students (id INT, name VARCHAR(50))` oppretter, med kolonnenavn før datatype.",
+      "`MODIFY` finnes bare inne i `ALTER TABLE`, og `INTO` hører til `INSERT`. Nøkkelordene `JOIN`, `LIKE` og `REVOKE` er alle gyldige i MySQL, mens `FETCH` hører hjemme i markører i andre databasesystemer.",
+      "## Mønstersøk",
+      "`LIKE` bruker to jokertegn: prosent for null eller flere tegn, understrek for nøyaktig ett. `'p%'` gir navn som begynner på p, `'%p'` de som slutter på p, `'%p%'` de som inneholder p, og `'_p%'` de som har p som andre bokstav.",
+      "## Logikk i WHERE",
+      "`AND` binder sterkere enn `OR`. Vil du ha «Hoa eller Lan, og minst 20 år», må du sette parenteser – uten dem leses uttrykket som «Lan, eller Hoa som er minst 20».",
+      {
+        "kode": "SELECT * FROM students\nWHERE (lname = 'Hoa' OR lname = 'Lan')\n  AND age >= 20;"
+      },
+      "## mysqli fra PHP",
+      "Objektet ligger i en variabel, så kallet blir `$mysqli->select_db('dbname')`, med dollartegn og pilnotasjon. To funksjoner som blandes lett:",
+      "- `mysqli_num_rows()` teller rader i et resultatsett fra `SELECT`.",
+      "- `mysqli_affected_rows()` teller rader som ble endret av `INSERT`, `UPDATE` eller `DELETE`.",
+      "PHPMyAdmin er webverktøyet som brukes til å administrere databaser og kontoer. FileZilla er en FTP-klient, og DB2 er et helt annet databasesystem.",
+      "Til slutt en forbindelse til neste kapittel: bygger du spørringer ved å lime brukerinndata rett inn i strengen, har du laget et SQL-injeksjonshull. Forberedte setninger med parametre sender spørring og data hver for seg, og er den eneste virkelig pålitelige løsningen."
+    ],
+    "8": [
+      "Nesten alle klassiske websårbarheter har samme rot: data utenfra behandles som om de var kode. Buffer overflow, cross-site scripting og SQL-injeksjon er tre varianter av at ingen kontrollerte inndataene før de ble brukt.",
+      "## SQL-injeksjon",
+      "Angriperen skriver inn tekst som endrer selve spørringen. Skrives `' OR '1'='1` inn i et passordfelt som limes rett inn i en SQL-streng, blir betingelsen alltid sann.",
+      {
+        "kode": "// Sårbart\n$sql = \"SELECT * FROM users WHERE name = '$navn'\";\n\n// Trygt: spørring og data sendes hver for seg\n$stmt = $mysqli->prepare(\"SELECT * FROM users WHERE name = ?\");\n$stmt->bind_param(\"s\", $navn);"
+      },
+      "Validering av inndata hjelper, men forberedte setninger fjerner problemet, fordi dataene aldri blir tolket som en del av spørringen. Sterke passord på databasebrukeren og kryptering av lagrede passord er gode tiltak mot helt andre trusler – de stopper ikke injeksjon.",
+      "## Cross-site scripting",
+      "XSS er at angriperen får sin egen JavaScript til å kjøre i offerets nettleser, på et domene offeret stoler på. Derfra kan koden lese cookies, endre sida og sende data videre.",
+      "- Lagret XSS: koden lagres på serveren, for eksempel i en kommentar, og rammer alle som leser sida.",
+      "- Reflektert XSS: koden ligger i en lenke og speiles tilbake i svaret.",
+      "Sårbarheten oppstår i utdata, ikke i inndata: teksten skrives til HTML uten å kodes om. Derfor kan den ramme applikasjoner skrevet i PHP, Java, Python eller hva som helst annet – serverspråket er uten betydning. Motmidlet er å kode ut alt som stammer fra brukere, og å sette cookies med `HttpOnly` så JavaScript ikke når dem.",
+      "## Å tenke om sikkerhet",
+      "Legg merke til hvor tiltakene hører hjemme. Validering skjer på serveren, alltid – kontroll i JavaScript er en hjelp for brukeren, ikke en sikkerhetsmekanisme, siden angriperen kan sende forespørsler direkte uten å bruke sida di. Alt som kommer fra klienten, inkludert skjulte skjemafelter, cookies og hoder, er data angriperen kontrollerer."
+    ],
+    "9": [
+      "HTTP er protokollen mellom nettleser og server, og den er tilstandsløs: hver forespørsel står på egne bein.",
+      "## Metoder",
+      "`GET` henter, `POST` sender data i kroppen, `PUT` erstatter en ressurs, `DELETE` fjerner, `HEAD` henter bare hodene og `OPTIONS` spør hvilke metoder som er tillatt. Det finnes ingen `CREATE` – oppretting gjøres med POST eller PUT. Legg merke til at metoden heter `OPTIONS` med s.",
+      "## Statuskoder",
+      "- 2xx gikk bra: 200 OK, 201 Created.",
+      "- 3xx videresending: 301 permanent flyttet, 302 midlertidig, 304 betyr at den mellomlagrede versjonen fortsatt gjelder og ikke trenger å overføres på nytt.",
+      "- 4xx feil hos klienten: 403 forbudt, 404 ikke funnet, 407 krever autentisering gjennom proxy.",
+      "- 5xx feil på serveren: 500 intern feil, 503 utilgjengelig.",
+      "Skillet mellom 301 og 302 betyr noe for søkemotorer: en permanent videresending overfører rangeringen til den nye adressen, en midlertidig gjør det ikke.",
+      "## Hvordan søkemotorer arbeider",
+      "En søkemotor sender ut programmer som følger lenker og henter ned sider. De kalles crawler, spider eller robot – tre ord for det samme. Sidene indekseres, og ved søk rangeres de og vises på resultatsida, SERP, som står for Search Engine Result Page.",
+      "En sitemap er en XML-fil som lister adressene du vil ha indeksert, med valgfri informasjon om når de sist ble endret. Den erstatter ikke lenking, men hjelper søkemotoren å finne sider som ligger dypt.",
+      {
+        "kode": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://example.com/</loc>\n    <lastmod>2026-09-01</lastmod>\n  </url>\n</urlset>"
+      },
+      "## Meta-elementer",
+      "`<meta name=\"description\">` inneholder en kort beskrivelse av sida. Google bruker den ofte som utdraget i resultatlista, og der står den under tittelen og adressen, ikke over. `<meta name=\"keywords\">` er en liste med nøkkelord som søkemotorene sluttet å bruke for lenge siden, fordi den ble misbrukt.",
+      "God plassering handler mest om ting som ikke er triks: beskrivende titler, ordentlig overskriftsstruktur, `alt`-tekst på bilder, lesbare adresser, rask innlasting og innhold folk faktisk lenker til."
+    ]
+  }
+}
