@@ -29,7 +29,7 @@
       "id": "cn-02",
       "type": "flervalg",
       "kapittel": 1,
-      "sporsmal": "Hvilken forsinkelseskomponent er den eneste som varierer med hvor mye trafikk det er i nettet?",
+      "sporsmal": "I standardmodellen for nodalforsinkelse, med fast pakkestørrelse og lenkefart, hvilken komponent øker typisk når trafikken nærmer seg lenkens kapasitet?",
       "alternativer": [
         "Propageringsforsinkelse",
         "Prosesseringsforsinkelse",
@@ -99,15 +99,29 @@
       "id": "cn-07",
       "type": "langsvar",
       "kapittel": 3,
-      "sporsmal": "Forklar hvordan TCP oppdager og reagerer på metning i nettet, og hvorfor mekanismen er nødvendig.",
+      "sporsmal": "Forklar hvordan tapsbasert TCP oppdager og reagerer på metning, hvorfor mekanismen trengs, og hvordan ECN kan gi et ekstra signal.",
       "momenter": [
-        "TCP har ingen direkte signal fra nettet, og tolker pakketap som tegn på metning",
-        "Tap oppdages enten ved timeout eller ved tre dupliserte ACK-er",
-        "Metningsvinduet vokser eksponentielt i slow start, deretter lineært",
-        "Ved tap reduseres vinduet kraftig, og senderfarten er minimum av metningsvindu og mottakervindu",
-        "Uten mekanismen ville rutere fått overfylte køer og nettet kollapset under last"
+        "Tapsbasert TCP tolker tap som et mulig tegn på metning",
+        "Tap kan oppdages ved timeout eller tre dupliserte ACK-er",
+        "I den klassiske modellen vokser cwnd eksponentielt i slow start og omtrent lineært i congestion avoidance",
+        "Utestående data begrenses av minimum av cwnd og mottakervinduet rwnd",
+        "Ved metning reduserer senderen belastningen for å begrense køer og tap",
+        "ECN lar rutere markere metning; mottakeren varsler senderen via ACK-er"
       ],
-      "modellsvar": "TCP får ingen beskjed fra ruterne om at de er overbelastet, så protokollen slutter seg til metning ut fra egne observasjoner: pakker som ikke blir bekreftet. Tap oppdages enten ved at retransmisjonstimeren går ut, eller ved tre dupliserte ACK-er, som regnes som et mildere signal. Senderen holder et metningsvindu som vokser eksponentielt i slow start til en terskel, og deretter lineært. Ved tap kuttes vinduet, kraftigst ved timeout. Faktisk senderate er minimum av metningsvindu og mottakerens annonserte vindu. Mekanismen er nødvendig fordi alle sendere deler de samme ruterkøene: uten tilbaketrekking ville køene fylles, tapene øke, og retransmisjonene forsterke problemet til nyttetrafikken nærmet seg null."
+      "modellsvar": "Tapsbasert TCP bruker blant annet timeout og dupliserte ACK-er som tegn på tap og mulig metning. I den klassiske modellen vokser metningsvinduet cwnd eksponentielt i slow start og omtrent lineært i congestion avoidance. Ved metningssignaler reduseres vinduet, med forskjellig reaksjon ved timeout og dupliserte ACK-er. Mengden utestående, ubekreftede data begrenses av min(cwnd, rwnd); vinduene måles i byte og er ikke i seg selv en senderate. En grov vindusbegrenset rate er min(cwnd, rwnd)/RTT. Metningskontroll reduserer belastningen på delte køer. Med ECN kan en ruter markere metning i IP-hodet, og mottakeren varsler TCP-senderen med ECE i ACK-er. Pakketap er dermed ikke det eneste mulige metningssignalet. Kilde: Chapter_3_v8.0.pdf, PDF-side 117–124 og 132.",
+      "kilde": {
+        "forelesning": "Chapter_3_v8.0.pdf",
+        "pdf_sider": [
+          117,
+          118,
+          120,
+          121,
+          122,
+          123,
+          124,
+          132
+        ]
+      }
     },
     {
       "id": "cn-08",
@@ -2218,6 +2232,648 @@
         "opphav": "Ny øvingsoppgave basert på pensum",
         "dokument": "Chapter 8 Review Questions.docx",
         "oppgave": "R28"
+      }
+    },
+    {
+      "id": "co3093-slides-001",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "En lenke har kapasitet 2 Mbit/s. Pakker på 1000 byte ankommer i gjennomsnitt 200 ganger per sekund. Hva er trafikkintensiteten La/R?",
+      "alternativer": [
+        "0,8",
+        "0,1",
+        "1,6",
+        "8"
+      ],
+      "fasit": 0,
+      "forklaring": "L = 8000 bit, a = 200 pakker/s og R = 2 000 000 bit/s. Dermed blir La/R = 1 600 000 / 2 000 000 = 0,8. Kilde: Chapter_1_v8.0.pdf, PDF-side 56.",
+      "kilde": {
+        "forelesning": "Chapter_1_v8.0.pdf",
+        "pdf_sider": [
+          56
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-002",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva skjer i kømodellen med ubegrenset buffer dersom La/R forblir større enn 1 over tid?",
+      "alternativer": [
+        "Køen stabiliserer seg automatisk på én pakke",
+        "Køen vokser uten grense fordi ankomsttrafikken overstiger kapasiteten",
+        "Propageringshastigheten øker til køen forsvinner",
+        "Alle pakker får null køforsinkelse"
+      ],
+      "fasit": 1,
+      "forklaring": "Når mer arbeid ankommer enn lenken kan utføre, kan køen ikke være stabil. En virkelig ruter har begrenset buffer og vil etter hvert måtte forkaste pakker. Kilde: Chapter_1_v8.0.pdf, PDF-side 56.",
+      "kilde": {
+        "forelesning": "Chapter_1_v8.0.pdf",
+        "pdf_sider": [
+          56
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-003",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Traceroute viser * * * for ett hopp, men får svar fra senere hopp. Hva kan du konkludere med?",
+      "alternativer": [
+        "Alle senere rutere er utilgjengelige",
+        "Det aktuelle hoppet har nødvendigvis null forsinkelse",
+        "Ingen svar på de aktuelle probene ble mottatt innen tidsfristen",
+        "Målmaskinen har nødvendigvis byttet IP-adresse"
+      ],
+      "fasit": 2,
+      "forklaring": "Stjerner betyr manglende svar, for eksempel fordi en probe eller svaret gikk tapt, eller ruteren ikke svarte. De beviser ikke at videresendingen gjennom hoppet har stoppet. Kilde: Chapter_1_v8.0.pdf, PDF-side 58.",
+      "kilde": {
+        "forelesning": "Chapter_1_v8.0.pdf",
+        "pdf_sider": [
+          58
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-004",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva innebærer IP-spoofing?",
+      "alternativer": [
+        "Å gjøre et domenenavn om til en IP-adresse",
+        "Å kryptere nyttelasten i en IP-pakke",
+        "Å fordele en stor IP-pakke på flere fragmenter",
+        "Å sende en IP-pakke med en forfalsket kildeadresse"
+      ],
+      "fasit": 3,
+      "forklaring": "Angriperen oppgir en annen kilde-IP enn sin egen. Kildeadresse alene er derfor ikke et sikkert bevis på avsenderens identitet. Kilde: Chapter_1_v8.0.pdf, PDF-side 68.",
+      "kilde": {
+        "forelesning": "Chapter_1_v8.0.pdf",
+        "pdf_sider": [
+          68
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-005",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "En nettside får ny IP-adresse, men en lokal DNS-tjener svarer fortsatt med den gamle. Hva er en mulig forklaring?",
+      "alternativer": [
+        "Den gamle DNS-oppføringen ligger fortsatt i cache og har ikke utløpt",
+        "DNS bruker aldri IP-adresser",
+        "DNS endrer automatisk alle nettverksmasker ved flytting",
+        "TCP hindrer DNS-tjeneren i å svare med nye adresser"
+      ],
+      "fasit": 0,
+      "forklaring": "DNS-cacher beholder oppføringer en begrenset tid angitt av TTL. En endring på den autoritative tjeneren blir derfor ikke nødvendigvis synlig hos alle med én gang. Kilde: Chapter_2_v8.0.pdf, PDF-side 68.",
+      "kilde": {
+        "forelesning": "Chapter_2_v8.0.pdf",
+        "pdf_sider": [
+          68
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-006",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken manglende fildel velger en BitTorrent-klient med rarest-first-strategien?",
+      "alternativer": [
+        "Delen med lavest sekvensnummer, uansett tilgjengelighet",
+        "En del som finnes hos færrest av de kjente naboene",
+        "Delen som finnes hos flest av de kjente naboene",
+        "Alltid den største delen i filen"
+      ],
+      "fasit": 1,
+      "forklaring": "Klienten undersøker hvilke deler naboene har og prioriterer de minst utbredte delene den mangler. Det bidrar til at sjeldne deler blir bedre distribuert. Kilde: Chapter_2_v8.0.pdf, PDF-side 82.",
+      "kilde": {
+        "forelesning": "Chapter_2_v8.0.pdf",
+        "pdf_sider": [
+          82
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-007",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvem velger vanligvis hvilken kodingsrate neste videodel skal ha i DASH?",
+      "alternativer": [
+        "DNS-rotserveren for hver videoramme",
+        "En Ethernet-svitsj ved å lese pikslene",
+        "Klienten, basert på blant annet tilgjengelig båndbredde og buffer",
+        "IP-protokollen, som garanterer én bestemt videokvalitet"
+      ],
+      "fasit": 2,
+      "forklaring": "Serveren tilbyr deler i flere kvaliteter. Klienten bestemmer hvilke deler og hvilken kodingsrate den ber om, og kan tilpasse valgene underveis. Kilde: Chapter_2_v8.0.pdf, PDF-side 92, 93.",
+      "kilde": {
+        "forelesning": "Chapter_2_v8.0.pdf",
+        "pdf_sider": [
+          92,
+          93
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-008",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva brukes manifestfilen til i DASH?",
+      "alternativer": [
+        "Å reservere en fysisk krets mellom klient og server",
+        "Å erstatte alle HTTP-forespørsler med DNS-forespørsler",
+        "Å gi hver videoramme en ny MAC-adresse",
+        "Å beskrive tilgjengelige videodeler og adressene klienten kan hente dem fra"
+      ],
+      "fasit": 3,
+      "forklaring": "Manifestet lar klienten finne de tilgjengelige representasjonene og delene. Selve videoinnholdet hentes deretter med forespørsler til de oppgitte adressene. Kilde: Chapter_2_v8.0.pdf, PDF-side 92.",
+      "kilde": {
+        "forelesning": "Chapter_2_v8.0.pdf",
+        "pdf_sider": [
+          92
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-009",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "EstimatedRTT er 100 ms og DevRTT er 15 ms. Hva blir TimeoutInterval med formelen i forelesningen?",
+      "alternativer": [
+        "160 ms",
+        "115 ms",
+        "400 ms",
+        "60 ms"
+      ],
+      "fasit": 0,
+      "forklaring": "TimeoutInterval = EstimatedRTT + 4 × DevRTT = 100 + 4 × 15 = 160 ms. Avviksleddet gir en sikkerhetsmargin for variasjon i RTT. Kilde: Chapter_3_v8.0.pdf, PDF-side 83.",
+      "kilde": {
+        "forelesning": "Chapter_3_v8.0.pdf",
+        "pdf_sider": [
+          83
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-010",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "I den forenklede slow-start-modellen starter cwnd på 1 MSS og dobles hver RTT. Hva er cwnd etter tre slike doblinger, uten tap og før terskelen nås?",
+      "alternativer": [
+        "3 MSS",
+        "8 MSS",
+        "4 MSS",
+        "16 MSS"
+      ],
+      "fasit": 1,
+      "forklaring": "Utviklingen er 1 → 2 → 4 → 8 MSS. Oppgaven bruker forelesningens idealiserte modell; det oppgitte startvinduet er en forutsetning, ikke en påstand om alle TCP-implementasjoner. Kilde: Chapter_3_v8.0.pdf, PDF-side 123.",
+      "kilde": {
+        "forelesning": "Chapter_3_v8.0.pdf",
+        "pdf_sider": [
+          123
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-011",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvordan kan ECN varsle en TCP-sender om metning uten først å forkaste en pakke?",
+      "alternativer": [
+        "Ruteren endrer DNS-navnet til mottakeren",
+        "Mottakeren setter alle TCP-portnumre til null",
+        "En ruter merker IP-pakken, og mottakeren varsler senderen gjennom TCP-ACK",
+        "ECN øker automatisk kapasiteten på den overbelastede lenken"
+      ],
+      "fasit": 2,
+      "forklaring": "ECN gir eksplisitt tilbakemelding: ruteren markerer metning i IP-hodet, og TCP-mottakeren gjenspeiler signalet med ECE i ACK-er når ECN er i bruk. Kilde: Chapter_3_v8.0.pdf, PDF-side 132.",
+      "kilde": {
+        "forelesning": "Chapter_3_v8.0.pdf",
+        "pdf_sider": [
+          132
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-012",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er en fordel ved uavhengige QUIC-strømmer når data går tapt i én strøm?",
+      "alternativer": [
+        "QUIC trenger aldri å sende tapte data på nytt",
+        "Alle strømmer får hver sin garanterte fysiske lenke",
+        "QUIC fjerner all metningskontroll",
+        "Tapet trenger ikke blokkere levering av allerede mottatte data i andre strømmer"
+      ],
+      "fasit": 3,
+      "forklaring": "QUIC kan håndtere ordnet levering separat per strøm. Det unngår blokkering mellom strømmer som skyldes én felles ordnet TCP-bytestrøm; strømmer kan fortsatt dele kapasitet og metningskontroll. Kilde: Chapter_3_v8.0.pdf, PDF-side 141.",
+      "kilde": {
+        "forelesning": "Chapter_3_v8.0.pdf",
+        "pdf_sider": [
+          141
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-013",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er den vanlige rekkefølgen ved en ny DHCP-tildeling i fire steg?",
+      "alternativer": [
+        "Discover → Offer → Request → ACK",
+        "Request → ACK → Discover → Offer",
+        "Offer → Discover → ACK → Request",
+        "Discover → ACK → Offer → Request"
+      ],
+      "fasit": 0,
+      "forklaring": "Klienten leter etter en DHCP-tjener, får et tilbud, ber om tilbudt adresse og mottar en bekreftelse. Fornyelse eller gjenbruk av en tidligere adresse kan følge et kortere forløp. Kilde: Chapter_4_v8.0.pdf, PDF-side 54.",
+      "kilde": {
+        "forelesning": "Chapter_4_v8.0.pdf",
+        "pdf_sider": [
+          54
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-014",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilke opplysninger kan DHCP gi klienten i tillegg til en IPv4-adresse?",
+      "alternativer": [
+        "Alle ruterens private krypteringsnøkler",
+        "Nettverksmaske, standardgateway og DNS-tjener",
+        "En fullstendig BGP-tabell og alle MAC-adresser på Internett",
+        "Garantert forsinkelse for hver fremtidig TCP-forbindelse"
+      ],
+      "fasit": 1,
+      "forklaring": "DHCP kan levere konfigurasjon som gjør klienten i stand til å skille lokale og eksterne mål, nå andre nett og slå opp domenenavn. Kilde: Chapter_4_v8.0.pdf, PDF-side 55.",
+      "kilde": {
+        "forelesning": "Chapter_4_v8.0.pdf",
+        "pdf_sider": [
+          55
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-015",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket utsagn om IPv6 sitt grunnhode er riktig?",
+      "alternativer": [
+        "Det har 32-biters adresser og obligatorisk hodesjekksum",
+        "Det har 48-biters adresser som alltid er lik MAC-adressen",
+        "Det har 128-biters adresser og ingen egen hodesjekksum",
+        "Det inneholder alltid et TCP-portnummer i stedet for en destinasjonsadresse"
+      ],
+      "fasit": 2,
+      "forklaring": "IPv6 bruker 128 bit til hver IP-adresse. Hodesjekksummen fra IPv4 er fjernet, slik at rutere slipper å oppdatere en slik sjekksum for hvert hopp. Kilde: Chapter_4_v8.0.pdf, PDF-side 70.",
+      "kilde": {
+        "forelesning": "Chapter_4_v8.0.pdf",
+        "pdf_sider": [
+          70
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-016",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvordan kan en IPv6-pakke fraktes gjennom en IPv4-tunnel?",
+      "alternativer": [
+        "IPv6-adressen kuttes alltid ned til sine siste 32 bit",
+        "TCP-hodet erstatter IPv6-hodet i hver ruter",
+        "Alle rutere i tunnelen må først oppgraderes til IPv6",
+        "Hele IPv6-pakken legges som nyttelast i en IPv4-pakke"
+      ],
+      "fasit": 3,
+      "forklaring": "Tunnelendepunktet kapsler inn IPv6-pakken. IPv4-rutere videresender etter det ytre IPv4-hodet, og det andre endepunktet fjerner innkapslingen. Kilde: Chapter_4_v8.0.pdf, PDF-side 71, 73.",
+      "kilde": {
+        "forelesning": "Chapter_4_v8.0.pdf",
+        "pdf_sider": [
+          71,
+          73
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-017",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skiller eBGP og iBGP?",
+      "alternativer": [
+        "eBGP brukes mellom autonome systemer, mens iBGP formidler BGP-informasjon innen ett AS",
+        "eBGP brukes bare til Ethernet, mens iBGP brukes bare til Wi-Fi",
+        "iBGP erstatter nødvendigvis OSPF for alle interne ruter",
+        "eBGP krypterer alltid nyttelasten, mens iBGP komprimerer den"
+      ],
+      "fasit": 0,
+      "forklaring": "BGP kan lære ruter fra andre AS via eBGP og spre denne informasjonen internt via iBGP. Intern ruting som OSPF har fortsatt en egen rolle. Kilde: Chapter_5_v8.0.pdf, PDF-side 51.",
+      "kilde": {
+        "forelesning": "Chapter_5_v8.0.pdf",
+        "pdf_sider": [
+          51
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-018",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Når valget mellom to ellers likeverdige utganger avgjøres med hot-potato-ruting, hva prioriteres?",
+      "alternativer": [
+        "Utgangen med høyest intern rutekostnad",
+        "Utgangen med lavest intern rutekostnad fra den aktuelle ruteren",
+        "Utgangen med den lengste IP-adressen",
+        "Utgangen som har flest interne hopp uansett lenkekostnad"
+      ],
+      "fasit": 1,
+      "forklaring": "Hot-potato-ruting får trafikken ut av eget AS med minst mulig intern kostnad. Den optimaliserer ikke nødvendigvis hele veien gjennom andre AS. Kilde: Chapter_5_v8.0.pdf, PDF-side 60.",
+      "kilde": {
+        "forelesning": "Chapter_5_v8.0.pdf",
+        "pdf_sider": [
+          60
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-019",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er en hovedoppgave for NETCONF?",
+      "alternativer": [
+        "Å finne MAC-adressen til en lokal IPv4-adresse",
+        "Å overføre videodeler med adaptiv kodingsrate",
+        "Å hente og endre konfigurasjon på nettverksenheter gjennom strukturerte meldinger",
+        "Å velge retransmisjonstid for TCP-segmenter"
+      ],
+      "fasit": 2,
+      "forklaring": "NETCONF brukes til administrasjon og konfigurasjon med RPC-operasjoner og XML-kodede meldinger, over en sikker transport. Kilde: Chapter_5_v8.0.pdf, PDF-side 98.",
+      "kilde": {
+        "forelesning": "Chapter_5_v8.0.pdf",
+        "pdf_sider": [
+          98
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-020",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilken rolle har YANG i nettverksadministrasjon?",
+      "alternativer": [
+        "Å transportere IP-pakker fysisk over radio",
+        "Å beregne en CRC for Ethernet-rammer",
+        "Å garantere korteste rute mellom alle AS",
+        "Å beskrive struktur, datatyper og begrensninger for administrasjonsdata"
+      ],
+      "fasit": 3,
+      "forklaring": "YANG er et språk for datamodeller. Modellene kan blant annet beskrive hvilke konfigurasjonsverdier som er gyldige når enheter administreres med NETCONF. Kilde: Chapter_5_v8.0.pdf, PDF-side 102.",
+      "kilde": {
+        "forelesning": "Chapter_5_v8.0.pdf",
+        "pdf_sider": [
+          102
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-021",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Hvorfor kan todimensjonal paritet korrigere én feil i en databit?",
+      "alternativer": [
+        "Den feilaktige raden og kolonnen peker ut bitens posisjon",
+        "Hver databit sendes automatisk hundre ganger",
+        "Mottakeren kjenner alltid den opprinnelige meldingen",
+        "Alle mulige flerbitfeil får forskjellige paritetsmønstre"
+      ],
+      "fasit": 0,
+      "forklaring": "Ved én enkelt feil vil både rad- og kolonneparitet slå ut. Krysningspunktet identifiserer biten som kan snus tilbake. Dette gir ikke en generell garanti om korreksjon av flere feil. Kilde: Chapter_6_v8.0.pdf, PDF-side 12.",
+      "kilde": {
+        "forelesning": "Chapter_6_v8.0.pdf",
+        "pdf_sider": [
+          12
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-022",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Mottakeren deler en CRC-beskyttet bitsekvens med den avtalte generatoren og får en rest ulik null. Hva betyr det?",
+      "alternativer": [
+        "Bitsekvensen er garantert feilfri",
+        "En feil er oppdaget i den mottatte bitsekvensen",
+        "Alle feil kan nå automatisk korrigeres",
+        "Avsenderens identitet er kryptografisk bekreftet"
+      ],
+      "fasit": 1,
+      "forklaring": "Senderen velger CRC-bitene slik at sekvensen er delelig med generatoren i modulo-2-regning. En rest ulik null viser feil; rest lik null er ikke en garanti mot alle mulige feil. Kilde: Chapter_6_v8.0.pdf, PDF-side 14.",
+      "kilde": {
+        "forelesning": "Chapter_6_v8.0.pdf",
+        "pdf_sider": [
+          14
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-023",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "To noder forsøker uavhengig å sende i en slotted-ALOHA-tidsluke, hver med sannsynlighet 0,5. Hva er sannsynligheten for nøyaktig én vellykket sending?",
+      "alternativer": [
+        "0,25",
+        "0,75",
+        "0,5",
+        "1"
+      ],
+      "fasit": 2,
+      "forklaring": "Nøyaktig én må sende: 0,5 × 0,5 + 0,5 × 0,5 = 0,5. Begge sender med sannsynlighet 0,25, og ingen sender med sannsynlighet 0,25. Kilde: Chapter_6_v8.0.pdf, PDF-side 26.",
+      "kilde": {
+        "forelesning": "Chapter_6_v8.0.pdf",
+        "pdf_sider": [
+          26
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-024",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "To PC-er er koblet til hver sin svitsjport med full-dupleks Ethernet. Hvordan skiller dette seg fra et delt Ethernet-bussnett?",
+      "alternativer": [
+        "Alle PC-er deler fortsatt ett kollisjonsdomene",
+        "Bare én PC i hele nettet kan sende om gangen",
+        "Svitsjen erstatter alle MAC-adresser med IP-adresser",
+        "Lenkene er separate og bruker ikke kollisjonsdeteksjon som på den delte bussen"
+      ],
+      "fasit": 3,
+      "forklaring": "Separate full-duplekslenker kan sende og motta samtidig uten Ethernet-kollisjoner. En svitsj kan fortsatt få kø ved en travel utgangsport. Kilde: Chapter_6_v8.0.pdf, PDF-side 55.",
+      "kilde": {
+        "forelesning": "Chapter_6_v8.0.pdf",
+        "pdf_sider": [
+          55
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-025",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva starter klienten med ved aktiv skanning etter Wi-Fi-aksesspunkter?",
+      "alternativer": [
+        "Den sender en Probe Request",
+        "Den venter bare passivt på et beacon",
+        "Den sender en BGP-annonse til alle AS",
+        "Den sender Ethernet-jamming for å reservere kanalen"
+      ],
+      "fasit": 0,
+      "forklaring": "Ved aktiv skanning sender klienten en probe og får svar fra aksesspunkter. Ved passiv skanning lytter den etter beacon-rammer før den velger et aksesspunkt. Kilde: Chapter_7_v8.0.pdf, PDF-side 23.",
+      "kilde": {
+        "forelesning": "Chapter_7_v8.0.pdf",
+        "pdf_sider": [
+          23
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-026",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "En Wi-Fi-klient bytter aksesspunkt, men blir i samme IP-subnett. Hva gjelder for IP-adressen?",
+      "alternativer": [
+        "Den må alltid byttes ved hvert beacon",
+        "Den kan beholdes selv om aksesspunktet endres",
+        "Den må bli lik MAC-adressen til det nye aksesspunktet",
+        "Den må endres fra IPv4 til IPv6"
+      ],
+      "fasit": 1,
+      "forklaring": "Et bytte av aksesspunkt krever ikke i seg selv nytt IP-subnett. Svitsjer kan lære den nye veien til klienten fra rammer klienten sender. Kilde: Chapter_7_v8.0.pdf, PDF-side 31.",
+      "kilde": {
+        "forelesning": "Chapter_7_v8.0.pdf",
+        "pdf_sider": [
+          31
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-027",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvordan hjelper aksesspunktet en Wi-Fi-klient som bruker strømsparing i modellen fra forelesningen?",
+      "alternativer": [
+        "Det sender alle rammer bare mens klienten sover",
+        "Det krever at klienten holder radioen aktiv hele tiden",
+        "Det holder tilbake rammer og varsler i beacon om data som venter",
+        "Det flytter klientens IP-adresse til DNS-rotserveren"
+      ],
+      "fasit": 2,
+      "forklaring": "Klienten varsler at den vil sove og våkner for å lese beacon. Hvis aksesspunktet har ventende data til klienten, kan den holde seg våken for å motta dem. Kilde: Chapter_7_v8.0.pdf, PDF-side 33.",
+      "kilde": {
+        "forelesning": "Chapter_7_v8.0.pdf",
+        "pdf_sider": [
+          33
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-028",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva er en ulempe ved triangulær ruting for en mobil enhet?",
+      "alternativer": [
+        "Mobilen kan aldri flytte til et annet besøkt nett",
+        "Alle IP-pakker må sendes som Ethernet-broadcast over Internett",
+        "Metoden krever at DNS kjenner hver enkelt TCP-ACK",
+        "Trafikken kan ta en omvei gjennom hjemmenettet selv om avsender og mobil er nær hverandre"
+      ],
+      "fasit": 3,
+      "forklaring": "Indirekte ruting via hjemmenettet kan skjule mobiliteten for avsenderen, men gi en unødvendig lang vei til det besøkte nettet. Kilde: Chapter_7_v8.0.pdf, PDF-side 62.",
+      "kilde": {
+        "forelesning": "Chapter_7_v8.0.pdf",
+        "pdf_sider": [
+          62
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-029",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvorfor bruker en autentiseringsprotokoll en fersk nonce som utfordring?",
+      "alternativer": [
+        "For å knytte svaret til denne utvekslingen og motvirke gjenbruk av et gammelt svar",
+        "For å gjøre brukerens passord offentlig",
+        "For å erstatte behovet for en hemmelig nøkkel i alle protokoller",
+        "For å garantere at nettverket aldri mister pakker"
+      ],
+      "fasit": 0,
+      "forklaring": "Et korrekt kryptografisk svar på en ny utfordring viser at parten kan svare nå. Noncen er ikke i seg selv hemmelig og må inngå i en riktig utformet autentiseringsprotokoll. Kilde: Chapter_8_v8.0.pdf, PDF-side 38.",
+      "kilde": {
+        "forelesning": "Chapter_8_v8.0.pdf",
+        "pdf_sider": [
+          38
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-030",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "I forelesningens hybride e-posteksempel krypteres meldingen med en tilfeldig symmetrisk nøkkel. Hvordan beskyttes denne nøkkelen for Bob?",
+      "alternativer": [
+        "Den sendes ukryptert ved siden av meldingen",
+        "Den krypteres med Bobs offentlige nøkkel",
+        "Den krypteres bare med Alices offentlige nøkkel",
+        "Den erstattes med meldingens offentlige sjekksum"
+      ],
+      "fasit": 1,
+      "forklaring": "Symmetrisk kryptering brukes effektivt på selve meldingen. Bob bruker sin private nøkkel til å hente ut sesjonsnøkkelen og deretter dekryptere innholdet. Kilde: Chapter_8_v8.0.pdf, PDF-side 53.",
+      "kilde": {
+        "forelesning": "Chapter_8_v8.0.pdf",
+        "pdf_sider": [
+          53
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-031",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hva kjennetegner ESP i IPsec-tunnelmodus når kryptering er valgt?",
+      "alternativer": [
+        "Bare det ytre IP-hodet krypteres, mens all nyttelast er åpen",
+        "IP-hodet fjernes permanent slik at ruting blir umulig",
+        "Den opprinnelige IP-pakken beskyttes inni en ny pakke med et ytre IP-hode",
+        "ESP virker bare på DNS-spørringer"
+      ],
+      "fasit": 2,
+      "forklaring": "I tunnelmodus ligger det opprinnelige IP-hodet og nyttelasten inni tunnelen. Det nye ytre IP-hodet brukes til ruting mellom tunnelendepunktene. Kilde: Chapter_8_v8.0.pdf, PDF-side 74.",
+      "kilde": {
+        "forelesning": "Chapter_8_v8.0.pdf",
+        "pdf_sider": [
+          74
+        ]
+      }
+    },
+    {
+      "id": "co3093-slides-032",
+      "type": "flervalg",
+      "kapittel": 8,
+      "sporsmal": "Hvordan brukes sekvensnumre og et mottaksvindu i IPsec sin beskyttelse mot replay?",
+      "alternativer": [
+        "De gjør at alle pakker må ankomme med identisk forsinkelse",
+        "De erstatter kryptering med vanlig komprimering",
+        "De lar avsenderen bruke samme pakke ubegrenset mange ganger",
+        "Mottakeren kan oppdage og avvise duplikater og for gamle pakker"
+      ],
+      "fasit": 3,
+      "forklaring": "Mottakeren holder oversikt over sekvensnumre i et vindu. Dermed kan den håndtere noe omordning og samtidig avvise gjenbrukte autentiserte pakker uten å lagre historikken for alltid. Kilde: Chapter_8_v8.0.pdf, PDF-side 76.",
+      "kilde": {
+        "forelesning": "Chapter_8_v8.0.pdf",
+        "pdf_sider": [
+          76
+        ]
       }
     }
   ]
