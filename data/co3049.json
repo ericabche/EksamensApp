@@ -9,7 +9,8 @@
     "6": "Sesjoner og cookies",
     "7": "MySQL og databaser",
     "8": "Websikkerhet",
-    "9": "HTTP og SEO"
+    "9": "HTTP og SEO",
+    "10": "Software Development Life Cycle (SDLC)"
   },
   "sporsmal": [
     {
@@ -197,6 +198,19 @@
       "forklaring": "GET legger dataene i spørrestrengen, som dermed blir synlig i adressefeltet, havner i historikken og i serverloggene. POST sender dem i meldingskroppen."
     },
     {
+      "id": "co3049-ny-086",
+      "type": "langsvar",
+      "kapittel": 1,
+      "sporsmal": "Hvorfor bør et skjemafelt ha en tilknyttet label, og hvordan kobles de sammen?",
+      "momenter": [
+        "Label gir feltet et forståelig navn",
+        "for på label kan samsvare med id på input",
+        "Klikk på label aktiverer eller fokuserer feltet",
+        "Placeholder erstatter ikke en label"
+      ],
+      "modellsvar": "En label gjør formålet med skjemafeltet tydelig både visuelt og for hjelpemidler. Den kan kobles til et input-felt ved at label sitt for-attributt samsvarer med feltets id. Da kan brukeren også klikke på etiketten for å fokusere eller aktivere feltet. Placeholder er et hint som forsvinner ved inntasting og bør ikke erstatte etiketten."
+    },
+    {
       "id": "web-014",
       "type": "flervalg",
       "kapittel": 2,
@@ -353,6 +367,20 @@
       ],
       "fasit": 3,
       "forklaring": "Et firkantsymbol må følges av et id-navn, som #meny. Alene er det ingen velger. De tre andre er gyldige: prosent, universalvelger og gruppert velger."
+    },
+    {
+      "id": "co3049-ny-082",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Et element har width: 200px, padding: 20px og border: 2px solid. Hvor bred blir boksen med box-sizing: border-box?",
+      "alternativer": [
+        "240px",
+        "244px",
+        "200px",
+        "196px"
+      ],
+      "fasit": 2,
+      "forklaring": "Med border-box er padding og border inkludert i oppgitt bredde. Innholdsbredden blir 200 − 40 − 4 = 156px."
     },
     {
       "id": "web-025",
@@ -515,6 +543,376 @@
       "forklaring": "typeof kjenner ikke arrayer som egen type – de er objekter. Bruk Array.isArray() hvis du faktisk må skille dem ut."
     },
     {
+      "id": "co3049-ny-083",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er forskjellen på event.target og event.currentTarget i en hendelseslytter?",
+      "alternativer": [
+        "De er alltid identiske",
+        "currentTarget er alltid document",
+        "target er alltid foreldreelementet",
+        "target er hendelsens mål; currentTarget er elementet som lytteren kjører på"
+      ],
+      "fasit": 3,
+      "forklaring": "Ved bubbling kan et klikk på et barn håndteres av en lytter på forelderen. Da er target barnet og currentTarget forelderen."
+    },
+    {
+      "id": "co3049-s20-001",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skjer når brukeren klikker på knappen etter at siden er ferdig lastet?",
+      "alternativer": [
+        "Hele siden erstattes med teksten 11",
+        "Teksten 11 legges til nederst på siden",
+        "Teksten 5 + 6 vises i en dialogboks",
+        "Tallet 11 skrives til konsollen"
+      ],
+      "fasit": 0,
+      "forklaring": "Et kall til document.write() etter at dokumentet er ferdig lastet åpner dokumentet på nytt og sletter all eksisterende HTML.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Using document.write()».",
+      "kode": "<h1>My First Web Page</h1>\n<button onclick=\"document.write(5 + 6)\">Try it</button>"
+    },
+    {
+      "id": "co3049-s20-002",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken av disse er ikke en av de fire utskriftsmåtene lysbildene nevner for JavaScript?",
+      "alternativer": [
+        "window.alert(\"tekst\")",
+        "console.log(\"tekst\")",
+        "element.innerHTML = \"tekst\"",
+        "System.out.println()"
+      ],
+      "fasit": 3,
+      "forklaring": "De fire er window.alert(), document.write(), innerHTML og console.log(). System.out.println() er Java, et helt annet språk.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «JavaScript Output»."
+    },
+    {
+      "id": "co3049-s20-003",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket utsagn om eksterne JavaScript-filer er riktig?",
+      "alternativer": [
+        "Filen må alltid lastes inn i <head>",
+        "Filen må ha endelsen .jscript",
+        "Filen kan ikke inneholde <script>-tagger",
+        "Filen kjøres på serveren før siden sendes"
+      ],
+      "fasit": 2,
+      "forklaring": "Den eksterne .js-filen inneholder bare JavaScript. Referansen kan stå i <head> eller <body>, og koden oppfører seg som om den sto der <script>-taggen står.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «External JavaScript»."
+    },
+    {
+      "id": "co3049-s20-004",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken fordel ved eksterne skript nevner lysbildene?",
+      "alternativer": [
+        "Brukeren kan ikke lese koden i nettleseren",
+        "Nettleseren kan mellomlagre filen, så sidene laster raskere",
+        "Skriptet kjører alltid før HTML-en tolkes",
+        "Skriptet får lese filer på brukerens maskin"
+      ],
+      "fasit": 1,
+      "forklaring": "Fordelene er at HTML og kode holdes adskilt, at begge blir lettere å lese og vedlikeholde, og at mellomlagrede filer gir raskere lasting.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «External JavaScript Advantages»."
+    },
+    {
+      "id": "co3049-s20-005",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket variabelnavn er ugyldig i JavaScript?",
+      "alternativer": [
+        "first-name",
+        "first_name",
+        "firstName",
+        "FirstName"
+      ],
+      "fasit": 0,
+      "forklaring": "Bindestrek er minusoperatoren, så first-name tolkes som first minus name. Understrek og camelCase er lovlige.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «JavaScript and Camel Case»."
+    },
+    {
+      "id": "co3049-s20-006",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken verdi har carName etter setningen var carName;?",
+      "alternativer": [
+        "null",
+        "0",
+        "undefined",
+        "Tom streng"
+      ],
+      "fasit": 2,
+      "forklaring": "En variabel som deklareres uten verdi, får verdien undefined.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Value = undefined»."
+    },
+    {
+      "id": "co3049-s20-007",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvor mange elementer har arrayet colors etter koden under?",
+      "alternativer": [
+        "1, med verdien 3",
+        "3, alle tomme",
+        "0, fordi arrayet er tomt",
+        "3, alle med verdien 0"
+      ],
+      "fasit": 1,
+      "forklaring": "Med ett tallargument lager new Array(n) et array med lengde n uten verdier. Med to eller flere argumenter blir argumentene innholdet.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Four ways to create an array».",
+      "kode": "var colors = new Array(3);"
+    },
+    {
+      "id": "co3049-s20-008",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er myArray.length etter koden under?",
+      "alternativer": [
+        "5",
+        "6",
+        "10",
+        "11"
+      ],
+      "fasit": 3,
+      "forklaring": "Lengden er høyeste indeks pluss én. Arrays er glisne, så plass settes bare av til elementer som har fått verdi.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «The length of an array».",
+      "kode": "var myArray = new Array(5);\nmyArray[10] = 3;"
+    },
+    {
+      "id": "co3049-s20-009",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvor mange elementer har arrayet color?",
+      "alternativer": [
+        "6",
+        "5",
+        "4",
+        "3"
+      ],
+      "fasit": 1,
+      "forklaring": "To komma etter hverandre lager tomme plasser som teller med, men ett avsluttende komma ignoreres. \"red\", to tomme, \"green\" og \"blue\" gir 5.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Array literals».",
+      "kode": "color = [\"red\", , , \"green\", \"blue\",];"
+    },
+    {
+      "id": "co3049-s20-010",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva gir [10, 9, 1].sort()?",
+      "alternativer": [
+        "[1, 10, 9]",
+        "[1, 9, 10]",
+        "[10, 9, 1]",
+        "[9, 10, 1]"
+      ],
+      "fasit": 0,
+      "forklaring": "sort() uten argument sorterer alfabetisk som tekst, og \"10\" kommer før \"9\" fordi \"1\" kommer før \"9\". For tallsortering brukes sort(function(a, b) { return a - b; }).\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Array functions»."
+    },
+    {
+      "id": "co3049-s20-011",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva gjør myArray.pop()?",
+      "alternativer": [
+        "Fjerner og returnerer det første elementet",
+        "Legger til et element på slutten",
+        "Fjerner og returnerer det siste elementet",
+        "Returnerer siste element uten å fjerne det"
+      ],
+      "fasit": 2,
+      "forklaring": "pop() reduserer også lengden med én. push() legger til på slutten.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Array functions»."
+    },
+    {
+      "id": "co3049-s20-012",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Når må du bruke hakeparentes i stedet for punktum for å lese en egenskap?",
+      "alternativer": [
+        "Når objektet er laget med new Object() i stedet for literal",
+        "Når egenskapen inneholder en funksjon som skal kalles",
+        "Når objektet har mer enn ti egenskaper totalt",
+        "Når egenskapsnavnet ligger i en variabel eller beregnes"
+      ],
+      "fasit": 3,
+      "forklaring": "car[\"my\" + \"Car\"] fungerer, mens punktumnotasjon krever at navnet står skrevet direkte. Hakeparentes trengs også for navn som ikke er gyldige identifikatorer, som car[7].\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Arrays and objects»."
+    },
+    {
+      "id": "co3049-s20-013",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva skriver løkka ut?",
+      "alternativer": [
+        "a b c (verdiene)",
+        "3 (lengden)",
+        "0 1 2 (indeksene)",
+        "Ingenting, for...in virker ikke på arrays"
+      ],
+      "fasit": 2,
+      "forklaring": "for...in går over egenskapsnavnene, og for et array er det indeksene \"0\", \"1\" og \"2\" som strenger. for...of gir verdiene.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «The for…in statement».",
+      "kode": "var arr = [\"a\", \"b\", \"c\"];\nfor (var i in arr) {\n  document.write(i + \" \");\n}"
+    },
+    {
+      "id": "co3049-s20-014",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket nøkkelord er påkrevd inne i en konstruktørfunksjon for å sette egenskaper på det nye objektet?",
+      "alternativer": [
+        "self",
+        "new",
+        "prototype",
+        "this"
+      ],
+      "fasit": 3,
+      "forklaring": "function Course(n, t) { this.number = n; } og new Course(...) lager objektet. new brukes ved kallet, ikke inne i funksjonen.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Three ways to create an object»."
+    },
+    {
+      "id": "co3049-s20-015",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken hendelse inntreffer når et skjemafelt mister fokus?",
+      "alternativer": [
+        "focus",
+        "blur",
+        "change",
+        "select"
+      ],
+      "fasit": 1,
+      "forklaring": "focus inntreffer når feltet får fokus, blur når det mister det. change gjelder endret verdi, og select at tekst i feltet markeres.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Common Javascript Events»."
+    },
+    {
+      "id": "co3049-s20-016",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken hendelse inntreffer når brukeren flytter musepekeren bort fra en lenke?",
+      "alternativer": [
+        "mouseout",
+        "mouseover",
+        "blur",
+        "unload"
+      ],
+      "fasit": 0,
+      "forklaring": "mouseover inntreffer når pekeren kommer over elementet, mouseout når den forlater det.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «Common Javascript Events»."
+    },
+    {
+      "id": "co3049-s20-017",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken metode finnes ikke på window-objektet ifølge lysbildene?",
+      "alternativer": [
+        "confirm()",
+        "prompt()",
+        "input()",
+        "open()"
+      ],
+      "fasit": 2,
+      "forklaring": "window har open(), close(), alert(), confirm() og prompt(). prompt() er den som spør brukeren om tekst.\n\nKilde: Chapter 3 – Introduction to Javascript (2020), «The Document Object Model»."
+    },
+    {
+      "id": "co3049-s20-018",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er rotnoden i DOM-treet?",
+      "alternativer": [
+        "document",
+        "window",
+        "<html>-elementet",
+        "<body>-elementet"
+      ],
+      "fasit": 0,
+      "forklaring": "DOM-komponentene danner et tre med document som rot. <html> er rotelementet under document, og window er nettleservinduet utenfor dokumentet.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), DOM-delen, «DOM Objects»."
+    },
+    {
+      "id": "co3049-s20-019",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva returnerer document.getElementsByTagName(\"p\")?",
+      "alternativer": [
+        "Det første p-elementet",
+        "Antall p-elementer som tall",
+        "null hvis det finnes mer enn ett",
+        "En samling av alle p-elementene"
+      ],
+      "fasit": 3,
+      "forklaring": "Samlingen har egenskapen length, og hvert element nås med indeks, som [0]. getElementById er den som gir ett enkelt element.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), DOM-delen, «Other Access Methods»."
+    },
+    {
+      "id": "co3049-s20-020",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken egenskap gir foreldrenoden til en node?",
+      "alternativer": [
+        "firstChild",
+        "parentNode",
+        "previousSibling",
+        "rootNode"
+      ],
+      "fasit": 1,
+      "forklaring": "Traverseringsegenskapene er childNodes, firstChild, lastChild, nextSibling, previousSibling og parentNode.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), DOM-delen, «Traversing DOM tree»."
+    },
+    {
+      "id": "co3049-s20-021",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken nodeType-verdi har en tekstnode?",
+      "alternativer": [
+        "3",
+        "1",
+        "2",
+        "9"
+      ],
+      "fasit": 0,
+      "forklaring": "ELEMENT_NODE er 1, ATTRIBUTE_NODE 2 og TEXT_NODE 3. Tallet 9 er selve document-noden.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), DOM-delen, «Other Node Properties»."
+    },
+    {
+      "id": "co3049-s20-022",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor gir document.body.childNodes ofte flere noder enn antall elementer?",
+      "alternativer": [
+        "Kommentarer i HTML-koden telles to ganger",
+        "Hvert attributt blir en egen barnenode i treet",
+        "Mellomrom og linjeskift mellom tagger blir egne tekstnoder",
+        "Nettleseren lager en kopi av alle elementene"
+      ],
+      "fasit": 2,
+      "forklaring": "Lysbildene advarer om at det finnes flere tekstnoder enn man forventer. children gir bare elementene.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), DOM-delen, «Text Nodes»."
+    },
+    {
+      "id": "co3049-s20-023",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva gjør koden under?",
+      "alternativer": [
+        "Lager et li-element, men setter det ikke inn",
+        "Erstatter alle barn i lista med det nye elementet",
+        "Setter det nye elementet inn først i lista",
+        "Lager et li-element og setter det inn som siste barn i lista"
+      ],
+      "fasit": 3,
+      "forklaring": "createElement lager noden, men den er ikke i dokumentet før den settes inn. appendChild setter den inn etter alle eksisterende barn.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), DOM-delen, «Modifying DOM Structure».",
+      "kode": "var li = document.createElement(\"li\");\nli.appendChild(document.createTextNode(\"Ny\"));\ndocument.getElementById(\"liste\").appendChild(li);"
+    },
+    {
+      "id": "co3049-s20-024",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er riktig rekkefølge på argumentene i replaceChild?",
+      "alternativer": [
+        "forelder.replaceChild(gammel, ny)",
+        "forelder.replaceChild(ny, gammel)",
+        "gammel.replaceChild(ny)",
+        "ny.replaceChild(forelder, gammel)"
+      ],
+      "fasit": 1,
+      "forklaring": "Den nye noden står først, akkurat som i insertBefore(ny, referanse). Metoden kalles på forelderen.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), DOM-delen, «Modifying DOM Structure»."
+    },
+    {
+      "id": "co3049-s20-025",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvordan leser du src-attributtet til det første bildet på siden?",
+      "alternativer": [
+        "document.images[0].attribute(\"src\")",
+        "document.images[0].getAttribute(\"src\")",
+        "document.images[0].readAttr(\"src\")",
+        "document.getAttribute(\"img\", \"src\")"
+      ],
+      "fasit": 1,
+      "forklaring": "getAttribute(navn) gir verdien, og setAttribute(navn, verdi) setter den. Alternativt kan attributes-samlingen brukes.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), DOM-delen, «Attributes of Elements»."
+    },
+    {
       "id": "web-036",
       "type": "flervalg",
       "kapittel": 4,
@@ -655,6 +1053,287 @@
       "forklaring": "Flash var en egen plugin-teknologi med sin egen kjøretid, og er nå helt utfaset. AJAX bygger på det nettleseren allerede har."
     },
     {
+      "id": "co3049-s20-026",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken readyState-verdi betyr at svaret fra serveren er ferdig mottatt?",
+      "alternativer": [
+        "3",
+        "2",
+        "200",
+        "4"
+      ],
+      "fasit": 3,
+      "forklaring": "0 er ikke initialisert, 1 satt opp, 2 sendt, 3 under mottak og 4 ferdig. 200 er en HTTP-statuskode, ikke en readyState.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), AJAX-delen, «HTTP Ready States»."
+    },
+    {
+      "id": "co3049-s20-027",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva betyr readyState 1?",
+      "alternativer": [
+        "Svaret fra serveren er ferdig mottatt",
+        "Objektet er laget, men open() er ikke kalt",
+        "Forespørselen er satt opp med open(), men ikke sendt",
+        "Svaret er under mottak fra serveren"
+      ],
+      "fasit": 2,
+      "forklaring": "1 betyr etter open() og før send().\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), AJAX-delen, «HTTP Ready States»."
+    },
+    {
+      "id": "co3049-s20-028",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken egenskap på XMLHttpRequest gir svaret som en streng?",
+      "alternativer": [
+        "responseText",
+        "responseXML",
+        "statusText",
+        "responseString"
+      ],
+      "fasit": 0,
+      "forklaring": "responseXML gir svaret som et XML-dokument, og statusText gir statusen som tekst, for eksempel «Not Found».\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), AJAX-delen, «The XMLHttpRequest Object: Properties»."
+    },
+    {
+      "id": "co3049-s20-029",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva betyr det tredje argumentet true i request.open(\"GET\", url, true)?",
+      "alternativer": [
+        "At forespørselen er asynkron",
+        "At svaret skal tolkes som JSON",
+        "At forespørselen skal mellomlagres",
+        "At forespørselen krever innlogging"
+      ],
+      "fasit": 0,
+      "forklaring": "Med true fortsetter skriptet mens svaret er underveis, og callbacken i onreadystatechange håndterer svaret. Fjerde og femte argument er brukernavn og passord.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), AJAX-delen, «The XMLHttpRequest Object: Methods»."
+    },
+    {
+      "id": "co3049-s20-030",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken hendelsesegenskap på XMLHttpRequest utløses ved hver tilstandsendring?",
+      "alternativer": [
+        "onload",
+        "onreadystatechange",
+        "onstatuschange",
+        "onresponse"
+      ],
+      "fasit": 1,
+      "forklaring": "Callbacken tilordnes før send() og sjekker readyState og status.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), AJAX-delen, «Communicating»."
+    },
+    {
+      "id": "co3049-s20-031",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvorfor prøver eksemplet new ActiveXObject(\"Msxml2.XMLHTTP\") hvis new XMLHttpRequest() feiler?",
+      "alternativer": [
+        "ActiveXObject er raskere enn XMLHttpRequest i alle nettlesere",
+        "XMLHttpRequest virker bare når serveren svarer med XML",
+        "Gamle versjoner av Internet Explorer hadde ikke XMLHttpRequest",
+        "ActiveXObject er påkrevd for å sende POST-forespørsler"
+      ],
+      "fasit": 2,
+      "forklaring": "Objektet het forskjellige ting i ulike nettlesere. Moderne nettlesere har alle XMLHttpRequest og fetch.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), AJAX-delen, «The XMLHttpRequest Object»."
+    },
+    {
+      "id": "co3049-s20-032",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket element returnerer $(\"div\").eq(2)?",
+      "alternativer": [
+        "Det andre div-elementet, som DOM-element",
+        "Det tredje div-elementet, som DOM-element",
+        "Alle div-elementer med indeks under 2",
+        "Det tredje div-elementet, som jQuery-objekt"
+      ],
+      "fasit": 3,
+      "forklaring": "Indeksen er 0-basert, så eq(2) er det tredje elementet. eq() gir et jQuery-objekt, mens get(2) eller [2] gir DOM-elementet. Lysbildet skriver feilaktig «2nd».\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Getting a specific jQuery element»."
+    },
+    {
+      "id": "co3049-s20-033",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er den beste måten å sjekke om en jQuery-selektor traff noe?",
+      "alternativer": [
+        "Sjekke om $(\"...\") returnerer null",
+        "Sjekke om $(\"...\") returnerer undefined",
+        "Sjekke om $(\"...\").length er større enn 0",
+        "Kalle metoden $(\"...\").exists()"
+      ],
+      "fasit": 2,
+      "forklaring": "Et tomt utvalg er fortsatt et jQuery-objekt, aldri null. length gir antall treff. exists() finnes ikke.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Selectors»."
+    },
+    {
+      "id": "co3049-s20-034",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilke elementer velger $(\"label + input\")?",
+      "alternativer": [
+        "Alle input-elementer inne i en label",
+        "Både label- og input-elementer",
+        "Alle input-elementer som er søsken etter en label",
+        "input-elementer som kommer rett etter en label"
+      ],
+      "fasit": 3,
+      "forklaring": "+ velger neste søsken rett etter, ~ velger alle etterfølgende søsken, > direkte barn og mellomrom alle etterkommere.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Hierarchy Selectors»."
+    },
+    {
+      "id": "co3049-s20-035",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilke rader velger $(\"tr:lt(2)\")?",
+      "alternativer": [
+        "Bare raden med indeks 2",
+        "De to første radene, med indeks 0 og 1",
+        "Alle rader med indeks over 2",
+        "De to siste radene i tabellen"
+      ],
+      "fasit": 1,
+      "forklaring": "lt betyr less than, altså indeks under 2. gt er greater than og eq er lik.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Selection Index Filters»."
+    },
+    {
+      "id": "co3049-s20-036",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken selektor velger div-elementer der id begynner med main?",
+      "alternativer": [
+        "$(\"div[id^='main']\")",
+        "$(\"div[id$='main']\")",
+        "$(\"div[id*='main']\")",
+        "$(\"div[id~='main']\")"
+      ],
+      "fasit": 0,
+      "forklaring": "^= begynner med, $= slutter med og *= inneholder, som i CSS.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Attribute Filters»."
+    },
+    {
+      "id": "co3049-s20-037",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Du vil hente den synlige teksten til det valgte alternativet i <select id=\"cities\">. Hvilken kode er riktig?",
+      "alternativer": [
+        "$(\"#cities option:selected\").val()",
+        "$(\"#cities option:selected\").text()",
+        "$(\"#cities input:selected\").text()",
+        "$(\"#cities:checked\").text()"
+      ],
+      "fasit": 1,
+      "forklaring": ".val() gir value-attributtet (for eksempel \"2\"), mens .text() gir teksten brukeren ser. :selected gjelder option-elementer.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Find Dropdown Selected Item»."
+    },
+    {
+      "id": "co3049-s20-038",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er this inne i funksjonen som sendes til .each()?",
+      "alternativer": [
+        "Gjeldende jQuery-objekt",
+        "Hele utvalget",
+        "Indeksen til gjeldende element",
+        "Gjeldende DOM-element"
+      ],
+      "fasit": 3,
+      "forklaring": "this er et vanlig DOM-element, og $(this) gjør det om til jQuery. Indeksen kommer som første parameter til funksjonen.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «each(fn)»."
+    },
+    {
+      "id": "co3049-s20-039",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er forskjellen på $(\"ul\").append(x) og $(x).appendTo(\"ul\")?",
+      "alternativer": [
+        "Begge setter x inn sist i ul, men returnerer ulike utvalg",
+        "append setter inn først i ul, appendTo setter inn sist",
+        "append flytter hele ul-elementet inn i x",
+        "appendTo erstatter alt eksisterende innhold i ul"
+      ],
+      "fasit": 0,
+      "forklaring": "Resultatet i dokumentet er det samme. append returnerer ul-utvalget, mens appendTo returnerer x, slik at kjeden fortsetter på det nye elementet.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Inserting new Elements»."
+    },
+    {
+      "id": "co3049-s20-040",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva gjør $(\"div\").toggleClass(\"main\")?",
+      "alternativer": [
+        "Fjerner klassen main fra alle div-elementene",
+        "Returnerer true hvis minst én div har klassen",
+        "Legger til klassen der den mangler, fjerner den ellers",
+        "Bytter klassen main med den forrige klassen"
+      ],
+      "fasit": 2,
+      "forklaring": "hasClass() er den som tester om klassen finnes.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Handling CSS Classes»."
+    },
+    {
+      "id": "co3049-s20-041",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva gjør $(\"div\").one(\"click\", fn)?",
+      "alternativer": [
+        "Kjører fn bare på den første div-en",
+        "Kjører fn én gang for hver div med én gang",
+        "Fjerner alle andre klikklyttere",
+        "Kjører fn bare første gang div-en klikkes"
+      ],
+      "fasit": 3,
+      "forklaring": "one() fjerner lytteren etter første kjøring. bind() eller on() kjører hver gang.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Attach Event»."
+    },
+    {
+      "id": "co3049-s20-042",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvor lang tid tar $(\"div\").show(\"slow\")?",
+      "alternativer": [
+        "200 millisekunder",
+        "600 millisekunder",
+        "400 millisekunder",
+        "1000 millisekunder"
+      ],
+      "fasit": 1,
+      "forklaring": "\"slow\" er 600 ms, \"fast\" 200 ms, og standard er 400 ms.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Showing or Hiding Element»."
+    },
+    {
+      "id": "co3049-s20-043",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva skjer med animasjonene i koden under?",
+      "alternativer": [
+        "De kjøres samtidig, fordi de står i samme kjede",
+        "Bare den siste kjøres, fordi den overskriver den første",
+        "De kjøres etter hverandre, fordi animasjoner legges i kø",
+        "De kjøres i omvendt rekkefølge, siste først"
+      ],
+      "fasit": 2,
+      "forklaring": "Animasjoner på samme element køes og kjøres én om gangen. Med { queue: false } starter en animasjon straks.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Chaining Animation».",
+      "kode": "$(\"div\").animate({width: \"90%\"}, 100)\n       .animate({opacity: 0.5}, 200);"
+    },
+    {
+      "id": "co3049-s20-044",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken jQuery-metode henter JSON og gir callbacken et ferdig tolket objekt?",
+      "alternativer": [
+        "$.getJSON()",
+        "$.get()",
+        "$.parseJSON()",
+        "$.load()"
+      ],
+      "fasit": 0,
+      "forklaring": "$.getJSON(url, data, callback) tolker svaret som JSON. $.get() tolker etter svarets innholdstype.\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Retrieving JSON Data»."
+    },
+    {
+      "id": "co3049-s20-045",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken metode er den moderne erstatningen for jQuery-metoden .bind()?",
+      "alternativer": [
+        ".attach()",
+        ".listen()",
+        ".on()",
+        ".bindEvent()"
+      ],
+      "fasit": 2,
+      "forklaring": ".bind() og .unbind() er foreldet og erstattet av .on() og .off().\n\nKilde: Chapter 6 – DOM – AJAX – jQuery (2020), jQuery-delen, «Attach Event» (med oppdatering)."
+    },
+    {
       "id": "web-046",
       "type": "flervalg",
       "kapittel": 5,
@@ -771,6 +1450,221 @@
       ],
       "fasit": 3,
       "forklaring": "Etterstilt operator gir verdien først og endrer etterpå. Rekkefølgen blir (5+6) sammenføyd med 7, altså «117», minus 6 – som tolkes som tall og gir 111."
+    },
+    {
+      "id": "co3049-s20-046",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva står PHP for i dag?",
+      "alternativer": [
+        "Personal Home Page",
+        "Private Hypertext Processor",
+        "Preprocessed HTML Pages",
+        "PHP: Hypertext Preprocessor"
+      ],
+      "fasit": 3,
+      "forklaring": "Det er et rekursivt akronym. Personal Home Page var det opprinnelige navnet.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «PHP»."
+    },
+    {
+      "id": "co3049-s20-047",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilket variabelnavn er gyldig i PHP?",
+      "alternativer": [
+        "$largest_so_far",
+        "$2php",
+        "$bad-punc",
+        "largest_so_far"
+      ],
+      "fasit": 0,
+      "forklaring": "Navnet må starte med $ og en bokstav eller understrek, og kan bare inneholde bokstaver, sifre og understrek. Uten $ er det ingen variabel.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «Variable Names»."
+    },
+    {
+      "id": "co3049-s20-048",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver koden ut?",
+      "alternativer": [
+        "1527",
+        "42",
+        "\"15\"27",
+        "Feilmelding"
+      ],
+      "fasit": 1,
+      "forklaring": "PHP konverterer strengen \"15\" til tall fordi + er en regneoperator. Strenger settes sammen med punktum.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «Expressions».",
+      "kode": "<?php\n$x = \"15\" + 27;\necho $x;\n?>"
+    },
+    {
+      "id": "co3049-s20-049",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver koden ut?",
+      "alternativer": [
+        "2",
+        "8",
+        "1",
+        "3"
+      ],
+      "fasit": 2,
+      "forklaring": "12345 * 67890 = 838102050. substr gjør tallet om til strengen \"838102050\" og henter ett tegn fra indeks 3, som er 1.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «Variable Typing».",
+      "kode": "<?php\n$number = 12345 * 67890;\necho substr($number, 3, 1);\n?>"
+    },
+    {
+      "id": "co3049-s20-050",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver koden ut?",
+      "alternativer": [
+        "0",
+        "-1",
+        "Ingenting",
+        "1"
+      ],
+      "fasit": 1,
+      "forklaring": "$y-- gir den gamle verdien 0 til sammenligningen, så testen er sann. Men $y er redusert til −1 før echo kjører.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «Variable Assignment».",
+      "kode": "<?php\n$y = 0;\nif ($y-- == 0) echo $y;\n?>"
+    },
+    {
+      "id": "co3049-s20-051",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er en forskjell på echo og print i PHP?",
+      "alternativer": [
+        "print returnerer 1 og kan brukes i uttrykk, echo returnerer ingenting",
+        "echo kan bare skrive ut tall og aldri tekst",
+        "print kan ta flere argumenter skilt med komma",
+        "echo må alltid skrives med parenteser rundt argumentet"
+      ],
+      "fasit": 0,
+      "forklaring": "echo kan ta flere argumenter uten parenteser, mens print tar ett. Fordi print har en returverdi, kan den stå i et ternært uttrykk.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «The Difference Between the echo and print Commands»."
+    },
+    {
+      "id": "co3049-s20-052",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver koden ut?",
+      "alternativer": [
+        "Hello",
+        "Ingenting, indeks 1 finnes ikke",
+        "Array",
+        "World"
+      ],
+      "fasit": 3,
+      "forklaring": "$stuff[] legger til på neste ledige heltallsindeks: \"Hello\" får 0 og \"World\" 1.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «Integer Indices».",
+      "kode": "<?php\n$stuff = array();\n$stuff[] = \"Hello\";\n$stuff[] = \"World\";\necho $stuff[1];\n?>"
+    },
+    {
+      "id": "co3049-s20-053",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilken funksjon viser også datatype og lengde for hvert element?",
+      "alternativer": [
+        "print_r()",
+        "var_dump()",
+        "echo",
+        "print()"
+      ],
+      "fasit": 1,
+      "forklaring": "var_dump gir for eksempel string(5) \"Chuck\". print_r viser bare nøkler og verdier, og print_r(false) skriver ingenting.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «var_dump .vs. print_r»."
+    },
+    {
+      "id": "co3049-s20-054",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skriver koden ut?",
+      "alternativer": [
+        "Variables do not 12",
+        "Variables do not",
+        "Variables do not $expand",
+        "Feilmelding"
+      ],
+      "fasit": 2,
+      "forklaring": "I enkle anførselstegn blir variabler ikke erstattet. I doble ville utskriften blitt Variables do not 12.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «Single Quote».",
+      "kode": "<?php\n$expand = 12;\necho 'Variables do not $expand';\n?>"
+    },
+    {
+      "id": "co3049-s20-055",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilke escape-sekvenser tolkes i en streng med enkle anførselstegn?",
+      "alternativer": [
+        "Bare \\' og \\\\",
+        "\\n, \\t og \\r",
+        "Alle som i doble anførselstegn",
+        "Ingen i det hele tatt"
+      ],
+      "fasit": 0,
+      "forklaring": "\\n, \\t og \\r virker bare i doble anførselstegn. I enkle står de igjen som bakstrek og bokstav.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «Escaping characters»."
+    },
+    {
+      "id": "co3049-s20-056",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilken operator legger en streng til på slutten av en annen?",
+      "alternativer": [
+        "+=",
+        "&=",
+        "=.",
+        ".="
+      ],
+      "fasit": 3,
+      "forklaring": "Punktum setter sammen strenger, så $a .= $b legger $b til $a. += er regning.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «String concatenation»."
+    },
+    {
+      "id": "co3049-s20-057",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvordan behandles innholdet i en heredoc (<<<_END ... _END;)?",
+      "alternativer": [
+        "Som en streng i enkle anførselstegn, uten variabelerstatning",
+        "Som PHP-kode som kjøres",
+        "Som en kommentar",
+        "Som en streng i doble anførselstegn, med variabelerstatning"
+      ],
+      "fasit": 3,
+      "forklaring": "Heredoc bevarer linjeskift og innrykk, erstatter variabler, og krever ikke at anførselstegn escapes.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «Multiple-Line Commands»."
+    },
+    {
+      "id": "co3049-s20-058",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva skiller do...while fra while i PHP?",
+      "alternativer": [
+        "Kroppen i do...while kjøres minst én gang",
+        "do...while kan ikke ha betingelse",
+        "while kjøres alltid minst én gang",
+        "do...while finnes bare for arrays"
+      ],
+      "fasit": 0,
+      "forklaring": "do...while tester betingelsen etter kroppen, while før.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «PHP Looping»."
+    },
+    {
+      "id": "co3049-s20-059",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilket tegn starter ikke en kommentar i PHP?",
+      "alternativer": [
+        "// (to skråstreker)",
+        "# (firkanttegn)",
+        "<!--",
+        "/* (skråstrek og stjerne)"
+      ],
+      "fasit": 2,
+      "forklaring": "PHP har //, # og /* */. <!-- er en HTML-kommentar.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «comments»."
+    },
+    {
+      "id": "co3049-s20-060",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er riktig om GET sammenlignet med POST?",
+      "alternativer": [
+        "GET krypterer dataene før de sendes",
+        "GET legger feltene i adressen, så siden kan bokmerkes",
+        "GET har ingen grense for hvor mye som sendes",
+        "GET sender dataene i meldingskroppen"
+      ],
+      "fasit": 1,
+      "forklaring": "Med GET står feltene synlig i adressen. Lysbildets påstand om 100 tegn er for lav, men en praktisk grense finnes.\n\nKilde: Chapter 4 – Introduction to PHP (2020), «The $_GET Variable»."
     },
     {
       "id": "web-054",
@@ -1011,6 +1905,217 @@
       "forklaring": "UPDATE ... SET ... WHERE er formen. MODIFY finnes bare inne i ALTER TABLE, og INTO hører til INSERT."
     },
     {
+      "id": "co3049-ny-084",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvorfor brukes en databasetransaksjon ved overføring mellom to kontoer?",
+      "alternativer": [
+        "Trekk og innskudd kan behandles som én atomisk enhet",
+        "Alle SQL-spørringer blir automatisk raskere",
+        "Databasen trenger ikke lenger validering",
+        "Alle tabeller blir skrivebeskyttet permanent"
+      ],
+      "fasit": 0,
+      "forklaring": "Atomisitet gjør at begge endringer fullføres eller ingen beholdes. Dermed unngår man at bare halvparten av overføringen lagres."
+    },
+    {
+      "id": "co3049-s20-061",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva returnerer mysqli_connect() når tilkoblingen lykkes?",
+      "alternativer": [
+        "Et positivt heltall med forbindelsesnummeret",
+        "Strengen \"OK\" fra databaseserveren",
+        "Alltid true, også når tilkoblingen feiler",
+        "Et mysqli-objekt som representerer forbindelsen"
+      ],
+      "fasit": 3,
+      "forklaring": "Ved feil returneres false (fra PHP 8.1 kastes et unntak som standard). Lysbildet sier «positivt heltall», men det gjaldt den gamle mysql_connect().\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Opening and Closing a Connection»."
+    },
+    {
+      "id": "co3049-s20-062",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva returnerer mysqli_errno() hvis siste kall gikk uten feil?",
+      "alternativer": [
+        "0",
+        "false",
+        "null",
+        "-1"
+      ],
+      "fasit": 0,
+      "forklaring": "mysqli_errno gir feilkoden fra siste kall, eller 0. mysqli_error gir meldingen, eller tom streng.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Reporting MySQL Errors»."
+    },
+    {
+      "id": "co3049-s20-063",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva returnerer mysqli_query() for en vellykket CREATE TABLE-setning?",
+      "alternativer": [
+        "Et resultatobjekt",
+        "TRUE",
+        "Antall rader som ble laget",
+        "Navnet på tabellen"
+      ],
+      "fasit": 1,
+      "forklaring": "Setninger uten resultat gir TRUE ved suksess. SELECT og SHOW gir et resultatobjekt, og alle setninger som feiler gir FALSE.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Executing SQL Statements»."
+    },
+    {
+      "id": "co3049-s20-064",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken funksjon henter en rad som assosiativt array med kolonnenavnene som nøkler?",
+      "alternativer": [
+        "mysqli_fetch_row()",
+        "mysqli_num_fields()",
+        "mysqli_fetch_assoc()",
+        "mysqli_fetch_keys()"
+      ],
+      "fasit": 2,
+      "forklaring": "fetch_row gir et indeksert array ($Row[0]), fetch_assoc et assosiativt ($Row['firstname']). Begge flytter pekeren til neste rad.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Retrieving Records into an Associative Array»."
+    },
+    {
+      "id": "co3049-s20-065",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken funksjon gir antall kolonner i et resultat?",
+      "alternativer": [
+        "mysqli_num_fields()",
+        "mysqli_num_rows()",
+        "mysqli_affected_rows()",
+        "mysqli_field_count_rows()"
+      ],
+      "fasit": 0,
+      "forklaring": "num_rows teller rader og num_fields kolonner. Begge tar resultatet som argument.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Accessing Query Result Information»."
+    },
+    {
+      "id": "co3049-s20-066",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva gjør @ foran et funksjonskall, som i @mysqli_query($con, $sql)?",
+      "alternativer": [
+        "Gjør kallet asynkront",
+        "Tvinger fram en feilmelding",
+        "Undertrykker PHP-feilmeldinger fra kallet",
+        "Kjører spørringen i en transaksjon"
+      ],
+      "fasit": 2,
+      "forklaring": "@ er feilkontrolloperatoren. Feilen forsvinner ikke, så returverdien må sjekkes.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Summary»."
+    },
+    {
+      "id": "co3049-s20-067",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvordan lager du en ny database fra PHP med mysqli?",
+      "alternativer": [
+        "mysqli_create_db($con, \"skole\")",
+        "mysqli_query($con, \"CREATE DATABASE skole\")",
+        "mysqli_new_database($con, \"skole\")",
+        "mysqli_select_db($con, \"skole\", true)"
+      ],
+      "fasit": 1,
+      "forklaring": "mysqli_create_db() finnes ikke, selv om lysbildene nevner den. Databaser lages og slettes med SQL. mysqli_select_db velger en database som allerede finnes.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Creating a Database» (med rettelse)."
+    },
+    {
+      "id": "co3049-s20-068",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "For hvilken spørring returnerer mysqli_info() en tom streng?",
+      "alternativer": [
+        "UPDATE friends SET age = 30",
+        "INSERT INTO friends VALUES (...), (...)",
+        "ALTER TABLE friends ADD email VARCHAR(100)",
+        "SELECT * FROM friends"
+      ],
+      "fasit": 3,
+      "forklaring": "mysqli_info gir informasjon for INSERT ... SELECT, INSERT med flere VALUES-lister, LOAD DATA INFILE, ALTER TABLE og UPDATE.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Using the mysqli_info() Function»."
+    },
+    {
+      "id": "co3049-s20-069",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken SQL-setning legger inn mange rader fra en tekstfil?",
+      "alternativer": [
+        "LOAD DATA INFILE",
+        "IMPORT FILE ... INTO",
+        "INSERT FROM FILE",
+        "COPY TABLE FROM"
+      ],
+      "fasit": 0,
+      "forklaring": "LOAD DATA INFILE 'fil.txt' INTO TABLE tabell leser radene fra filen.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Adding, Deleting, and Updating Records»."
+    },
+    {
+      "id": "co3049-s20-070",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva skjer med DELETE FROM friends uten WHERE?",
+      "alternativer": [
+        "Ingen rader slettes, WHERE er påkrevd",
+        "Hele tabellen slettes, også strukturen",
+        "Bare den første raden i tabellen slettes",
+        "Alle radene i tabellen slettes"
+      ],
+      "fasit": 3,
+      "forklaring": "Uten WHERE gjelder DELETE alle radene, men tabellen og strukturen står igjen. DROP TABLE sletter tabellen.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Adding, Deleting, and Updating Records»."
+    },
+    {
+      "id": "co3049-s20-071",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvordan kan du sjekke om tabellen subscribers finnes før du lager den?",
+      "alternativer": [
+        "Kjøre SELECT * FROM subscribers og se om PHP stopper med feil",
+        "Kalle mysqli_table_exists($con, 'subscribers') og sjekke svaret",
+        "Kjøre SHOW TABLES LIKE 'subscribers' og se om mysqli_num_rows() gir 0",
+        "Sjekke om mysqli_errno() er 0 før du kobler til serveren"
+      ],
+      "fasit": 2,
+      "forklaring": "0 rader betyr at tabellen ikke finnes. CREATE TABLE IF NOT EXISTS er en enklere løsning.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Creating and Deleting Tables»."
+    },
+    {
+      "id": "co3049-s20-072",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilken funksjon bør brukes for å vise feilen når mysqli_connect() selv har feilet?",
+      "alternativer": [
+        "mysqli_error($link)",
+        "mysqli_connect_error()",
+        "mysqli_errno($link)",
+        "mysql_error()"
+      ],
+      "fasit": 1,
+      "forklaring": "Når tilkoblingen feiler, er $link false, og det finnes ingen forbindelse å spørre. Lysbildene bruker mysqli_error($link), som ikke virker her.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Sample Code» (med rettelse)."
+    },
+    {
+      "id": "co3049-s20-073",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hva er galt med denne koden på en mysqli-forbindelse?",
+      "alternativer": [
+        "mysqli_affected_rows() må få resultatet, ikke forbindelsen",
+        "mysql_close() hører til den gamle, fjernede mysql-utvidelsen",
+        "UPDATE kan ikke sendes med mysqli_query(), bare SELECT",
+        "Strengene kan ikke settes sammen med punktum i echo"
+      ],
+      "fasit": 1,
+      "forklaring": "mysql-utvidelsen ble fjernet i PHP 7. Riktig er mysqli_close($con). mysqli_affected_rows tar forbindelsen, så det er riktig.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Using the mysql_affected_rows() Function».",
+      "kode": "$r = mysqli_query($con, \"UPDATE friends SET Age = '67' WHERE FirstName = 'Bill'\");\necho \"Updated \" . mysqli_affected_rows($con) . \" record(s)\";\nmysql_close($con);"
+    },
+    {
+      "id": "co3049-s20-074",
+      "type": "flervalg",
+      "kapittel": 7,
+      "sporsmal": "Hvilke tre grunner til mislykket tilkobling nevner lysbildene?",
+      "alternativer": [
+        "Serveren kjører ikke, manglende rettigheter, feil brukernavn eller passord",
+        "For mange tabeller, feil tegnsett, for lang spørring",
+        "Manglende indeks, full disk, feil portnummer i HTML-skjemaet",
+        "Feil PHP-versjon, manglende cookie, utdatert nettleser"
+      ],
+      "fasit": 0,
+      "forklaring": "De tre er at databaseserveren ikke kjører, at brukeren ikke har tilgang til datakilden, og ugyldig brukernavn eller passord.\n\nKilde: Chapter 5 – PHP and MySQL (2020), «Reporting MySQL Errors»."
+    },
+    {
       "id": "web-071",
       "type": "flervalg",
       "kapittel": 8,
@@ -1165,48 +2270,6 @@
       "forklaring": "Det er resultatsida du får etter et søk. Å «rangere på SERP-en» betyr å komme høyt opp der."
     },
     {
-      "id": "co3049-ny-082",
-      "type": "flervalg",
-      "kapittel": 2,
-      "sporsmal": "Et element har width: 200px, padding: 20px og border: 2px solid. Hvor bred blir boksen med box-sizing: border-box?",
-      "alternativer": [
-        "240px",
-        "244px",
-        "200px",
-        "196px"
-      ],
-      "fasit": 2,
-      "forklaring": "Med border-box er padding og border inkludert i oppgitt bredde. Innholdsbredden blir 200 − 40 − 4 = 156px."
-    },
-    {
-      "id": "co3049-ny-083",
-      "type": "flervalg",
-      "kapittel": 3,
-      "sporsmal": "Hva er forskjellen på event.target og event.currentTarget i en hendelseslytter?",
-      "alternativer": [
-        "De er alltid identiske",
-        "currentTarget er alltid document",
-        "target er alltid foreldreelementet",
-        "target er hendelsens mål; currentTarget er elementet som lytteren kjører på"
-      ],
-      "fasit": 3,
-      "forklaring": "Ved bubbling kan et klikk på et barn håndteres av en lytter på forelderen. Da er target barnet og currentTarget forelderen."
-    },
-    {
-      "id": "co3049-ny-084",
-      "type": "flervalg",
-      "kapittel": 7,
-      "sporsmal": "Hvorfor brukes en databasetransaksjon ved overføring mellom to kontoer?",
-      "alternativer": [
-        "Trekk og innskudd kan behandles som én atomisk enhet",
-        "Alle SQL-spørringer blir automatisk raskere",
-        "Databasen trenger ikke lenger validering",
-        "Alle tabeller blir skrivebeskyttet permanent"
-      ],
-      "fasit": 0,
-      "forklaring": "Atomisitet gjør at begge endringer fullføres eller ingen beholdes. Dermed unngår man at bare halvparten av overføringen lagres."
-    },
-    {
       "id": "co3049-ny-085",
       "type": "flervalg",
       "kapittel": 9,
@@ -1221,17 +2284,873 @@
       "forklaring": "Idempotens gjelder den tilsiktede effekten på serveren. Statuskode og svarinnhold kan endres mellom gjentatte forespørsler."
     },
     {
-      "id": "co3049-ny-086",
-      "type": "langsvar",
-      "kapittel": 1,
-      "sporsmal": "Hvorfor bør et skjemafelt ha en tilknyttet label, og hvordan kobles de sammen?",
-      "momenter": [
-        "Label gir feltet et forståelig navn",
-        "for på label kan samsvare med id på input",
-        "Klikk på label aktiverer eller fokuserer feltet",
-        "Placeholder erstatter ikke en label"
+      "id": "co3049-sdlc-001",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva står SDLC for?",
+      "alternativer": [
+        "Software Development Life Cycle",
+        "Software Design and Logic Control",
+        "System Data Link Control",
+        "Software Deployment and Launch Cycle"
       ],
-      "modellsvar": "En label gjør formålet med skjemafeltet tydelig både visuelt og for hjelpemidler. Den kan kobles til et input-felt ved at label sitt for-attributt samsvarer med feltets id. Da kan brukeren også klikke på etiketten for å fokusere eller aktivere feltet. Placeholder er et hint som forsvinner ved inntasting og bør ikke erstatte etiketten."
+      "fasit": 0,
+      "forklaring": "SDLC er livssyklusen for programvareutvikling: en strukturert prosess fra planlegging til vedlikehold."
+    },
+    {
+      "id": "co3049-sdlc-002",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er hovedformålet med en SDLC?",
+      "alternativer": [
+        "Å erstatte all testing med grundig og detaljert dokumentasjon av koden",
+        "Å levere kvalitetsprogramvare innen tid og budsjett gjennom faste faser",
+        "Å velge programmeringsspråk og rammeverk for prosjektet",
+        "Å sikre at hver modul skrives av én og samme utvikler"
+      ],
+      "fasit": 1,
+      "forklaring": "SDLC deler arbeidet i faser med leveranser, slik at fremdrift, kvalitet og risiko kan styres."
+    },
+    {
+      "id": "co3049-sdlc-003",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken rekkefølge av faser er riktig i en typisk SDLC?",
+      "alternativer": [
+        "Krav, planlegging, implementering, design, utrulling, testing, vedlikehold",
+        "Design, krav, planlegging, testing, implementering, vedlikehold, utrulling",
+        "Planlegging, krav, design, implementering, testing, utrulling, vedlikehold",
+        "Planlegging, design, krav, testing, implementering, vedlikehold, utrulling"
+      ],
+      "fasit": 2,
+      "forklaring": "Man forstår først problemet, beskriver så løsningen, bygger den, kontrollerer den, leverer den og tar vare på den."
+    },
+    {
+      "id": "co3049-sdlc-004",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "I hvilken fase gjennomføres vanligvis mulighetsstudien (feasibility study)?",
+      "alternativer": [
+        "Design",
+        "Testing",
+        "Vedlikehold",
+        "Planlegging"
+      ],
+      "fasit": 3,
+      "forklaring": "Mulighetsstudien avgjør om prosjektet i det hele tatt bør gjennomføres, og hører derfor til planleggingen (eller en egen fase før kravanalysen)."
+    },
+    {
+      "id": "co3049-sdlc-005",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken dimensjon i en mulighetsstudie handler om hvorvidt nytten er større enn kostnadene?",
+      "alternativer": [
+        "Økonomisk gjennomførbarhet",
+        "Teknisk gjennomførbarhet",
+        "Operasjonell gjennomførbarhet",
+        "Juridisk gjennomførbarhet"
+      ],
+      "fasit": 0,
+      "forklaring": "TELOS: Technical, Economic, Legal, Operational og Schedule. Kost-nytte-analyse er den økonomiske delen."
+    },
+    {
+      "id": "co3049-sdlc-006",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket dokument er hovedleveransen fra kravanalysen?",
+      "alternativer": [
+        "Software Design Document (SDD)",
+        "Testrapport med feillogg fra systemtesten",
+        "Brukermanual og installasjonsveiledning",
+        "Software Requirements Specification (SRS)"
+      ],
+      "fasit": 3,
+      "forklaring": "SRS beskriver hva systemet skal gjøre. SDD kommer fra designfasen, testrapporten fra testfasen og brukermanualen fra utrullingen."
+    },
+    {
+      "id": "co3049-sdlc-007",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket av disse er et funksjonelt krav til en nettbutikk?",
+      "alternativer": [
+        "Siden skal lastes på under to sekunder",
+        "Systemet skal tåle 1000 samtidige brukere",
+        "Kunden skal kunne legge varer i handlekurven",
+        "Løsningen skal fungere i Chrome, Firefox og Safari"
+      ],
+      "fasit": 2,
+      "forklaring": "Funksjonelle krav sier hva systemet skal gjøre. De tre andre beskriver ytelse, skalerbarhet og kompatibilitet, som er ikke-funksjonelle krav."
+    },
+    {
+      "id": "co3049-sdlc-008",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket av disse er et ikke-funksjonelt krav?",
+      "alternativer": [
+        "Brukeren skal kunne tilbakestille passordet",
+        "Alle passord skal lagres som hash",
+        "Administratoren skal kunne slette brukere",
+        "Systemet skal sende kvittering på e-post"
+      ],
+      "fasit": 1,
+      "forklaring": "Hashing av passord er et sikkerhetskrav, altså en egenskap ved systemet. De andre beskriver funksjoner brukeren eller administratoren kan utføre."
+    },
+    {
+      "id": "co3049-sdlc-009",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket krav er best formulert?",
+      "alternativer": [
+        "Søket skal være raskt",
+        "Søket skal være brukervennlig og moderne",
+        "Søket skal fungere så godt som mulig",
+        "95 % av søkene skal gi svar på under 500 ms"
+      ],
+      "fasit": 3,
+      "forklaring": "Et godt krav er testbart. Bare det første kan måles og dermed verifiseres."
+    },
+    {
+      "id": "co3049-sdlc-010",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva brukes en kravsporingsmatrise (RTM) til?",
+      "alternativer": [
+        "Å måle hvor mange timer hver utvikler har brukt",
+        "Å prioritere oppgavene i neste sprint",
+        "Å koble hvert krav til design, kode og testtilfeller",
+        "Å registrere feil som brukere melder i drift"
+      ],
+      "fasit": 2,
+      "forklaring": "Sporbarhet viser at alle krav er dekket av design og testet, og hva som berøres når et krav endres."
+    },
+    {
+      "id": "co3049-sdlc-011",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva skiller overordnet design (HLD) fra detaljdesign (LLD)?",
+      "alternativer": [
+        "HLD viser arkitektur og hovedkomponenter, LLD viser hver modul i detalj",
+        "HLD lages etter kodingen, mens LLD lages før kodingen starter",
+        "HLD gjelder bare databasen, mens LLD gjelder bare brukergrensesnittet",
+        "HLD skrives av kunden, mens LLD skrives av testerne i prosjektet"
+      ],
+      "fasit": 0,
+      "forklaring": "Overordnet design viser helheten og hvordan delene henger sammen. Detaljdesign går ned på klasser, funksjoner og algoritmer."
+    },
+    {
+      "id": "co3049-sdlc-012",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er riktig rekkefølge når man designer brukergrensesnittet til et nettsted?",
+      "alternativer": [
+        "Mockup, sitemap, prototype, wireframe",
+        "Sitemap, wireframe, mockup, prototype",
+        "Prototype, wireframe, sitemap, mockup",
+        "Wireframe, prototype, mockup, sitemap"
+      ],
+      "fasit": 1,
+      "forklaring": "Først struktur og navigasjon, så en enkel layoutskisse, så det visuelle utseendet og til slutt en klikkbar modell."
+    },
+    {
+      "id": "co3049-sdlc-013",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva kjennetegner en wireframe?",
+      "alternativer": [
+        "En klikkbar modell som simulerer hele applikasjonen",
+        "Et ferdig grafisk design med farger og bilder",
+        "En enkel layoutskisse uten farger og visuelle detaljer",
+        "En liste over alle adressene på nettstedet"
+      ],
+      "fasit": 2,
+      "forklaring": "Wireframen viser plasseringen av elementene. Mockupen gir det visuelle utseendet, og prototypen gir interaksjon."
+    },
+    {
+      "id": "co3049-sdlc-014",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket testnivå tester én funksjon eller modul isolert?",
+      "alternativer": [
+        "Integrasjonstesting",
+        "Enhetstesting",
+        "Systemtesting",
+        "Akseptansetesting"
+      ],
+      "fasit": 1,
+      "forklaring": "Enhetstesting gjøres vanligvis av utvikleren og tester den minste testbare delen for seg."
+    },
+    {
+      "id": "co3049-sdlc-015",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "En tester sjekker at PHP-skriptet lagrer og henter data riktig fra MySQL-databasen. Hvilket testnivå er dette?",
+      "alternativer": [
+        "Integrasjonstesting",
+        "Enhetstesting",
+        "Akseptansetesting",
+        "Røyktesting"
+      ],
+      "fasit": 0,
+      "forklaring": "Integrasjonstesting kontrollerer samspillet mellom komponenter, her applikasjonskoden og databasen."
+    },
+    {
+      "id": "co3049-sdlc-016",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvem avgjør normalt om systemet godkjennes i akseptansetesting?",
+      "alternativer": [
+        "Utvikleren som skrev koden",
+        "Databaseadministratoren",
+        "Scrum Master",
+        "Kunden eller sluttbrukerne"
+      ],
+      "fasit": 3,
+      "forklaring": "Akseptansetesting (UAT) handler om at systemet oppfyller brukernes behov, så det er de som godkjenner."
+    },
+    {
+      "id": "co3049-sdlc-017",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er forskjellen på alfatesting og betatesting?",
+      "alternativer": [
+        "Alfa kjøres automatisk av verktøy, beta utføres manuelt av testere",
+        "Alfa tester sikkerheten, beta tester ytelsen under høy belastning",
+        "Alfa skjer hos utvikleren, beta hos ekte brukere i deres miljø",
+        "Alfa skjer etter lansering, beta skjer før koden er ferdigskrevet"
+      ],
+      "fasit": 2,
+      "forklaring": "Begge er former for akseptansetesting før endelig lansering. Betatesten gir tilbakemelding fra virkelige omgivelser."
+    },
+    {
+      "id": "co3049-sdlc-018",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva kjennetegner svart boks-testing (black-box)?",
+      "alternativer": [
+        "Testeren går gjennom hver linje i kildekoden",
+        "Systemet testes mot kravene uten kjennskap til koden",
+        "Testene kjøres bare i produksjonsmiljøet",
+        "Testene lages etter at systemet er lansert"
+      ],
+      "fasit": 1,
+      "forklaring": "Svart boks ser bare på input og output. Hvit boks bruker kunnskap om den interne strukturen, for eksempel forgreininger."
+    },
+    {
+      "id": "co3049-sdlc-019",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Et skjemafelt godtar alder fra 18 til 65. Hvilke testverdier gir grenseverditesting?",
+      "alternativer": [
+        "17, 18, 65 og 66",
+        "20, 30, 40 og 50",
+        "0, 100, 200 og 300",
+        "18, 30, 45 og 60"
+      ],
+      "fasit": 0,
+      "forklaring": "Feil oppstår ofte ved grensene. Man tester verdiene rett på og rett utenfor hver grense."
+    },
+    {
+      "id": "co3049-sdlc-020",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er regresjonstesting?",
+      "alternativer": [
+        "Å teste hvordan systemet oppfører seg når belastningen går over grensen",
+        "Å teste systemet sammen med ekte brukere rett før lanseringen",
+        "Å teste hver modul isolert mens den fortsatt er under utvikling",
+        "Å teste på nytt at eksisterende funksjonalitet fortsatt virker etter en endring"
+      ],
+      "fasit": 3,
+      "forklaring": "En retting eller ny funksjon kan ødelegge noe som virket før. Regresjonstester fanger dette, og automatiseres ofte."
+    },
+    {
+      "id": "co3049-sdlc-021",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er forskjellen på lasttesting og stresstesting?",
+      "alternativer": [
+        "Lasttesting gjelder databasen, stresstesting brukergrensesnittet",
+        "Lasttesting gjøres av brukerne, stresstesting av utviklerne",
+        "Det er to navn på samme testtype",
+        "Lasttesting bruker forventet belastning, stresstesting går over grensen"
+      ],
+      "fasit": 3,
+      "forklaring": "Lasttest viser om systemet klarer normal og topp belastning. Stresstest viser hvor og hvordan det bryter sammen."
+    },
+    {
+      "id": "co3049-sdlc-022",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva beskriver validering i «verifisering og validering»?",
+      "alternativer": [
+        "Bygger vi det riktige produktet?",
+        "Bygger vi produktet riktig?",
+        "Er koden skrevet etter kodestandarden?",
+        "Er dokumentasjonen komplett?"
+      ],
+      "fasit": 0,
+      "forklaring": "Validering sjekker at systemet dekker brukerens faktiske behov. Verifisering sjekker samsvar med spesifikasjonen."
+    },
+    {
+      "id": "co3049-sdlc-023",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken utrullingsstrategi lar gammelt og nytt system kjøre samtidig i en periode?",
+      "alternativer": [
+        "Direkte overgang (big bang)",
+        "Parallell drift",
+        "Pilotinnføring",
+        "Fasevis innføring"
+      ],
+      "fasit": 1,
+      "forklaring": "Parallell drift er tryggest fordi man kan sammenligne resultatene, men den er også dyrest."
+    },
+    {
+      "id": "co3049-sdlc-024",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er staging-miljøet?",
+      "alternativer": [
+        "Miljøet der hver utvikler skriver og kjører koden sin lokalt",
+        "Serveren der de daglige sikkerhetskopiene av databasen lagres",
+        "En kopi av produksjonsmiljøet for siste kontroll før lansering",
+        "Miljøet som ekte kunder og brukere benytter til daglig"
+      ],
+      "fasit": 2,
+      "forklaring": "Rekkefølgen er typisk utvikling, test, staging og produksjon."
+    },
+    {
+      "id": "co3049-sdlc-025",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "En ny nettleserversjon krever endringer i JavaScript-koden. Hvilken type vedlikehold er dette?",
+      "alternativer": [
+        "Korrektivt",
+        "Perfektivt",
+        "Adaptivt",
+        "Preventivt"
+      ],
+      "fasit": 2,
+      "forklaring": "Adaptivt vedlikehold tilpasser systemet til endringer i omgivelsene. Korrektivt retter feil, perfektivt legger til ønskede forbedringer."
+    },
+    {
+      "id": "co3049-sdlc-026",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Brukerne ber om en ny funksjon for ønskeliste i nettbutikken. Hvilken type vedlikehold er dette?",
+      "alternativer": [
+        "Adaptivt",
+        "Perfektivt",
+        "Korrektivt",
+        "Preventivt"
+      ],
+      "fasit": 1,
+      "forklaring": "Perfektivt vedlikehold forbedrer eller utvider systemet etter brukernes ønsker."
+    },
+    {
+      "id": "co3049-sdlc-027",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken fase står vanligvis for den største delen av kostnaden over systemets levetid?",
+      "alternativer": [
+        "Kravanalyse",
+        "Design",
+        "Utrulling",
+        "Vedlikehold"
+      ],
+      "fasit": 3,
+      "forklaring": "Systemer lever ofte i mange år, og retting, tilpasning og videreutvikling over hele levetiden koster som regel mer enn utviklingen."
+    },
+    {
+      "id": "co3049-sdlc-028",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvorfor er det viktig å finne feil tidlig i SDLC?",
+      "alternativer": [
+        "Kostnaden for å rette en feil øker jo senere den oppdages",
+        "Tidlige feil kan ikke rettes senere",
+        "Testing kan bare gjøres i planleggingsfasen",
+        "Feil oppdaget sent påvirker bare dokumentasjonen"
+      ],
+      "fasit": 0,
+      "forklaring": "En kravfeil funnet i drift kan kreve endringer i design, kode, tester og dokumentasjon."
+    },
+    {
+      "id": "co3049-sdlc-029",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva kjennetegner fossefallsmodellen?",
+      "alternativer": [
+        "Systemet leveres i korte sprinter med tilbakemelding fra kunden",
+        "Fasene gjennomføres én gang i fast rekkefølge, uten å gå tilbake",
+        "Hver runde starter med en grundig analyse av prosjektets risiko",
+        "Utvikling og drift er slått sammen i ett felles, automatisert team"
+      ],
+      "fasit": 1,
+      "forklaring": "Fossefallsmodellen er sekvensiell og dokumentdrevet. Sprinter hører til Scrum, risikoanalyse til spiral og felles team til DevOps."
+    },
+    {
+      "id": "co3049-sdlc-030",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Når passer fossefallsmodellen best?",
+      "alternativer": [
+        "Når kravene endrer seg ofte",
+        "Når kunden vil se fungerende programvare hver uke",
+        "Når kravene er stabile og godt forstått fra starten",
+        "Når prosjektet har svært høy teknisk risiko"
+      ],
+      "fasit": 2,
+      "forklaring": "Modellen tåler endringer dårlig og viser et fungerende system først sent, så den krever stabile krav."
+    },
+    {
+      "id": "co3049-sdlc-031",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er en viktig ulempe med fossefallsmodellen?",
+      "alternativer": [
+        "Kunden ser et fungerende system først sent i prosjektet",
+        "Den gir for lite dokumentasjon til å vedlikeholde systemet",
+        "Den har ingen tydelige milepæler som kan brukes til oppfølging",
+        "Den krever at kunden deltar i daglige møter med utviklerne"
+      ],
+      "fasit": 0,
+      "forklaring": "Testing og levering kommer sist, så misforståelser og feil oppdages sent og blir dyre å rette."
+    },
+    {
+      "id": "co3049-sdlc-032",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "I V-modellen, hvilken testfase hører sammen med kravanalysen?",
+      "alternativer": [
+        "Enhetstesting",
+        "Integrasjonstesting",
+        "Røyktesting",
+        "Akseptansetesting"
+      ],
+      "fasit": 3,
+      "forklaring": "Krav ↔ akseptansetest, systemdesign ↔ systemtest, arkitektur ↔ integrasjonstest og moduldesign ↔ enhetstest."
+    },
+    {
+      "id": "co3049-sdlc-033",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "I V-modellen, hvilken testfase hører sammen med detaljdesign av moduler?",
+      "alternativer": [
+        "Akseptansetesting",
+        "Systemtesting",
+        "Enhetstesting",
+        "Betatesting"
+      ],
+      "fasit": 2,
+      "forklaring": "Bunnen av V-en er kodingen. Nærmest den står moduldesign og enhetstesting."
+    },
+    {
+      "id": "co3049-sdlc-034",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken type prosjekt passer V-modellen særlig godt til?",
+      "alternativer": [
+        "Sikkerhetskritiske systemer med stabile krav",
+        "Oppstartsprosjekter med uklare krav",
+        "Prosjekter der kravene endres hver uke",
+        "Raske prototyper for å teste en idé"
+      ],
+      "fasit": 0,
+      "forklaring": "V-modellen legger stor vekt på verifisering og validering, men er rigid, så kravene bør være stabile."
+    },
+    {
+      "id": "co3049-sdlc-035",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er spiralmodellens viktigste kjennetegn?",
+      "alternativer": [
+        "Den har bare én runde og ingen form for iterasjon",
+        "Den er laget spesielt for små prosjekter med faste krav",
+        "Den forbyr prototyper fordi de øker kostnaden",
+        "Den er risikodrevet, med risikoanalyse i hver runde"
+      ],
+      "fasit": 3,
+      "forklaring": "Boehm sin spiral går gjennom mål, risikoanalyse, utvikling og planlegging i hver runde. Prototyper brukes ofte for å redusere risiko."
+    },
+    {
+      "id": "co3049-sdlc-036",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvem beskrev spiralmodellen?",
+      "alternativer": [
+        "Winston Royce",
+        "Barry Boehm",
+        "James Martin",
+        "Ken Schwaber"
+      ],
+      "fasit": 1,
+      "forklaring": "Royce er knyttet til fossefallsmodellen, Martin til RAD og Schwaber (med Sutherland) til Scrum."
+    },
+    {
+      "id": "co3049-sdlc-037",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket prosjekt passer spiralmodellen best til?",
+      "alternativer": [
+        "Et lite nettsted med faste krav",
+        "Et stort og kostbart prosjekt med høy risiko",
+        "En enkel landingsside som skal leveres på én dag",
+        "Et prosjekt uten budsjett til analyse"
+      ],
+      "fasit": 1,
+      "forklaring": "Spiralmodellen er kompleks og dyr å styre, men gir god kontroll på risiko."
+    },
+    {
+      "id": "co3049-sdlc-038",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er forskjellen på en kastbar og en evolusjonær prototype?",
+      "alternativer": [
+        "Den kastbare er klikkbar på skjerm, den evolusjonære tegnes på papir",
+        "Den kastbare lages av kunden, den evolusjonære lages av testerne",
+        "Den kastbare brukes i drift, den evolusjonære bare i testmiljøet",
+        "Den kastbare avklarer krav og forkastes, den evolusjonære blir det ferdige systemet"
+      ],
+      "fasit": 3,
+      "forklaring": "Kastbare prototyper forkastes etter at kravene er forstått. Evolusjonære forbedres steg for steg."
+    },
+    {
+      "id": "co3049-sdlc-039",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Når passer prototypemodellen best?",
+      "alternativer": [
+        "Når alle krav er ferdig spesifisert i kontrakten",
+        "Når systemet ikke har brukergrensesnitt",
+        "Når kravene er uklare og brukerne trenger å se noe konkret",
+        "Når det ikke er mulig å få tilbakemelding fra brukerne"
+      ],
+      "fasit": 2,
+      "forklaring": "Prototyper gjør kravene konkrete og gir tidlig tilbakemelding, særlig på brukergrensesnitt."
+    },
+    {
+      "id": "co3049-sdlc-040",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er forskjellen på inkrementell og iterativ utvikling?",
+      "alternativer": [
+        "Inkrementell leverer i deler, iterativ forbedrer gjennom gjentatte runder",
+        "Inkrementell gjentar hele syklusen, iterativ leverer alt på én gang",
+        "Inkrementell er en smidig metode, iterativ er en variant av fossefall",
+        "De er to ulike navn på den samme sekvensielle fossefallsmodellen"
+      ],
+      "fasit": 0,
+      "forklaring": "Inkrementell legger til ny funksjonalitet del for del. Iterativ forbedrer det samme produktet runde for runde. Smidige metoder bruker begge."
+    },
+    {
+      "id": "co3049-sdlc-041",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva vektlegger RAD (Rapid Application Development)?",
+      "alternativer": [
+        "Rask utvikling med prototyper, gjenbruk og tett brukermedvirkning",
+        "Omfattende dokumentasjon av alle krav før koding kan starte",
+        "Formell risikoanalyse i fire kvadranter for hver runde",
+        "Strengt sekvensielle faser uten tilbakemelding fra brukerne"
+      ],
+      "fasit": 0,
+      "forklaring": "RAD bruker korte tidsbokser og gjentatte prototyper sammen med brukerne."
+    },
+    {
+      "id": "co3049-sdlc-042",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken verdi står i Agile-manifestet?",
+      "alternativer": [
+        "Omfattende dokumentasjon fremfor programvare som virker",
+        "Programvare som virker fremfor omfattende dokumentasjon",
+        "Å følge en plan fremfor å reagere på endringer",
+        "Kontraktsforhandlinger fremfor samarbeid med kunden"
+      ],
+      "fasit": 1,
+      "forklaring": "De tre andre er snudd. Manifestet sier at det til høyre har verdi, men at det til venstre verdsettes høyere."
+    },
+    {
+      "id": "co3049-sdlc-043",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket utsagn om smidig utvikling er riktig?",
+      "alternativer": [
+        "Smidig utvikling bruker ingen dokumentasjon",
+        "Smidig utvikling har ingen planlegging",
+        "Endrede krav ønskes velkommen, også sent i utviklingen",
+        "Kunden får bare se produktet når alt er ferdig"
+      ],
+      "fasit": 2,
+      "forklaring": "Smidig betyr mindre, men ikke null dokumentasjon og plan. Hyppige leveranser og tett kundesamarbeid er sentralt."
+    },
+    {
+      "id": "co3049-sdlc-044",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvem prioriterer produktbackloggen i Scrum?",
+      "alternativer": [
+        "Scrum Master",
+        "Utviklerne",
+        "Prosjektlederen",
+        "Produkteieren"
+      ],
+      "fasit": 3,
+      "forklaring": "Produkteieren eier backloggen og har ansvaret for å maksimere verdien av produktet. Scrum har ingen prosjektlederrolle."
+    },
+    {
+      "id": "co3049-sdlc-045",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er Scrum Masters viktigste oppgave?",
+      "alternativer": [
+        "Å fordele oppgaver og kontrollere utviklerne",
+        "Å prioritere produktbackloggen",
+        "Å hjelpe teamet å bruke Scrum og fjerne hindringer",
+        "Å skrive all koden i sprinten"
+      ],
+      "fasit": 2,
+      "forklaring": "Scrum Master er en tjenende leder, ikke sjef for teamet og ikke eier av backloggen."
+    },
+    {
+      "id": "co3049-sdlc-046",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvor lang er en sprint i Scrum høyst?",
+      "alternativer": [
+        "Én uke",
+        "Én måned",
+        "Tre måneder",
+        "Seks måneder"
+      ],
+      "fasit": 1,
+      "forklaring": "Sprinter er tidsbokser på en måned eller mindre, ofte to uker."
+    },
+    {
+      "id": "co3049-sdlc-047",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvor lenge varer daglig scrum?",
+      "alternativer": [
+        "15 minutter",
+        "5 minutter",
+        "1 time",
+        "En halv arbeidsdag"
+      ],
+      "fasit": 0,
+      "forklaring": "Daglig scrum er et kort møte der utviklerne ser på fremdriften mot sprintmålet og planlegger neste døgn."
+    },
+    {
+      "id": "co3049-sdlc-048",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken Scrum-hendelse handler om å forbedre teamets egen arbeidsmåte?",
+      "alternativer": [
+        "Sprintgjennomgang",
+        "Sprintplanlegging",
+        "Daglig scrum",
+        "Sprintretrospektiv"
+      ],
+      "fasit": 3,
+      "forklaring": "Retrospektivet ser på prosess og samarbeid. Sprintgjennomgangen viser selve inkrementet til interessentene."
+    },
+    {
+      "id": "co3049-sdlc-049",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilket av disse er ikke et artefakt i Scrum?",
+      "alternativer": [
+        "Gantt-diagram",
+        "Produktbacklogg",
+        "Sprintbacklogg",
+        "Inkrement"
+      ],
+      "fasit": 0,
+      "forklaring": "Scrum har tre artefakter. Gantt-diagram er et verktøy fra tradisjonell prosjektstyring."
+    },
+    {
+      "id": "co3049-sdlc-050",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva kjennetegner Kanban?",
+      "alternativer": [
+        "Faste sprinter på to uker med sprintplanlegging",
+        "Parprogrammering og testdrevet utvikling som krav",
+        "Fire faste kvadranter med risikoanalyse per runde",
+        "Visuell tavle og grenser for arbeid i gang (WIP)"
+      ],
+      "fasit": 3,
+      "forklaring": "Kanban har kontinuerlig flyt uten faste sprinter. Parprogrammering hører til XP, kvadranter til spiral."
+    },
+    {
+      "id": "co3049-sdlc-051",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken praksis hører til Extreme Programming (XP)?",
+      "alternativer": [
+        "Risikoanalyse i fire kvadranter",
+        "Testdrevet utvikling og parprogrammering",
+        "Parallell drift av gammelt og nytt system",
+        "Én stor leveranse på slutten av prosjektet"
+      ],
+      "fasit": 1,
+      "forklaring": "XP vektlegger tekniske praksiser: TDD, parprogrammering, kontinuerlig integrasjon, små leveranser og refaktorering."
+    },
+    {
+      "id": "co3049-sdlc-052",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er forskjellen på Continuous Delivery og Continuous Deployment?",
+      "alternativer": [
+        "Delivery gjelder automatisk testing, Deployment gjelder automatisk design",
+        "Delivery brukes i fossefallsmodellen, Deployment brukes i V-modellen",
+        "Delivery krever manuell godkjenning før produksjon, Deployment gjør det automatisk",
+        "Det finnes ingen forskjell, begge betyr å integrere koden ofte"
+      ],
+      "fasit": 2,
+      "forklaring": "Begge bygger på CI. Med Continuous Deployment går hver endring som passerer testene rett i produksjon."
+    },
+    {
+      "id": "co3049-sdlc-053",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hva er forskjellen på SDLC og STLC?",
+      "alternativer": [
+        "STLC er en eldre betegnelse på SDLC",
+        "STLC gjelder bare maskinvareutvikling",
+        "STLC er en smidig metode som erstatter Scrum",
+        "STLC er testarbeidets egen livssyklus innenfor SDLC"
+      ],
+      "fasit": 3,
+      "forklaring": "Software Testing Life Cycle går fra kravanalyse for test via testplan, testtilfeller, testmiljø og testkjøring til avslutning."
+    },
+    {
+      "id": "co3049-sdlc-054",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "Hvilken aktivitet i webutvikling hører til testfasen?",
+      "alternativer": [
+        "Registrere domenenavn og sette opp DNS for nettstedet",
+        "Lage sitemap og innholdsplan sammen med kunden",
+        "Sjekke at nettstedet virker i ulike nettlesere og på mobil",
+        "Skrive brukerhistorier og prioritere dem med kunden"
+      ],
+      "fasit": 2,
+      "forklaring": "Kompatibilitetstesting hører til testfasen. Domene og DNS hører til lansering, sitemap til planlegging og brukerhistorier til kravarbeidet."
+    },
+    {
+      "id": "co3049-sdlc-055",
+      "type": "flervalg",
+      "kapittel": 10,
+      "sporsmal": "En utvikler ruller ut en ny versjon til 5 % av brukerne før resten. Hva kalles dette?",
+      "alternativer": [
+        "Canary release",
+        "Blue-green deployment",
+        "Big bang-overgang",
+        "Røyktesting"
+      ],
+      "fasit": 0,
+      "forklaring": "Canary release gir ny versjon til en liten gruppe først. Blue-green bytter all trafikk mellom to like miljøer."
+    },
+    {
+      "id": "co3049-sdlc-ls01",
+      "type": "langsvar",
+      "kapittel": 10,
+      "sporsmal": "Beskriv de sju fasene i SDLC. Angi hovedaktivitet og en typisk leveranse for hver fase.",
+      "momenter": [
+        "Planlegging: mål, omfang, ressurser, mulighetsstudie – prosjektplan",
+        "Kravanalyse: funksjonelle og ikke-funksjonelle krav – SRS",
+        "Design: arkitektur, database, grensesnitt – designdokument/wireframes",
+        "Implementering: koding etter design – kildekode",
+        "Testing: enhet, integrasjon, system, aksept – testrapport",
+        "Utrulling og vedlikehold: produksjonssetting, deretter korrektivt, adaptivt, perfektivt og preventivt vedlikehold"
+      ],
+      "modellsvar": "Planleggingen fastsetter mål, omfang, tidsplan, budsjett og risiko, og en mulighetsstudie avgjør om prosjektet bør gjennomføres. Leveransen er en prosjektplan. Kravanalysen samler inn funksjonelle og ikke-funksjonelle krav og dokumenterer dem i en kravspesifikasjon (SRS). Designfasen beskriver hvordan kravene skal oppfylles, med arkitektur, datamodell, grensesnitt og moduler, og leverer et designdokument, ER-diagram og wireframes. I implementeringen skrives koden etter designet, med versjonskontroll og kodegjennomgang. Testfasen kontrollerer systemet gjennom enhets-, integrasjons-, system- og akseptansetesting og leverer testrapport og feillogg. Ved utrulling settes systemet i produksjon, med opplæring og eventuell datamigrering. Vedlikeholdet varer resten av levetiden og omfatter korrektivt, adaptivt, perfektivt og preventivt vedlikehold."
+    },
+    {
+      "id": "co3049-sdlc-ls02",
+      "type": "langsvar",
+      "kapittel": 10,
+      "sporsmal": "Sammenlign fossefallsmodellen og smidig utvikling (for eksempel Scrum). Når ville du valgt hver av dem?",
+      "momenter": [
+        "Fossefall er sekvensiell og plandrevet med dokumentasjon per fase",
+        "Smidig er iterativ og inkrementell med korte leveranser",
+        "Fossefall håndterer endringer dårlig, smidig ønsker dem velkommen",
+        "Fossefall gir sen tilbakemelding, smidig gir tidlig og hyppig",
+        "Fossefall ved stabile krav/fast kontrakt, smidig ved usikre eller skiftende krav"
+      ],
+      "modellsvar": "Fossefallsmodellen gjennomfører fasene én gang i fast rekkefølge, og hver fase avsluttes med godkjent dokumentasjon. Den er lett å styre og gir forutsigbar tidsplan og kostnad, men kunden ser et fungerende system først på slutten, og endringer blir dyre. Smidig utvikling leverer i korte iterasjoner (sprinter i Scrum), der hvert inkrement kan vises og vurderes. Kunden er tett involvert, og endrede krav tas inn i backloggen. Ulempen er at totalkostnad og sluttomfang er vanskeligere å fastsette på forhånd, og at metoden krever aktiv deltakelse fra kunden. Jeg ville valgt fossefall for et lite eller regulert prosjekt med stabile, godt forståtte krav og fast kontrakt, og smidig for en webapplikasjon der kravene er usikre, markedet endrer seg eller brukernes tilbakemeldinger bør styre utviklingen."
+    },
+    {
+      "id": "co3049-sdlc-ls03",
+      "type": "langsvar",
+      "kapittel": 10,
+      "sporsmal": "Forklar V-modellen. Hvordan henger utviklingsfasene sammen med testnivåene, og hva er fordelene og ulempene?",
+      "momenter": [
+        "Utvidelse av fossefall formet som en V",
+        "Krav ↔ akseptansetest, systemdesign ↔ systemtest",
+        "Arkitektur ↔ integrasjonstest, moduldesign ↔ enhetstest",
+        "Testene planlegges samtidig med tilsvarende utviklingsfase",
+        "Fordel: sterk verifisering/validering; ulempe: rigid og sen programvare"
+      ],
+      "modellsvar": "V-modellen er en variant av fossefallsmodellen der venstre side av V-en er utviklingsfasene og høyre side er testfasene, med kodingen i bunnen. Hver utviklingsfase har en tilhørende testfase: kravanalysen svarer til akseptansetesting, systemdesignet til systemtesting, arkitekturdesignet til integrasjonstesting og moduldesignet til enhetstesting. Testene planlegges allerede når den tilsvarende utviklingsfasen gjennomføres, slik at kravene blir testbare og feil i spesifikasjonen fanges tidlig. Fordelen er tydelig kobling mellom krav og test og sterk vekt på verifisering og validering, noe som passer sikkerhetskritiske systemer. Ulempen er at modellen er like rigid som fossefall: endringer er dyre, og det finnes ingen fungerende programvare før sent i prosjektet."
+    },
+    {
+      "id": "co3049-sdlc-ls04",
+      "type": "langsvar",
+      "kapittel": 10,
+      "sporsmal": "Beskriv spiralmodellen og forklar hvorfor den kalles risikodrevet.",
+      "momenter": [
+        "Barry Boehm, 1986/1988",
+        "Fire kvadranter: mål, risikoanalyse, utvikling/test, planlegging",
+        "Hver runde reduserer den største risikoen, ofte med prototyper",
+        "Radius = kostnad, vinkel = fremdrift",
+        "Passer store, dyre og risikable prosjekter; kompleks for små"
+      ],
+      "modellsvar": "Spiralmodellen ble beskrevet av Barry Boehm. Utviklingen skjer i runder, og hver runde går gjennom fire kvadranter: man bestemmer mål, alternativer og begrensninger; analyserer og reduserer risiko, ofte ved å lage prototyper; utvikler og tester neste versjon; og planlegger neste runde sammen med kunden. Den kalles risikodrevet fordi risikoanalysen bestemmer hva som gjøres i hver runde: de største usikkerhetene angripes først, og prosjektet kan stoppes tidlig hvis risikoen blir for høy. Spiralens radius viser akkumulert kostnad. Modellen kombinerer iterasjon med systematikken i fossefall og passer store, kostbare og risikable prosjekter, men den er kompleks, krever ekspertise i risikoanalyse og er for tung for små prosjekter."
+    },
+    {
+      "id": "co3049-sdlc-ls05",
+      "type": "langsvar",
+      "kapittel": 10,
+      "sporsmal": "Forklar Scrum: roller (ansvarsområder), hendelser og artefakter.",
+      "momenter": [
+        "Produkteier prioriterer backloggen og maksimerer verdi",
+        "Scrum Master hjelper teamet og fjerner hindringer (ikke prosjektleder)",
+        "Utviklere lager inkrementet, selvstyrt og tverrfaglig",
+        "Hendelser: sprint (≤ 1 måned), sprintplanlegging, daglig scrum (15 min), sprintgjennomgang, retrospektiv",
+        "Artefakter: produktbacklogg, sprintbacklogg, inkrement (Definition of Done)"
+      ],
+      "modellsvar": "Scrum er et smidig rammeverk der arbeidet skjer i sprinter på en måned eller mindre. Produkteieren eier og prioriterer produktbackloggen og representerer kunden. Scrum Master hjelper teamet å forstå og følge Scrum og fjerner hindringer, men er ikke prosjektleder. Utviklerne er et selvstyrt, tverrfaglig team som lager inkrementet. Hver sprint starter med sprintplanlegging, der teamet velger sprintmål og elementer fra produktbackloggen. Hver dag holdes et daglig scrum på 15 minutter. På slutten viser teamet inkrementet i sprintgjennomgangen og forbedrer arbeidsmåten sin i sprintretrospektivet. Artefaktene er produktbackloggen, sprintbackloggen og inkrementet, som må oppfylle Definition of Done."
+    },
+    {
+      "id": "co3049-sdlc-ls06",
+      "type": "langsvar",
+      "kapittel": 10,
+      "sporsmal": "Du skal lage en nettbutikk i PHP og MySQL for en liten bedrift. Beskriv hvordan SDLC-fasene ser ut i dette prosjektet, og hvilken prosessmodell du ville valgt.",
+      "momenter": [
+        "Planlegging: målgruppe, omfang, budsjett, mulighetsstudie inkl. GDPR",
+        "Krav: funksjonelle (handlekurv, betaling, innlogging) og ikke-funksjonelle (ytelse, sikkerhet, mobil)",
+        "Design: sitemap/wireframes, tre lag/MVC, ER-diagram",
+        "Implementering og testing: front-end/back-end, cross-browser, SQL-injeksjon/XSS, UAT",
+        "Utrulling og vedlikehold: domene, DNS, HTTPS, backup, sikkerhetsoppdateringer",
+        "Begrunnet modellvalg, for eksempel smidig/inkrementell"
+      ],
+      "modellsvar": "I planleggingen avklares formål, målgruppe, omfang, budsjett og tidsplan, og en mulighetsstudie vurderer blant annet teknologi, kostnad og krav til personvern. I kravanalysen dokumenteres funksjonelle krav som produktkatalog, søk, handlekurv, innlogging, betaling og ordrebekreftelse, og ikke-funksjonelle krav som lastetid, sikkerhet (hashede passord, HTTPS, beskyttelse mot SQL-injeksjon og XSS), responsivt design og nettleserstøtte. I designfasen lages sitemap, wireframes og mockups, en arkitektur i tre lag eller MVC og en normalisert databasemodell. Implementeringen omfatter HTML, CSS og JavaScript på klienten og PHP med forberedte setninger mot MySQL på serveren, med Git og kodegjennomgang. Testingen dekker enhets- og integrasjonstester, funksjonell testing av kjøpsflyten, kompatibilitet på tvers av nettlesere og mobil, ytelse og sikkerhet, og til slutt akseptansetesting med bedriften. Ved utrulling settes domene, DNS, webhotell, HTTPS og database opp. Vedlikeholdet omfatter feilretting, sikkerhetsoppdateringer, backup, nye funksjoner og SEO. Jeg ville valgt en smidig, inkrementell modell som Scrum, fordi en liten bedrift ofte har uklare krav og har nytte av å få en enkel butikk tidlig og så utvide den etter tilbakemeldinger."
+    },
+    {
+      "id": "co3049-sdlc-ls07",
+      "type": "langsvar",
+      "kapittel": 10,
+      "sporsmal": "Forklar forskjellen på verifisering og validering, og gi eksempler på aktiviteter som hører til hver.",
+      "momenter": [
+        "Verifisering: bygger vi produktet riktig (samsvar med spesifikasjon)?",
+        "Validering: bygger vi det riktige produktet (brukerens behov)?",
+        "Verifisering: gjennomganger, inspeksjoner, enhets-/integrasjonstest",
+        "Validering: akseptansetest, betatest, prototyper med brukere"
+      ],
+      "modellsvar": "Verifisering spør om vi bygger produktet riktig, altså om hvert resultat samsvarer med spesifikasjonen fra forrige fase. Eksempler er gjennomgang av kravspesifikasjonen, designinspeksjoner, kodegjennomgang, enhetstesting og integrasjonstesting. Validering spør om vi bygger det riktige produktet, altså om systemet dekker brukerens faktiske behov. Eksempler er prototyper som vises til brukerne, akseptansetesting og betatesting. Et system kan bestå all verifisering og likevel feile valideringen hvis kravspesifikasjonen i seg selv var feil."
     }
   ]
 }

@@ -1,12 +1,462 @@
 {
   "fag": "Big Data Analytics and Business Intelligence",
   "kapitler": {
-    "1": "Big data og datakvalitet",
-    "2": "Datavarehus og BI",
-    "3": "Distribuert databehandling",
-    "4": "Analyse og evaluering"
+    "1": "Oversikt over big data",
+    "2": "Grunnlag for big data-analyse",
+    "3": "Big data-analyse: MapReduce og Spark",
+    "4": "BI-systemer",
+    "5": "Big data-analyse i virksomheter",
+    "6": "Eksamen 2023 (tidligere eksamen)"
   },
   "sporsmal": [
+    {
+      "id": "co4033-k1-001",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva er big data ifølge konklusjonen i kapittel 1?",
+      "alternativer": [
+        "Ethvert datasett som er større enn én terabyte, uansett hvilken arkitektur som brukes",
+        "En datasamling som tradisjonelle dataarkitekturer ikke klarer å håndtere effektivt og virkningsfullt",
+        "Data som lagres i en NoSQL-database i stedet for i en relasjonsdatabase",
+        "Data som samles inn fra sosiale medier og IoT-sensorer i sanntid"
+      ],
+      "fasit": 1,
+      "forklaring": "Definisjonen er relativ til hva eksisterende arkitekturer klarer, ikke en bestemt størrelse. Hvor stort «stort» er, avhenger av tid, sted og omstendighet.\n\nKilde: Kap. 1, lysbilde 21, 23 og 48."
+    },
+    {
+      "id": "co4033-k1-002",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilke tre V-er er de opprinnelige egenskapene ved big data?",
+      "alternativer": [
+        "Volume, Velocity og Variety",
+        "Volume, Veracity og Value",
+        "Velocity, Variety og Veracity",
+        "Volume, Variety og Visualization"
+      ],
+      "fasit": 0,
+      "forklaring": "Douglas Laney foreslo de tre V-ene i 2001. Veracity, Value og de andre kom senere som utvidelser.\n\nKilde: Kap. 1, lysbilde 24 og 26."
+    },
+    {
+      "id": "co4033-k1-003",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvem foreslo de tre V-ene Volume, Velocity og Variety i 2001?",
+      "alternativer": [
+        "Doug Cutting i Apache Software Foundation",
+        "Matei Zaharia ved UC Berkeley",
+        "W. H. Inmon i The Data Warehousing Institute",
+        "Douglas Laney i META Group (nå Gartner)"
+      ],
+      "fasit": 3,
+      "forklaring": "Cutting er med på å skape Hadoop, Zaharia skapte Spark, og Inmon er kjent for definisjonen av datavarehus.\n\nKilde: Kap. 1, lysbilde 24."
+    },
+    {
+      "id": "co4033-k1-004",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken egenskap er IKKE blant de fem i ISO/IEC JTC 1-definisjonen av big data?",
+      "alternativer": [
+        "Variability",
+        "Veracity",
+        "Value",
+        "Velocity"
+      ],
+      "fasit": 2,
+      "forklaring": "ISO/IEC-listen er Volume, Velocity, Variability, Veracity og Variety. Den har Variability der mange andre lister har Value — en typisk felle.\n\nKilde: Kap. 1, lysbilde 21."
+    },
+    {
+      "id": "co4033-k1-005",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken V legger IBM til de tre opprinnelige i sin 4V-modell?",
+      "alternativer": [
+        "Value",
+        "Veracity",
+        "Visibility",
+        "Variability"
+      ],
+      "fasit": 1,
+      "forklaring": "IBMs fire er Volume, Velocity, Variety og Veracity. Value kommer med i Demchenkos 5V, Visibility i Microsofts 6V.\n\nKilde: Kap. 1, lysbilde 27."
+    },
+    {
+      "id": "co4033-k1-006",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken V finnes i Microsofts 6V-modell, men ikke i Demchenkos 5V-modell?",
+      "alternativer": [
+        "Visibility",
+        "Value",
+        "Veracity",
+        "Velocity"
+      ],
+      "fasit": 0,
+      "forklaring": "Demchenko: Volume, Velocity, Variety, Veracity, Value. Microsoft legger til Visibility.\n\nKilde: Kap. 1, lysbilde 27."
+    },
+    {
+      "id": "co4033-k1-007",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Regnmålere i Ho Chi Minh-byen sender ufullstendige, støyende og av og til feilaktige målinger. Hvilken V handler dette om?",
+      "alternativer": [
+        "Volume",
+        "Velocity",
+        "Veracity",
+        "Variety"
+      ],
+      "fasit": 2,
+      "forklaring": "Veracity gjelder dataenes sannferdighet og kvalitet. Dette er gjesteforelesningens egen kontrolloppgave.\n\nKilde: Gjesteforelesning 8.–15.9, emne 1."
+    },
+    {
+      "id": "co4033-k1-008",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "En logistikkplattform må behandle GPS-posisjoner fra tusenvis av kjøretøy hvert sekund. Hvilken V er mest framtredende?",
+      "alternativer": [
+        "Variety",
+        "Veracity",
+        "Value",
+        "Velocity"
+      ],
+      "fasit": 3,
+      "forklaring": "Velocity er hastigheten data genereres og må behandles med. Gjesteforelesningen knytter strømmende GPS- og IoT-telemetri til Velocity.\n\nKilde: Gjesteforelesning 8.–15.9, problem 1."
+    },
+    {
+      "id": "co4033-k1-009",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "En bedrift kombinerer tabeller fra en relasjonsdatabase, JSON-logger og videoopptak. Hvilken V beskriver dette best?",
+      "alternativer": [
+        "Variety",
+        "Volume",
+        "Velocity",
+        "Validity"
+      ],
+      "fasit": 0,
+      "forklaring": "Variety er kompleksiteten når strukturerte, semistrukturerte og ustrukturerte data skal håndteres sammen.\n\nKilde: Kap. 1, lysbilde 26."
+    },
+    {
+      "id": "co4033-k1-010",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket nivå i DIKW-pyramiden svarer på hvem, hva, når og hvor?",
+      "alternativer": [
+        "Data (rådata)",
+        "Kunnskap",
+        "Visdom",
+        "Informasjon"
+      ],
+      "fasit": 3,
+      "forklaring": "Informasjon er data satt i sammenheng. Kunnskap svarer på hvordan, visdom på hvorfor og hva som er best.\n\nKilde: Kap. 1, lysbilde 7–9."
+    },
+    {
+      "id": "co4033-k1-011",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva kjennetegner visdom, toppen av DIKW-pyramiden?",
+      "alternativer": [
+        "En samling rå fakta i uorganisert form, som er grunnlaget for alt annet",
+        "Kunnskap anvendt i handling, som svarer på hvorfor og hva som er best",
+        "Data satt i sammenheng, som gjør dem enklere å måle og visualisere",
+        "Metadata som beskriver hvor dataene er lagret og hvordan de er strukturert"
+      ],
+      "fasit": 1,
+      "forklaring": "Hvert trinn opp i pyramiden besvarer spørsmål om og tilfører verdi til de opprinnelige dataene. Rå fakta er bunnen, data.\n\nKilde: Kap. 1, lysbilde 5–9."
+    },
+    {
+      "id": "co4033-k1-012",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Etiketten på en flaske viser navn, alkoholprosent, volum og holdbarhetsdato. Hva er etiketten i forhold til innholdet?",
+      "alternativer": [
+        "Ustrukturerte data",
+        "Kunnskap",
+        "Metadata",
+        "En datamodell"
+      ],
+      "fasit": 2,
+      "forklaring": "Metadata er data om data. Lysbildets tegneserie bruker nettopp flasken og etiketten som eksempel.\n\nKilde: Kap. 1, lysbilde 10."
+    },
+    {
+      "id": "co4033-k1-013",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket eksempel er semistrukturerte data?",
+      "alternativer": [
+        "En tabell i en relasjonsdatabase med fast skjema",
+        "Et XML-dokument med tagger, men uten fast tabellskjema",
+        "Et lydopptak fra et kundesenter i MP3-format",
+        "En ubehandlet videofil fra et overvåkingskamera"
+      ],
+      "fasit": 1,
+      "forklaring": "Semistrukturerte data har organiserende egenskaper som tagger eller markører. Tabeller er strukturerte, lyd og video ustrukturerte.\n\nKilde: Kap. 1, lysbilde 11."
+    },
+    {
+      "id": "co4033-k1-014",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva menes med «komplekse data» i forelesningen?",
+      "alternativer": [
+        "Semistrukturerte og ustrukturerte data",
+        "Bare ustrukturerte data",
+        "Strukturerte data i flere tabeller",
+        "Data med mer enn hundre kolonner"
+      ],
+      "fasit": 0,
+      "forklaring": "Lysbildet sier at enkle data er strukturerte data, og at komplekse data er semistrukturerte og ustrukturerte data.\n\nKilde: Kap. 1, lysbilde 12."
+    },
+    {
+      "id": "co4033-k1-015",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Omtrent hvor stor andel av virksomhetsdata er ustrukturerte, ifølge Gartner-anslaget i forelesningen?",
+      "alternativer": [
+        "Rundt 20 prosent",
+        "Rundt 50 prosent",
+        "Rundt 80 prosent",
+        "Rundt 5 prosent"
+      ],
+      "fasit": 2,
+      "forklaring": "Figuren oppgir omtrent 20 prosent strukturerte og 80 prosent ustrukturerte virksomhetsdata.\n\nKilde: Kap. 1, lysbilde 12."
+    },
+    {
+      "id": "co4033-k1-016",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvor mange byte er 1 zettabyte?",
+      "alternativer": [
+        "10^18 byte",
+        "10^15 byte",
+        "10^24 byte",
+        "10^21 byte"
+      ],
+      "fasit": 3,
+      "forklaring": "1 ZB = 1000 EB = 10^21 byte. 10^18 er exabyte, 10^15 petabyte og 10^24 yottabyte.\n\nKilde: Kap. 1, lysbilde 17."
+    },
+    {
+      "id": "co4033-k1-017",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken av disse er IKKE en fase i datalivssyklusen på lysbildet?",
+      "alternativer": [
+        "Archive",
+        "Share",
+        "Destroy",
+        "Normalize"
+      ],
+      "fasit": 3,
+      "forklaring": "Syklusen er create, store, use, share, archive og destroy. Normalisering er en forbehandlingsteknikk.\n\nKilde: Kap. 1, lysbilde 13."
+    },
+    {
+      "id": "co4033-k1-018",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken av disse er IKKE en NoSQL-datamodell?",
+      "alternativer": [
+        "Dokument",
+        "Bred kolonne (wide-column)",
+        "Hierarkisk",
+        "Graf"
+      ],
+      "fasit": 2,
+      "forklaring": "NoSQL-modellene er dokument, nøkkel–verdi, bred kolonne og graf. Hierarkisk er en av de tradisjonelle modellene.\n\nKilde: Kap. 1, lysbilde 14."
+    },
+    {
+      "id": "co4033-k1-019",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Personvern, sikkerhet og datastyring hører til hvilken gruppe utfordringer hos Sivarajah og medforfattere?",
+      "alternativer": [
+        "Forvaltningsutfordringer (management challenges)",
+        "Datautfordringer (data challenges)",
+        "Prosessutfordringer (process challenges)",
+        "Visualiseringsutfordringer (visualization challenges)"
+      ],
+      "fasit": 0,
+      "forklaring": "Forvaltningsutfordringene omfatter personvern, sikkerhet, governance, deling, kostnader og eierskap.\n\nKilde: Kap. 1, lysbilde 35."
+    },
+    {
+      "id": "co4033-k1-020",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Innsamling, rensing, integrasjon, analyse og tolkning av data er eksempler på hvilken type utfordringer i Sivarajah og medforfatteres inndeling?",
+      "alternativer": [
+        "Datautfordringer",
+        "Prosessutfordringer",
+        "Forvaltningsutfordringer",
+        "Skaleringsutfordringer"
+      ],
+      "fasit": 1,
+      "forklaring": "Prosessutfordringene er det som møtes under behandlingen av dataene. Datautfordringene er knyttet til dataenes egenskaper, V-ene.\n\nKilde: Kap. 1, lysbilde 35."
+    },
+    {
+      "id": "co4033-k1-021",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilket prinsipp gjentas i konklusjonen om hvordan big data-utfordringene bør møtes?",
+      "alternativer": [
+        "Flytt alle data til én sentral server før analyse",
+        "Unngå distribuerte systemer fordi de er upålitelige",
+        "Flytt behandlingen til dataene, ikke dataene til behandlingen",
+        "Konverter alle data til strukturert form før lagring"
+      ],
+      "fasit": 2,
+      "forklaring": "Prinsippet fra ISO/IEC-rapporten er grunnlaget for datalokalitet i HDFS og MapReduce.\n\nKilde: Kap. 1, lysbilde 36 og 48."
+    },
+    {
+      "id": "co4033-k1-022",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva er en viktig begrensning ved vertikal skalering (scale-up)?",
+      "alternativer": [
+        "Den oppgraderer én maskin og begrenses av fysisk maskinvare og kostnader som stiger bratt",
+        "Den krever programvare som koordinerer arbeidet mellom mange noder i nettverket",
+        "Den kan ikke brukes på relasjonsdatabaser, bare på NoSQL-systemer",
+        "Den fjerner behovet for replikering fordi én server aldri svikter"
+      ],
+      "fasit": 0,
+      "forklaring": "Scale-up er som å ansette en stadig sterkere kroppsbygger. Big data-systemer skalerer i stedet horisontalt.\n\nKilde: Gjesteforelesning 8.–15.9, emne 2."
+    },
+    {
+      "id": "co4033-k1-023",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva betyr horisontal skalering (scale-out)?",
+      "alternativer": [
+        "Å gi én server mer minne og flere prosessorkjerner etter hvert som lasten øker",
+        "Å bytte ut harddiskene med raskere SSD-er i den samme serveren",
+        "Å komprimere dataene slik at hele datasettet får plass på én maskin",
+        "Å legge til flere standardmaskiner i en klynge og koordinere dem med programvare"
+      ],
+      "fasit": 3,
+      "forklaring": "Scale-out er som å ansette 20 vanlige arbeidere i stedet for én superkraftig. Det er standardtilnærmingen for big data.\n\nKilde: Gjesteforelesning 8.–15.9, emne 2."
+    },
+    {
+      "id": "co4033-k1-024",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva er et single point of failure (SPOF)?",
+      "alternativer": [
+        "En node som bare lagrer sikkerhetskopier",
+        "En komponent som stopper hele systemet hvis den svikter",
+        "Et feilpunkt som bare rammer én bruker",
+        "En algoritme som feiler én gang per million kjøringer"
+      ],
+      "fasit": 1,
+      "forklaring": "Horisontalt skalerte systemer prøver å unngå SPOF gjennom replikering og redundans.\n\nKilde: Gjesteforelesning 8.–15.9, emne 2."
+    },
+    {
+      "id": "co4033-k1-025",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken analysetype svarer på «Hva bør gjøres med det?»",
+      "alternativer": [
+        "Deskriptiv",
+        "Preskriptiv",
+        "Diagnostisk",
+        "Prediktiv"
+      ],
+      "fasit": 1,
+      "forklaring": "Deskriptiv: hva skjedde. Diagnostisk: hvorfor. Prediktiv: hva vil sannsynligvis skje. Preskriptiv: hva bør gjøres.\n\nKilde: Kap. 1, lysbilde 44."
+    },
+    {
+      "id": "co4033-k1-026",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken analysetype forbindes med spørsmålet «Hva vet vi ikke?» og menneskelignende intelligens?",
+      "alternativer": [
+        "Preskriptiv",
+        "Diagnostisk",
+        "Kognitiv",
+        "Deskriptiv"
+      ],
+      "fasit": 2,
+      "forklaring": "Kognitiv analyse er femte type i forelesningens liste og bruker AI til menneskelignende intelligens.\n\nKilde: Kap. 1, lysbilde 44."
+    },
+    {
+      "id": "co4033-k1-027",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "I 3²V-modellen hører visibility, value og verdict til hvilket domene?",
+      "alternativer": [
+        "Business intelligence-domenet",
+        "Datadomenet (data domain)",
+        "Statistikkdomenet (statistics domain)",
+        "Sikkerhetsdomenet (security domain)"
+      ],
+      "fasit": 0,
+      "forklaring": "Datadomenet har volume, velocity og variety. Statistikkdomenet har veracity, validity og variability.\n\nKilde: Kap. 1, lysbilde 28–29."
+    },
+    {
+      "id": "co4033-k1-028",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva menes med «Verdict» i 3²V-modellen?",
+      "alternativer": [
+        "Hvor raskt dataenes betydning endrer seg over tid og mellom ulike kilder",
+        "Hvor mange kopier av dataene som må lagres for å tåle feil på maskinvaren",
+        "Hvor pålitelige datakildene er, og hvor mye støy og skjevhet dataene inneholder",
+        "Et mulig valg eller en beslutning, gitt problemets omfang, ressurser og regnekapasitet"
+      ],
+      "fasit": 3,
+      "forklaring": "Verdict er en av de tre BI-V-ene. Pålitelighet hører til statistikkdomenet (veracity).\n\nKilde: Kap. 1, lysbilde 29."
+    },
+    {
+      "id": "co4033-k1-029",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken del av Gartners definisjon beskriver hva big data krever?",
+      "alternativer": [
+        "En relasjonsdatabase med strengt, forhåndsdefinert skjema",
+        "Kostnadseffektive, innovative former for informasjonsbehandling",
+        "Én kraftig sentral server med stor minnekapasitet",
+        "At dataene er strukturerte og rensede før de lagres"
+      ],
+      "fasit": 1,
+      "forklaring": "«High-volume, velocity, and variety information assets that demand cost-effective, innovative forms of information processing for enhanced insight and decision making.»\n\nKilde: Kap. 1, lysbilde 24."
+    },
+    {
+      "id": "co4033-k1-030",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva betyr «Big Data Paradigm» i ISO/IEC-rapporten?",
+      "alternativer": [
+        "Distribusjon av datasystemer over horisontalt koblede, uavhengige ressurser for skalerbarhet",
+        "At alle data samles i én relasjonsdatabase for å sikre konsistens og enkel tilgang",
+        "At data alltid skal behandles i sanntid på én kraftig sentral server",
+        "At dataene må være ferdig rensede og strukturerte før de lagres i klyngen"
+      ],
+      "fasit": 0,
+      "forklaring": "Big Data Models er datamodellene, Big Data Engineering er teknologiene, og paradigmet er selve distribusjonen over horisontale ressurser.\n\nKilde: Kap. 1, lysbilde 40."
+    },
+    {
+      "id": "co4033-k1-031",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hva sier lysbildene om hvor stort «stort» er i begrepet big data?",
+      "alternativer": [
+        "Alt over én petabyte regnes som big data i alle bransjer og til alle tider",
+        "Alt som ikke får plass i minnet på en vanlig bærbar PC regnes som big data",
+        "Det er fastsatt i en ISO-standard som alle datasett over 100 terabyte",
+        "Det er relativt til tid, sted og omstendighet, og det finnes ingen generell enighet"
+      ],
+      "fasit": 3,
+      "forklaring": "Lysbildene understreker at begrepet historisk er vagt og at det bare peker på størrelse.\n\nKilde: Kap. 1, lysbilde 22–23."
+    },
+    {
+      "id": "co4033-k1-032",
+      "type": "flervalg",
+      "kapittel": 1,
+      "sporsmal": "Hvilken av disse er IKKE en av forretningsmotivasjonene for big data hos Buyya og medforfattere?",
+      "alternativer": [
+        "Å lagre enorme datamengder i tilgjengelige ressurser",
+        "Å få rask tilgang til store datamengder",
+        "Å redusere antall datakilder til én",
+        "Å hente ut BI interaktivt og kostnadseffektivt"
+      ],
+      "fasit": 2,
+      "forklaring": "Motivasjonene er å lagre, få tilgang til, håndtere ulike formater, behandle skalerbart og feiltolerant, og hente ut BI.\n\nKilde: Kap. 1, lysbilde 46."
+    },
     {
       "id": "co4033-ny-001",
       "type": "flervalg",
@@ -36,9 +486,1115 @@
       "forklaring": "JSON har struktur gjennom felt og nesting, men dokumenter trenger ikke følge det faste tabellskjemaet i en relasjonsdatabase."
     },
     {
+      "id": "co4033-ls1-01",
+      "type": "langsvar",
+      "kapittel": 1,
+      "sporsmal": "Hva er de opprinnelige V-egenskapene ved big data? Forklar hver av dem med et eksempel.",
+      "momenter": [
+        "Volume: mengden data, for eksempel petabyte med transaksjonshistorikk",
+        "Velocity: hastigheten data genereres og må behandles med, for eksempel GPS-strømmer hvert sekund",
+        "Variety: blanding av strukturerte, semistrukturerte og ustrukturerte data",
+        "Laney (META Group, nå Gartner) foreslo dem i 2001",
+        "Big data er data tradisjonelle arkitekturer ikke håndterer effektivt"
+      ],
+      "modellsvar": "De tre opprinnelige V-ene ble foreslått av Douglas Laney i 2001. Volume er datamengden, for eksempel en nettbutikk med milliarder av ordre og klikk over mange år. Velocity er hastigheten data kommer inn og må behandles med, for eksempel Grab som tar imot 10 000 GPS-ping i sekundet og må oppdage kø i sanntid. Variety er variasjonen i format og kilde: en bank kombinerer tabeller fra kjernesystemet, JSON fra mobilappen og tekstlogger fra minibankene. Til sammen gjør egenskapene at tradisjonelle dataarkitekturer ikke klarer å håndtere dataene effektivt, som er forelesningens definisjon av big data."
+    },
+    {
+      "id": "co4033-ls1-02",
+      "type": "langsvar",
+      "kapittel": 1,
+      "sporsmal": "Gi minst tre ekstra V-er utover de tre opprinnelige. Begrunn dem og beskriv når de er relevante.",
+      "momenter": [
+        "Veracity: sannferdighet og kvalitet, relevant ved støyende sensordata",
+        "Value: verdien som kan hentes ut, relevant når investeringen skal begrunnes",
+        "Variability: skiftende betydning og inkonsistens, relevant for tekst og sosiale medier",
+        "Visibility/Visualization: at data og resultater kan ses og forstås",
+        "Viser til en kilde, for eksempel IBMs 4V, Demchenkos 5V eller ISO/IEC"
+      ],
+      "modellsvar": "Veracity (IBMs fjerde V) handler om dataenes sannferdighet og usikkerhet; det er avgjørende i IoT, der regnmålere kan sende støy og feilkoder. Value (Demchenkos femte V) er verdien som kan hentes ut; den bestemmer om en investering i big data lønner seg. Variability (i ISO/IEC-definisjonen) er at dataenes betydning eller format endrer seg, for eksempel at samme ord har ulik mening i innlegg på sosiale medier over tid. Visibility (Microsofts 6V) eller visualization handler om at innsikten må kunne ses og forstås av beslutningstakerne, som kobler big data til BI."
+    },
+    {
+      "id": "co4033-ls1-03",
+      "type": "langsvar",
+      "kapittel": 1,
+      "sporsmal": "Forklar utfordringene ved big data og foreslå løsninger der det er mulig.",
+      "momenter": [
+        "Datautfordringer knyttet til V-ene",
+        "Prosessutfordringer: innsamling, rensing, integrasjon, analyse, tolkning",
+        "Forvaltningsutfordringer: personvern, sikkerhet, governance, eierskap, kostnad",
+        "Løsninger: horisontal skalering, distribuert lagring og behandling",
+        "Flytt behandlingen til dataene, ikke dataene til behandlingen"
+      ],
+      "modellsvar": "Sivarajah og medforfattere deler utfordringene i tre. Datautfordringene følger av dataenes egenskaper — volum, hastighet, variasjon, variabilitet, veracity, visualisering og verdi. De møtes med horisontal skalering over standardmaskiner og distribuerte systemer som HDFS og NoSQL. Prosessutfordringene oppstår under behandlingen: innsamling, rensing, integrasjon, analyse og tolkning. Her hjelper strukturerte prosesser som CRISP-DM, ETL/ELT-verktøy og distribuerte motorer som Spark, som flytter behandlingen til dataene. Forvaltningsutfordringene er personvern, sikkerhet, datastyring, deling, kostnader og eierskap, som krever retningslinjer, tilgangskontroll og anonymisering."
+    },
+    {
+      "id": "co4033-k2-001",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Når trengs spesialiserte verktøy for big data-analyse, ifølge Bahga og Madisetti? Velg alternativet som IKKE er en slik grunn.",
+      "alternativer": [
+        "Datavolumet er for stort til å lagres og analyseres på én maskin",
+        "Dataene må analyseres i sanntid",
+        "Dataene får god plass i et regneark på én bærbar PC",
+        "Dataene kommer fra flere kilder i ulike formater"
+      ],
+      "fasit": 2,
+      "forklaring": "Grunnene er volum, hastighet, variasjon, flere kilder og flere analysetyper. Små data trenger ikke distribuerte verktøy.\n\nKilde: Kap. 2, lysbilde 7."
+    },
+    {
+      "id": "co4033-k2-002",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan beskrives kunnskapsoppdagelse (KDD) i forelesningen?",
+      "alternativer": [
+        "Som en lineær prosess som kjøres én gang",
+        "Som et synonym for datavarehus",
+        "Som en automatisk prosess uten brukerinvolvering",
+        "Som en ikke-triviell, iterativ og interaktiv prosess"
+      ],
+      "fasit": 3,
+      "forklaring": "Figuren fra Han, Kamber og Pei viser tilbakeløkker fra evaluering til tidligere steg.\n\nKilde: Kap. 2, lysbilde 12."
+    },
+    {
+      "id": "co4033-k2-003",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er riktig rekkefølge i kunnskapsoppdagelsesprosessen (KDD)?",
+      "alternativer": [
+        "Datautvinning → rensing og integrasjon → datavarehus → evaluering → seleksjon og transformasjon",
+        "Rensing og integrasjon → datavarehus → seleksjon og transformasjon → datautvinning → evaluering og presentasjon",
+        "Seleksjon og transformasjon → evaluering og presentasjon → rensing → datautvinning → datavarehus",
+        "Datavarehus → datautvinning → rensing og integrasjon → seleksjon og transformasjon → presentasjon"
+      ],
+      "fasit": 1,
+      "forklaring": "Datautvinning gir mønstre, som evalueres og presenteres som kunnskap til slutt.\n\nKilde: Kap. 2, lysbilde 12."
+    },
+    {
+      "id": "co4033-k2-004",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken av disse er IKKE en fase i CRISP-DM?",
+      "alternativer": [
+        "Operationalize",
+        "Business Understanding",
+        "Data Preparation",
+        "Deployment"
+      ],
+      "fasit": 0,
+      "forklaring": "CRISP-DM: business understanding, data understanding, data preparation, modeling, evaluation, deployment. Operationalize er siste fase i EMCs Data Analytics Lifecycle.\n\nKilde: Kap. 2, lysbilde 14 og 17."
+    },
+    {
+      "id": "co4033-k2-005",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva sier forelesningen om rekkefølgen av fasene i CRISP-DM?",
+      "alternativer": [
+        "Fasene må alltid følges nøyaktig én gang i rekkefølge",
+        "Deployment kommer alltid før modeling",
+        "Evaluering er valgfri og hoppes vanligvis over",
+        "Den er ikke streng; man går ofte fram og tilbake mellom fasene"
+      ],
+      "fasit": 3,
+      "forklaring": "Den ytre sirkelen i figuren viser dessuten at prosessen er syklisk.\n\nKilde: Kap. 2, lysbilde 14."
+    },
+    {
+      "id": "co4033-k2-006",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "I hvilken fase av Data Analytics Lifecycle lages en analytisk sandkasse og utføres ETLT?",
+      "alternativer": [
+        "Discovery",
+        "Model planning",
+        "Data preparation",
+        "Operationalize"
+      ],
+      "fasit": 2,
+      "forklaring": "Data preparation omfatter sandkasse, ETLT, å bli kjent med dataene, kondisjonering og kvalitetskontroll.\n\nKilde: Kap. 2, lysbilde 19."
+    },
+    {
+      "id": "co4033-k2-007",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "I hvilken fase av Data Analytics Lifecycle lages datasett for trening, testing og produksjon?",
+      "alternativer": [
+        "Model building",
+        "Model planning",
+        "Data preparation",
+        "Communicate results"
+      ],
+      "fasit": 0,
+      "forklaring": "Model planning handler om utforskning og valg av variabler og modell; model building bygger selve modellene.\n\nKilde: Kap. 2, lysbilde 20–21."
+    },
+    {
+      "id": "co4033-k2-008",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Å lære domenet, rammesette problemet, identifisere interessenter og lage innledende hypoteser hører til hvilken fase?",
+      "alternativer": [
+        "Data preparation",
+        "Discovery",
+        "Model building",
+        "Operationalize"
+      ],
+      "fasit": 1,
+      "forklaring": "Discovery er første fase. Kontrollspørsmålet er om man har nok informasjon til en analyseplan.\n\nKilde: Kap. 2, lysbilde 18."
+    },
+    {
+      "id": "co4033-k2-009",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Pilotutrulling med risikostyring og løpende overvåking av modellens effekt hører til hvilken fase?",
+      "alternativer": [
+        "Discovery",
+        "Model planning",
+        "Communicate results",
+        "Operationalize"
+      ],
+      "fasit": 3,
+      "forklaring": "Operationalize går fra lite omfang via pilot til bred utrulling, med mekanismer for overvåking, retrening og varsler.\n\nKilde: Kap. 2, lysbilde 23."
+    },
+    {
+      "id": "co4033-k2-010",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Variabelvalg og feature engineering hører til hvilken fase i Data Analytics Lifecycle?",
+      "alternativer": [
+        "Model planning",
+        "Discovery",
+        "Model building",
+        "Operationalize"
+      ],
+      "fasit": 0,
+      "forklaring": "Model planning omfatter datautforskning, variabelvalg og modellvalg.\n\nKilde: Kap. 2, lysbilde 20."
+    },
+    {
+      "id": "co4033-k2-011",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken av disse er IKKE en kritisk suksessfaktor for big data-analyse ifølge Watson (2012)?",
+      "alternativer": [
+        "Et tydelig forretningsbehov",
+        "Å sette ut all analyse til én leverandør",
+        "En faktabasert beslutningskultur",
+        "Personell med avansert analysekompetanse"
+      ],
+      "fasit": 1,
+      "forklaring": "De sju faktorene er forretningsbehov, sponsor, samsvar mellom forretnings- og IT-strategi, faktabasert kultur, datainfrastruktur, riktige verktøy og kompetanse.\n\nKilde: Kap. 2, lysbilde 10."
+    },
+    {
+      "id": "co4033-k2-012",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket attributt er ordinalt?",
+      "alternativer": [
+        "Yrke med verdiene lærer, lege og ingeniør",
+        "Kundenummer",
+        "T-skjortestørrelse med verdiene S, M og L",
+        "Hårfarge"
+      ],
+      "fasit": 2,
+      "forklaring": "Ordinale verdier har en meningsfull rekkefølge. Yrke og hårfarge er nominelle; kundenummeret er en identifikator.\n\nKilde: Kap. 2, lysbilde 33."
+    },
+    {
+      "id": "co4033-k2-013",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er et binært attributt ifølge forelesningen?",
+      "alternativer": [
+        "Et numerisk attributt som bare kan ha heltallsverdier",
+        "Et attributt som lagres i binærformat på disken",
+        "Et ordinalt attributt med flere enn to rangerte verdier",
+        "Et spesialtilfelle av et nominelt attributt med to mulige verdier"
+      ],
+      "fasit": 3,
+      "forklaring": "Eksempelet på lysbildet er alder med verdiene gammel og ung.\n\nKilde: Kap. 2, lysbilde 33."
+    },
+    {
+      "id": "co4033-k2-014",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "I positivt skjeve data (lang hale mot høyre) gjelder vanligvis hvilken rekkefølge?",
+      "alternativer": [
+        "Typetall < median < gjennomsnitt",
+        "Gjennomsnitt < median < typetall",
+        "Median < typetall < gjennomsnitt",
+        "Alle tre er like"
+      ],
+      "fasit": 0,
+      "forklaring": "Gjennomsnittet trekkes mot halen. I symmetriske data er de like, i negativt skjeve er rekkefølgen motsatt.\n\nKilde: Kap. 2, lysbilde 35."
+    },
+    {
+      "id": "co4033-k2-015",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Sorterte priser: 4, 8, 15, 21, 21, 24, 25, 28, 34. Hva er gjennomsnittet?",
+      "alternativer": [
+        "21",
+        "20",
+        "24",
+        "18"
+      ],
+      "fasit": 1,
+      "forklaring": "Summen er 180 og n = 9, så gjennomsnittet er 20. Median og typetall er begge 21.\n\nKilde: Kap. 2, lysbilde 41 (egen utregning)."
+    },
+    {
+      "id": "co4033-k2-016",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Et attributt har Q1 = 20 og Q3 = 40. Hvilken verdi er en uteligger etter 1,5 × IQR-regelen?",
+      "alternativer": [
+        "65",
+        "−5",
+        "75",
+        "45"
+      ],
+      "fasit": 2,
+      "forklaring": "IQR = 20, så grensene er 20 − 30 = −10 og 40 + 30 = 70. Bare 75 ligger utenfor.\n\nKilde: Kap. 2, lysbilde 36."
+    },
+    {
+      "id": "co4033-k2-017",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket mål beskriver spredning i data?",
+      "alternativer": [
+        "Typetall",
+        "Median",
+        "Standardavvik",
+        "Cosinuslikhet"
+      ],
+      "fasit": 2,
+      "forklaring": "Spredning: range, kvartiler, IQR, varians, standardavvik. Typetall og median er sentraltendens.\n\nKilde: Kap. 2, lysbilde 34."
+    },
+    {
+      "id": "co4033-k2-018",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket mål brukes til å måle likhet, ikke ulikhet, mellom objekter?",
+      "alternativer": [
+        "Euklidsk avstand",
+        "Manhattan-avstand",
+        "Minkowski-avstand",
+        "Jaccard-koeffisient"
+      ],
+      "fasit": 3,
+      "forklaring": "Likhet: cosinus og Jaccard. Ulikhet: Minkowski, Manhattan, euklidsk og dynamic time warping.\n\nKilde: Kap. 2, lysbilde 34."
+    },
+    {
+      "id": "co4033-k2-019",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er Manhattan-avstanden mellom punktene (1, 2) og (3, 5)?",
+      "alternativer": [
+        "5",
+        "3,61",
+        "13",
+        "6"
+      ],
+      "fasit": 0,
+      "forklaring": "|3 − 1| + |5 − 2| = 2 + 3 = 5. Euklidsk avstand er √13 ≈ 3,61.\n\nKilde: Kap. 2, lysbilde 34 (egen utregning)."
+    },
+    {
+      "id": "co4033-k2-020",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken av disse er IKKE en av de typiske kvalitetsdimensjonene i forelesningen?",
+      "alternativer": [
+        "Accuracy",
+        "Velocity",
+        "Timeliness",
+        "Believability"
+      ],
+      "fasit": 1,
+      "forklaring": "Dimensjonene er accuracy, completeness, consistency, timeliness, believability og interpretability. Velocity er en big data-egenskap.\n\nKilde: Kap. 2, lysbilde 37."
+    },
+    {
+      "id": "co4033-k2-021",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva sier forelesningen om listen over kvalitetsdimensjoner?",
+      "alternativer": [
+        "ISO har fastsatt nøyaktig seks obligatoriske dimensjoner",
+        "Kvalitet måles bare med nøyaktighet (accuracy)",
+        "Kvalitet er uavhengig av hva interessentene forventer",
+        "Det finnes ingen omforent liste; de typiske avhenger av tiltenkt bruk"
+      ],
+      "fasit": 3,
+      "forklaring": "Kvalitet defineres som at dataene oppfyller forventningene til interessentene.\n\nKilde: Kap. 2, lysbilde 37."
+    },
+    {
+      "id": "co4033-k2-022",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken metode for manglende verdier er den mest avanserte i forelesningens liste?",
+      "alternativer": [
+        "Å bruke den mest sannsynlige verdien, predikert med en modell",
+        "Å ignorere hele posten som mangler verdien",
+        "Å fylle inn en global konstant som «Unknown»",
+        "Å bruke gjennomsnittet for hele attributtet i datasettet"
+      ],
+      "fasit": 0,
+      "forklaring": "Listen går fra å ignorere, via manuell utfylling, konstant og globalt eller lokalt mål for sentraltendens, til predikert verdi.\n\nKilde: Kap. 2, lysbilde 39."
+    },
+    {
+      "id": "co4033-k2-023",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Manglende inntekt fylles inn med gjennomsnittsinntekten i kundens eget segment. Hva heter metoden?",
+      "alternativer": [
+        "Global konstant",
+        "Lokalt gruppebasert mål for sentraltendens",
+        "Mest sannsynlig verdi fra prediksjon",
+        "Tuppelduplisering"
+      ],
+      "fasit": 1,
+      "forklaring": "Et globalt mål bruker hele attributtet; et lokalt bruker gruppen posten tilhører.\n\nKilde: Kap. 2, lysbilde 39."
+    },
+    {
+      "id": "co4033-k2-024",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Priser i bin 1 er 4, 8 og 15. Hva blir de etter glatting med bin-gjennomsnitt?",
+      "alternativer": [
+        "4, 4, 15",
+        "8, 8, 8",
+        "9, 9, 9",
+        "4, 8, 15"
+      ],
+      "fasit": 2,
+      "forklaring": "(4 + 8 + 15) / 3 = 9. Glatting med bin-grenser ville gitt 4, 4, 15.\n\nKilde: Kap. 2, lysbilde 41."
+    },
+    {
+      "id": "co4033-k2-025",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Priser i bin 3 er 25, 28 og 34. Hva blir de etter glatting med bin-grenser?",
+      "alternativer": [
+        "29, 29, 29",
+        "25, 34, 34",
+        "25, 25, 34",
+        "28, 28, 28"
+      ],
+      "fasit": 2,
+      "forklaring": "Hver verdi byttes med nærmeste grense. 28 ligger 3 fra 25 og 6 fra 34, så den blir 25.\n\nKilde: Kap. 2, lysbilde 41."
+    },
+    {
+      "id": "co4033-k2-026",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Datoer er lagret både som DD/MM/ÅÅÅÅ og ÅÅÅÅ-MM-DD. Hva slags inkonsistens er dette?",
+      "alternativer": [
+        "Semantisk inkonsistens",
+        "Redundans",
+        "Støy",
+        "Syntaktisk inkonsistens"
+      ],
+      "fasit": 3,
+      "forklaring": "Syntaktisk gjelder form og format. Semantisk gjelder betydning, som ulike navn på samme sted.\n\nKilde: Kap. 2, lysbilde 43."
+    },
+    {
+      "id": "co4033-k2-027",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan oppdages redundans mellom attributter (vertikalt) under integrasjon?",
+      "alternativer": [
+        "Med tuppelduplisering",
+        "Med korrelasjonsanalyse",
+        "Med binning",
+        "Med stratifisert utvalg"
+      ],
+      "fasit": 1,
+      "forklaring": "Korrelasjonsanalyse ser vertikalt på attributter; tuppelduplisering ser horisontalt på rader.\n\nKilde: Kap. 2, lysbilde 44."
+    },
+    {
+      "id": "co4033-k2-028",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "«cust_id» i én database og «customer_number» i en annen viser seg å være det samme. Hvilket integrasjonsproblem er løst?",
+      "alternativer": [
+        "Entitetsidentifikasjon",
+        "Konfliktløsning for dataverdier",
+        "Dimensjonsreduksjon",
+        "Diskretisering"
+      ],
+      "fasit": 0,
+      "forklaring": "Entitetsidentifikasjon handler om å avgjøre hvilke objekter og attributter i ulike kilder som svarer til hverandre.\n\nKilde: Kap. 2, lysbilde 44."
+    },
+    {
+      "id": "co4033-k2-029",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken metode er numerosity reduction?",
+      "alternativer": [
+        "Prinsipalkomponentanalyse (PCA)",
+        "Wavelet-transformasjon",
+        "Utvalg av attributtdelmengder",
+        "Sampling"
+      ],
+      "fasit": 3,
+      "forklaring": "Numerosity reduction erstatter dataene med en mindre representasjon: histogrammer, klynger, sampling, datakubeaggregering. De tre andre er dimensjonsreduksjon.\n\nKilde: Kap. 2, lysbilde 45."
+    },
+    {
+      "id": "co4033-k2-030",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan starter forward selection i utvalg av attributtdelmengder?",
+      "alternativer": [
+        "Med alle attributter, og det dårligste fjernes i hvert steg",
+        "Med et tilfeldig utvalg attributter",
+        "Med et tomt sett, og det beste attributtet legges til i hvert steg",
+        "Med et beslutningstre der ubrukte attributter fjernes"
+      ],
+      "fasit": 2,
+      "forklaring": "Backward elimination starter med alle og fjerner; beslutningstreinduksjon beholder attributtene som inngår i treet.\n\nKilde: Kap. 2, lysbilde 46."
+    },
+    {
+      "id": "co4033-k2-031",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Et utvalg trekkes slik at ungdom, middelaldrende og eldre alle er representert i riktig forhold. Hva heter utvalget?",
+      "alternativer": [
+        "Stratifisert utvalg",
+        "Klyngeutvalg",
+        "Enkelt tilfeldig utvalg uten tilbakelegging",
+        "Enkelt tilfeldig utvalg med tilbakelegging"
+      ],
+      "fasit": 0,
+      "forklaring": "Lysbildet viser et stratifisert utvalg etter alder.\n\nKilde: Kap. 2, lysbilde 47."
+    },
+    {
+      "id": "co4033-k2-032",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er forskjellen på tapsfri og tapsbeheftet komprimering?",
+      "alternativer": [
+        "Tapsfri gir alltid mindre filer enn tapsbeheftet komprimering",
+        "Tapsfri gir eksakt gjenoppretting, tapsbeheftet gir en tilnærming",
+        "Tapsbeheftet komprimering kan bare brukes på tekstdata",
+        "Tapsfri komprimering fjerner uteliggere og støy fra dataene"
+      ],
+      "fasit": 1,
+      "forklaring": "Forelesningen: lossless (exact) mot lossy (approximate).\n\nKilde: Kap. 2, lysbilde 45."
+    },
+    {
+      "id": "co4033-k2-033",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Inntekt ligger mellom 12 000 og 98 000. Hva blir 73 600 med min–maks-normalisering til [0, 1]?",
+      "alternativer": [
+        "Omtrent 0,751",
+        "1,225",
+        "Omtrent 0,836",
+        "Omtrent 0,716"
+      ],
+      "fasit": 3,
+      "forklaring": "(73 600 − 12 000) / (98 000 − 12 000) = 61 600 / 86 000 ≈ 0,716.\n\nKilde: Kap. 2, lysbilde 48 (egen utregning)."
+    },
+    {
+      "id": "co4033-k2-034",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Gjennomsnittet er 54 000 og standardavviket 16 000. Hva er z-scoren til 73 600?",
+      "alternativer": [
+        "0,716",
+        "1,225",
+        "1,36",
+        "19 600"
+      ],
+      "fasit": 1,
+      "forklaring": "(73 600 − 54 000) / 16 000 = 19 600 / 16 000 = 1,225.\n\nKilde: Kap. 2, lysbilde 48 (egen utregning)."
+    },
+    {
+      "id": "co4033-k2-035",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Alder byttes ut med etikettene ungdom, voksen og senior. Hvilken transformasjon er dette?",
+      "alternativer": [
+        "Diskretisering",
+        "Normalisering",
+        "Aggregering",
+        "Attributtkonstruksjon"
+      ],
+      "fasit": 0,
+      "forklaring": "Diskretisering bytter numeriske verdier med intervall- eller begrepsetiketter.\n\nKilde: Kap. 2, lysbilde 48."
+    },
+    {
+      "id": "co4033-k2-036",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Gatenavn generaliseres til by og deretter land. Hva heter transformasjonen?",
+      "alternativer": [
+        "Diskretisering",
+        "Normalisering",
+        "Begrepshierarki",
+        "Glatting"
+      ],
+      "fasit": 2,
+      "forklaring": "Begrepshierarkier brukes for nominelle data som adresser.\n\nKilde: Kap. 2, lysbilde 48."
+    },
+    {
+      "id": "co4033-k2-037",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva kjennetegner prinsipalkomponentene i PCA?",
+      "alternativer": [
+        "De er de opprinnelige attributtene sortert etter navn",
+        "De er klynger av like poster",
+        "De er alltid like mange som de opprinnelige attributtene",
+        "De er ortogonale (ukorrelerte) akser som beholder mest mulig varians"
+      ],
+      "fasit": 3,
+      "forklaring": "PCA projiserer data fra d til k dimensjoner, der k er mye mindre enn d.\n\nKilde: Gjesteforelesning 8.–15.9, emne 9."
+    },
+    {
+      "id": "co4033-k2-038",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er en følge av dimensjonalitetens forbannelse (curse of dimensionality)?",
+      "alternativer": [
+        "Dataene blir tettere og mer kompakte, som gjør analysen enklere",
+        "Dataene blir glisne, modellene går tregt og overtilpasser seg støy",
+        "Modellene blir mer nøyaktige fordi de har flere attributter å lære av",
+        "Det trengs færre observasjoner fordi hver post inneholder mer informasjon"
+      ],
+      "fasit": 1,
+      "forklaring": "Gjesteforelesningen skriver «Curiosity of Dimensionality» på hovedlysbildet, men begrepet heter Curse of Dimensionality.\n\nKilde: Gjesteforelesning 8.–15.9, emne 9."
+    },
+    {
+      "id": "co4033-k2-039",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "En temperaturmåler i en kjølebil mister forbindelsen i 2 sekunder. Hvilken imputering passer best?",
+      "alternativer": [
+        "Lineær interpolering mellom målingene rett før og etter bruddet",
+        "Fyll hullet med 0 °C, siden det er et nøytralt utgangspunkt",
+        "Slett all historikk fra den bilen for å unngå feil i analysen",
+        "Bruk sensorens maksimalverdi for å være på den sikre siden"
+      ],
+      "fasit": 0,
+      "forklaring": "Temperatur endrer seg kontinuerlig, så nabomålingene gir det beste estimatet. Dette er gjesteforelesningens kontrolloppgave.\n\nKilde: Gjesteforelesning 8.–15.9, emne 8."
+    },
+    {
+      "id": "co4033-k2-040",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Jordfuktighet var 30 % kl. 09:00 og 40 % kl. 11:00, mens målingen kl. 10:00 mangler. Hva gir lineær interpolering?",
+      "alternativer": [
+        "30 %",
+        "40 %",
+        "35 %",
+        "70 %"
+      ],
+      "fasit": 2,
+      "forklaring": "x̂ = (30 + 40) / 2 = 35 %.\n\nKilde: Gjesteforelesning 8.–15.9, emne 8 (egen utregning)."
+    },
+    {
+      "id": "co4033-k2-041",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "En fuktighetssensor i tørketid viser 99 prosent. Hvilket rensegrep passer?",
+      "alternativer": [
+        "Uteliggerfiltrering",
+        "Deduplisering",
+        "Normalisering",
+        "Diskretisering"
+      ],
+      "fasit": 0,
+      "forklaring": "Gjesteforelesningen bruker nettopp 99 % jordfuktighet og −50 °C i kjølebilen som eksempler på fysisk umulige målinger.\n\nKilde: Gjesteforelesning 8.–15.9, emne 8."
+    },
+    {
+      "id": "co4033-k2-042",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Rå saltmålinger er [2.1, 2.2, NULL, 999.9, 2.3], der 999.9 er en feilkode. Hva erstattes NULL med?",
+      "alternativer": [
+        "2,2",
+        "501,05",
+        "2,25",
+        "0"
+      ],
+      "fasit": 2,
+      "forklaring": "Feilkoden utelukkes, og NULL interpoleres fra 2,2 og 2,3: (2,2 + 2,3) / 2 = 2,25.\n\nKilde: Gjesteforelesning 8.–15.9, emne 8."
+    },
+    {
+      "id": "co4033-k2-043",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvorfor foretrekkes ofte ELT framfor ETL i moderne arkitekturer med datasjø?",
+      "alternativer": [
+        "Transformasjon kan ikke uttrykkes i SQL, så den må gjøres før dataene lastes",
+        "ELT gjør datavarehus helt overflødige fordi alle data ligger i datasjøen",
+        "Lasting etter transformasjon ødelegger originalfilene i kildesystemene",
+        "Skylagring er billig, så rådata kan lastes inn straks og transformeres ved behov"
+      ],
+      "fasit": 3,
+      "forklaring": "Dette er gjesteforelesningens kontrolloppgave om ETL og ELT.\n\nKilde: Gjesteforelesning 8.–15.9, emne 7."
+    },
+    {
+      "id": "co4033-k2-044",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva betyr schema-on-read?",
+      "alternativer": [
+        "At skjemaet må defineres før dataene kan skrives",
+        "At strukturen tolkes når dataene leses, slik en datasjø lagrer rådata",
+        "At dataene leses i samme rekkefølge som de ble skrevet",
+        "At brukerne bare har lesetilgang til skjemaet"
+      ],
+      "fasit": 1,
+      "forklaring": "Et datavarehus krever skjema før skriving (schema-on-write).\n\nKilde: Kap. 1, lysbilde 36; gjesteforelesning, emne 7."
+    },
+    {
+      "id": "co4033-k2-045",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er et staging-område i en ETL-prosess?",
+      "alternativer": [
+        "Det endelige datavarehuset der analytikerne kjører spørringer",
+        "Et midlertidig lager der rådata ligger før de renses og transformeres",
+        "Dashboardet der sluttbrukerne ser resultatene av analysen",
+        "Et arkiv der slettede og utdaterte poster oppbevares for revisjon"
+      ],
+      "fasit": 1,
+      "forklaring": "I Vietcombank-eksempelet legges 8 millioner rå poster i S3 før transformasjonen.\n\nKilde: Kap. 2, lysbilde 28; gjesteforelesning, emne 7."
+    },
+    {
+      "id": "co4033-k2-046",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket system er et nøkkel–verdi-lager?",
+      "alternativer": [
+        "Redis",
+        "Neo4J",
+        "HBase",
+        "MongoDB"
+      ],
+      "fasit": 0,
+      "forklaring": "Nøkkel–verdi: Redis, Couchbase, ArangoDB, DynamoDB. Neo4J er graf, HBase bred kolonne, MongoDB dokument.\n\nKilde: Kap. 2, lysbilde 63."
+    },
+    {
+      "id": "co4033-k2-047",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "I en bred kolonne-database som BigTable, hva er enheten for tilgangskontroll og komprimering?",
+      "alternativer": [
+        "Den enkelte cellen",
+        "Hele tabellen",
+        "Kolonnefamilien",
+        "Radnøkkelen"
+      ],
+      "fasit": 2,
+      "forklaring": "En kolonnefamilie er en slags flerverdiattributt og lagres i egne filer.\n\nKilde: Kap. 2, lysbilde 63 og 66."
+    },
+    {
+      "id": "co4033-k2-048",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket system bruker en grafmodell med noder, kanter og egenskaper?",
+      "alternativer": [
+        "Cassandra",
+        "DynamoDB",
+        "PostgreSQL",
+        "Neo4J"
+      ],
+      "fasit": 3,
+      "forklaring": "Relaterte noder finnes ved å traversere kantene.\n\nKilde: Kap. 2, lysbilde 63 og 72."
+    },
+    {
+      "id": "co4033-k2-049",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva kjennetegner NewSQL-systemer?",
+      "alternativer": [
+        "De kombinerer NoSQLs skalerbarhet med sterk konsistens, ACID-transaksjoner og standard SQL",
+        "De gir opp transaksjoner og konsistens for å oppnå størst mulig skalerbarhet",
+        "De er spesialiserte for grafdata og bruker traversering i stedet for SQL",
+        "De lagrer alle data som JSON-dokumenter uten skjema, slik MongoDB gjør"
+      ],
+      "fasit": 0,
+      "forklaring": "Eksempler er Google F1, VoltDB og LeanXcale.\n\nKilde: Kap. 2, lysbilde 57 og 73."
+    },
+    {
+      "id": "co4033-k2-050",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva vektlegger SQL-systemer ifølge forelesningen?",
+      "alternativer": [
+        "Semistrukturerte data og replikering framfor konsistens",
+        "Umiddelbar datakonsistens, kraftige spørrespråk og strukturert lagring",
+        "Grafer, noder og traversering av kanter",
+        "Ubegrenset horisontal skalering uten transaksjoner"
+      ],
+      "fasit": 1,
+      "forklaring": "NoSQL vektlegger semistrukturerte data, ytelse, tilgjengelighet, replikering og skalerbarhet.\n\nKilde: Kap. 2, lysbilde 57."
+    },
+    {
+      "id": "co4033-k2-051",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "I MongoDB tilsvarer et dokument omtrent en rad. Hva tilsvarer en samling (collection)?",
+      "alternativer": [
+        "En database",
+        "En kolonne",
+        "En tabell",
+        "En indeks"
+      ],
+      "fasit": 2,
+      "forklaring": "Dokumentene lagres i BSON, og en samling er omtrent det samme som en tabell eller relasjon.\n\nKilde: Kap. 2, lysbilde 68."
+    },
+    {
+      "id": "co4033-k2-052",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva betyr parameteren max i db.createCollection(\"project\", { capped: true, size: 1310720, max: 500 })?",
+      "alternativer": [
+        "Største størrelse på ett dokument i byte",
+        "Største antall indekser",
+        "Største antall samtidige brukere",
+        "Største antall dokumenter i samlingen"
+      ],
+      "fasit": 3,
+      "forklaring": "size er øvre grense for lagringsplass i byte, og capped betyr at samlingen har fast størrelse.\n\nKilde: Kap. 2, lysbilde 68."
+    },
+    {
+      "id": "co4033-k2-053",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket utsagn om replikering i MongoDB er riktig?",
+      "alternativer": [
+        "Sekundære noder tar imot alle skrivinger og sender dem videre til primæren",
+        "Primærnoden kan bare leses fra, mens skrivinger går til sekundærnodene",
+        "Alle noder er alltid helt synkrone, så alle lesinger gir siste versjon",
+        "En lesing fra en sekundær node er ikke garantert å gi siste versjon av dokumentet"
+      ],
+      "fasit": 3,
+      "forklaring": "Primæren håndterer skriving; leser man også fra primæren, får man siste verdi.\n\nKilde: Kap. 2, lysbilde 71."
+    },
+    {
+      "id": "co4033-k2-054",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er sharding i MongoDB?",
+      "alternativer": [
+        "Kopiering av alle data til hver node i klyngen",
+        "Horisontal partisjonering av dataene over flere noder",
+        "Komprimering av dokumentene før lagring",
+        "Oppdeling av et dokument i flere kolonnefamilier"
+      ],
+      "fasit": 1,
+      "forklaring": "Replikering lager kopier, sharding fordeler ulike deler av dataene.\n\nKilde: Kap. 2, lysbilde 71."
+    },
+    {
+      "id": "co4033-k2-055",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er kjernen i Apache Hadoop?",
+      "alternativer": [
+        "Spark til lagring og Hive til behandling",
+        "MongoDB til lagring og Kafka til behandling",
+        "HDFS til lagring og MapReduce til behandling",
+        "YARN til lagring og Pig til behandling"
+      ],
+      "fasit": 2,
+      "forklaring": "Hadoop er laget med den grunnleggende antakelsen at maskinvarefeil er vanlige og håndteres av rammeverket.\n\nKilde: Kap. 2, lysbilde 75."
+    },
+    {
+      "id": "co4033-k2-056",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva gjør NameNode i HDFS?",
+      "alternativer": [
+        "Forvalter filsystemets navnerom og kartet fra blokker til DataNodes",
+        "Lagrer selve datablokkene og sender dem direkte til klientene",
+        "Kjører map- og reduce-oppgavene på dataene som ligger i klyngen",
+        "Lagrer sikkerhetskopier av alle DataNodes i tilfelle maskinfeil"
+      ],
+      "fasit": 0,
+      "forklaring": "NameNode er master; den lagrer metadata, men ikke fildataene.\n\nKilde: Kap. 2, lysbilde 84."
+    },
+    {
+      "id": "co4033-k2-057",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva gjør en DataNode i HDFS?",
+      "alternativer": [
+        "Bestemmer hvilke blokker som hører til hvilken fil, og holder navnerommet oppdatert",
+        "Tildeler CPU og minne til applikasjonene som kjører i klyngen, og planlegger jobbene",
+        "Oversetter HiveQL-spørringer til MapReduce-jobber og sender dem til NameNode",
+        "Lagrer blokker, betjener lese- og skriveforespørsler og replikerer blokker på instruks fra NameNode"
+      ],
+      "fasit": 3,
+      "forklaring": "Det er vanligvis én DataNode per node i klyngen.\n\nKilde: Kap. 2, lysbilde 84."
+    },
+    {
+      "id": "co4033-k2-058",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er standard blokkstørrelse og replikeringsfaktor i HDFS ifølge forelesningen?",
+      "alternativer": [
+        "64 MB og 2",
+        "256 MB og 1",
+        "128 MB og 3",
+        "1 GB og 5"
+      ],
+      "fasit": 2,
+      "forklaring": "Begge kan konfigureres.\n\nKilde: Kap. 2, lysbilde 85."
+    },
+    {
+      "id": "co4033-k2-059",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan flyter brukerdata når en klient leser en fil fra HDFS?",
+      "alternativer": [
+        "Klienten henter blokkplasseringen fra NameNode og leser blokkene direkte fra DataNodes",
+        "Alle data går gjennom NameNode, som samler blokkene og sender dem til klienten",
+        "DataNodes sender blokkene til NameNode, som videresender dem til klienten",
+        "Klienten leser en samlet kopi av filen som ResourceManager setter sammen"
+      ],
+      "fasit": 0,
+      "forklaring": "Systemet er laget slik at brukerdata aldri går gjennom NameNode.\n\nKilde: Kap. 2, lysbilde 86 og 88."
+    },
+    {
+      "id": "co4033-k2-060",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilket utsagn om kommunikasjonen i HDFS er riktig?",
+      "alternativer": [
+        "NameNode sender jevnlig kall til klientene for å hente nye data som skal lagres",
+        "NameNode tar aldri initiativ til RPC-kall, men svarer bare på forespørsler fra DataNodes og klienter",
+        "DataNodes kommuniserer med klientene via NameNode, som videresender alle meldinger",
+        "HDFS bruker UDP for all kommunikasjon for å oppnå lavest mulig forsinkelse"
+      ],
+      "fasit": 1,
+      "forklaring": "All kommunikasjon går over TCP/IP; klienter bruker ClientProtocol og DataNodes DataNode Protocol.\n\nKilde: Kap. 2, lysbilde 87."
+    },
+    {
+      "id": "co4033-k2-061",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken koherensmodell bruker HDFS?",
+      "alternativer": [
+        "Full lese- og skrivetilgang: man kan oppdatere vilkårlige steder i en fil",
+        "Read-once-write-many: filer kan skrives om mange ganger, men leses én gang",
+        "Write-once-read-many: man kan legge til på slutten, men ikke oppdatere vilkårlige steder",
+        "Versjonert tilgang: hver endring lagres som en ny kopi av hele filen"
+      ],
+      "fasit": 2,
+      "forklaring": "Den enkle modellen gjør det lettere å oppnå høy gjennomstrømning.\n\nKilde: Kap. 2, lysbilde 83."
+    },
+    {
+      "id": "co4033-k2-062",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er HDFS optimalisert for?",
+      "alternativer": [
+        "Lav forsinkelse for mange små interaktive oppdateringer",
+        "Høy gjennomstrømning i batchbehandling framfor lav forsinkelse",
+        "Lagring av mange små filer på få kilobyte",
+        "Transaksjoner med sterk konsistens"
+      ],
+      "fasit": 1,
+      "forklaring": "Strømmende datatilgang er et av HDFS-målene; en typisk fil er gigabyte til terabyte.\n\nKilde: Kap. 2, lysbilde 83."
+    },
+    {
+      "id": "co4033-k2-063",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Med replikeringsfaktor 3 krasjer en DataNode som lagrer blokk A. Hva skjer?",
+      "alternativer": [
+        "NameNode oppdager den manglende kopien og får en annen DataNode til å lage en ny replika",
+        "Hele filen blir ødelagt og må lastes opp på nytt fra en ekstern kilde",
+        "NameNode starter alle gjenværende DataNodes på nytt for å gjenopprette tilstanden",
+        "Blokk A går tapt for godt, siden NameNode ikke lagrer selve dataene"
+      ],
+      "fasit": 0,
+      "forklaring": "To andre kopier av blokk A finnes fortsatt. Dette er gjesteforelesningens kontrolloppgave.\n\nKilde: Gjesteforelesning 8.–15.9, emne 3."
+    },
+    {
+      "id": "co4033-k2-064",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvor lagrer NameNode endringer i metadata fortløpende?",
+      "alternativer": [
+        "I FsImage",
+        "I en egen DataNode",
+        "I YARN",
+        "I EditLog"
+      ],
+      "fasit": 3,
+      "forklaring": "FsImage inneholder navnerommet og kartet fra blokker til filer; EditLog er transaksjonsloggen for endringer.\n\nKilde: Kap. 2, lysbilde 85."
+    },
+    {
+      "id": "co4033-k2-065",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "HDFS ble opprinnelig laget som infrastruktur for hvilket prosjekt?",
+      "alternativer": [
+        "Rammeverket Apache Spark",
+        "Databasen MongoDB",
+        "Søkemotoren Apache Nutch",
+        "Datavarehuset Google BigQuery"
+      ],
+      "fasit": 2,
+      "forklaring": "HDFS er i dag en del av Apache Hadoop Core.\n\nKilde: Kap. 2, lysbilde 82."
+    },
+    {
+      "id": "co4033-k2-066",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken rolle har YARN i Hadoop-stakken?",
+      "alternativer": [
+        "Lagrer dataene i blokker fordelt over klyngen",
+        "Er et SQL-lignende spørrespråk for strukturerte data",
+        "Er et bibliotek for maskinlæring på Hadoop",
+        "Styrer ressurser og planlegger jobber i klyngen"
+      ],
+      "fasit": 3,
+      "forklaring": "YARN kom med Hadoop 2 og gjorde det mulig å kjøre også Spark og Flink på klyngen.\n\nKilde: Kap. 2, lysbilde 76 og 79."
+    },
+    {
+      "id": "co4033-k2-067",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er Apache Hive?",
+      "alternativer": [
+        "Et grafdatabasesystem med spørrespråket Cypher",
+        "Datavarehusinfrastruktur på Hadoop, med spørrespråket HiveQL",
+        "En strømprosessor for sanntidshendelser fra Kafka",
+        "Et distribuert filsystem som erstatter HDFS"
+      ],
+      "fasit": 1,
+      "forklaring": "HiveQL spør strukturerte data, og metadataene ligger i en metastore.\n\nKilde: Kap. 2, lysbilde 76."
+    },
+    {
+      "id": "co4033-k2-068",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er rollen til Apache Kafka i en strømarkitektur?",
+      "alternativer": [
+        "En meldingslogg som tar imot hendelser i rekkefølge og buffrer dem for strømprosessoren",
+        "En relasjonsdatabase som lagrer hver hendelse som en transaksjon med ACID-garantier",
+        "Et visualiseringsverktøy som viser hendelsene i dashboards i sanntid",
+        "Et distribuert filsystem som lagrer hendelsene i blokker på 128 MB"
+      ],
+      "fasit": 0,
+      "forklaring": "Kafka hindrer datatap når prosessoren er opptatt, og mater motorer som Spark Streaming eller Flink.\n\nKilde: Gjesteforelesning 8.–15.9, emne 6."
+    },
+    {
+      "id": "co4033-k2-069",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Shopee-appen sender ordrehendelser til topicet «New_Orders» uten å vite hvem som leser. Lager-, betalings- og analysetjenesten leser alle samme topic. Hvilket mønster er dette?",
+      "alternativer": [
+        "Batchbehandling",
+        "Publish/subscribe",
+        "Master/slave-replikering",
+        "ETL"
+      ],
+      "fasit": 1,
+      "forklaring": "Produsentene publiserer uten å kjenne abonnentene, som radiostasjonen og lytterne i gjesteforelesningens analogi.\n\nKilde: Gjesteforelesning 8.–15.9, emne 6."
+    },
+    {
+      "id": "co4033-k2-070",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Shopee teller salg for hvert hele minutt, og telleren starter på nytt ved hvert nytt minutt. Hvilket vindu brukes?",
+      "alternativer": [
+        "Sliding window",
+        "Session window",
+        "Tumbling window",
+        "Ubegrenset vindu"
+      ],
+      "fasit": 2,
+      "forklaring": "Et tumbling window deler tiden i faste, ikke-overlappende blokker. Grab bruker et sliding window på 5 minutter.\n\nKilde: Gjesteforelesning 8.–15.9, emne 6."
+    },
+    {
+      "id": "co4033-k2-071",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hva er kjerneforskjellen på batch- og strømbehandling?",
+      "alternativer": [
+        "Batch behandler avgrensede datasett samlet; strøm behandler ubegrensede data fortløpende",
+        "Batch behandler hendelser øyeblikkelig; strøm behandler historiske data om natten",
+        "Batch krever Kafka som meldingslogg; strøm krever HDFS som lager",
+        "Strøm kan bare håndtere tekst; batch trengs for numeriske verdier"
+      ],
+      "fasit": 0,
+      "forklaring": "Dette er gjesteforelesningens kontrolloppgave; fasiten der er B.\n\nKilde: Gjesteforelesning 8.–15.9, emne 6; kap. 1, lysbilde 15."
+    },
+    {
+      "id": "co4033-k2-072",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "50 000 Grab-sjåfører sender ett GPS-ping hvert femte sekund. Hvor mange hendelser per sekund gir det?",
+      "alternativer": [
+        "50 000",
+        "250 000",
+        "2 000",
+        "10 000"
+      ],
+      "fasit": 3,
+      "forklaring": "50 000 / 5 = 10 000 hendelser per sekund, altså 600 000 per minutt.\n\nKilde: Gjesteforelesning 8.–15.9, emne 6."
+    },
+    {
+      "id": "co4033-k2-073",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvordan defineres en datastrøm i forbindelse med datastrømhåndteringssystemer?",
+      "alternativer": [
+        "En append-only sekvens av tidsstemplede elementer som kommer i en viss rekkefølge",
+        "En tabell der rader oppdateres og slettes på vilkårlige steder over tid",
+        "En samling store filer som lagres i blokker og leses samlet i batch",
+        "En kopi av en database som holdes oppdatert på en sekundær node"
+      ],
+      "fasit": 0,
+      "forklaring": "Behandlingen kan være kontinuerlig (Storm, Heron) eller vindusbasert (Aurora, STREAM, Spark Streaming).\n\nKilde: Kap. 2, lysbilde 74."
+    },
+    {
+      "id": "co4033-k2-074",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvilken av disse er IKKE en av de fire hovedoppgavene i forbehandling?",
+      "alternativer": [
+        "Rensing",
+        "Visualisering",
+        "Integrasjon",
+        "Datareduksjon"
+      ],
+      "fasit": 1,
+      "forklaring": "De fire er rensing, integrasjon, datareduksjon og datatransformasjon.\n\nKilde: Kap. 2, lysbilde 30."
+    },
+    {
+      "id": "co4033-k2-075",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "Hvem utfører forbehandlingen ifølge spørsmålslisten i forelesningen?",
+      "alternativer": [
+        "Toppledelsen",
+        "Sluttbrukeren",
+        "Dataingeniøren",
+        "Databaseleverandøren"
+      ],
+      "fasit": 2,
+      "forklaring": "Listen: hva på hva (mål), når (ETL/ELT), hvor (kilde, staging), hvordan (metodikk), hvem (dataingeniør), teknologier og etikk og jus.\n\nKilde: Kap. 2, lysbilde 28."
+    },
+    {
+      "id": "co4033-k2-076",
+      "type": "flervalg",
+      "kapittel": 2,
+      "sporsmal": "En fil på 1 GB lagres i HDFS med 128 MB blokker og replikeringsfaktor 3. Hvor mange blokkreplikaer lagres?",
+      "alternativer": [
+        "8",
+        "3",
+        "384",
+        "24"
+      ],
+      "fasit": 3,
+      "forklaring": "1024 / 128 = 8 blokker, og 8 × 3 = 24 replikaer. Tallene bygger på forelesningens standardverdier.\n\nKilde: Kap. 2, lysbilde 85 (egen utregning)."
+    },
+    {
       "id": "co4033-ny-003",
       "type": "flervalg",
-      "kapittel": 1,
+      "kapittel": 2,
       "sporsmal": "Hvorfor bør du undersøke manglende verdier før du erstatter dem?",
       "alternativer": [
         "Alle manglende verdier betyr null",
@@ -64,32 +1620,886 @@
       "forklaring": "Data hentes fra kildene, omformes eller renses, og lastes så til målsystemet."
     },
     {
-      "id": "co4033-ny-005",
+      "id": "co4033-ny-008",
       "type": "flervalg",
       "kapittel": 2,
-      "sporsmal": "Hva inneholder en faktatabell vanligvis i et stjerneskjema?",
+      "sporsmal": "Hva er hovedforskjellen på batch- og strømbehandling?",
       "alternativer": [
-        "Bare brukernes passord",
-        "Målverdier og nøkler til dimensjoner",
-        "Bare navn på dimensjonstabeller",
-        "Programkoden til rapportene"
+        "Batch behandler avgrensede datasett; strømbehandling håndterer løpende hendelser",
+        "Batch kan ikke behandle tall",
+        "Strømbehandling krever alltid at alle data er lagret først",
+        "De betyr nøyaktig det samme"
       ],
-      "fasit": 1,
-      "forklaring": "En salgsfaktatabell kan inneholde antall og omsetning samt nøkler til dato, produkt og butikk."
+      "fasit": 0,
+      "forklaring": "Batch kjører på en avgrenset samling. Strømbehandling arbeider med data etter hvert som de kommer, ofte gjennom tidsvinduer."
     },
     {
-      "id": "co4033-ny-006",
-      "type": "flervalg",
+      "id": "co4033-ny-012",
+      "type": "langsvar",
       "kapittel": 2,
-      "sporsmal": "Hva gjør en OLAP-roll-up?",
+      "sporsmal": "Hva er datalekkasje ved evaluering av en prediksjonsmodell, og hvordan unngår du det?",
+      "momenter": [
+        "Informasjon utenfra treningsgrunnlaget påvirker trening",
+        "Testdata skal holdes adskilt",
+        "Tilpass skalering og imputering kun på treningsdata",
+        "Ved tidsdata må delingen respektere tid"
+      ],
+      "modellsvar": "Datalekkasje oppstår når modellen får informasjon som ikke ville vært tilgjengelig ved reell prediksjon, for eksempel fra testsettet eller fremtiden. Del data før du tilpasser forbehandling, og lær skaleringsparametere og erstatningsverdier bare fra treningssettet. Bruk deretter de samme parameterne på testsettet. Ved tidsserier bør evalueringen bruke senere observasjoner enn treningen."
+    },
+    {
+      "id": "co4033-ls2-01",
+      "type": "langsvar",
+      "kapittel": 2,
+      "sporsmal": "Beskriv CRISP-DM og Data Analytics Lifecycle, og sammenlign dem.",
+      "momenter": [
+        "CRISP-DM: business understanding, data understanding, data preparation, modeling, evaluation, deployment",
+        "Data Analytics Lifecycle: discovery, data preparation, model planning, model building, communicate results, operationalize",
+        "Begge er iterative; man kan gå tilbake",
+        "Lifecycle skiller planlegging fra bygging og har kontrollspørsmål mellom fasene",
+        "Lifecycle vektlegger formidling og drift med overvåking"
+      ],
+      "modellsvar": "CRISP-DM har seks faser: forretningsforståelse, dataforståelse, datapreparering, modellering, evaluering og utrulling. Rekkefølgen er ikke streng, og prosessen er syklisk. EMCs Data Analytics Lifecycle har også seks faser: discovery, data preparation, model planning, model building, communicate results og operationalize. Den deler modelleringen i planlegging (utforskning, variabel- og modellvalg) og bygging (datasett for trening, testing og produksjon), stiller kontrollspørsmål før man går videre, og har egne faser for å formidle resultater med forbehold og for pilotutrulling med løpende overvåking og retrening."
+    },
+    {
+      "id": "co4033-ls2-02",
+      "type": "langsvar",
+      "kapittel": 2,
+      "sporsmal": "Beskriv forbehandlingen du ville gjort av dataene i et big data-prosjekt.",
+      "momenter": [
+        "Rensing: manglende verdier, støy og uteliggere, inkonsistenser",
+        "Integrasjon: entitetsidentifikasjon, redundans, verdikonflikter",
+        "Reduksjon: dimensjonsreduksjon, numerosity reduction, komprimering",
+        "Transformasjon: normalisering, diskretisering, aggregering, begrepshierarkier",
+        "Hvem, når (ETL/ELT), hvor og med hvilke verktøy, samt etikk og jus"
+      ],
+      "modellsvar": "I et prosjekt med sensordata ville jeg først rense: fjerne duplikater, filtrere målinger som bryter fysiske grenser og fylle korte hull med lineær interpolering. Deretter integreres kildene ved å matche entiteter (samme sensor under ulike ID-er), fjerne redundante attributter med korrelasjonsanalyse og løse konflikter i enheter. Datamengden reduseres med PCA på mange korrelerte attributter og sampling ved utforskning. Til slutt normaliseres verdier med min–maks eller z-score og aggregeres til passende tidsoppløsning. Arbeidet gjøres av dataingeniører i en ELT-pipeline med Spark, og personvern vurderes før data deles."
+    },
+    {
+      "id": "co4033-ls2-03",
+      "type": "langsvar",
+      "kapittel": 2,
+      "sporsmal": "Forklar HDFS-arkitekturen og hvordan en fil leses og skrives.",
+      "momenter": [
+        "Master/slave: én NameNode og mange DataNodes",
+        "NameNode forvalter navnerom og blokkplassering (FsImage, EditLog)",
+        "Filer deles i blokker på 128 MB som replikeres tre ganger over rack",
+        "Lesing: klienten henter plassering fra NameNode og leser direkte fra DataNodes",
+        "Skriving: data sendes gjennom en pipeline av DataNodes med kvitteringer bakover",
+        "Brukerdata går aldri gjennom NameNode"
+      ],
+      "modellsvar": "HDFS har master/slave-arkitektur. NameNode forvalter navnerommet og kartet fra blokker til DataNodes, lagret i FsImage med endringer i EditLog. DataNodes lagrer blokkene, standard 128 MB, og hver blokk replikeres tre ganger over flere rack. Ved lesing spør klienten NameNode hvor blokkene ligger og leser dem direkte fra DataNodes. Ved skriving får klienten tildelt DataNodes og sender blokken til den første, som sender videre gjennom en pipeline mens kvitteringene går bakover. Brukerdata går aldri gjennom NameNode, og NameNode tar aldri initiativ til RPC-kall. Faller en DataNode ut, lages nye replikaer fra de gjenværende kopiene."
+    },
+    {
+      "id": "co4033-ls2-04",
+      "type": "langsvar",
+      "kapittel": 2,
+      "sporsmal": "Presenter minst tre lagringsløsninger for big data og forklar når de passer.",
+      "momenter": [
+        "HDFS: store filer, batch, write-once-read-many",
+        "Dokumentdatabase (MongoDB): fleksible, semistrukturerte data, sharding",
+        "Bred kolonne (HBase/Cassandra): enorme tabeller med høy skriveytelse",
+        "Graf (Neo4J): relasjonstunge data som sosiale nettverk",
+        "NewSQL eller datavarehus/lakehouse når konsistens og SQL trengs"
+      ],
+      "modellsvar": "HDFS passer for svært store filer som skrives én gang og leses mange ganger i batch, som mange år med trafikklogger. MongoDB passer for semistrukturerte data med varierende felt, som produktkataloger eller brukerprofiler, og skalerer horisontalt med sharding. HBase og Cassandra passer for enorme tabeller med høy skrivehastighet, som sensortidsserier. Neo4J passer når relasjonene er viktigst, som anbefalinger i et sosialt nettverk. NewSQL-systemer som VoltDB passer når man trenger både skalerbarhet og ACID-transaksjoner, og et lakehouse når samme data skal brukes til både BI og maskinlæring."
+    },
+    {
+      "id": "co4033-k3-001",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken analysetype er den enkleste fordi den ikke graver dypere, men bruker nåværende og historiske data til å finne trender?",
       "alternativer": [
-        "Viser mer detaljert nivå",
-        "Sletter alle dimensjoner",
-        "Aggregerer data til et grovere nivå",
-        "Krypterer faktatabellen"
+        "Diagnostisk analyse",
+        "Deskriptiv analyse",
+        "Prediktiv analyse",
+        "Kognitiv analyse"
+      ],
+      "fasit": 1,
+      "forklaring": "Deskriptiv analyse kan brukes alene eller som grunnlag for de andre typene. Verktøy er for eksempel Excel, SPSS og Tableau.\n\nKilde: Kap. 3, lysbilde 7."
+    },
+    {
+      "id": "co4033-k3-002",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Gartner beskriver en analysetype som svarer på «Hvorfor skjedde det?» med drill-down, dataoppdagelse, datautvinning og korrelasjoner. Hvilken?",
+      "alternativer": [
+        "Diagnostisk analyse",
+        "Deskriptiv analyse",
+        "Preskriptiv analyse",
+        "Kognitiv analyse"
+      ],
+      "fasit": 0,
+      "forklaring": "Diagnostisk analyse er det logiske neste steget etter deskriptiv analyse.\n\nKilde: Kap. 3, lysbilde 8–9."
+    },
+    {
+      "id": "co4033-k3-003",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket tema løftes fram som viktig i diagnostisk analyse?",
+      "alternativer": [
+        "Valget mellom ulike dashboardverktøy",
+        "Replikering av datablokker i klyngen",
+        "Komprimering av data før lagring",
+        "Forskjellen på korrelasjon og kausalitet"
+      ],
+      "fasit": 3,
+      "forklaring": "Relaterte temaer er hypotesetesting, korrelasjon mot kausalitet og diagnostisk regresjon.\n\nKilde: Kap. 3, lysbilde 9."
+    },
+    {
+      "id": "co4033-k3-004",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilke teknikker nevnes for prediktiv analyse?",
+      "alternativer": [
+        "Drill-down og slice-and-dice",
+        "Deduplisering og binning",
+        "Regresjon og klassifikasjon",
+        "Sharding og replikering"
       ],
       "fasit": 2,
-      "forklaring": "Et eksempel er å summere dagsomsetning til månedsomsetning. Drill-down går motsatt vei, til et mer detaljert nivå."
+      "forklaring": "Verktøyene som nevnes er scikit-learn, PyTorch, TensorFlow og MLlib.\n\nKilde: Kap. 3, lysbilde 10."
+    },
+    {
+      "id": "co4033-k3-005",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva understreker forelesningen om preskriptiv analyse?",
+      "alternativer": [
+        "Algoritmene kan gi datainformerte anbefalinger, men kan ikke erstatte menneskelig skjønn",
+        "Den trenger ingen data, bare vurderinger fra erfarne eksperter",
+        "Den er den enkleste formen for analyse og brukes daglig i alle virksomheter",
+        "Den ser bare på historiske data og sier ingenting om framtidige handlinger"
+      ],
+      "fasit": 0,
+      "forklaring": "Menneskelig vurdering trengs for å gi kontekst og rekkverk rundt algoritmenes utdata.\n\nKilde: Kap. 3, lysbilde 11."
+    },
+    {
+      "id": "co4033-k3-006",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva kjennetegner kognitiv analyse?",
+      "alternativer": [
+        "Den viser trender i historiske data og er den enkleste formen for analyse",
+        "Den bruker menneskelignende intelligens og blir smartere ved å lære av data og mennesker",
+        "Den er en ren rapporteringsfunksjon som lager faste rapporter hver måned",
+        "Den renser og integrerer data før de lastes inn i et datavarehus"
+      ],
+      "fasit": 1,
+      "forklaring": "Kognitiv analyse samler semantikk, AI-algoritmer, dyp læring og maskinlæring.\n\nKilde: Kap. 3, lysbilde 13."
+    },
+    {
+      "id": "co4033-k3-007",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken Hadoop-modul er et objektlager innført i 2020?",
+      "alternativer": [
+        "Hadoop Common",
+        "Hadoop YARN",
+        "Hadoop MapReduce",
+        "Hadoop Ozone"
+      ],
+      "fasit": 3,
+      "forklaring": "De fem modulene er Common, HDFS, YARN (2012), MapReduce og Ozone (2020).\n\nKilde: Kap. 3, lysbilde 14–15."
+    },
+    {
+      "id": "co4033-k3-008",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken YARN-komponent fordeler ressurser mellom alle applikasjonene i klyngen?",
+      "alternativer": [
+        "NodeManager",
+        "ApplicationMaster",
+        "ResourceManager",
+        "DataNode"
+      ],
+      "fasit": 2,
+      "forklaring": "ResourceManager bruker en Scheduler og en ApplicationsManager.\n\nKilde: Kap. 3, lysbilde 16."
+    },
+    {
+      "id": "co4033-k3-009",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er NodeManager i YARN?",
+      "alternativer": [
+        "Masteren som lagrer filsystemets metadata og kartet fra blokker til noder",
+        "Biblioteket som forhandler ressurser for én applikasjon og overvåker oppgavene",
+        "Klienten som sender inn jobber og henter resultatene fra klyngen",
+        "Agenten på hver maskin som har ansvar for containerne og rapporterer ressursbruk til ResourceManager"
+      ],
+      "fasit": 3,
+      "forklaring": "ApplicationMaster er det rammeverksspesifikke biblioteket som forhandler ressurser og samarbeider med NodeManagerne.\n\nKilde: Kap. 3, lysbilde 16."
+    },
+    {
+      "id": "co4033-k3-010",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken YARN-komponent forhandler ressurser fra ResourceManager og samarbeider med NodeManagerne om å kjøre og overvåke oppgavene?",
+      "alternativer": [
+        "ResourceManager",
+        "NameNode",
+        "ApplicationMaster",
+        "Scheduler"
+      ],
+      "fasit": 2,
+      "forklaring": "ApplicationMaster er spesifikk for rammeverket som kjører, for eksempel MapReduce.\n\nKilde: Kap. 3, lysbilde 16."
+    },
+    {
+      "id": "co4033-k3-011",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "MapReduce beskrives som en spesialisering av hvilken strategi for dataanalyse?",
+      "alternativer": [
+        "Extract-transform-load",
+        "Split-apply-combine",
+        "Divide-and-conquer med sentral lås",
+        "Publish-subscribe"
+      ],
+      "fasit": 1,
+      "forklaring": "Dataene deles, en funksjon brukes på hver del, og resultatene kombineres.\n\nKilde: Kap. 3, lysbilde 17."
+    },
+    {
+      "id": "co4033-k3-012",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor kjører MapReduce og HDFS vanligvis på de samme nodene?",
+      "alternativer": [
+        "Slik at beregningen kan planlegges der dataene allerede ligger (datalokalitet)",
+        "Fordi MapReduce ikke har støtte for å lese data over nettverket",
+        "For å spare lisenskostnader, siden hver node krever en egen lisens",
+        "Fordi HDFS krever at alle noder i klyngen har nøyaktig lik maskinvare"
+      ],
+      "fasit": 0,
+      "forklaring": "Beregnings- og lagringsnodene er de samme, som gir høy samlet båndbredde i klyngen.\n\nKilde: Kap. 3, lysbilde 18."
+    },
+    {
+      "id": "co4033-k3-013",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva gjør MapReduce-rammeverket når en oppgave feiler?",
+      "alternativer": [
+        "Det avbryter hele jobben og sletter utdataene",
+        "Det kjører den mislykkede oppgaven på nytt",
+        "Det ber brukeren om å kjøre jobben manuelt",
+        "Det ignorerer oppgaven og går videre"
+      ],
+      "fasit": 1,
+      "forklaring": "Rammeverket planlegger, overvåker og kjører mislykkede oppgaver på nytt.\n\nKilde: Kap. 3, lysbilde 18."
+    },
+    {
+      "id": "co4033-k3-014",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket grensesnitt må nøkkelklassene i en MapReduce-jobb implementere?",
+      "alternativer": [
+        "SerializableKey",
+        "RunnableTask",
+        "IterableValue",
+        "WritableComparable"
+      ],
+      "fasit": 3,
+      "forklaring": "Både nøkler og verdier implementerer Writable; nøklene må i tillegg være sammenlignbare så de kan sorteres.\n\nKilde: Kap. 3, lysbilde 19."
+    },
+    {
+      "id": "co4033-k3-015",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "I flyten <k1, v1> → map → … → combine → … → reduce → <k3, v3>, hvilke typer har combiner-utdataene?",
+      "alternativer": [
+        "<k1, v1>, samme som inndata",
+        "<k3, v3>, samme som sluttresultatet",
+        "<k2, v2>, samme som map-utdataene",
+        "Vilkårlige typer uten sammenheng med map"
+      ],
+      "fasit": 2,
+      "forklaring": "Combineren gjør lokal aggregering uten å endre typene, så reduceren kan ta imot enten map- eller combiner-utdata.\n\nKilde: Kap. 3, lysbilde 19."
+    },
+    {
+      "id": "co4033-k3-016",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvor mange map-oppgaver starter Hadoop per InputSplit?",
+      "alternativer": [
+        "Én",
+        "Én per node i klyngen",
+        "Én per reducer",
+        "Én per linje i inndata"
+      ],
+      "fasit": 0,
+      "forklaring": "InputFormat lager InputSplit-ene, og rammeverket starter én map-oppgave for hver.\n\nKilde: Kap. 3, lysbilde 20."
+    },
+    {
+      "id": "co4033-k3-017",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvor mange utdatapar kan ett inndatapar gi i en mapper?",
+      "alternativer": [
+        "Null eller mange",
+        "Nøyaktig ett",
+        "Nøyaktig to",
+        "Like mange som antall reducere"
+      ],
+      "fasit": 0,
+      "forklaring": "Mellomparene trenger heller ikke ha samme type som inndata.\n\nKilde: Kap. 3, lysbilde 20."
+    },
+    {
+      "id": "co4033-k3-018",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvor mange partisjoner deles mapper-utdataene i?",
+      "alternativer": [
+        "Like mange som antall mappere",
+        "Like mange som antall noder",
+        "Like mange som antall blokker",
+        "Like mange som antall reduce-oppgaver"
+      ],
+      "fasit": 3,
+      "forklaring": "En egen Partitioner kan styre hvilke nøkler som går til hvilken reducer.\n\nKilde: Kap. 3, lysbilde 20."
+    },
+    {
+      "id": "co4033-k3-019",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er formålet med en combiner i MapReduce?",
+      "alternativer": [
+        "Å slå sammen utdatafilene fra alle reducerne til én fil etter jobben",
+        "Å dele inndatafilene i blokker før map-oppgavene starter",
+        "Lokal aggregering av mellomresultater, så mindre data sendes fra mapper til reducer",
+        "Å kryptere mellomresultatene før de sendes over nettverket"
+      ],
+      "fasit": 2,
+      "forklaring": "I WordCount brukes IntSumReducer også som combiner.\n\nKilde: Kap. 3, lysbilde 20."
+    },
+    {
+      "id": "co4033-k3-020",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilke tre faser har en reducer?",
+      "alternativer": [
+        "Split, map og combine",
+        "Shuffle, sort og reduce",
+        "Extract, transform og load",
+        "Read, compute og write"
+      ],
+      "fasit": 1,
+      "forklaring": "Shuffle henter data, sort grupperer etter nøkkel, og reduce kaller reduce-metoden for hver gruppe.\n\nKilde: Kap. 3, lysbilde 21–22."
+    },
+    {
+      "id": "co4033-k3-021",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvordan henter reduceren sin partisjon av mapper-utdataene i shuffle-fasen?",
+      "alternativer": [
+        "Fra NameNode",
+        "Fra en felles relasjonsdatabase",
+        "Via e-post mellom nodene",
+        "Over HTTP fra alle mapperne"
+      ],
+      "fasit": 3,
+      "forklaring": "Inndataene til reduceren er den sorterte utdataen fra mapperne.\n\nKilde: Kap. 3, lysbilde 22."
+    },
+    {
+      "id": "co4033-k3-022",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket utsagn om shuffle og sort er riktig?",
+      "alternativer": [
+        "De skjer samtidig; utdata flettes mens de hentes",
+        "Sort må være helt ferdig før shuffle starter",
+        "De skjer på NameNode",
+        "Shuffle skjer først etter reduce"
+      ],
+      "fasit": 0,
+      "forklaring": "Secondary sort kan brukes når grupperingen skal avvike fra sorteringen.\n\nKilde: Kap. 3, lysbilde 22."
+    },
+    {
+      "id": "co4033-k3-023",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Er utdataene fra reduceren sortert?",
+      "alternativer": [
+        "Ja, alltid alfabetisk etter nøkkel",
+        "Nei",
+        "Ja, alltid etter verdi",
+        "Bare når det finnes én reducer"
+      ],
+      "fasit": 1,
+      "forklaring": "Lysbildet sier eksplisitt at utdataene fra reduceren ikke er sortert.\n\nKilde: Kap. 3, lysbilde 22."
+    },
+    {
+      "id": "co4033-k3-024",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket steg i MapReduce samler alle mellomverdier med samme nøkkel på én reducer?",
+      "alternativer": [
+        "Mapping",
+        "Partition pruning",
+        "Shuffle & Sort",
+        "Storage compression"
+      ],
+      "fasit": 2,
+      "forklaring": "Shuffle er nettverksbroen mellom mappere og reducere. Dette er gjesteforelesningens kontrolloppgave.\n\nKilde: Gjesteforelesning 8.–15.9, emne 4."
+    },
+    {
+      "id": "co4033-k3-025",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Du har 10 TB inndata og blokkstørrelse 128 MB. Omtrent hvor mange map-oppgaver gir det?",
+      "alternativer": [
+        "Omtrent 8 200",
+        "Omtrent 82 000",
+        "Omtrent 820 000",
+        "Omtrent 80"
+      ],
+      "fasit": 1,
+      "forklaring": "10 × 1024 × 1024 MB / 128 MB = 81 920. Tallet står i Hadoop-veiledningen.\n\nKilde: Kap. 3, lysbilde 23."
+    },
+    {
+      "id": "co4033-k3-026",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor kan faktoren 1,75 være bedre enn 0,95 når antall reducere velges?",
+      "alternativer": [
+        "Raske noder tar en andre bølge med reduce-oppgaver, som gir bedre lastbalansering",
+        "Den gir alltid lavere overhead fordi færre reduce-oppgaver må startes",
+        "Den gjør at alle reduce-oppgavene kan starte samtidig med mapperne",
+        "Den reduserer antall map-oppgaver og dermed mengden data som shuffles"
+      ],
+      "fasit": 0,
+      "forklaring": "Med 0,95 kan alle reducere starte med en gang. Flere reducere gir mer overhead, men bedre lastbalansering og lavere kostnad ved feil.\n\nKilde: Kap. 3, lysbilde 23."
+    },
+    {
+      "id": "co4033-k3-027",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "En klynge har 10 noder med maks 8 containere hver. Hva er 0,95-anbefalingen for antall reducere?",
+      "alternativer": [
+        "140",
+        "80",
+        "76",
+        "8"
+      ],
+      "fasit": 2,
+      "forklaring": "0,95 × (10 × 8) = 76. Med 1,75 blir det 140.\n\nKilde: Kap. 3, lysbilde 23 (egen utregning)."
+    },
+    {
+      "id": "co4033-k3-028",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Ordtelling på linjene «BAB», «DAD» og «CAD». Hva blir resultatet for A?",
+      "alternativer": [
+        "(A, 1)",
+        "(A, 2)",
+        "(A, 9)",
+        "(A, 3)"
+      ],
+      "fasit": 3,
+      "forklaring": "A forekommer én gang i hver linje. Hele resultatet er A 3, B 2, C 1, D 3.\n\nKilde: Kap. 3, lysbilde 30."
+    },
+    {
+      "id": "co4033-k3-029",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "WordCount kjøres på «Hello World, Bye World!» og «Hello Hadoop, Goodbye to hadoop.». Hvorfor telles «World,» og «World!» som ulike ord?",
+      "alternativer": [
+        "Linjene deles bare på mellomrom, så tegnsettingen blir med i ordet",
+        "Reduceren sorterer bort duplikater før ordene telles",
+        "Combineren gjør alle store bokstaver små før tellingen",
+        "HDFS lagrer hver fil i en egen blokk, så ordene telles hver for seg"
+      ],
+      "fasit": 0,
+      "forklaring": "Tellingen skiller dessuten store og små bokstaver, så «Hadoop,» og «hadoop.» er også ulike.\n\nKilde: Kap. 3, lysbilde 26 og 29."
+    },
+    {
+      "id": "co4033-k3-030",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "I samme WordCount-eksempel: hva er tellingen for «Hello»?",
+      "alternativer": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "fasit": 1,
+      "forklaring": "«Hello» står uten tegnsetting i begge filene, så begge forekomstene blir samme nøkkel.\n\nKilde: Kap. 3, lysbilde 29."
+    },
+    {
+      "id": "co4033-k3-031",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor kan IntSumReducer også brukes som combiner i WordCount?",
+      "alternativer": [
+        "Fordi alle reducere i Hadoop automatisk kan brukes som combiner",
+        "Fordi combineren kjører på NameNode, der alle tellinger samles",
+        "Fordi summering er assosiativ og kommutativ, så delsummer kan summeres igjen",
+        "Fordi WordCount bare har én mapper, så det finnes ingen delsummer"
+      ],
+      "fasit": 2,
+      "forklaring": "Et gjennomsnitt kan derimot ikke kombineres direkte uten å ta med antallet.\n\nKilde: Kap. 3, lysbilde 27–28."
+    },
+    {
+      "id": "co4033-k3-032",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket er en svakhet ved MapReduce ifølge forelesningen?",
+      "alternativer": [
+        "Dårlig feiltoleranse, fordi mislykkede oppgaver ikke kjøres på nytt",
+        "Ingen datalokalitet, fordi alle data må flyttes til én sentral node",
+        "Kan ikke skalere ut, fordi jobben må kjøre på én kraftig maskin",
+        "Fast jobbflyt (map så reduce) som begrenser iterative prosesser"
+      ],
+      "fasit": 3,
+      "forklaring": "Svakhetene er fast jobbflyt, I/O-intensiv behandling og høy forsinkelse. Skalerbarhet, feiltoleranse, datalokalitet og parallellitet er styrker.\n\nKilde: Kap. 3, lysbilde 31."
+    },
+    {
+      "id": "co4033-k3-033",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor er MapReduce tregt for iterative maskinlæringsalgoritmer som K-means?",
+      "alternativer": [
+        "MapReduce kan ikke regne med desimaltall, så verdiene må konverteres",
+        "MapReduce støtter bare én mapper, så iterasjonene kan ikke parallelliseres",
+        "Mellomresultatene skrives til og leses fra disk i hver iterasjon",
+        "MapReduce krever at dataene er ustrukturerte før hver iterasjon"
+      ],
+      "fasit": 2,
+      "forklaring": "I MoMo-eksempelet koster hver iterasjon 30 min lesing og 30 min skriving.\n\nKilde: Gjesteforelesning 8.–15.9, emne 5."
+    },
+    {
+      "id": "co4033-k3-034",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvor ble Apache Spark utviklet?",
+      "alternativer": [
+        "Ved Google, som etterfølger for Google File System, fra 2003",
+        "Ved Yahoo, som en del av Hadoop 1, fra 2006",
+        "Ved Facebook, for strømbehandling av brukerdata, fra 2011",
+        "Ved AMPLab ved University of California, Berkeley, fra 2009"
+      ],
+      "fasit": 3,
+      "forklaring": "Lysbildet sier også at Spark ble et Apache-prosjekt i 2010. Spark ble åpen kildekode i 2010, men gitt til Apache Software Foundation i 2013.\n\nKilde: Kap. 3, lysbilde 33–34."
+    },
+    {
+      "id": "co4033-k3-035",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket av disse er IKKE et av høynivåverktøyene i Apache Spark?",
+      "alternativer": [
+        "Spark SQL",
+        "HiveQL",
+        "MLlib",
+        "GraphX"
+      ],
+      "fasit": 1,
+      "forklaring": "Sparks verktøy er Spark SQL, MLlib, GraphX og Structured Streaming (tidligere Spark Streaming). HiveQL hører til Apache Hive.\n\nKilde: Kap. 3, lysbilde 32 og 34."
+    },
+    {
+      "id": "co4033-k3-036",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er rollen til SparkContext?",
+      "alternativer": [
+        "Objektet i driverprogrammet som koordinerer applikasjonen",
+        "Prosessen på arbeidernodene som kjører oppgavene",
+        "Klyngeansvarlig som fordeler ressurser",
+        "Et distribuert filsystem"
+      ],
+      "fasit": 0,
+      "forklaring": "Driverprogrammet er brukerens applikasjon; executors kjører oppgavene på arbeidernodene.\n\nKilde: Kap. 3, lysbilde 36."
+    },
+    {
+      "id": "co4033-k3-037",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken av disse er IKKE en klyngeansvarlig (cluster manager) Spark kan bruke?",
+      "alternativer": [
+        "YARN",
+        "Kubernetes",
+        "HDFS",
+        "Mesos"
+      ],
+      "fasit": 2,
+      "forklaring": "Spark kan bruke sin egen standalone-ansvarlige, Mesos, YARN eller Kubernetes. HDFS er et filsystem.\n\nKilde: Kap. 3, lysbilde 36."
+    },
+    {
+      "id": "co4033-k3-038",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er executors i Spark?",
+      "alternativer": [
+        "Masternodene som lagrer metadata om alle RDD-er i klyngen",
+        "Prosesser på arbeidernodene som kjører oppgaver og cacher data",
+        "Brukerens hovedprogram, som inneholder SparkContext-objektet",
+        "Tabellene i Spark SQL som spørringene kjøres mot"
+      ],
+      "fasit": 1,
+      "forklaring": "Hver applikasjon får sine egne executors.\n\nKilde: Kap. 3, lysbilde 36."
+    },
+    {
+      "id": "co4033-k3-039",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er en RDD?",
+      "alternativer": [
+        "En relasjonsdatabase som holdes i minnet på driveren",
+        "En logg over alle SQL-spørringer som er kjørt i klyngen",
+        "En kolonnefamilie i HBase som Spark leser fra",
+        "En uforanderlig samling poster partisjonert over flere maskiner"
+      ],
+      "fasit": 3,
+      "forklaring": "Resilient Distributed Dataset. Brukeren styrer om den lagres i minnet eller på disk.\n\nKilde: Kap. 3, lysbilde 37."
+    },
+    {
+      "id": "co4033-k3-040",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvordan gir RDD-er feiltoleranse?",
+      "alternativer": [
+        "Transformasjonene loggføres som lineage, så tapte partisjoner kan beregnes på nytt",
+        "Hver RDD kopieres til tre noder, på samme måte som blokker i HDFS",
+        "Alle RDD-er skrives til disk etter hver operasjon, slik MapReduce gjør",
+        "En masternode holder en fullstendig kopi av alle data i minnet"
+      ],
+      "fasit": 0,
+      "forklaring": "Lineage beskriver hvordan RDD-en ble avledet fra andre RDD-er.\n\nKilde: Kap. 3, lysbilde 37."
+    },
+    {
+      "id": "co4033-k3-041",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken operasjon er en action i Spark?",
+      "alternativer": [
+        "map",
+        "filter",
+        "groupByKey",
+        "count"
+      ],
+      "fasit": 3,
+      "forklaring": "Actions er count, collect, save og reduce. map, filter og groupByKey er transformasjoner.\n\nKilde: Kap. 3, lysbilde 37."
+    },
+    {
+      "id": "co4033-k3-042",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva betyr det at transformasjoner i Spark er lazy?",
+      "alternativer": [
+        "De definerer en ny RDD uten å beregne den før en action trenger resultatet",
+        "De kjøres alltid på den tregeste noden for å spare ressurser",
+        "De kan bare brukes én gang per RDD før den må lages på nytt",
+        "De lagres aldri i minnet, bare på disk, for å spare plass"
+      ],
+      "fasit": 0,
+      "forklaring": "Det lar Spark optimalisere hele kjøreplanen som en DAG før noe kjøres.\n\nKilde: Kap. 3, lysbilde 37; gjesteforelesning, emne 5."
+    },
+    {
+      "id": "co4033-k3-043",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvorfor er Spark ofte raskere enn MapReduce for flerstegsjobber?",
+      "alternativer": [
+        "Spark krever kraftigere maskinvare og kjører derfor raskere per oppgave",
+        "Spark hopper over feiltoleranse og slipper derfor å lagre noe",
+        "Spark holder mellomresultatene i minnet og optimaliserer kjøringen med en DAG",
+        "Spark leser bare en del av dataene og estimerer resten statistisk"
+      ],
+      "fasit": 2,
+      "forklaring": "MapReduce skriver mellomresultater til disk mellom hver operasjon, som gir høy I/O-forsinkelse.\n\nKilde: Gjesteforelesning 8.–15.9, emne 5."
+    },
+    {
+      "id": "co4033-k3-044",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "I Tiki-eksempelet tar MapReduce 10,5 timer og Spark 4,5 timer. Hva forklarer forskjellen?",
+      "alternativer": [
+        "Spark regner raskere i minnet, så hvert beregningssteg tar kortere tid",
+        "Spark slipper fire store disk-I/O-operasjoner med mellomresultater",
+        "Spark leser bare halve datamengden fordi den komprimerer dataene",
+        "Spark hopper over det siste steget og skriver ikke resultatet til disk"
+      ],
+      "fasit": 1,
+      "forklaring": "Beregningen tar 10 minutter per steg i begge; det er diskoperasjonene på 2 timer hver som skiller. 10,5 / 4,5 ≈ 2,3.\n\nKilde: Gjesteforelesning 8.–15.9, emne 5."
+    },
+    {
+      "id": "co4033-k3-045",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "I MoMo-eksempelet kjører K-means 5 iterasjoner. Hvor lang tid tar Spark, som leser 50 GB én gang (30 min), regner 5 min per iterasjon og skriver modellen (30 min)?",
+      "alternativer": [
+        "325 minutter",
+        "65 minutter",
+        "55 minutter",
+        "85 minutter"
+      ],
+      "fasit": 3,
+      "forklaring": "30 + 5 × 5 + 30 = 85. MapReduce bruker 5 × 65 = 325 minutter.\n\nKilde: Gjesteforelesning 8.–15.9, emne 5."
+    },
+    {
+      "id": "co4033-k3-046",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken behandlingssemantikk kalles rollback recovery og kan gi duplikater?",
+      "alternativer": [
+        "At-most-once",
+        "At-least-once",
+        "Exactly-once",
+        "Best effort"
+      ],
+      "fasit": 1,
+      "forklaring": "En hendelse som sendes på nytt etter gjenoppretting, kan behandles to ganger.\n\nKilde: Kap. 3, lysbilde 39."
+    },
+    {
+      "id": "co4033-k3-047",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken behandlingssemantikk kalles gap recovery og kan gi tapte hendelser?",
+      "alternativer": [
+        "At-least-once",
+        "Exactly-once",
+        "At-most-once",
+        "Precise recovery"
+      ],
+      "fasit": 2,
+      "forklaring": "Duplikater oppdages og behandles ikke, men noen hendelser kan bli borte.\n\nKilde: Kap. 3, lysbilde 39."
+    },
+    {
+      "id": "co4033-k3-048",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvordan oppnår Structured Streaming ende-til-ende exactly-once?",
+      "alternativer": [
+        "Med checkpointing og write-ahead-logger",
+        "Ved å sende hver hendelse tre ganger",
+        "Ved å lagre alle data i HDFS før behandling",
+        "Ved å slå av feiltoleransen"
+      ],
+      "fasit": 0,
+      "forklaring": "Structured Streaming er bygd på Spark SQL-motoren.\n\nKilde: Kap. 3, lysbilde 38."
+    },
+    {
+      "id": "co4033-k3-049",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken garanti gir continuous processing-modusen som kom i Spark 2.3?",
+      "alternativer": [
+        "Lav ende-til-ende-forsinkelse med at-least-once",
+        "Exactly-once med høy ende-til-ende-forsinkelse",
+        "At-most-once uten noen forsinkelse",
+        "Ingen feiltoleranse, men høyest mulig gjennomstrømning"
+      ],
+      "fasit": 0,
+      "forklaring": "Standardmotoren bruker micro-batch; continuous processing er en eksperimentell modus.\n\nKilde: Kap. 3, lysbilde 40."
+    },
+    {
+      "id": "co4033-k3-050",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva er nøkkelideen i Structured Streaming?",
+      "alternativer": [
+        "Hver hendelse lagres som en egen fil i HDFS før den behandles",
+        "En levende datastrøm behandles som en tabell som stadig får nye rader",
+        "Strømmen deles i map- og reduce-oppgaver som i MapReduce",
+        "Dataene samles og behandles samlet én gang i døgnet"
+      ],
+      "fasit": 1,
+      "forklaring": "Strømberegningen uttrykkes som en vanlig batchspørring mot en statisk tabell og kjøres inkrementelt.\n\nKilde: Kap. 3, lysbilde 41."
+    },
+    {
+      "id": "co4033-k3-051",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken utdatamodus i Structured Streaming skriver bare radene som er endret siden forrige trigger?",
+      "alternativer": [
+        "Complete",
+        "Append",
+        "Update",
+        "Overwrite"
+      ],
+      "fasit": 2,
+      "forklaring": "Complete skriver hele resultattabellen; append skriver bare nye rader.\n\nKilde: Kap. 3, lysbilde 45."
+    },
+    {
+      "id": "co4033-k3-052",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Strømmende ordtelling: t=1 «cat dog», «dog dog»; t=2 «owl cat»; t=3 «dog», «owl». Hva er tellingen for dog ved t=3 i complete-modus?",
+      "alternativer": [
+        "3",
+        "1",
+        "2",
+        "4"
+      ],
+      "fasit": 3,
+      "forklaring": "Tre forekomster ved t=1 og én ved t=3 gir 4. Resultatet gjelder alle data mottatt til da.\n\nKilde: Kap. 3, lysbilde 45."
+    },
+    {
+      "id": "co4033-k3-053",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilket utsagn stemmer med Tang og medforfatteres sammenligning av Spark, Flink og MapReduce?",
+      "alternativer": [
+        "MapReduce vurderes som sterkt på sikkerhet, men lav på ytelse",
+        "Spark vurderes som sterkt på sikkerhet, men lav på ytelse",
+        "MapReduce vurderes som vanskeligst å lære av de tre",
+        "Flink vurderes som mest populær og sterkest på sikkerhet"
+      ],
+      "fasit": 0,
+      "forklaring": "Spark og Flink har høy ytelse, svak sikkerhet og er vanskelige å lære; MapReduce er lett å lære, sterk på sikkerhet og lav på ytelse. Bare Spark er markert som populær.\n\nKilde: Kap. 3, lysbilde 47."
+    },
+    {
+      "id": "co4033-k3-054",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken av disse er IKKE blant forelesningens evalueringskriterier for analysemodeller?",
+      "alternativer": [
+        "Effectiveness",
+        "Explainability",
+        "Lønnsomhet",
+        "Extensibility"
+      ],
+      "fasit": 2,
+      "forklaring": "Kriteriene er effectiveness, efficiency, difficulty, extensibility, explainability og security.\n\nKilde: Kap. 3, lysbilde 48."
+    },
+    {
+      "id": "co4033-k3-055",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hva begrenser ofte skaleringen av distribuert maskinlæring?",
+      "alternativer": [
+        "Mangelen på standardformler for lineær algebra på flere noder",
+        "Begrensninger i antall partisjoner hver disk kan ha",
+        "At flyttallsberegninger ikke kan fordeles mellom maskiner",
+        "Nettverkskommunikasjonen under synkronisering av parametere mellom nodene"
+      ],
+      "fasit": 3,
+      "forklaring": "Dette er gjesteforelesningens kontrolloppgave; fasiten der er B.\n\nKilde: Gjesteforelesning 8.–15.9, emne 10."
+    },
+    {
+      "id": "co4033-k3-056",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvordan fordeles treningsdata i distribuert gradient boosting på Spark?",
+      "alternativer": [
+        "Vertikalt, slik at hver arbeidernode får noen av kolonnene",
+        "Horisontalt, slik at hver arbeidernode får en delmengde av radene",
+        "Alle arbeidernoder får hele datasettet og trener hver sin modell",
+        "Bare masternoden får data, og arbeiderne regner på parameterne"
+      ],
+      "fasit": 1,
+      "forklaring": "Hver node beregner gradienter lokalt, og masternoden aggregerer og oppdaterer den globale modellen.\n\nKilde: Gjesteforelesning 8.–15.9, emne 10."
+    },
+    {
+      "id": "co4033-k3-057",
+      "type": "flervalg",
+      "kapittel": 3,
+      "sporsmal": "Hvilken designbeslutning inngår i Chen og medforfatteres rammeverk for strømsystemer?",
+      "alternativer": [
+        "Valg av dashboardleverandør",
+        "Antall NameNodes",
+        "Blokkstørrelse i HDFS",
+        "Behandlingssemantikk"
+      ],
+      "fasit": 3,
+      "forklaring": "De fem designvalgene er språkparadigme, dataoverføring, behandlingssemantikk, tilstandslagring og reprosessering.\n\nKilde: Kap. 3, lysbilde 46."
     },
     {
       "id": "co4033-ny-007",
@@ -106,23 +2516,9 @@
       "forklaring": "Shuffle samler verdier som har samme nøkkel slik at reduceren kan aggregere dem. Overføring av data kan være en betydelig kostnad."
     },
     {
-      "id": "co4033-ny-008",
-      "type": "flervalg",
-      "kapittel": 3,
-      "sporsmal": "Hva er hovedforskjellen på batch- og strømbehandling?",
-      "alternativer": [
-        "Batch behandler avgrensede datasett; strømbehandling håndterer løpende hendelser",
-        "Batch kan ikke behandle tall",
-        "Strømbehandling krever alltid at alle data er lagret først",
-        "De betyr nøyaktig det samme"
-      ],
-      "fasit": 0,
-      "forklaring": "Batch kjører på en avgrenset samling. Strømbehandling arbeider med data etter hvert som de kommer, ofte gjennom tidsvinduer."
-    },
-    {
       "id": "co4033-ny-009",
       "type": "flervalg",
-      "kapittel": 4,
+      "kapittel": 3,
       "sporsmal": "Hva kjennetegner overvåket læring?",
       "alternativer": [
         "Data mangler alltid etiketter",
@@ -131,12 +2527,12 @@
         "Alle grupper bestemmes uten målvariabel"
       ],
       "fasit": 1,
-      "forklaring": "Ved klassifikasjon eller regresjon lærer modellen sammenhengen mellom input og en kjent klasse eller tallverdi."
+      "forklaring": "Ved klassifikasjon eller regresjon lærer modellen sammenhengen mellom input og en kjent klasse eller tallverdi. Regresjon og klassifikasjon er teknikkene forelesningen nevner for prediktiv analyse."
     },
     {
       "id": "co4033-ny-010",
       "type": "flervalg",
-      "kapittel": 4,
+      "kapittel": 3,
       "sporsmal": "En modell markerer 40 transaksjoner som svindel, og 30 av dem er svindel. Hva er precision?",
       "alternativer": [
         "30 %",
@@ -145,12 +2541,670 @@
         "100 %"
       ],
       "fasit": 2,
-      "forklaring": "Precision = sanne positive / alle predikerte positive = 30 / 40 = 0,75. Recall krever at vi også kjenner totalt antall faktiske svindeltilfeller."
+      "forklaring": "Precision = sanne positive / alle predikerte positive = 30 / 40 = 0,75. Recall krever at vi også kjenner totalt antall faktiske svindeltilfeller. Temaet er ikke dekket av lysbildene, men er beholdt fra forrige versjon."
+    },
+    {
+      "id": "co4033-ls3-01",
+      "type": "langsvar",
+      "kapittel": 3,
+      "sporsmal": "Forklar styrker og svakheter ved MapReduce, og gi tre tilfeller der MapReduce passer.",
+      "momenter": [
+        "Styrker: skalerbarhet, feiltoleranse, datalokalitet, parallellitet",
+        "Svakheter: fast jobbflyt, I/O-intensiv, høy forsinkelse",
+        "Dårlig for iterative algoritmer",
+        "Passer for store batchjobber som logganalyse, indeksering, ETL og ordtelling"
+      ],
+      "modellsvar": "MapReduce skalerer til tusenvis av noder, er feiltolerant fordi mislykkede oppgaver kjøres på nytt, utnytter datalokalitet ved å kjøre der HDFS-blokkene ligger, og er massivt parallell. Svakhetene er at jobbflyten er fast — map og så reduce — at mellomresultater skrives til disk, som gjør den I/O-intensiv, og at forsinkelsen er høy. Den passer derfor dårlig for iterative algoritmer og sanntid. MapReduce passer godt for store batchjobber som analyse av flere års webserverlogger, bygging av søkeindekser og nattlige ETL-jobber som aggregerer transaksjoner."
+    },
+    {
+      "id": "co4033-ls3-02",
+      "type": "langsvar",
+      "kapittel": 3,
+      "sporsmal": "Sammenlign MapReduce og Spark Streaming etter de viktigste behandlingsegenskapene.",
+      "momenter": [
+        "MapReduce: disk-basert batch, høy forsinkelse",
+        "Spark: minnebasert med RDD og DAG-optimalisering",
+        "Spark Streaming / Structured Streaming: micro-batch eller continuous, nær sanntid",
+        "Feiltoleranse: re-kjøring av oppgaver mot lineage og checkpointing",
+        "Semantikk: exactly-once i Structured Streaming",
+        "Spark har høyere ytelse og generalitet, MapReduce er enklere og sterkere på sikkerhet"
+      ],
+      "modellsvar": "MapReduce er en disk-basert batchmodell: hver jobb leser fra HDFS, skriver mellomresultater til disk og har høy forsinkelse. Spark holder data i minnet med RDD-er og optimaliserer kjøringen som en DAG, og Spark Streaming (nå Structured Streaming) behandler strømmer som micro-batcher eller kontinuerlig med forsinkelse på sekunder eller mindre. MapReduce får feiltoleranse ved å kjøre oppgaver på nytt; Spark bruker lineage og checkpointing med write-ahead-logger, som gir exactly-once. I Tang og medforfatteres sammenligning har Spark høy ytelse og generalitet, men er vanskeligere å lære og svakere på sikkerhet enn MapReduce."
+    },
+    {
+      "id": "co4033-ls3-03",
+      "type": "langsvar",
+      "kapittel": 3,
+      "sporsmal": "List de fem typene big data-analyse og gi minst ett eksempel på hver.",
+      "momenter": [
+        "Deskriptiv: hva skjedde, for eksempel månedsrapporter",
+        "Diagnostisk: hvorfor, for eksempel drill-down på salgsfall",
+        "Prediktiv: hva vil skje, for eksempel etterspørselsprognoser",
+        "Preskriptiv: hva bør gjøres, for eksempel anbefalinger eller prisoptimalisering",
+        "Kognitiv: menneskelignende intelligens, for eksempel en læringsbasert assistent"
+      ],
+      "modellsvar": "Deskriptiv analyse beskriver hva som skjedde, for eksempel en rapport over månedlig omsetning per region. Diagnostisk analyse forklarer hvorfor, for eksempel drill-down som viser at salgsfallet skyldes én kanal. Prediktiv analyse anslår hva som vil skje, for eksempel Shopees prognose for 12.12-salget med regresjon. Preskriptiv analyse anbefaler handling, for eksempel hvilken pris hver butikk bør sette eller hvilke produkter en kunde bør få anbefalt. Kognitiv analyse bruker menneskelignende intelligens som lærer over tid, for eksempel en kundeserviceassistent som forstår kontekst."
+    },
+    {
+      "id": "co4033-k4-001",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvem lanserte begrepet business intelligence, og når?",
+      "alternativer": [
+        "IBM på slutten av 1970-tallet",
+        "Gartner Group på midten av 1990-tallet",
+        "Microsoft på begynnelsen av 2000-tallet",
+        "W. H. Inmon på midten av 1980-tallet"
+      ],
+      "fasit": 1,
+      "forklaring": "Ideen har røtter i MIS-rapporteringssystemene fra 1970-tallet og EIS fra tidlig 1980-tall.\n\nKilde: Kap. 4, lysbilde 12."
+    },
+    {
+      "id": "co4033-k4-002",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva kjennetegnet MIS-rapporteringssystemene fra 1970-tallet?",
+      "alternativer": [
+        "De hadde dynamisk drill-down, prognoser og trendanalyse",
+        "De brukte kunstig intelligens til å foreslå beslutninger",
+        "De var statiske, todimensjonale og uten analysefunksjoner",
+        "De var bygd på datasjøer med schema-on-read"
+      ],
+      "fasit": 2,
+      "forklaring": "Executive information systems (EIS) på 1980-tallet innførte dynamisk flerdimensjonal rapportering.\n\nKilde: Kap. 4, lysbilde 12."
+    },
+    {
+      "id": "co4033-k4-003",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket system kom tidlig på 1980-tallet og utvidet datastøtten til toppledere?",
+      "alternativer": [
+        "Enterprise data lakes (EDL)",
+        "Lakehouse-plattformer",
+        "NoSQL-databasesystemer",
+        "Executive information systems (EIS)"
+      ],
+      "fasit": 3,
+      "forklaring": "EIS ga flerdimensjonal rapportering, prognoser, trendanalyse, drill-down og kritiske suksessfaktorer.\n\nKilde: Kap. 4, lysbilde 12."
+    },
+    {
+      "id": "co4033-k4-004",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvordan beskrives BI som begrep?",
+      "alternativer": [
+        "Som et paraplybegrep for arkitekturer, verktøy, databaser, applikasjoner og metodikker",
+        "Som ett bestemt programvareprodukt levert og vedlikeholdt av Gartner Group",
+        "Som et annet navn på et datavarehus med tilhørende ETL-prosesser",
+        "Som en internasjonal standard fastsatt av ISO for beslutningsstøtte"
+      ],
+      "fasit": 0,
+      "forklaring": "Som DSS er det et innholdsløst begrep som betyr ulike ting for ulike folk.\n\nKilde: Kap. 4, lysbilde 13."
+    },
+    {
+      "id": "co4033-k4-005",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken rekkefølge beskriver BI-prosessen?",
+      "alternativer": [
+        "Handling → data → informasjon → beslutninger",
+        "Informasjon → data → handling → beslutninger",
+        "Data → informasjon → beslutninger → handling",
+        "Beslutninger → data → handling → informasjon"
+      ],
+      "fasit": 2,
+      "forklaring": "Målet er at beslutningstakere får innsikt som gjør dem i stand til å ta bedre informerte beslutninger.\n\nKilde: Kap. 4, lysbilde 13."
+    },
+    {
+      "id": "co4033-k4-006",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilke spørsmål svarer BI, forstått som deskriptiv analyse, på ifølge Sharda og medforfattere?",
+      "alternativer": [
+        "«Hva vil skje?» og «hva bør vi gjøre?»",
+        "«Hva vet vi ikke?»",
+        "«Hvor lagres dataene?»",
+        "«Hva skjedde?» og «hvorfor skjedde det?»"
+      ],
+      "fasit": 3,
+      "forklaring": "Muliggjørerne er datavarehus, forretningsrapportering, dashboards og scorekort, og visuell analyse.\n\nKilde: Kap. 4, lysbilde 16."
+    },
+    {
+      "id": "co4033-k4-007",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken av disse er IKKE en av de fire hovedkomponentene i et BI-system?",
+      "alternativer": [
+        "Et datavarehus med kildedata",
+        "Et transaksjonssystem for ordreregistrering",
+        "Business performance management (BPM)",
+        "Et brukergrensesnitt, for eksempel et dashboard"
+      ],
+      "fasit": 1,
+      "forklaring": "Den fjerde komponenten er business analytics, verktøy for å manipulere, utvinne og analysere dataene i varehuset.\n\nKilde: Kap. 4, lysbilde 24."
+    },
+    {
+      "id": "co4033-k4-008",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er business performance management (BPM)?",
+      "alternativer": [
+        "Sammensmeltingen av BI og planlegging i én plattform — syklusen planlegg, overvåk, analyser",
+        "Et verktøy for å lagre ustrukturerte data i en datasjø for senere analyse",
+        "En metode for å fylle inn manglende verdier før data lastes i varehuset",
+        "Et annet navn på ETL-prosessen som henter data fra kildesystemene"
+      ],
+      "fasit": 0,
+      "forklaring": "BPM er et lukket sløyfesystem som knytter mål, planlegging og KPI-er til strategien.\n\nKilde: Kap. 4, lysbilde 17."
+    },
+    {
+      "id": "co4033-k4-009",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken av disse er IKKE en av MicroStrategys fem BI-stiler?",
+      "alternativer": [
+        "Kubeanalyse (slice-and-dice)",
+        "Ad hoc-spørringer",
+        "Automatisk kildekodegenerering",
+        "Statistikk og datautvinning"
+      ],
+      "fasit": 2,
+      "forklaring": "De fem er rapportlevering og varsling, virksomhetsrapportering, kubeanalyse, ad hoc-spørringer og statistikk og datautvinning.\n\nKilde: Kap. 4, lysbilde 26."
+    },
+    {
+      "id": "co4033-k4-010",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "I Gorry og Scott Mortons rammeverk: hvor hører «godkjenne lån» hjemme?",
+      "alternativer": [
+        "Strukturert beslutning, strategisk planlegging",
+        "Ustrukturert beslutning, operasjonell kontroll",
+        "Semistrukturert beslutning, ledelseskontroll",
+        "Strukturert beslutning, operasjonell kontroll"
+      ],
+      "fasit": 1,
+      "forklaring": "Eksemplene i felt 7 er å kjøpe programvare, godkjenne lån og bemanne en brukerstøtte.\n\nKilde: Kap. 4, lysbilde 4."
+    },
+    {
+      "id": "co4033-k4-011",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "I samme rammeverk: hvor hører kundefordringer og ordreregistrering hjemme?",
+      "alternativer": [
+        "Ustrukturert beslutning, strategisk planlegging",
+        "Semistrukturert beslutning, ledelseskontroll",
+        "Ustrukturert beslutning, ledelseskontroll",
+        "Strukturert beslutning, operasjonell kontroll"
+      ],
+      "fasit": 3,
+      "forklaring": "Felt 1 i matrisen.\n\nKilde: Kap. 4, lysbilde 4."
+    },
+    {
+      "id": "co4033-k4-012",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvem bygger datavarehuset i Eckersons BI-arkitektur?",
+      "alternativer": [
+        "Teknisk personell",
+        "Ledere og toppledere",
+        "Forretningsbrukere",
+        "Eksterne kunder"
+      ],
+      "fasit": 0,
+      "forklaring": "Forretningsbrukere bruker analysemiljøet, og ledere bruker BPM-strategier i ytelses- og strategimiljøet.\n\nKilde: Kap. 4, lysbilde 25."
+    },
+    {
+      "id": "co4033-k4-013",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket perspektiv er IKKE ett av de fire i et balansert målstyringskort?",
+      "alternativer": [
+        "Konkurrenter",
+        "Økonomi",
+        "Kunde",
+        "Læring og vekst"
+      ],
+      "fasit": 0,
+      "forklaring": "De fire er økonomi, kunde, interne prosesser, og læring og vekst.\n\nKilde: Kap. 4, lysbilde 32."
+    },
+    {
+      "id": "co4033-k4-014",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken BI-applikasjon svarer på «Hvilke kunder risikerer å slutte?»",
+      "alternativer": [
+        "Kanaloptimalisering (channel optimization)",
+        "Kjøpstilbøyelighet (propensity to buy)",
+        "Kundesegmentering (customer segmentation)",
+        "Kundeavgang (customer attrition)"
+      ],
+      "fasit": 3,
+      "forklaring": "Forretningsverdien er å hindre tap av verdifulle kunder og slippe kunder med lav verdi.\n\nKilde: Kap. 4, lysbilde 31."
+    },
+    {
+      "id": "co4033-k4-015",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken egenskap er IKKE med i Inmons definisjon av et datavarehus?",
+      "alternativer": [
+        "Emneorientert",
+        "Sanntidsoppdaterbart",
+        "Integrert",
+        "Ikke-flyktig"
+      ],
+      "fasit": 1,
+      "forklaring": "Et datavarehus er emneorientert, integrert, tidsvariant og ikke-flyktig (non-volatile, ikke-oppdaterbart).\n\nKilde: Kap. 4, lysbilde 35 og 48."
+    },
+    {
+      "id": "co4033-k4-016",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er et operasjonelt datalager (ODS)?",
+      "alternativer": [
+        "Et stort virksomhetsomfattende datavarehus",
+        "En datamart for én avdeling",
+        "Et midlertidig staging-område med oppdaterte data",
+        "Et arkiv for slettede data"
+      ],
+      "fasit": 2,
+      "forklaring": "De tre typene datalagre er datamarts, ODS og virksomhetsdatavarehus (EDW).\n\nKilde: Kap. 4, lysbilde 35."
+    },
+    {
+      "id": "co4033-k4-017",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva inneholder faktatabellen i et stjerneskjema?",
+      "alternativer": [
+        "Beskrivelser av forretningens emner i hierarkier",
+        "Fremmednøkler til dimensjonstabellene og numeriske målinger",
+        "Bare primærnøkler",
+        "Brukernes passord"
+      ],
+      "fasit": 1,
+      "forklaring": "Dimensjonstabellene inneholder beskrivelsene og er denormalisert for ytelse.\n\nKilde: Kap. 4, lysbilde 36–37."
+    },
+    {
+      "id": "co4033-k4-018",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket forhold er det mellom en dimensjonstabell og faktatabellen i et stjerneskjema?",
+      "alternativer": [
+        "N:M",
+        "1:1",
+        "1:N",
+        "Ingen direkte relasjon"
+      ],
+      "fasit": 2,
+      "forklaring": "Én rad i en dimensjonstabell kan henge sammen med mange rader i faktatabellen.\n\nKilde: Kap. 4, lysbilde 37."
+    },
+    {
+      "id": "co4033-k4-019",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "En kontosaldo kan summeres over kunder og filialer, men ikke over tid. Hva slags måling er den?",
+      "alternativer": [
+        "Additiv",
+        "Ikke-additiv",
+        "Faktaløs",
+        "Semi-additiv"
+      ],
+      "fasit": 3,
+      "forklaring": "Additive kan summeres over alle dimensjoner (solgt beløp); ikke-additive kan ikke summeres (forholdstall).\n\nKilde: Kap. 4, lysbilde 39."
+    },
+    {
+      "id": "co4033-k4-020",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva slags måling er et forholdstall eller en prosent i en faktatabell?",
+      "alternativer": [
+        "Ikke-additiv",
+        "Additiv",
+        "Semi-additiv",
+        "Dimensjonsattributt"
+      ],
+      "fasit": 0,
+      "forklaring": "Forholdstall kan ikke summeres meningsfullt; bevar heller teller og nevner.\n\nKilde: Kap. 4, lysbilde 39."
+    },
+    {
+      "id": "co4033-k4-021",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Når brukes en faktatabell uten fakta (factless fact table)?",
+      "alternativer": [
+        "Når faktatabellen har så mange målinger at den må deles opp",
+        "Når det ikke finnes dimensjonstabeller i skjemaet",
+        "For å spore hendelser, som oppmøte, eller for å dokumentere dekning",
+        "Når ustrukturerte data som bilder skal lagres i varehuset"
+      ],
+      "fasit": 2,
+      "forklaring": "Tabellen har bare fremmednøkler til dimensjonene og ingen målinger.\n\nKilde: Kap. 4, lysbilde 43–45."
+    },
+    {
+      "id": "co4033-k4-022",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er en ulempe ved snøfnuggskjema sammenlignet med stjerneskjema?",
+      "alternativer": [
+        "Dårligere spørreytelse på grunn av flere joins",
+        "Mye større lagringsbehov enn stjerneskjema",
+        "Vanskeligere å oppdatere og vedlikeholde",
+        "Kan ikke ha mer enn én faktatabell"
+      ],
+      "fasit": 0,
+      "forklaring": "Fordelene er litt mindre lagringsbehov og enklere vedlikehold; ulempene er at det er mindre intuitivt og tregere å spørre.\n\nKilde: Kap. 4, lysbilde 46."
+    },
+    {
+      "id": "co4033-k4-023",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva skiller et snøfnuggskjema fra et stjerneskjema?",
+      "alternativer": [
+        "Faktatabellen er delt over flere separate databaser",
+        "Dimensjonstabellene er normalisert i flere relaterte tabeller",
+        "Det finnes ingen fremmednøkler mellom tabellene",
+        "Alle dimensjonene er slått sammen i én stor tabell"
+      ],
+      "fasit": 1,
+      "forklaring": "Eksempelet på lysbildet deler location videre i en egen city-tabell.\n\nKilde: Kap. 4, lysbilde 46–47."
+    },
+    {
+      "id": "co4033-k4-024",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er en konsekvens av periodisk uthenting i en tonivåarkitektur?",
+      "alternativer": [
+        "Varehuset får aldri nye data",
+        "Varehuset trenger ingen ETL",
+        "Datamartene blir alltid ferskere enn kildene",
+        "Dataene i varehuset er ikke helt oppdaterte"
+      ],
+      "fasit": 3,
+      "forklaring": "Arkitekturen går fra kildesystemer via ETL og staging til varehuset og sluttbrukerverktøy.\n\nKilde: Kap. 4, lysbilde 49."
+    },
+    {
+      "id": "co4033-k4-025",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er ulempen med uavhengige datamarts?",
+      "alternativer": [
+        "De kan ikke inneholde historiske data, bare dagens tilstand",
+        "Egen ETL for hver datamart og kompleks datatilgang fordi det finnes mange marts",
+        "De krever et aktivt datavarehus med nær sanntids-ETL for å fungere",
+        "De har ingen dimensjonstabeller og kan derfor ikke brukes til OLAP"
+      ],
+      "fasit": 1,
+      "forklaring": "Avhengige datamarts lastes fra ett virksomhetsdatavarehus med én ETL, som gir enklere tilgang.\n\nKilde: Kap. 4, lysbilde 50 og 52."
+    },
+    {
+      "id": "co4033-k4-026",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er logiske datamarts i arkitekturen med aktivt datavarehus?",
+      "alternativer": [
+        "Separate databaser, hver med sin egen ETL-prosess",
+        "Kopier av kildesystemene som oppdateres hver natt",
+        "Planlagte datamarts som ennå ikke er bygget",
+        "Logiske visninger av datavarehuset, ikke separate databaser"
+      ],
+      "fasit": 3,
+      "forklaring": "Det gjør det enklere å lage nye datamarts.\n\nKilde: Kap. 4, lysbilde 53."
+    },
+    {
+      "id": "co4033-k4-027",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva kjennetegner et aktivt datavarehus?",
+      "alternativer": [
+        "Det oppdateres én gang i måneden og brukes bare til historiske rapporter",
+        "Det inneholder bare data fra én avdeling og har egen ETL for denne avdelingen",
+        "Det tar imot data i nær sanntid og sender forretningsregler tilbake så det kan handles straks",
+        "Det har ingen ETL, fordi brukerne spør direkte mot kildesystemene i drift"
+      ],
+      "fasit": 2,
+      "forklaring": "Forelesningen staver det «@ctive Data Warehouse».\n\nKilde: Kap. 4, lysbilde 54."
+    },
+    {
+      "id": "co4033-k4-028",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken utviklingstilnærming leverer forretningsverdi raskt med flerdimensjonale datamarts først?",
+      "alternativer": [
+        "Bottom-up",
+        "Top-down",
+        "Federated",
+        "Waterfall"
+      ],
+      "fasit": 0,
+      "forklaring": "Top-down har datavarehuset i sentrum; hybrid kombinerer dem; federated bruker alle midler for å integrere analytiske ressurser.\n\nKilde: Kap. 4, lysbilde 58."
+    },
+    {
+      "id": "co4033-k4-029",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket utsagn beskriver Kimballs tilnærming?",
+      "alternativer": [
+        "Top-down med ER-diagrammer, der IT-folk er det primære publikummet",
+        "Et virksomhetsomfattende varehus med atomære data som mater avdelingsdatabaser",
+        "En ganske kompleks metode avledet fra spiralmodellen, med lav tilgjengelighet",
+        "Bottom-up med dimensjonsmodellering og konforme dimensjoner, og høy tilgjengelighet for sluttbrukere"
+      ],
+      "fasit": 3,
+      "forklaring": "De tre andre beskriver Inmons tilnærming.\n\nKilde: Kap. 4, lysbilde 59."
+    },
+    {
+      "id": "co4033-k4-030",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket kjennetegn passer på en datamart, sammenlignet med et datavarehus?",
+      "alternativer": [
+        "Applikasjonsuavhengig og sentralisert",
+        "Mange interne og eksterne kilder",
+        "Sterkt denormalisert og knyttet til ett emne",
+        "Lang levetid og én kompleks struktur"
+      ],
+      "fasit": 2,
+      "forklaring": "De tre andre kjennetegner datavarehuset (Strange, 1997).\n\nKilde: Kap. 4, lysbilde 51."
+    },
+    {
+      "id": "co4033-k4-031",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken plattform kombinerer åpne formater og billig lagring for alle datatyper med ACID-transaksjoner og støtte for både BI og maskinlæring?",
+      "alternativer": [
+        "Data lakehouse",
+        "Datavarehus",
+        "Datasjø",
+        "Operasjonelt datalager"
+      ],
+      "fasit": 0,
+      "forklaring": "Varehuset har lukkede formater og bare SQL; datasjøen har lav pålitelighet og kan bli en «data swamp».\n\nKilde: Kap. 4, lysbilde 62–63."
+    },
+    {
+      "id": "co4033-k4-032",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er en typisk svakhet ved en datasjø ifølge sammenligningen?",
+      "alternativer": [
+        "Den støtter bare strukturerte data i proprietære formater",
+        "Lav datakvalitet og pålitelighet, som kan gjøre den til en «data swamp»",
+        "Den blir eksponentielt dyrere å skalere etter hvert som data vokser",
+        "Den gir bare tilgang gjennom SQL, ikke gjennom Python eller R"
+      ],
+      "fasit": 1,
+      "forklaring": "Den skalerer billig og støtter alle datatyper, men styring og sikkerhet er svak fordi den må legges på filnivå.\n\nKilde: Kap. 4, lysbilde 63."
+    },
+    {
+      "id": "co4033-k4-033",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken komponent er IKKE en del av et datamaskinbasert informasjonssystem (CBIS)?",
+      "alternativer": [
+        "Mennesker",
+        "Prosedyrer",
+        "Konkurrenter",
+        "Telekommunikasjon"
+      ],
+      "fasit": 2,
+      "forklaring": "CBIS består av maskinvare, programvare, databaser, telekommunikasjon, mennesker og prosedyrer.\n\nKilde: Kap. 4, lysbilde 64–65."
+    },
+    {
+      "id": "co4033-k4-034",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er riktig rekkefølge i den tradisjonelle systemutviklingssyklusen?",
+      "alternativer": [
+        "Undersøkelse → analyse → design → implementering → vedlikehold og gjennomgang",
+        "Design → undersøkelse → analyse → vedlikehold → implementering",
+        "Analyse → implementering → design → undersøkelse → vedlikehold",
+        "Implementering → design → analyse → undersøkelse → vedlikehold"
+      ],
+      "fasit": 0,
+      "forklaring": "Syklusen ser lineær ut, men prosjektet kan stoppes eller gå tilbake til et tidligere steg.\n\nKilde: Kap. 4, lysbilde 75–76."
+    },
+    {
+      "id": "co4033-k4-035",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva er en ulempe ved prototyping?",
+      "alternativer": [
+        "Brukerne får ikke prøve systemet før det er helt ferdig",
+        "Det tar alltid flere år å utvikle en første prototype",
+        "Feil oppdages sent fordi all testing skjer etter implementering",
+        "Dokumentasjon mangler ofte, og omfanget kan vokse uten formelle gjennomganger"
+      ],
+      "fasit": 3,
+      "forklaring": "Fordelene er løpende tilbakemelding, prototype på uker og tidlig oppdagelse av feil.\n\nKilde: Kap. 4, lysbilde 78–79."
+    },
+    {
+      "id": "co4033-k4-036",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken type system passer rapid application development (RAD) dårligst for?",
+      "alternativer": [
+        "Beslutningsstøttesystemer (DSS)",
+        "Transaksjonssystemer (TPS)",
+        "Ledelsesinformasjonssystemer (MIS)",
+        "Dashboards for toppledelsen"
+      ],
+      "fasit": 1,
+      "forklaring": "RAD passer best for DSS og MIS og krever mer deltakelse fra brukerne enn andre tilnærminger.\n\nKilde: Kap. 4, lysbilde 81."
+    },
+    {
+      "id": "co4033-k4-037",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva kjennetegner extreme programming (XP)?",
+      "alternativer": [
+        "Én stor dokumentasjonsfase gjennomføres før all koding starter",
+        "Brukerne involveres bare ved slutten, når systemet leveres",
+        "Systemet utvikles uten testing for å komme raskt i produksjon",
+        "Programmerere jobber i par for å designe, teste og kode deler av systemet"
+      ],
+      "fasit": 3,
+      "forklaring": "Agile krever hyppige møter mellom utviklere og brukere; JAD samler brukere, interessenter og IS-folk om kravene.\n\nKilde: Kap. 4, lysbilde 80–81."
+    },
+    {
+      "id": "co4033-k4-038",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilket mottiltak foreslås mot prosjektfeilen «å løse feil problem»?",
+      "alternativer": [
+        "Innfør et standardsystem som ISO 9001 for hele prosjektet",
+        "Etabler en tydelig kobling mellom prosjektet og organisasjonens mål",
+        "Snevre inn prosjektet til de viktigste forretningsmulighetene",
+        "Etabler faste kommunikasjonsprosedyrer og protokoller"
+      ],
+      "fasit": 1,
+      "forklaring": "ISO 9001 er mottiltaket mot mangel på standarder, innsnevring mot for ambisiøse prosjekter.\n\nKilde: Kap. 4, lysbilde 70."
+    },
+    {
+      "id": "co4033-k4-039",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilken teknologi er et integrasjonsverktøy i et BI-system, ikke et dashboardverktøy?",
+      "alternativer": [
+        "SSIS",
+        "Power BI",
+        "Tableau",
+        "Superset"
+      ],
+      "fasit": 0,
+      "forklaring": "Integrasjonsverktøy: Pentaho Kettle, Airflow, Talend, Oracle Data Integrator, SSIS. De tre andre er brukergrensesnitt.\n\nKilde: Kap. 4, lysbilde 87 og 91."
+    },
+    {
+      "id": "co4033-k4-040",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hvilke to akser brukes i Gartners Magic Quadrant?",
+      "alternativer": [
+        "Pris og markedsandel i sektoren",
+        "Antall kunder og antall ansatte",
+        "Evne til å levere og visjonens fullstendighet",
+        "Ytelse og sikkerhet i produktet"
+      ],
+      "fasit": 2,
+      "forklaring": "De fire feltene er ledere, utfordrere, visjonære og nisjeaktører.\n\nKilde: Kap. 4, lysbilde 92."
+    },
+    {
+      "id": "co4033-k4-041",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva gjør drill-down i OLAP?",
+      "alternativer": [
+        "Aggregerer data fra et detaljert til et grovere nivå",
+        "Går fra et aggregert nivå til mer detaljerte data",
+        "Velger én bestemt verdi i én dimensjon",
+        "Fjerner en dimensjon fra kuben"
+      ],
+      "fasit": 1,
+      "forklaring": "Roll-up går motsatt vei; slice velger én verdi i én dimensjon, dice avgrenser langs flere.\n\nKilde: Kap. 4, lysbilde 26 og 90 (operasjonene er utdyping av «cube analysis» og OLAP)."
+    },
+    {
+      "id": "co4033-k4-042",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva oppnådde KONE ved å kombinere IBM Watson IoT med Salesforces serviceverktøy?",
+      "alternativer": [
+        "Lavere produksjonskostnad per heis gjennom automatisert montering",
+        "Full automatisering av vedlikeholdet, uten behov for teknikere",
+        "Nye inntekter ved å selge driftsdataene videre til byggeierne",
+        "Kortere nedetid gjennom prediksjon av feil og rask utsending av teknikere"
+      ],
+      "fasit": 3,
+      "forklaring": "Systemet forutsier feil, finner sannsynlige årsaker og foreslår utbedringer.\n\nKilde: Kap. 4, lysbilde 7–8."
+    },
+    {
+      "id": "co4033-ny-005",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva inneholder en faktatabell vanligvis i et stjerneskjema?",
+      "alternativer": [
+        "Bare brukernes passord",
+        "Målverdier og nøkler til dimensjoner",
+        "Bare navn på dimensjonstabeller",
+        "Programkoden til rapportene"
+      ],
+      "fasit": 1,
+      "forklaring": "En salgsfaktatabell kan inneholde antall og omsetning samt nøkler til dato, produkt og butikk."
+    },
+    {
+      "id": "co4033-ny-006",
+      "type": "flervalg",
+      "kapittel": 4,
+      "sporsmal": "Hva gjør en OLAP-roll-up?",
+      "alternativer": [
+        "Viser mer detaljert nivå",
+        "Sletter alle dimensjoner",
+        "Aggregerer data til et grovere nivå",
+        "Krypterer faktatabellen"
+      ],
+      "fasit": 2,
+      "forklaring": "Et eksempel er å summere dagsomsetning til månedsomsetning. Drill-down går motsatt vei, til et mer detaljert nivå."
     },
     {
       "id": "co4033-ny-011",
       "type": "langsvar",
-      "kapittel": 2,
+      "kapittel": 4,
       "sporsmal": "Sammenlign OLTP og OLAP med et eksempel på hver.",
       "momenter": [
         "OLTP støtter løpende transaksjoner",
@@ -161,17 +3215,1066 @@
       "modellsvar": "OLTP støtter den daglige driften, for eksempel registrering av en ordre og oppdatering av lagerbeholdning. OLAP brukes til analyse, for eksempel omsetning per region gjennom flere år. OLTP er typisk optimalisert for mange korte transaksjoner, mens OLAP er optimalisert for omfattende lesinger og aggregeringer."
     },
     {
-      "id": "co4033-ny-012",
+      "id": "co4033-ls4-01",
       "type": "langsvar",
       "kapittel": 4,
-      "sporsmal": "Hva er datalekkasje ved evaluering av en prediksjonsmodell, og hvordan unngår du det?",
+      "sporsmal": "Beskriv hovedkomponentene i et BI-system og gi teknologieksempler.",
       "momenter": [
-        "Informasjon utenfra treningsgrunnlaget påvirker trening",
-        "Testdata skal holdes adskilt",
-        "Tilpass skalering og imputering kun på treningsdata",
-        "Ved tidsdata må delingen respektere tid"
+        "Datavarehus med kildedata (Hive, BigQuery, Redshift) og integrasjon (Kettle, Talend, SSIS)",
+        "Business analytics: OLAP, datautvinning, AI",
+        "Business performance management: overvåking mot mål og KPI-er",
+        "Brukergrensesnitt: dashboard (Power BI, Tableau, Superset)",
+        "Sammenhengen data → informasjon → beslutning → handling"
       ],
-      "modellsvar": "Datalekkasje oppstår når modellen får informasjon som ikke ville vært tilgjengelig ved reell prediksjon, for eksempel fra testsettet eller fremtiden. Del data før du tilpasser forbehandling, og lær skaleringsparametere og erstatningsverdier bare fra treningssettet. Bruk deretter de samme parameterne på testsettet. Ved tidsserier bør evalueringen bruke senere observasjoner enn treningen."
+      "modellsvar": "Et BI-system har fire komponenter. Datavarehuset med kildedata er fundamentet; det fylles med ETL-verktøy som Pentaho Kettle, Talend eller SSIS og kan kjøres i Hive, BigQuery eller Redshift. Business analytics er verktøyene som manipulerer og analyserer dataene, som OLAP-kuber og datautvinning. Business performance management overvåker ytelse mot strategiske mål med KPI-er og scorekort. Brukergrensesnittet, typisk et dashboard i Power BI, Tableau eller Superset, gjør innsikten tilgjengelig. Sammen støtter de kjeden fra data via informasjon til beslutninger og handling."
+    },
+    {
+      "id": "co4033-ls4-02",
+      "type": "langsvar",
+      "kapittel": 4,
+      "sporsmal": "Forklar forskjellen på datavarehus, datasjø og lakehouse, med eksempler.",
+      "momenter": [
+        "Datavarehus: strukturerte data, schema-on-write, ACID, bare SQL, høy ytelse",
+        "Datasjø: alle datatyper i åpne formater, billig, schema-on-read, lav pålitelighet",
+        "Lakehouse: datasjøens lagring med et metadatalag som gir ACID og styring",
+        "Bruk: varehus for BI, sjø for ML, lakehouse for begge",
+        "Eksempler: Redshift/BigQuery, S3-datasjø, Databricks"
+      ],
+      "modellsvar": "Et datavarehus lagrer strukturerte, rensede data med skjema definert før skriving, gir ACID-transaksjoner, finkornet styring og høy ytelse, men er lukket, gir bare SQL og blir dyrt å skalere; eksempler er Amazon Redshift og Google BigQuery. En datasjø lagrer alle datatyper rått i åpne formater til lav pris og tolker skjema ved lesing, men har lav pålitelighet og svak styring, og kan bli en «data swamp»; et eksempel er rå filer i Amazon S3. Et lakehouse legger et metadata-, mellomlagrings- og indekseringslag oppå datasjøen, slik at man får ACID og styring med åpne formater og billig lagring, og kan bruke samme data til BI og maskinlæring; eksempler er Databricks og Google BigLake."
+    },
+    {
+      "id": "co4033-ls4-03",
+      "type": "langsvar",
+      "kapittel": 4,
+      "sporsmal": "Hva er forskjellen på et beslutningsstøttesystem (DSS) og et BI-system?",
+      "momenter": [
+        "Begge støtter beslutninger og har felles røtter",
+        "DSS: bygd for et bestemt problem, inneholder analysemodeller",
+        "BI: tilgang til informasjon via datavarehus, rapportering og dashboards",
+        "BI støtter beslutninger mer indirekte, med ledelses- og strategifokus",
+        "Et begrunnet svar på hvilken som omfatter den andre"
+      ],
+      "modellsvar": "Både DSS og BI er datastøttet beslutningsstøtte. Et DSS er typisk bygd for å løse et bestemt, ofte semistrukturert problem, og inneholder modeller som brukeren kan kjøre hva-om-analyser mot. Et BI-system gir bred tilgang til historiske og nåværende data gjennom et datavarehus, rapportering, OLAP og dashboards, og støtter beslutninger mer indirekte ved at brukeren selv oppdager problemer og muligheter. BI har sterkere ledelses- og strategiorientering gjennom BPM. Etter hvert som flere analyseverktøy legges inn i BI-suitene, blir forskjellen mindre, og man kan argumentere for at et moderne BI-system er en form for DSS."
+    },
+    {
+      "id": "co4033-k5-001",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvordan defineres en big data-kapabilitet i forelesningen?",
+      "alternativer": [
+        "Mengden data en virksomhet eier",
+        "Antall servere i en klynge",
+        "Et bestemt programvareprodukt",
+        "Evnen til å gjøre noe med big data"
+      ],
+      "fasit": 3,
+      "forklaring": "Den beskrives også som en ressurs, et strategisk kjerneaktivum og en viktig investering.\n\nKilde: Kap. 5, lysbilde 9."
+    },
+    {
+      "id": "co4033-k5-002",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er big data-kapabiliteter positivt relatert til ifølge forskningen som vises?",
+      "alternativer": [
+        "Lavere datavolum",
+        "Bærekraftige konkurransefortrinn",
+        "Færre ansatte i IT-avdelingen",
+        "Mindre behov for datakvalitet"
+      ],
+      "fasit": 1,
+      "forklaring": "De er også signifikant positivt korrelert med kunnskapsoverføring, mestringstro og innovasjonsytelse.\n\nKilde: Kap. 5, lysbilde 9."
+    },
+    {
+      "id": "co4033-k5-003",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilken er IKKE en av big data-kapabilitetene lysbildene lister?",
+      "alternativer": [
+        "Optimalisering av personalforvaltning",
+        "Helhetlig støtte for kunderelasjonshåndtering",
+        "Garanti for at dataene aldri har kvalitetsproblemer",
+        "Optimalisering av forsyningskjeden"
+      ],
+      "fasit": 2,
+      "forklaring": "Listen er personalforvaltning, CRM, produksjon, forsyningskjede og strategiske beslutninger.\n\nKilde: Kap. 5, lysbilde 11."
+    },
+    {
+      "id": "co4033-k5-004",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva gir big data kombinert med dataanalyse ifølge forelesningen?",
+      "alternativer": [
+        "Big data-analysekapabiliteter for virksomheten",
+        "Et datavarehus som ikke trenger ETL",
+        "En fullstendig erstatning for BI-systemer",
+        "Et nytt distribuert filsystem"
+      ],
+      "fasit": 0,
+      "forklaring": "Støtten gis fra mange perspektiver (forretningsprosesser) og til mange brukergrupper (ledelsesnivåer).\n\nKilde: Kap. 5, lysbilde 10."
+    },
+    {
+      "id": "co4033-k5-005",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilken teknologi er nevnt under lakehouse-håndtering?",
+      "alternativer": [
+        "Amazon Redshift",
+        "Databricks",
+        "Apache Druid",
+        "SQLite"
+      ],
+      "fasit": 1,
+      "forklaring": "Lakehouse: Databricks, Oracle Data Lakehouse, Microsoft Fabric Lakehouse, Google BigLake. Redshift er datavarehus, Druid OLAP, SQLite innebygd.\n\nKilde: Kap. 5, lysbilde 15."
+    },
+    {
+      "id": "co4033-k5-006",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilke systemer nevnes som databaser for OLAP?",
+      "alternativer": [
+        "Apache Druid, Apache Pinot og ClickHouse",
+        "MySQL, PostgreSQL og Oracle Database",
+        "MongoDB, Neo4J og Apache Cassandra",
+        "SQLite, DuckDB og Microsoft Access"
+      ],
+      "fasit": 0,
+      "forklaring": "De andre gruppene er SQL, NoSQL og innebygde databaser.\n\nKilde: Kap. 5, lysbilde 16."
+    },
+    {
+      "id": "co4033-k5-007",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilket system er i gruppen for datavarehushåndtering?",
+      "alternativer": [
+        "Neo4J",
+        "DuckDB",
+        "Google BigQuery",
+        "Microsoft Fabric Lakehouse"
+      ],
+      "fasit": 2,
+      "forklaring": "Datavarehus: Apache AsterixDB, Myria, Google BigQuery, Amazon Redshift, Apache Hive.\n\nKilde: Kap. 5, lysbilde 14."
+    },
+    {
+      "id": "co4033-k5-008",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilke systemer står under «Others» i kapittel 5?",
+      "alternativer": [
+        "Hive og HBase",
+        "Druid og Pinot",
+        "VoltDB og LeanXcale",
+        "SQLite og DuckDB"
+      ],
+      "fasit": 3,
+      "forklaring": "Begge er innebygde databaser; DuckDB er analytisk, SQLite transaksjonell.\n\nKilde: Kap. 5, lysbilde 17."
+    },
+    {
+      "id": "co4033-k5-009",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilket kriterium er IKKE blant de lysbildene bruker for å vurdere datahåndtering?",
+      "alternativer": [
+        "Merkevarens popularitet",
+        "Datakompleksitet",
+        "Skalerbarhet",
+        "Integrerte funksjoner"
+      ],
+      "fasit": 0,
+      "forklaring": "Kriteriene er datakompleksitet, skalerbarhet, applikasjonsutvikling, integrerte funksjoner og sikkerhet.\n\nKilde: Kap. 5, lysbilde 13."
+    },
+    {
+      "id": "co4033-k5-010",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er big data-analysens bidrag i banknæringen ifølge case-eksemplene?",
+      "alternativer": [
+        "Optimalisere ruter og kjøreatferd",
+        "Avdekke svindel og redusere risiko",
+        "Forhindre dødsfall",
+        "Planlegge vedlikehold av kjøretøy"
+      ],
+      "fasit": 1,
+      "forklaring": "Transport handler om ruter, kjøreatferd og vedlikehold; helse om å forhindre dødsfall og bedre livskvaliteten.\n\nKilde: Kap. 5, lysbilde 18."
+    },
+    {
+      "id": "co4033-k5-011",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilket eksempel hører til kundereisen i case-eksemplene?",
+      "alternativer": [
+        "Deteksjon av svindel i transaksjoner",
+        "Ruteoptimalisering",
+        "Blokkreplikering",
+        "Prediksjon av kundeavgang"
+      ],
+      "fasit": 3,
+      "forklaring": "Kundereisen omfatter etterspørselsprognoser, trender, prisoptimalisering, atferdsmønstre og kundeavgang.\n\nKilde: Kap. 5, lysbilde 18."
+    },
+    {
+      "id": "co4033-k5-012",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hva er sluttpoenget i konklusjonen i kapittel 5?",
+      "alternativer": [
+        "BI-systemer blir overflødige så snart virksomheten har tatt i bruk big data",
+        "All analyse bør gjøres i regneark for å holde kostnadene så lave som mulig",
+        "Big data og analyse gir datadrevne aktiviteter og dermed bærekraftige konkurransefortrinn",
+        "Big data erstatter behovet for både relasjonsdatabaser og datavarehus"
+      ],
+      "fasit": 2,
+      "forklaring": "Konklusjonen samler kapabiliteter, analysekapabiliteter og teknologier for big data og BI.\n\nKilde: Kap. 5, lysbilde 21."
+    },
+    {
+      "id": "co4033-k5-013",
+      "type": "flervalg",
+      "kapittel": 5,
+      "sporsmal": "Hvilke NewSQL-systemer nevnes i kapittel 5?",
+      "alternativer": [
+        "MongoDB, Neo4J og HBase",
+        "Druid, Pinot og ClickHouse",
+        "BigQuery, Redshift og Hive",
+        "VoltDB, LeanXcale og Google F1"
+      ],
+      "fasit": 3,
+      "forklaring": "NewSQL kombinerer NoSQLs skalerbarhet med relasjonsdatabasenes konsistens og SQL.\n\nKilde: Kap. 5, lysbilde 13."
+    },
+    {
+      "id": "co4033-ls5-01",
+      "type": "langsvar",
+      "kapittel": 5,
+      "sporsmal": "Identifiser big data-kapabiliteter som støtter virksomheten, og forklar hvilke brukergrupper som har nytte av dem.",
+      "momenter": [
+        "Kapabilitet = evnen til å gjøre noe med big data",
+        "Personalforvaltning, CRM, produksjon, forsyningskjede, strategiske beslutninger",
+        "Brukergrupper = ledelsesnivåene: operativt, taktisk, strategisk",
+        "Eksempler knyttet til hver gruppe",
+        "Gir bærekraftige konkurransefortrinn"
+      ],
+      "modellsvar": "En big data-kapabilitet er evnen til å gjøre noe med big data, og den henger sammen med innovasjon og bærekraftige konkurransefortrinn. Forelesningen lister optimalisering av personalforvaltning, helhetlig kundehåndtering, optimalisering av produksjon og forsyningskjede, og støtte for strategiske beslutninger. Brukergruppene tilsvarer ledelsesnivåene: operative ansatte trenger sanntidsvarsler, som svindelvarsler i en bank; mellomledere trenger oppsummeringer og avvik, som ukentlig kundeavgang per region; toppledelsen trenger trender og prognoser, som et scorekort for markedsandel og lønnsomhet."
+    },
+    {
+      "id": "co4033-ls5-02",
+      "type": "langsvar",
+      "kapittel": 5,
+      "sporsmal": "Beskriv sammenhengen mellom big data, dataanalyse og dagens DBMS-er for business intelligence.",
+      "momenter": [
+        "Big data er råmaterialet med V-egenskapene",
+        "Dataanalyse (forbehandling, MapReduce, Spark) gjør det om til innsikt",
+        "DBMS-er lagrer og leverer: SQL, NoSQL, NewSQL, datavarehus, lakehouse, OLAP",
+        "BI-systemet presenterer innsikten som beslutningsstøtte",
+        "Eksempel fra eget prosjekt"
+      ],
+      "modellsvar": "Big data er råmaterialet: store, raske og varierte data fra mange kilder. Dataanalyse gjør dem om til innsikt gjennom forbehandling, distribuert behandling med MapReduce eller Spark og analysemodeller. Dagens DBMS-er er infrastrukturen: NoSQL og HDFS lagrer rådata, datavarehus og lakehouse som BigQuery og Databricks holder de rensede, integrerte dataene, og OLAP-databaser som Druid eller ClickHouse gir raske aggregeringer. BI-systemet henter fra disse og presenterer resultatet i dashboards for beslutningstakerne. I et e-handelsprosjekt kan klikkstrømmer lagres i en datasjø, aggregeres med Spark, lastes i et varehus og vises i Power BI."
+    },
+    {
+      "id": "co4033-e23-01",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 1. HDFS håndterer tap av data og gjør spørringer raskere ved å …",
+      "alternativer": [
+        "A. replikere og fordele blokkene tilfeldig i systemet",
+        "B. replikere og mellomlagre (cache) dataene",
+        "C. replikere og fordele blokkene etter rack awareness",
+        "D. replikere og samle maskinene nær hverandre",
+        "E. replikere og styre alt gjennom en master"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. HDFS lagrer hver blokk i flere kopier (standard 3) og plasserer dem etter rack awareness: én kopi på én rack og de to andre på en annen rack. Det tåler at en hel rack faller ut, og gir lesing nær dataene.\n\nHører til: Kap. 2 (HDFS)."
+    },
+    {
+      "id": "co4033-e23-02",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 2. Velg riktig påstand.",
+      "alternativer": [
+        "A. Ytelse, sikkerhet, skalerbarhet og kostnad er faktorer som påvirker valget av DBMS i BI",
+        "B. Kostnad, support, funksjonalitet og vedlikehold er faktorene som påvirker valget av DBMS i BI",
+        "C. Extraction, transformation og loading er hovedstegene i dataintegrasjon",
+        "D. B og C er riktige",
+        "E. A og C er riktige"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. Fasiten regner A og C som riktige. ETL er hovedstegene når data integreres i et datavarehus. Fasiten regner B som feil; lista i B er ikke uriktig i seg selv, men den er ikke den forelesningen brukte.\n\nHører til: Kap. 2 (ETL) og kap. 5 (DBMS-er i BI)."
+    },
+    {
+      "id": "co4033-e23-03",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 3. Når bør big data behandles i batch (lotter), og hvor mange måter finnes det å gjøre det på?",
+      "alternativer": [
+        "A. Når dataene må returneres umiddelbart, for ustrukturerte data, og det finnes 2 måter",
+        "B. Når dataene ikke krever umiddelbart svar, de er strukturerte, og det finnes 3 måter",
+        "C. Når dataene er strukturerte, og det finnes 3 måter",
+        "D. Når dataene ikke krever umiddelbart svar, og det finnes 2 måter"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Batch brukes når resultatet ikke trengs med én gang; data samles over tid og behandles samlet. Batch er ikke begrenset til strukturerte data. «2 måter» viser til inndelingen i 2023-forelesningen og er ikke noe du finner i årets lysbilder.\n\nHører til: Kap. 2 (batch og strøm)."
+    },
+    {
+      "id": "co4033-e23-04",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 4. Hva heter spørrespråket i Neo4j?",
+      "alternativer": [
+        "A. SQL",
+        "B. Cypher",
+        "C. CQL",
+        "D. XQuery"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. Neo4j er en grafdatabase og bruker Cypher, med mønstre som (a)-[:KJENNER]->(b). CQL er Cassandra Query Language.\n\nHører til: Kap. 2 (NoSQL-typer)."
+    },
+    {
+      "id": "co4033-e23-05",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 5. Hvilke påstander gjelder big data-analyse?",
+      "alternativer": [
+        "A. Data Lakehouse følger trinnene Raw Ingestion → Filtered, Cleaned, Augmented → Business-level Aggregation",
+        "B. Apache Sqoop kan ikke overføre data fra relasjonsdatabaser til HDFS",
+        "C. Kafka bygger på modellen Message-Driven Programming",
+        "D. Alle påstandene er riktige",
+        "E. A og C er riktige"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. A er medaljongarkitekturen (bronse, sølv, gull). C: Kafka er en meldingsplattform der produsenter skriver og konsumenter leser meldinger. B er feil: Sqoop er laget nettopp for å importere fra relasjonsdatabaser til HDFS (og eksportere tilbake).\n\nHører til: Kap. 2 (Kafka) og kap. 4 (lakehouse)."
+    },
+    {
+      "id": "co4033-e23-06",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 6. Apache Spark er et flerspråklig rammeverk for databehandling, analyse og maskinlæring på én maskin eller i en klynge. Hvilken arkitektur bygger Spark på (i følge 2023-eksamenen)?",
+      "alternativer": [
+        "A. Hadoop HDFS",
+        "B. Hadoop Hive og Hadoop HDFS",
+        "C. PyTorch og Hadoop Hive",
+        "D. Data Warehouse"
+      ],
+      "fasit": 0,
+      "forklaring": "Fasit: A. Spark leser typisk fra HDFS og kan kjøre på YARN i Hadoop-klyngen. Spark er likevel ikke avhengig av HDFS; den kan også bruke S3, lokale filer og andre kilder. Fasiten er A.\n\nHører til: Kap. 3 (Apache Spark)."
+    },
+    {
+      "id": "co4033-e23-07",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 7. Hva er Data-based Knowledge?",
+      "alternativer": [
+        "A. Knowledge derived from data through the use of Business Intelligence Tools and the process of Data Warehousing",
+        "B. Knowledge derived from data through the use of Business Intelligence Tools",
+        "C. Knowledge derived from data only",
+        "D. A og C",
+        "E. A og B"
+      ],
+      "fasit": 0,
+      "forklaring": "Fasit: A. Fasiten er den mest fullstendige definisjonen: kunnskap utledet fra data gjennom BI-verktøy og datavarehusprosessen.\n\nHører til: Kap. 4 (BI og datavarehus)."
+    },
+    {
+      "id": "co4033-e23-08",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 8. Hvilken fordel gir HDFS?",
+      "alternativer": [
+        "A. High up processing",
+        "B. Støtter bare batchbehandling",
+        "C. Mangel på sikkerhet",
+        "D. Minimal nettverkstrafikk",
+        "E. Dataene er distribuert"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Fasiten er D: HDFS flytter beregningen til dataene (data locality), så lite data sendes over nettet. At dataene er distribuert (E) er en egenskap, ikke fordelen spørsmålet er ute etter.\n\nHører til: Kap. 2 (HDFS)."
+    },
+    {
+      "id": "co4033-e23-09",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 9. Velg riktig påstand.",
+      "alternativer": [
+        "A. Tabellene i OLAP er normaliserte",
+        "B. Et datavarehus kan inneholde data fra mange ulike kilder",
+        "C. Redundante data finnes alltid i et BI-system",
+        "D. Alle påstandene er feil",
+        "E. Dataene er distribuert"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. Datavarehuset integrerer data fra mange kilder. OLAP bruker vanligvis denormaliserte strukturer som stjerneskjema, så A er feil. C er feil på grunn av «alltid». Alternativ E het F i originalen og ser ut til å være kopiert inn fra forrige oppgave.\n\nHører til: Kap. 4 (datavarehus og stjerneskjema)."
+    },
+    {
+      "id": "co4033-e23-10",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 10. Er påstanden «MongoDB is a source-available cross-platform document-oriented database and leading SQL database» riktig?",
+      "alternativer": [
+        "A. Feil",
+        "B. Riktig"
+      ],
+      "fasit": 0,
+      "forklaring": "Fasit: A. MongoDB er en dokumentorientert NoSQL-database, ikke en SQL-database. Første del av setningen stemmer, men «leading SQL database» gjør den feil.\n\nHører til: Kap. 2 (MongoDB)."
+    },
+    {
+      "id": "co4033-e23-11",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 11. Hvilken påstand om Online Analytical Processing (OLAP) er feil?",
+      "alternativer": [
+        "A. OLAP lar brukeren «analyze information from multiple database systems at the same time»",
+        "B. OLAP er organisert i én eller flere kuber",
+        "C. OLAP-kuben er en datastruktur optimalisert for «low data analysis» og brukes til å «perform complex analytical queries»",
+        "D. OLAP består av «numeric facts called measures which are categorized by dimensions»",
+        "E. OLAP er en teknologi som «organizes large business databases and supports complex analysis»"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. Kuben er optimalisert for rask (quick/fast) dataanalyse, ikke «low data analysis». Resten beskriver OLAP riktig.\n\nHører til: Kap. 4 (OLAP og kuber)."
+    },
+    {
+      "id": "co4033-e23-12",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 12. Fyll inn: «_______ in business intelligence allows huge data and reports to be read in a single graphical interface».",
+      "alternativer": [
+        "A. Reports",
+        "B. Launchpad",
+        "C. Dashboard",
+        "D. OLAP",
+        "E. OLTP"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. Et dashbord samler nøkkeltall, grafer og rapporter i ett grafisk grensesnitt.\n\nHører til: Kap. 4 (BI-komponenter)."
+    },
+    {
+      "id": "co4033-e23-13",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 13. Velg riktig påstand (Apache Drill).",
+      "alternativer": [
+        "A. Query Engine består av SQL Parser, Optimizer, Executor og Metadata Manager",
+        "B. DrillBit består av Optimizer, Metadata Manager og Storage Engine Interface",
+        "C. Metadata Manager i Query Engine analyserer og velger den optimale måten å utføre spørringen på",
+        "D. Alle påstandene er riktige",
+        "E. Alle påstandene er feil"
+      ],
+      "fasit": 0,
+      "forklaring": "Fasit: A. Det er Optimizer, ikke Metadata Manager, som velger den beste utførelsesplanen, så C er feil. B gir en ufullstendig oppramsing av DrillBit. Drill er bare nevnt kort i årets lysbilder.\n\nHører til: Kap. 5 (teknologier)."
+    },
+    {
+      "id": "co4033-e23-14",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 14. Velg riktig påstand.",
+      "alternativer": [
+        "A. High-level data er data som er organisert og analysert for å hente ut nyttig, meningsfull informasjon",
+        "B. High-level data gjør at datautvinningen kan hoppe over analysesteget",
+        "C. Salg av et produkt over tid regnes som high-level data",
+        "D. Alle påstandene er riktige",
+        "E. A og C er riktige"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. High-level data er aggregert og bearbeidet, som salg per produkt over tid. Det fjerner ikke behovet for analyse, så B er feil.\n\nHører til: Kap. 1 (data, informasjon, kunnskap)."
+    },
+    {
+      "id": "co4033-e23-15",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 15. Velg riktig påstand.",
+      "alternativer": [
+        "A. Self-Service BI går ut på at dataene analyseres automatisk",
+        "B. Skybasert BI gir bedre kostnadseffektivitet enn BI-systemer på egne servere (on-premise)",
+        "C. Begge påstandene er riktige",
+        "D. Begge påstandene er feil"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. Self-Service BI betyr at forretningsbrukere lager egne rapporter og analyser uten å gå via IT, ikke at analysen er automatisk. Skybasert BI krever ingen egen maskinvare og betales etter bruk.\n\nHører til: Kap. 4 og 5 (BI-teknologier)."
+    },
+    {
+      "id": "co4033-e23-16",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 16. Velg riktig påstand.",
+      "alternativer": [
+        "A. Big data-analyse lar virksomheter samle, behandle og analysere store data for å skape verdifull informasjon til forretningsbeslutninger",
+        "B. Sensitive data er en utfordring ved lagring og analyse av big data",
+        "C. Konsistens og nøyaktighet er bare et krav for strukturerte data",
+        "D. Alle påstandene er riktige",
+        "E. A og B er riktige"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. Datakvalitet (konsistens og nøyaktighet) gjelder alle typer data, så C er feil. Personvern og sensitive data er en kjent utfordring.\n\nHører til: Kap. 1 (utfordringer) og kap. 5."
+    },
+    {
+      "id": "co4033-e23-17",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 17. Velg riktig påstand.",
+      "alternativer": [
+        "A. SSD RAID er mye brukt fordi prisen passer små og mellomstore bedrifter",
+        "B. En ulempe ved on-premise er at forretningsinformasjon lett kan stjeles",
+        "C. Begge påstandene er riktige",
+        "D. Begge påstandene er feil"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. SSD RAID er dyrt og ikke valgt av små bedrifter på grunn av prisen. Risiko for at data kommer på avveie er et argument som oftere brukes mot sky, ikke mot on-premise.\n\nHører til: Kap. 5 (DBMS-er og lagring i BI)."
+    },
+    {
+      "id": "co4033-e23-18",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 18. Velg riktig påstand.",
+      "alternativer": [
+        "A. Flate filer, eksterne data og OLTP-databaser er datakilder",
+        "B. Et datavarehus lagrer data adskilt fra virksomhetens operative databaser",
+        "C. Pivot er et OLAP-verktøy som roterer avhengige datafelt og gir innsyn fra mange vinkler",
+        "D. Alle påstandene er riktige",
+        "E. Ingen påstand er riktig"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Alle tre stemmer. Datavarehuset er adskilt fra OLTP-systemene slik at analyse ikke belaster driften.\n\nHører til: Kap. 4 (datavarehus og OLAP)."
+    },
+    {
+      "id": "co4033-e23-19",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 19. Hvilke påstander stemmer om HDFS-arkitekturen?\n(1) HDFS er bygd på en master–slave-modell.\n(2) Secondary NameNode er en reserve som tar over når NameNode går ned.\n(3) Data i HDFS replikeres flere ganger for å tåle tap av data (fault tolerance).\n(4) Ved skriving sender NameNode dataene til DataNodene som lagrer dem.\n(5) Ved lesing leser NameNode filens data fra DataNodene og setter dem sammen til resultatfilen.",
+      "alternativer": [
+        "A. Bare (1), (3) og (4)",
+        "B. Bare (1), (3) og (5)",
+        "C. Alle påstandene er riktige",
+        "D. Bare (2), (3) og (5)",
+        "E. Bare (1), (4) og (5)"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. (1) og (3) er riktige. (2) er feil: Secondary NameNode lager sjekkpunkter av metadataene og er ikke en reserve som tar over. (4) er feil: klienten skriver direkte til DataNodene. Fasitfelle: (5) er egentlig også feil, siden klienten leser blokkene direkte fra DataNodene og NameNode bare gir blokkadressene. Men et svar med bare (1) og (3) finnes ikke, og fasiten er B.\n\nHører til: Kap. 2 (HDFS)."
+    },
+    {
+      "id": "co4033-e23-20",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 20. Velg riktig påstand.",
+      "alternativer": [
+        "A. Persondata og kundesamtaler bidrar i stor grad til datagrunnlaget for BI",
+        "B. Prognosemodeller i BI bygger hovedsakelig på analyse, statistikk og/eller maskinlæring",
+        "C. Tables, Power BI, QLiK og Excel brukes ofte i BI",
+        "D. Alle påstandene er riktige",
+        "E. A og C er riktige"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. Fasiten er B. Fasitfelle: C ville vært riktig hvis «Tables» betyr Tableau; skrivefeilen gjør trolig påstanden feil med vilje. Fasiten regner også A som feil, trolig på grunn av «i stor grad».\n\nHører til: Kap. 4 og 5."
+    },
+    {
+      "id": "co4033-e23-21",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 21. Hvilken struktur bygger NoSQL-databasen MongoDB på?",
+      "alternativer": [
+        "A. Key-value",
+        "B. Dokumenter",
+        "C. Grafer",
+        "D. Kolonner",
+        "E. JSON"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. MongoDB lagrer dokumenter i BSON, et binært JSON-lignende format. JSON er formatet, dokument er datamodellen.\n\nHører til: Kap. 2 (MongoDB)."
+    },
+    {
+      "id": "co4033-e23-22",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 22. Hive bruker Schema on Read (oppgaven skriver «On Road»): dataene trenger ikke passe med et forhåndsdefinert skjema når de lastes. I hvilken rekkefølge skjer Schema on Read?",
+      "alternativer": [
+        "A. Extract-Transform-Load",
+        "B. Transform-Extract-Load",
+        "C. Extract-Load-Transform",
+        "D. Transform-Load-Extract",
+        "E. Load-Extract-Transform"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. Med Schema on Read lastes rådata inn først, og skjema og transformasjon brukes når dataene leses. Det tilsvarer ELT. Schema on Write, som i et tradisjonelt datavarehus, tilsvarer ETL.\n\nHører til: Kap. 2 (ETL og ELT, Hadoop-økosystemet)."
+    },
+    {
+      "id": "co4033-e23-23",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 23. Velg riktig påstand.",
+      "alternativer": [
+        "A. Spark gir lav kostnad",
+        "B. Spark er mindre effektiv enn MapReduce",
+        "C. Map, shuffle og reduce er fasene i MapReduce",
+        "D. B og C er riktige",
+        "E. Alle påstandene er riktige"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. Spark er vanligvis raskere enn MapReduce fordi den holder data i minnet, men krever mye RAM og derfor dyrere maskiner, så A regnes som feil.\n\nHører til: Kap. 3 (MapReduce og Spark)."
+    },
+    {
+      "id": "co4033-e23-24",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 24. Hvilke påstander om Business Intelligence (BI) er riktige?",
+      "alternativer": [
+        "A. BI er en teknologibasert prosess som analyserer data og gir meningsfull informasjon som hjelper ledere og ansatte å ta beslutninger",
+        "B. BI får stadig mer oppmerksomhet på grunn av utviklingen innen big data",
+        "C. Bedrifter bruker BI til å ta beslutninger direkte på rådata de samler inn fra daglig drift",
+        "D. Takket være BI kan Spotify forstå brukernes musikksmak og spille sanger fortløpende",
+        "E. A, B og D"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. C er feil fordi BI bearbeider, integrerer og analyserer dataene før beslutninger tas.\n\nHører til: Kap. 4 (Hva er BI?)."
+    },
+    {
+      "id": "co4033-e23-25",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 25. Hvilke funksjoner brukes til dypere analyse i OLAP?",
+      "alternativer": [
+        "A. Roll up, drill, slice, pivot",
+        "B. Drill down, roll up",
+        "C. Roll up, drill down, slice and dice",
+        "D. Roll up, drill down, slice and dice, pivot",
+        "E. Roll up, roll down, slice and dice, pivot"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. De fem klassiske OLAP-operasjonene er roll-up, drill-down, slice, dice og pivot. «Roll down» finnes ikke.\n\nHører til: Kap. 4 (OLAP)."
+    },
+    {
+      "id": "co4033-e23-26",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 26. Hvilken påstand er feil?",
+      "alternativer": [
+        "A. OLAP-data har kubeform og er strukturert",
+        "B. OLTP-data har tabellform og er strukturert",
+        "C. OLTP kan håndtere mange transaksjoner samtidig",
+        "D. OLAP brukes bare til rask dataanalyse",
+        "E. A, B og C"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. «Bare» gjør D feil. OLAP brukes også til planlegging, prognoser, budsjettering og rapportering.\n\nHører til: Kap. 4 (OLTP og OLAP)."
+    },
+    {
+      "id": "co4033-e23-27",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 27. Om sikkerhetskopi og gjenoppretting: må OLAP oftere enn OLTP ta sikkerhetskopi?",
+      "alternativer": [
+        "A. Riktig",
+        "B. Feil",
+        "C. Avhenger av dataene"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. OLTP må ta hyppig sikkerhetskopi fordi det er kilden til driftsdataene. OLAP kan lastes på nytt fra OLTP-systemene, så sikkerhetskopi er mindre kritisk.\n\nHører til: Kap. 4 (OLTP og OLAP)."
+    },
+    {
+      "id": "co4033-e23-28",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 28. Velg riktig påstand.",
+      "alternativer": [
+        "A. Binning, regresjon og klynging brukes til å fjerne støy i data",
+        "B. Spark kan behandle strukturerte data",
+        "C. Datareduksjon gjør at analytikeren får flere data",
+        "D. Alle påstandene er riktige",
+        "E. A og B er riktige"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. Datareduksjon gir en mindre representasjon som gir omtrent samme analyseresultat, ikke flere data, så C er feil. Spark SQL og DataFrames behandler strukturerte data.\n\nHører til: Kap. 2 (forbehandling) og kap. 3 (Spark)."
+    },
+    {
+      "id": "co4033-e23-29",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 29. Fyll inn: «Descriptive analytics is a statistical method that is used to search and summarize _______ in order to identify patterns or meaning».",
+      "alternativer": [
+        "A. Account data",
+        "B. Historical data",
+        "C. Financial data",
+        "D. A, B og C"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. Deskriptiv analyse beskriver hva som har skjedd, basert på historiske data.\n\nHører til: Kap. 3 (typer big data-analyse)."
+    },
+    {
+      "id": "co4033-e23-30",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 30. Velg riktig påstand.",
+      "alternativer": [
+        "A. Big Data Management er prosessen med å organisere, administrere og styre store mengder strukturerte og ustrukturerte data",
+        "B. Målet med Big Data Management er å sikre kvaliteten på store datasett, lagringen og tilgangen til dem",
+        "C. Data Governance omfatter prosesser for sikkerhet og personvern",
+        "D. Alle påstandene er riktige",
+        "E. Alle påstandene er feil"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Alle tre er standarddefinisjoner.\n\nHører til: Kap. 1 og kap. 5."
+    },
+    {
+      "id": "co4033-e23-31",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 31. Er det nødvendig å sette opp sikkerhetsmekanismer i en NoSQL-database?",
+      "alternativer": [
+        "A. Nei, den har sine egne sikkerhetsmekanismer",
+        "B. Ja",
+        "C. Nei, NoSQL inneholder ikke viktig informasjon",
+        "D. Nei, NoSQL er vanskelig å angripe"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. Mange NoSQL-databaser har svake standardinnstillinger, og åpne MongoDB-instanser er et kjent problem. Autentisering, tilgangskontroll og kryptering må settes opp.\n\nHører til: Kap. 2 (NoSQL)."
+    },
+    {
+      "id": "co4033-e23-32",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 32. Velg riktig påstand.",
+      "alternativer": [
+        "A. NoSQL-databaser finnes i mange typer, avhengig av datamodellen",
+        "B. MySQL, SQL Server og Oracle Database XE er relasjonsdatabaser",
+        "C. NoSQL gjør det mulig å kjøre komplekse spørringer",
+        "D. Både A og B",
+        "E. Både B og C"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. NoSQL-typene er dokument, nøkkel–verdi, kolonnefamilie og graf. Komplekse spørringer med join er relasjonsdatabasenes styrke, så C regnes som feil.\n\nHører til: Kap. 2 (databaseteknologier)."
+    },
+    {
+      "id": "co4033-e23-33",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 33. Velg riktig påstand.",
+      "alternativer": [
+        "A. PySpark kan behandle store data parallelt",
+        "B. Hive er et system basert på en SQL-lignende modell",
+        "C. Bulk Synchronous Parallel brukes til parallell behandling av små data",
+        "D. Alle tre er riktige",
+        "E. A og B er riktige"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. Hive har HiveQL, et SQL-lignende språk over Hadoop. BSP (grunnlaget for blant annet Pregel og Giraph) brukes til store parallelle beregninger, særlig på grafer, ikke til små data.\n\nHører til: Kap. 2 (Hadoop-økosystemet) og kap. 3."
+    },
+    {
+      "id": "co4033-e23-34",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 34. Gamle data beholdes når nye lastes inn, og man gir tilgang til store mengder historiske data. Dataene er ofte organisert etter emne og støtter komplekse uttrekk. Hva er dette hovedkjennetegnene på?",
+      "alternativer": [
+        "A. Datavarehus",
+        "B. Database",
+        "C. Datasjø (data lake)",
+        "D. Data mart"
+      ],
+      "fasit": 0,
+      "forklaring": "Fasit: A. Inmons definisjon: emneorientert, integrert, tidsvariant og ikke-flyktig. Et data mart er emneorientert, men avgrenset til én avdeling.\n\nHører til: Kap. 4 (datavarehus)."
+    },
+    {
+      "id": "co4033-e23-35",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 35. Velg riktig påstand.",
+      "alternativer": [
+        "A. Big Data Management omfatter organisering, administrasjon og styring (governance) av data",
+        "B. Cassandra er åpen kildekode",
+        "C. Cassandra kan brukes med Cassandra Query Language (CQL)",
+        "D. Alle tre er riktige",
+        "E. A og B er riktige"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Cassandra er et åpen kildekode-prosjekt i Apache, og CQL er spørrespråket.\n\nHører til: Kap. 2 (NoSQL-typer)."
+    },
+    {
+      "id": "co4033-e23-36",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 36. Hvordan støtter Business Intelligence beslutninger?",
+      "alternativer": [
+        "A. Ved å gi rådata til beslutninger basert på intuisjon",
+        "B. Ved å automatisere beslutningsprosessen",
+        "C. Ved å presentere innsikt i data og trender, slik at beslutningene blir velbegrunnede",
+        "D. Ved å fjerne behovet for beslutninger i driften"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. BI gir beslutningsstøtte, men erstatter ikke beslutningstakeren.\n\nHører til: Kap. 4 (BIs rolle i beslutningsstøtte)."
+    },
+    {
+      "id": "co4033-e23-37",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 37. Hva er ikke en funksjon brukere av BI-applikasjoner forventer (i følge undersøkelsen i forelesningen)?",
+      "alternativer": [
+        "A. Bygge dashbord og visualisere data",
+        "B. Analysere data og lage rapporter",
+        "C. Datautvinning og prognoser for trender",
+        "D. Forretningsledelse og planlegging",
+        "E. Alle er feil"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. BI støtter ledelse og planlegging, men er ikke selv et verktøy for å drive virksomheten. Oppgaven viser til en undersøkelse fra 2023-forelesningen.\n\nHører til: Kap. 4 og 5."
+    },
+    {
+      "id": "co4033-e23-38",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 38. Hvilke seks hovedroller har DBMS-er i BI?",
+      "alternativer": [
+        "A. Data storage, data processing, data analysis, data visualization, data manipulation og data validation",
+        "B. Data collection, data extraction, data transformation, data loading, data analysis og data visualization",
+        "C. Data storage, data integration, data modeling, data querying, performance optimization og data security",
+        "D. Data acquisition, data cleansing, data enrichment, data transformation, data analysis og data visualization"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. Lagring, integrasjon, modellering, spørring, ytelsesoptimalisering og sikkerhet. B og D beskriver en ETL- eller analyseprosess, ikke DBMS-ens roller.\n\nHører til: Kap. 5 (Dagens DBMS-er i BI)."
+    },
+    {
+      "id": "co4033-e23-39",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 39. Hva støtter både relasjonsdatabaser (RDBMS) og NoSQL-databaser?",
+      "alternativer": [
+        "A. Object-relational mapping, columnar storage, sharding og normalization",
+        "B. B-tree indexing, bitmap indexing, query caching og query optimization",
+        "C. Master-slave replication, in-memory processing, data denormalization og materialized views",
+        "D. Indexing, partitioning, caching og compression"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Indeksering, partisjonering, caching og komprimering finnes i begge verdener. De andre alternativene har minst ett element som ikke er felles, som normalisering eller materialiserte visninger.\n\nHører til: Kap. 2 (databaseteknologier)."
+    },
+    {
+      "id": "co4033-e23-40",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 40. Hva er SAN og NAS?",
+      "alternativer": [
+        "A. SAN er et system, NAS er en applikasjon",
+        "B. Begge er applikasjoner",
+        "C. Begge er arkitekturer",
+        "D. En type lagringsstrategi"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. SAN (Storage Area Network) er et eget nettverk med blokklagring; NAS (Network Attached Storage) er fillagring over vanlig nettverk. Fasiten kaller begge lagringsarkitekturer. Fasitfelle: D kan virke like riktig, men fasiten er C. Temaet finnes ikke i årets lysbilder.\n\nHører til: Utenfor årets lysbilder."
+    },
+    {
+      "id": "co4033-e23-41",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 41. Kan NAS og SAN brukes sammen?",
+      "alternativer": [
+        "A. Nei, fordi de implementeres ulikt og har ulike komponenter",
+        "B. Ja, fordi det bare er to lagringsstrategier",
+        "C. Ja, fordi NAS og SAN kan brukes til ulike deler av systemet",
+        "D. Nei, fordi det er to ulike begreper"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. Mange virksomheter bruker SAN til databaser som trenger rask blokklagring og NAS til delte filer. Det finnes også samlede systemer (unified storage).\n\nHører til: Utenfor årets lysbilder."
+    },
+    {
+      "id": "co4033-e23-42",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 42. Hva er big data i business intelligence?",
+      "alternativer": [
+        "A. Informasjon fra big data kan gå ut over virksomhetens egne datakilder og gi en utvidet ressurs for markedsundersøkelser",
+        "B. En del av BI der datastrukturen er variert",
+        "C. Detaljert forretningsinformasjon fra big data er ofte resultatet av informasjonen i dataene",
+        "D. A og B",
+        "E. A og C"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. Fasiten er A og C.\n\nHører til: Kap. 5 (big data-kapabiliteter)."
+    },
+    {
+      "id": "co4033-e23-43",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 43. Hva støtter Apache Sqoop?",
+      "alternativer": [
+        "A. Import av hele tabeller",
+        "B. Import av deler av tabeller, utført på Apache Hadoop",
+        "C. Import av tabeller med partisjonene deres",
+        "D. A og B",
+        "E. A og C"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Sqoop kan importere hele tabeller og delmengder (med where eller en egen spørring) fra relasjonsdatabaser til HDFS, Hive eller HBase, som MapReduce-jobber.\n\nHører til: Kap. 2 (Hadoop-økosystemet); Sqoop er ikke i årets lysbilder."
+    },
+    {
+      "id": "co4033-e23-44",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 44. Fyll inn: «Predictive analytics uses statistics and _______ to determine performance».",
+      "alternativer": [
+        "A. Algoritmiske teknikker",
+        "B. Systemutvikling og designteknikker",
+        "C. Modelleringsteknikker og systemutvikling",
+        "D. Data analysis, machine learning, artificial intelligence"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Prediktiv analyse kombinerer statistikk med dataanalyse, maskinlæring og kunstig intelligens.\n\nHører til: Kap. 3 (typer big data-analyse)."
+    },
+    {
+      "id": "co4033-e23-45",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 45. Hvilke eksempler er anvendelser av prediktiv analyse?",
+      "alternativer": [
+        "A. Tale til tekst i en mobilapp",
+        "B. Utvikling av investeringsporteføljer",
+        "C. Værvarsel",
+        "D. A, B og C"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Alle bygger på modeller som forutsier et utfall: talegjenkjenning forutsier ord, porteføljemodeller forutsier avkastning og risiko, værmodeller forutsier været.\n\nHører til: Kap. 3 (typer big data-analyse)."
+    },
+    {
+      "id": "co4033-e23-46",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 46. Hver Kafka-partisjon har én server som fungerer som …",
+      "alternativer": [
+        "A. Leader",
+        "B. Staters",
+        "C. Followers",
+        "D. Producers",
+        "E. Worker"
+      ],
+      "fasit": 0,
+      "forklaring": "Fasit: A. Hver partisjon har én leder som håndterer lesing og skriving, og null eller flere følgere som replikerer lederen. Følgerne kan ta over hvis lederen faller ut.\n\nHører til: Kap. 2 (strømbehandling og Kafka)."
+    },
+    {
+      "id": "co4033-e23-47",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 47. Hvilke teknikker hører til prediktiv analyse?",
+      "alternativer": [
+        "A. Regresjon",
+        "B. Tidsserieanalyse og prognoser",
+        "C. Beslutningstrær og nevrale nett",
+        "D. A, B og C"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. Alle er vanlige prediktive teknikker. Årets lysbilder nevner regresjon og klassifikasjon.\n\nHører til: Kap. 3 (typer big data-analyse)."
+    },
+    {
+      "id": "co4033-e23-48",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 48. Tabellen under lages i Cassandra. Velg riktig påstand.",
+      "alternativer": [
+        "A. app_name og env er (sammensatt) partisjonsnøkkel",
+        "B. app_name er partisjonsnøkkel, env er clustering key",
+        "C. env er partisjonsnøkkel, app_name er clustering key",
+        "D. id er partisjonsnøkkel, app_name og env er clustering keys",
+        "E. Alle er feil"
+      ],
+      "fasit": 0,
+      "forklaring": "Fasit: A. De doble parentesene i PRIMARY KEY ((app_name, env)) gjør begge kolonnene til én sammensatt partisjonsnøkkel. Med PRIMARY KEY (app_name, env) ville app_name vært partisjonsnøkkel og env clustering key. Originalen har en ekstra sluttparentes, som er en skrivefeil.\n\nHører til: Kap. 2 (NoSQL); Cassandra-nøkler er ikke i årets lysbilder.",
+      "kode": "CREATE TABLE application_logs (\n  id           INT,\n  app_name     VARCHAR,\n  hostname     VARCHAR,\n  log_datetime TIMESTAMP,\n  env          VARCHAR,\n  log_level    VARCHAR,\n  log_message  TEXT,\n  PRIMARY KEY ((app_name, env))\n);"
+    },
+    {
+      "id": "co4033-e23-49",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 49. Hva er ikke et kjennetegn ved strømmende data?",
+      "alternativer": [
+        "A. Dataene er svært store og kommer fra mange kilder",
+        "B. Data som ikke behandles eller lagres, forsvinner",
+        "C. Dataene er svært store og tett koblet sammen i en database",
+        "D. Dataene kommer for raskt til å lagres i en vanlig database",
+        "E. Det er en sanntids datateknologi"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. Strømmende data kommer løpende og ubegrenset, og ligger ikke ferdig lagret og strukturert i en database.\n\nHører til: Kap. 2 (strømbehandling)."
+    },
+    {
+      "id": "co4033-e23-50",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 50. Hvilke endringer i Business Intelligence skjer i møte med big data?",
+      "alternativer": [
+        "A. Virksomheten produserer så store datamengder at de ikke kan lagres tradisjonelt i CSV-filer eller vanlige databaser",
+        "B. Nye datatyper, som strømmende data, krever teknologi som kan håndtere dem",
+        "C. Det trengs kraftigere verktøy for å visualisere store datamengder",
+        "D. B og C",
+        "E. A, B og C"
+      ],
+      "fasit": 4,
+      "forklaring": "Fasit: E. Alle tre er konsekvenser av volum, hastighet og variasjon.\n\nHører til: Kap. 1 (V-egenskapene) og kap. 5."
+    },
+    {
+      "id": "co4033-e23-51",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 51. Oppgave 51–55 bygger på dokumentet «Mining Data Streams» (AMS-metoden). Velg tilfeldig posisjon 16. Hva er X.value?",
+      "alternativer": [
+        "A. 9",
+        "B. 6",
+        "C. 3",
+        "D. 1",
+        "E. Mangler opplysninger"
+      ],
+      "fasit": 3,
+      "forklaring": "Fasit: D. X.value er antall forekomster av elementet på den valgte posisjonen, fra og med den posisjonen og ut strømmen. Posisjon 16 er d, og det er den siste posisjonen, så X.value = 1.\n\nHører til: Utenfor årets lysbilder (AMS-metoden).",
+      "kode": "Strøm (16 elementer, posisjon 1–16):\nd, b, a, c, a, c, b, b, c, c, a, a, c, b, d, d"
+    },
+    {
+      "id": "co4033-e23-52",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 52. Beregn n(a) for strømmen.",
+      "alternativer": [
+        "A. 4",
+        "B. 8",
+        "C. 9",
+        "D. 2",
+        "E. Mangler opplysninger"
+      ],
+      "fasit": 0,
+      "forklaring": "Fasit: A. a står på posisjon 3, 5, 11 og 12, altså 4 ganger. Til kontroll: b = 4, c = 5 og d = 3, til sammen 16.\n\nHører til: Utenfor årets lysbilder (AMS-metoden).",
+      "kode": "Strøm (16 elementer, posisjon 1–16):\nd, b, a, c, a, c, b, b, c, c, a, a, c, b, d, d"
+    },
+    {
+      "id": "co4033-e23-53",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 53. Velg tilfeldig posisjon 4. Hva er X.value?",
+      "alternativer": [
+        "A. 3",
+        "B. 4",
+        "C. 5",
+        "D. 10",
+        "E. Mangler opplysninger"
+      ],
+      "fasit": 2,
+      "forklaring": "Fasit: C. Posisjon 4 er c. c forekommer på posisjon 4, 6, 9, 10 og 13, alle fra og med posisjon 4, så X.value = 5.\n\nHører til: Utenfor årets lysbilder (AMS-metoden).",
+      "kode": "Strøm (16 elementer, posisjon 1–16):\nd, b, a, c, a, c, b, b, c, c, a, a, c, b, d, d"
+    },
+    {
+      "id": "co4033-e23-54",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 54. Velg tilfeldig posisjonene 4, 8 og 16. Beregn estimatet for 2nd moment (bare heltallsdelen).",
+      "alternativer": [
+        "A. 96",
+        "B. 69",
+        "C. 66",
+        "D. 99",
+        "E. Mangler opplysninger"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. AMS-estimatet for hver variabel er n·(2·X.value − 1), der n = 16. Posisjon 4 (c): X = 5, estimat 16·9 = 144. Posisjon 8 (b, forekomster på 8 og 14): X = 2, estimat 16·3 = 48. Posisjon 16 (d): X = 1, estimat 16·1 = 16. Gjennomsnitt (144 + 48 + 16)/3 = 208/3 ≈ 69,3, heltallsdel 69.\n\nHører til: Utenfor årets lysbilder (AMS-metoden).",
+      "kode": "Strøm (16 elementer, posisjon 1–16):\nd, b, a, c, a, c, b, b, c, c, a, a, c, b, d, d"
+    },
+    {
+      "id": "co4033-e23-55",
+      "type": "flervalg",
+      "kapittel": 6,
+      "sporsmal": "Eksamen 2023, oppgave 55. Beregn det eksakte 2nd moment for strømmen.",
+      "alternativer": [
+        "A. 60",
+        "B. 66",
+        "C. 100",
+        "D. 73",
+        "E. Ingen av svarene"
+      ],
+      "fasit": 1,
+      "forklaring": "Fasit: B. 2nd moment er summen av kvadratene av frekvensene: a = 4, b = 4, c = 5, d = 3 gir 16 + 16 + 25 + 9 = 66. Sammenlign med estimatet på 69 i forrige oppgave.\n\nHører til: Utenfor årets lysbilder (AMS-metoden).",
+      "kode": "Strøm (16 elementer, posisjon 1–16):\nd, b, a, c, a, c, b, b, c, c, a, a, c, b, d, d"
     }
   ]
 }
